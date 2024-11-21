@@ -5,9 +5,7 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-**Last week:**
-
-Multiple Linear Regression (MLR) is a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome.
+In last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R, we create and interpret the model:
 
 `model <- lm(pct_Very_bad_health ~ pct_No_qualifications + pct_Males + pct_Higher_manager_prof, data = census)`
 
@@ -39,17 +37,45 @@ In this week's practical we are going to
 
 Recall in Week 7, you get familiar to R by using the Family Resource Survey data. Today we will keep explore the data by using its categorical variables. As usual we first load the necessary libraries.
 
+**Some tips to avoid R returning can't find data errors:**
+
+Check your working directory by
+
+```{r}
+getwd()
+```
+
+Check the relative path of your data folder on your PC/laptop, make sure you know the relative path of your data from your workding directory, returned by `getwd()`.
+
+**Library knowledge used in today:**
+
+dplyr: a basic library provides a suite of functions for data manipulation
+
+ggplot2: a widely-used data visualisation library to help you create nice plots through layered plotting.
+
+tidyverse: a collection of R packages designed for data science, offering a cohesive framework for data manipulation, visualization, and analysis. Containing dyplyr, ggplot2 and other basic libraries.
+
+broom: a part of the tidyverse and is designed to convert statistical analysis results into tidy data frames.
+
 ### Data overview
 
 ```{r,results='hide',message=FALSE}
+if(!require("dplyr"))
+  install.packages("dplyr")
 # Load necessary libraries 
-library(ggplot2) 
+if(!require("ggplot2"))
+  install.packages("ggplot2")
+
 library(dplyr) 
+library(ggplot2) 
 ```
 
-#or use tidyverse which includes ggplot2, dplyr and other foundamental libraries, remember you need first install the package if you haven't by using install.packages("tidyverse")
+Or we can use library `tidyverse` which complies `ggplot2`, `dplyr` and other foundamental libraries together already, remember you need first install the package if you haven't by using `install.packages("tidyverse")`.
 
 ```{r,results='hide',message=FALSE}
+if(!require("tidyverse"))
+  install.packages("tidyverse")
+
 library(tidyverse)
 ```
 
