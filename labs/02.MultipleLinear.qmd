@@ -63,12 +63,12 @@ summary_data
 
 **Q1**. Complete the table below by specifying each variable type (continuous or categorical) and reporting its mean and standard deviation.
 
-| Variable Name           | Type (Continuous or Categorical) | Mean | Standard Deviation |
-|------------------|-------------------|------------------|------------------|
-| pct_Very_bad_health     |                                  |      |                    |
-| pct_No_qualifications   |                                  |      |                    |
-| pct_Males               |                                  |      |                    |
-| pct_Higher_manager_prof |                                  |      |                    |
+| Variable Name | Type (Continuous or Categorical) | Mean | Standard Deviation |
+|----|----|----|----|
+| pct_Very_bad_health |  |  |  |
+| pct_No_qualifications |  |  |  |
+| pct_Males |  |  |  |
+| pct_Higher_manager_prof |  |  |  |
 
 ### Simple visualisation for continuous data
 

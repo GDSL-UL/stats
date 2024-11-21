@@ -218,7 +218,7 @@ Use the codes of Chi-test and Cramer's V to answer this question by completing T
 **Table 1 Person-level correlations with health status**
 
 |  |  |  |  |
-|------------------|------------------|------------------|------------------|
+|----|----|----|----|
 | **Covariates** |  | **Correlation Coefficient** | **Statistical Significance** |
 |  |  | *Cramer’s V* | *p-value* |
 | *health* | *age_group* |  |  |
@@ -369,7 +369,7 @@ Last but not least, the **Measure of Model Fit**. The model output suggests the 
 Now, complete the following table.
 
 | Region names | Higher or lower than London | Whether the difference is statistically significant (Yes or No) |
-|:-----------------:|:-----------------:|:---------------------------------:|
+|:--:|:--:|:--:|
 | East Midlands |  |  |
 | East of England |  |  |
 | North East |  |  |

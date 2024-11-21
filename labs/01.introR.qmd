@@ -130,7 +130,7 @@ getwd()
 File paths in R work like this:
 
 | File Path | Description |
-|-------------------|-----------------------------------------------------|
+|----|----|
 | `MyFile.csv` | Look in the working directory for `MyFile.csv`. |
 | `MyFolder/MyFile.csv` | In the working directory, there is a subdirectory called `MyFolder` and inside that folder is `MyFile.csv`. |
 
@@ -383,7 +383,7 @@ To make R read in the data arranged in this format, we need to tell R three thin
 The primary function that we'll use to read data from a file and into R is the function `read.csv()`. This function has many optional arguments but the most commonly used ones are outlined in the table below.
 
 | Argument | Default | Description |
-|----------------|----------------|---------------------------------------|
+|----|----|----|
 | `file` | Required | A character string denoting the file location. |
 | `header` | `TRUE` | Specifies whether the first line contains column headers. |
 | `sep` | `","` | Specifies the character that separates columns. For `read.csv()`, this is usually a comma. |
@@ -523,7 +523,7 @@ In the FRS data structure, each row represents a person, but:
 Below is an example dataset structure:
 
 | household | family | person | region | age_group | sex | marital_status | rel_to_hrp |
-|---------|---------|---------|---------|---------|---------|---------|---------|
+|----|----|----|----|----|----|----|----|
 | 1 | 1 | 1 | London | 40-44 | Female | Married/Civil partnership | Spouse |
 | 1 | 1 | 2 | London | 40-44 | Male | Married/Civil partnership | Household Representative |
 | 1 | 1 | 3 | London | 5-10 | Male | Single | Son/daughter (incl. adopted) |

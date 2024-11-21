@@ -1,43 +1,43 @@
-# Assessment  {.unnumbered}
+# Assessment {.unnumbered}
 
 **Deadline**: Tuesday 7th January 2025.
 
 The assignment **Data Exploration and Analysis** consists of writing a research report using one of the regression techniques learned during the module. The basic idea is to put in practice the methods learned during the quantitative block of the module. You are required to apply a linear or logistic regression model to the data provided for the module. The report needs to include the following sections (in brackets, % of the whole lenght):
 
- - Introduction (5%).
- - Literature Review (20%).
- - Methods and data (30%).
- - Results and discussion (40%).
- - Conclusion (5%).
- - Reference List.
+-   Introduction (5%).
+-   Literature Review (20%).
+-   Methods and data (30%).
+-   Results and discussion (40%).
+-   Conclusion (5%).
+-   Reference List.
 
 ## Required Report Structure
 
-1. **Introduction**
-	- Context: Why is the topic relevant or worth being investigated?
-	- Brief discussion of existing literature.
-	- Knowledge gap and Aim.
-	- Research questions.
- 2. **Literature review**
-	- More detailed Literature review, i.e. what do we already know about this subject
-	- Rationale for including certain predictor variables in the model.
-	- What knowledge gap remains that this article will address? (includes "not studied before in this area"). *Note: there is no expectation on totally original research. The focus is on a clean, sensible, data analysis situated in existing ideas.*
-3. **Methodology:**
-	- A brief introduction to the dataset being analysed (who collected it? When? How many responses? etc.)
-	- A description of the variables chosen to be analysed.
-	- A description of any transformation made to the original data, i.e. turning a continuous variable of income into intervals, or reducing the number of age groups from 11 to 3.
-	- A description and justification of the statistical techniques used in the subsequent analysis (i.e. the Multivariate regression model: Multiple or Logistic Linear Regression).
-4. **Results and Discussion**
-	- Descriptive statistics and summary of the variables employed.
-	-	Correct interpretation of correlation coefficients.
-	-	Usage and results of an appropriate multivariate regression model.
-	- Interpretation of the results, including links and contrasts to existing literature.
-	- Selective illustrations (graphs and tables) to make your findings as clear as possible.
-5. **Conclusion**
-	- Summary of main findings.
-	- Limitations of study (self-critique).
-  -	Highlight any implications derived from the study.
+1.  **Introduction**
+    -   Context: Why is the topic relevant or worth being investigated?
+    -   Brief discussion of existing literature.
+    -   Knowledge gap and Aim.
+    -   Research questions.
+2.  **Literature review**
+    -   More detailed Literature review, i.e. what do we already know about this subject
+    -   Rationale for including certain predictor variables in the model.
+    -   What knowledge gap remains that this article will address? (includes "not studied before in this area"). *Note: there is no expectation on totally original research. The focus is on a clean, sensible, data analysis situated in existing ideas.*
+3.  **Methodology:**
+    -   A brief introduction to the dataset being analysed (who collected it? When? How many responses? etc.)
+    -   A description of the variables chosen to be analysed.
+    -   A description of any transformation made to the original data, i.e. turning a continuous variable of income into intervals, or reducing the number of age groups from 11 to 3.
+    -   A description and justification of the statistical techniques used in the subsequent analysis (i.e. the Multivariate regression model: Multiple or Logistic Linear Regression).
+4.  **Results and Discussion**
+    -   Descriptive statistics and summary of the variables employed.
+    -   Correct interpretation of correlation coefficients.
+    -   Usage and results of an appropriate multivariate regression model.
+    -   Interpretation of the results, including links and contrasts to existing literature.
+    -   Selective illustrations (graphs and tables) to make your findings as clear as possible.
+5.  **Conclusion**
+    -   Summary of main findings.
+    -   Limitations of study (self-critique).
 
+-   Highlight any implications derived from the study.
 
 Follow this structure and include **ALL** these points, do not make your life harder.
 
@@ -45,59 +45,60 @@ Follow this structure and include **ALL** these points, do not make your life ha
 
 The first stage is to identify **ONE** a relevant research question to be addressed. Based on the chosen question, you will need to identify a dependent (or outcome) variable which you want to explain, and at least two relevant independent variables that you can use to explain the chosen dependent variable. The selection of variables should be informed by the literature and empirical evidence.
 
-**To detail in the Methods Section:** Once the variables have been chosen, you will need to describe the data and **appropriate** type of regression to be used for the analysis. You need to explain any transformation done to the original data source, such as reclassifying variables, or changing variables from continuous to nominal scales. You also need to briefly describe the data use: source of data, year of data collection, indicate the number of records used, state if you are using individual records or geographical units, explain if you are selecting a sample, and any relevant details. You also need to identify type of regression to be used and why. 
+**To detail in the Methods Section:** Once the variables have been chosen, you will need to describe the data and **appropriate** type of regression to be used for the analysis. You need to explain any transformation done to the original data source, such as reclassifying variables, or changing variables from continuous to nominal scales. You also need to briefly describe the data use: source of data, year of data collection, indicate the number of records used, state if you are using individual records or geographical units, explain if you are selecting a sample, and any relevant details. You also need to identify type of regression to be used and why.
 
 **To detail in the Results and Discussion Section:** Firstly, you need to provide two types of analyses. First, you need to provide a descriptive analysis of the data. Here you could use tables and/or plots reporting relevant descriptive statistics, such as the mean, median and standard deviation; variable distributions using histograms; and relationships between variables using correlation matrices or scatter plots. Secondly, you need to present an estimated regression model or models and the interpretation of the estimated coefficients. You need a careful and critical analysis of the regression estimates. You should think that you intend to use your regression models to advice your boss who is expecting to make some decisions based on the information you will provide. As part of this process, you need to discuss the model assessment results for the overall model and regression coefficients. Remember to substantiate your arguments using relevant literature and evidence, and present results clearly in tables and graphs.
 
 ## How to submit
+
 You should submit a `.pdf` file, that is a rendered version of a Quarto Markdown file (`qmd` file). This will allow you to write a research paper that also includes your working code, without the need of including the data (rendered `.qmd` files are executed before being converted to R).
 
 How to get a PDF?
 
 1.  **Install Quarto**: Make sure you have Quarto installed. You can download it from quarto.org.
 2.  **LaTeX Installation**: For PDF output, you’ll need a LaTeX distribution like **TinyTeX** from R, by executing this in the R console:
-        
-```r
+
+``` r
 install.packages("tinytex")
 tinytex::install_tinytex()
 ```
-   
+
 3.  **Open the Quarto File**: Open your `.qmd` file in RStudio.
 4.  **Set Output Format**: In the YAML header at the top of your Quarto file, specify `pdf` under `format`:
 
 ```{r class.source = "fold-show", echo = F}
 knitr::include_graphics("../img/quartoHeader.png")
 ```
-    
-```
+
+```         
     title: "Your Document Title"
     author: "Anonymous" # do not change
     format: pdf
-```  
+```
 
 5.  Click the **Render** button in the RStudio toolbar (next to the Knit button).
 
 ## How is it graded?
 
 | **Grade** | **Score Range** | **UG** | **Descriptor** | **Assignment Expectations** |
-|-----------|------------------|--------|----------------|-----------------------------|
+|-------------|-------------|-------------|-------------|--------------------|
 | **Fail** | 0-34% | Fail | **Inadequate** | **Literature Review**: Lacks relevance and fails to justify variable choice. Evidence is irrelevant or missing, providing no support to the research question. **Methods**: Data is not described, and the regression model is entirely missing. No appropriate statistical method is applied. **Results and Discussion**: No descriptive statistics, graphs, or tables are provided. Model results and interpretation are absent. **Structure and References**: Report is disorganized with significant referencing and citation errors throughout. |
 | **Narrow Fail** | 35-39% | Fail | **Highly Deficient** | **Literature Review**: Review is present but lacks coherence and fails to justify variable choice. Evidence is poorly aligned with the research question and mostly irrelevant. **Methods**: Minimal data description; the regression model is missing but some statistical methods are mentioned. **Results and Discussion**: Few or no descriptive statistics or visuals are present. Statistical methods are unclear or incorrectly applied. Results are vague and lack meaningful interpretation. **Structure and References**: Report structure is poor, with referencing errors in multiple sections. |
 | **Third / Fail** | 40-49% | Third (UG) | **Deficient** | **Literature Review**: Relevant literature is partially addressed but lacks depth, with limited justification for variable choice. Evidence is minimally aligned with the research question. **Methods**: A very basic data description is provided, but the selected regression model is deeply inadequate or incorrect (e.g., multiple linear regression for a categorical outcome; logistic regression for a continuous outcome). **Results and Discussion**: Descriptive statistics or visuals may be present but insufficient. Model results are presented with little to no interpretation. **Structure and References**: Report structure is present but lacks clarity, with inconsistencies in citations and citation style. |
 | **2.2 / Pass** | 50-59% | 2.2 (UG) | **Adequate** | **Literature Review**: Addresses relevant literature but with limited justification of variable choices. Evidence generally supports the research question but lacks detail. **Methods**: Data description is present but brief; a regression model is included but applied illogically or incorrectly (e.g., multiple linear regression for a categorical outcome; logistic regression for a continuous outcome) and with little explanation. **Results and Discussion**: Basic descriptive statistics, graphs, or tables are presented; the regression model is applied with some inaccuracies and/or interpretation is minimal. **Structure and References**: Report is mostly organized, though with referencing inconsistencies. |
 | **2.1 / Merit** | 60-69% | 2.1 (UG) | **Good** | **Literature Review**: Relevant literature is discussed, with some justification for variable choice. Evidence supports the research question well. **Methods**: Data is described with some detail, though potential data transformations are under-explored. The regression model is appropriate for the selected variable types. **Results and Discussion**: Descriptive statistics and visuals are provided. Model results are discussed, though interpretation lacks depth. Findings are compared to existing literature. **Structure and References**: Report is logically structured and clear, with mostly correct citations. |
-| **First / Distinction** | 70-79% | First (UG) | **Very Good** | **Literature Review**: Strong grasp of relevant literature, with well-justified variable selection. Evidence aligns well with the research question. **Methods**: Data is comprehensively described with consideration of relevant transformations. The regression model is appropriate and well-justified. **Results and Discussion**: Descriptive statistics and clear visuals support findings. Model results are accurately interpreted with strong connections to existing literature. **Structure and References**: Report has a coherent, professional structure with only minor referencing errors.|
-| **High First / High Distinction** | 80-100% | High First (UG) | **Excellent to Outstanding** | **Literature Review**: Critical and thorough literature review with strong, well-justified variable selection. Evidence fully supports the research question with insightful connections. **Methods**: Detailed data description and transformation steps are clearly articulated. Regression model is expertly applied and justified. **Results and Discussion**: Comprehensive descriptive statistics, graphs, and tables are provided. Model results are innovatively interpreted with strong links to existing research. **Structure and References**: Report is professionally structured, with flawless citations and a high standard of organization.|
----
+| **First / Distinction** | 70-79% | First (UG) | **Very Good** | **Literature Review**: Strong grasp of relevant literature, with well-justified variable selection. Evidence aligns well with the research question. **Methods**: Data is comprehensively described with consideration of relevant transformations. The regression model is appropriate and well-justified. **Results and Discussion**: Descriptive statistics and clear visuals support findings. Model results are accurately interpreted with strong connections to existing literature. **Structure and References**: Report has a coherent, professional structure with only minor referencing errors. |
+| **High First / High Distinction** | 80-100% | High First (UG) | **Excellent to Outstanding** | **Literature Review**: Critical and thorough literature review with strong, well-justified variable selection. Evidence fully supports the research question with insightful connections. **Methods**: Detailed data description and transformation steps are clearly articulated. Regression model is expertly applied and justified. **Results and Discussion**: Comprehensive descriptive statistics, graphs, and tables are provided. Model results are innovatively interpreted with strong links to existing research. **Structure and References**: Report is professionally structured, with flawless citations and a high standard of organization. |
+
+------------------------------------------------------------------------
 
 In summary:
 
+1.  **Introduction**: Should establish the topic's relevance, present a concise literature overview, identify a knowledge gap, and outline research questions.
+2.  **Literature Review**: Requires an in-depth review of relevant studies, justification for chosen independent variables, and identification of a potential knowledge gap or unexplored area aligned with the chosen research question.
+3.  **Methods and Data**: Should describe the dataset, variable transformations, and justify the regression technique. Key transformations, such as reclassifying variables, should be explained with clarity and relevance.
+4.  **Results and Discussion**: Involves presenting descriptive statistics, followed by a clear regression analysis. Discussion should interpret results, compare findings with existing literature, and include meaningful tables and graphs.
+5.  **Conclusion**: Summarize findings, discuss limitations, and suggest future directions.
+6.  **Referencing**: Requires correct and consistent citations and a well-structured reference list.
 
-1. **Introduction**: Should establish the topic's relevance, present a concise literature overview, identify a knowledge gap, and outline research questions.
-2. **Literature Review**: Requires an in-depth review of relevant studies, justification for chosen independent variables, and identification of a potential knowledge gap or unexplored area aligned with the chosen research question.
-3. **Methods and Data**: Should describe the dataset, variable transformations, and justify the regression technique. Key transformations, such as reclassifying variables, should be explained with clarity and relevance.
-4. **Results and Discussion**: Involves presenting descriptive statistics, followed by a clear regression analysis. Discussion should interpret results, compare findings with existing literature, and include meaningful tables and graphs.
-5. **Conclusion**: Summarize findings, discuss limitations, and suggest future directions.
-6. **Referencing**: Requires correct and consistent citations and a well-structured reference list.
-
-Employing a novel dataset, i.e. not employed during the practical sessions, for the assignment will be awarded with a higher grade.
+Employing a novel dataset, i.e. not employed during the practical sessions, for the assignment will be awarded with a higher grade. For example, the quantitative dataset from [Secondary datasets for Human Geography and Planning Students: 202425-ENVS203](https://canvas.liverpool.ac.uk/courses/79653/pages/secondary-datasets-suitable-for-human-geography-slash-planning-students?module_item_id=2174709).

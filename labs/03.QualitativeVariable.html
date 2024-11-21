@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Zi Ye">
+<meta name="dcterms.date" content="2024-11-21">
+
+<title>3&nbsp; Lab: Correlation and Multiple Linear Regression with Qualitative Variables – Exploring the Social World - Quantitative Block: Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../labs/04.LogisticRegression.html" rel="next">
+<link href="../labs/02.MultipleLinear.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/03.QualitativeVariable.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation and Multiple Linear Regression with Qualitative Variables</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Exploring the Social World - Quantitative Block: Statistics</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/GDSL-UL/stats" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../Exploring-the-Social-World---Quantitative-Block--Statistics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/assessment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assessment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/01.introR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab: Introduction to R for Statistics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/02.MultipleLinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Correlation, Single, and Multiple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/03.QualitativeVariable.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation and Multiple Linear Regression with Qualitative Variables</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/04.LogisticRegression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: LogisticRegression</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#analysis-categorical-variables" id="toc-analysis-categorical-variables" class="nav-link active" data-scroll-target="#analysis-categorical-variables"><span class="header-section-number">3.1</span> Analysis categorical variables</a>
+  <ul class="collapse">
+  <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview"><span class="header-section-number">3.1.1</span> Data overview</a></li>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">3.1.2</span> Correlation</a></li>
+  </ul></li>
+  <li><a href="#implementing-a-linear-regression-model-with-a-qualitative-independent-variable" id="toc-implementing-a-linear-regression-model-with-a-qualitative-independent-variable" class="nav-link" data-scroll-target="#implementing-a-linear-regression-model-with-a-qualitative-independent-variable"><span class="header-section-number">3.2</span> <strong>Implementing a linear regression model with a qualitative independent variable</strong></a>
+  <ul class="collapse">
+  <li><a href="#include-the-categorical-variables-into-a-regression-model" id="toc-include-the-categorical-variables-into-a-regression-model" class="nav-link" data-scroll-target="#include-the-categorical-variables-into-a-regression-model"><span class="header-section-number">3.2.1</span> <strong>Include the categorical variables into a regression model</strong></a></li>
+  <li><a href="#change-the-baseline-category" id="toc-change-the-baseline-category" class="nav-link" data-scroll-target="#change-the-baseline-category"><span class="header-section-number">3.2.2</span> <strong>Change the baseline category</strong></a></li>
+  <li><a href="#recode-the-region-variable-and-explore-regional-inequality-in-health" id="toc-recode-the-region-variable-and-explore-regional-inequality-in-health" class="nav-link" data-scroll-target="#recode-the-region-variable-and-explore-regional-inequality-in-health"><span class="header-section-number">3.2.3</span> Recode the Region variable and explore regional inequality in health</a></li>
+  </ul></li>
+  <li><a href="#predictions-using-fitted-regression-model" id="toc-predictions-using-fitted-regression-model" class="nav-link" data-scroll-target="#predictions-using-fitted-regression-model"><span class="header-section-number">3.3</span> Predictions using fitted regression model</a>
+  <ul class="collapse">
+  <li><a href="#write-down-the-illness-regression-model-with-the-new-region-label-categorical-variables" id="toc-write-down-the-illness-regression-model-with-the-new-region-label-categorical-variables" class="nav-link" data-scroll-target="#write-down-the-illness-regression-model-with-the-new-region-label-categorical-variables"><span class="header-section-number">3.3.1</span> <strong>Write down the % illness regression model with the new region label categorical variables</strong></a></li>
+  </ul></li>
+  <li><a href="#income-inequality-with-respect-to-gender-and-health-status" id="toc-income-inequality-with-respect-to-gender-and-health-status" class="nav-link" data-scroll-target="#income-inequality-with-respect-to-gender-and-health-status"><span class="header-section-number">3.4</span> Income inequality with respect to gender and health status</a></li>
+  <li><a href="#extension-activities" id="toc-extension-activities" class="nav-link" data-scroll-target="#extension-activities"><span class="header-section-number">3.5</span> <strong>Extension activities</strong></a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/labs/03.QualitativeVariable.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation and Multiple Linear Regression with Qualitative Variables</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Zi Ye </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 21, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The lecture’s slides can be found&nbsp;<a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture09.pdf">here</a>.</p>
+<p>In last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R, we create and interpret the model:</p>
+<p><code>model &lt;- lm(pct_Very_bad_health ~ pct_No_qualifications + pct_Males + pct_Higher_manager_prof, data = census)</code></p>
+<p><code>summary(model)</code></p>
+<p>In a regression model, independent/predictor variables could be continuous or categorical (or qualitative). While continuous variables capture quantitative effects, <strong>categorical variables provide insights into differences across groups</strong>. When we say categorical variables, we normally mean:</p>
+<ul>
+<li><p>Nominal Data: categorical data without natural order. E.g. Gender, Colour, Country…</p></li>
+<li><p>Ordinal Data: categorical data with a meaningful order. E.g. Education level, Customer satisfaction, Grade…</p></li>
+</ul>
+<p>By blending continuous and categorical predictors, MLR with categorical variables enhances the model’s ability to reflect real-world complexities and improves interpretability, as it allows analysts to assess how each category or group within a independent variable influences the dependent variable.</p>
+<p>For most categorical (especially the <em>nominal</em>) variables, they cannot be included in the regression model directly as a continuous independent variable. Instead, these qualitative independent variables should be included in regression models by using the <strong>dummy variable</strong> approach, transforming categorical information into a numerical format suitable for regression analysis.</p>
+<p>However, R provides a powerful way, by automatively handling with such process when the categorical variable is designated as a factor and to be included in the regression model. This makes it much easier for you to use categorical variables in the regression model to assess the effects of categorical groupings on the dependent variable alongside continuous predictors.</p>
+<p>Learning Objectives:</p>
+<p>In this week’s practical we are going to</p>
+<ul>
+<li><p>Analysis of categorical/qualitative variables</p></li>
+<li><p>Estimate and interpret a multiple linear regression model with categorical variables</p></li>
+<li><p>Make predictions using a regression model</p></li>
+</ul>
+<section id="analysis-categorical-variables" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="analysis-categorical-variables"><span class="header-section-number">3.1</span> Analysis categorical variables</h2>
+<p>Recall in Week 7, you get familiar to R by using the Family Resource Survey data. Today we will keep explore the data by using its categorical variables. As usual we first load the necessary libraries.</p>
+<p><strong>Some tips to avoid R returning can’t find data errors:</strong></p>
+<p>Check your working directory by</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Check the relative path of your data folder on your PC/laptop, make sure you know the relative path of your data from your workding directory, returned by <code>getwd()</code>.</p>
+<p><strong>Library knowledge used in today:</strong></p>
+<ul>
+<li><p><strong><code>dplyr</code></strong>: a basic library provides a suite of functions for data manipulation</p></li>
+<li><p><strong><code>ggplot2</code></strong>: a widely-used data visualisation library to help you create nice plots through layered plotting.</p></li>
+<li><p><strong><code>tidyverse</code></strong>: a collection of R packages designed for data science, offering a cohesive framework for data manipulation, visualization, and analysis. Containing dyplyr, ggplot2 and other basic libraries.</p></li>
+<li><p><strong><code>broom</code></strong>: a part of the tidyverse and is designed to convert statistical analysis results into tidy data frames.</p></li>
+<li><p><strong><code>forcats</code></strong>: designed to work with factors, which are used to represent categorical data. It simplifies the process of creating, modifying, and ordering factors.</p></li>
+<li><p><strong><code>vcd</code></strong>: visualise and analyse categorical data.</p></li>
+</ul>
+<p><strong>A useful shortcut to format your code: select all your code lines, use Ctrl+Shift+A for automatically format them in a tidy way.</strong></p>
+<section id="data-overview" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="data-overview"><span class="header-section-number">3.1.1</span> Data overview</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"dplyr"</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"dplyr"</span>,<span class="at">dependencies =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: dplyr</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries </span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"ggplot2"</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>,<span class="at">dependencies =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ggplot2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"broom"</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"broom"</span>,<span class="at">dependencies =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: broom</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Or we can use library <code>tidyverse</code> which includes <code>ggplot2</code>, <code>dplyr,broom</code> and other foundamental libraries together already, remember you need first install the package if you haven’t by using <code>install.packages("tidyverse")</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>,<span class="at">dependencies =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: tidyverse</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.1
+✔ readr     2.1.5     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will also use forcat library, so</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"forcats"</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"forcats"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Exactly as you did in previous weeks, we first load in the dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>frs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/FamilyResourceSurvey/FRS16-17_labels.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Recall in previous weeks, we used the following code to overview the dataset. Familiar yourself again by using them:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(frs_data)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(frs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and also <code>summary()</code> to produce summaries of each variable</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You may notice that for the numeric variables such as <em>hh_income_gross</em> (household gross income) and <em>work_hours</em>(worked hours per week), the <code>summary()</code> offers useful descriptive statistics. While for the qualitative information, such as <em>age_group</em> (age group), <em>highest_qual (</em>Highest educational qualification), <em>marital_status (</em>Marital status) and <em>nssec (</em>Socio-economic status), the <code>summary()</code> function is not that useful by providing mean or median values.</p>
+<p>Performing descriptive analysis for categorical variables or qualitative variables, we focus on summarising the frequency and distribution of categories within the variable. This analysis helps understand the composition and diversity of categories in the data, which is especially useful for identifying patterns, common categories, or potential data imbalances.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequency count</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_data<span class="sc">$</span>age_group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+  0-4 05-10 11-15 16-19 20-24 25-29 30-34 35-39 40-44 45-49 50-54 55-59 60-64 
+ 2914  3575  2599  1858  1929  2353  2800  2840  2790  2883  2975  2767  2775 
+65-69 70-74   75+ 
+ 2990  2354  3743 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_data<span class="sc">$</span>highest_qual)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+A-level or equivalent       Degree or above       Dependent child 
+                 5260                  9156                 10298 
+   GCSE or equivalent             Not known                 Other 
+                 9729                  6820                  2882 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_data<span class="sc">$</span>marital_status)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                          Cohabiting Divorced/civil partnership dissolved 
+                                4015                                 2199 
+           Married/Civil partnership                            Separated 
+                               18195                                  747 
+                              Single                              Widowed 
+                               16663                                 2326 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_data<span class="sc">$</span>nssec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                              Dependent child 
+                                        10299 
+                            Full-time student 
+                                          963 
+              Higher professional occupations 
+                                         3004 
+                     Intermediate occupations 
+                                         4372 
+          Large employers and higher managers 
+                                         1025 
+Lower managerial and professional occupations 
+                                         8129 
+  Lower supervisory and technical occupations 
+                                         2400 
+         Never worked or long-term unemployed 
+                                         1516 
+                             Not classifiable 
+                                          107 
+                          Routine occupations 
+                                         4205 
+                     Semi-routine occupations 
+                                         5226 
+      Small employers and own account workers 
+                                         2899 </code></pre>
+</div>
+</div>
+<p>By using ggplot2, it is easy to create some nice descriptive charts for the categorical variables, such like what you did for the continuous variables last week.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(frs_data, <span class="fu">aes</span>(<span class="at">x =</span> highest_qual)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">"brown"</span>,<span class="at">width=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram of Highest Qualification in FRS"</span>, <span class="at">x =</span> <span class="st">"Highest Qualification"</span>, <span class="at">y =</span> <span class="st">"Count"</span>)<span class="sc">+</span><span class="co">#set text info</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="co">#choose theme type, try theme_bw(), theme_minimal() see differences</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03.QualitativeVariable_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(frs_data, <span class="fu">aes</span>(<span class="at">x =</span> health)) <span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">"skyblue"</span>) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="fu">aes</span>(<span class="at">label =</span> ..count..),<span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.3</span>,<span class="at">colour =</span> <span class="st">"grey"</span>)<span class="sc">+</span> <span class="co">#add text</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram of Health in FRS"</span>, <span class="at">x =</span> <span class="st">"Health"</span>, <span class="at">y =</span> <span class="st">"Count"</span>)<span class="sc">+</span><span class="co">#set text info</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03.QualitativeVariable_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(frs_data, <span class="fu">aes</span>(<span class="at">x =</span> nssec)) <span class="sc">+</span> </span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"yellow4"</span>) <span class="sc">+</span> </span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram of NSSEC in FRS"</span>, <span class="at">x =</span> <span class="st">"NSSEC"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span> <span class="co">#Flip the Axes, add a # in front of this line, to make the code in gray and you will see why we would better flip the axes at here</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03.QualitativeVariable_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>If we want to reorder the Y axis by from highest to lowest, we use the functions in <code>forcats</code> library. <code>fct_infreq()</code>: orders by the value’s frequency of the variable <code>nssec</code>. <code>fct_rev()</code>: reverses the order to go from highest to lowest.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(frs_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_rev</span>(<span class="fu">fct_infreq</span>(nssec)))) <span class="sc">+</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"yellow4"</span>) <span class="sc">+</span> </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram of NSSEC in FRS"</span>, <span class="at">x =</span> <span class="st">"NSSEC"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()<span class="sc">+</span> <span class="co">#Flip the Axes, add a # in front of this line, to make the code in gray and you will see why we would better flip the axes at here</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03.QualitativeVariable_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can change the variables in ggplot() to make your own histogram chart for the variables you are interested in. You will learn more of visualisation methods in Week11’s practical.</p>
+</section>
+<section id="correlation" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="correlation"><span class="header-section-number">3.1.2</span> Correlation</h3>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Q1. Which of the associations do you think is strongest? Which is the weakest?</strong></p>
+</div>
+<p>As before, rather than relying upon an impressionistic view of the strength of the association between two variables, we can measure that association by calculating the relevant correlation coefficient.</p>
+<p>To calculate the correlation between categorical data, we first use Chi-squared test to assess the independence between pairs of categorical variables, then we use Cramer’s V to measures the strength of association - the correlation coefficents in R.</p>
+<p><strong>Pearson’s chi-squared test</strong> (χ2) is a statistical test applied to sets of categorical data to evaluate how likely it is that any observed difference between the sets arose by chance. If the p-value is low (typically &lt; 0.05), it suggests a significant association between the two variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(frs_data<span class="sc">$</span>health,frs_data<span class="sc">$</span>happy) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in chisq.test(frs_data$health, frs_data$happy): Chi-squared
+approximation may be incorrect</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's Chi-squared test
+
+data:  frs_data$health and frs_data$happy
+X-squared = 45594, df = 60, p-value &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>If you see a warning message of Chi-squared approximation may be incorrect. This is because some expected frequencies in one or more cells of the cross-tabular (health * happy) are too low. The df means degrees of freedom and it related to the size of the table and the number of categories in each variable. The most important message from the output is the estimated p-value, which shows as p-value &lt; 2.2e-16 (2.2 with 16 decimals move to the left, it is a very small number so written in scientific notation). P-value of the chi-squared test is far smaller than 0.05, so we can say the correlation is statistically significant.</p>
+<p><strong>Cramér’s V</strong> is a measure of association for categorical (nominal or ordinal) data. It ranges from 0 (no association) to 1 (strong association). The main downside of using Cramer’s V is that no information is provided on whether the correlation is positive or negative. This is not a problem if the variable pair includes a nominal variable but represents an information loss if the both variables being correlated are ordinal.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the 'vcd' package if not installed </span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"vcd"</span>))   </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"vcd"</span>, <span class="at">repos =</span> <span class="st">"https://cran.r-project.org"</span>, <span class="at">dependencies =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: vcd</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'vcd' was built under R version 4.3.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: grid</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)  </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creat the crosstable </span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">table</span>(frs_data<span class="sc">$</span>health, frs_data<span class="sc">$</span>happy)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Cramér's V </span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="fu">assocstats</span>(crosstab)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   X^2 df P(&gt; X^2)
+Likelihood Ratio 54036 60        0
+Pearson          45594 60        0
+
+Phi-Coefficient   : NA 
+Contingency Coeff.: 0.713 
+Cramer's V        : 0.454 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#you can also directly calculate the assoication between variables</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">assocstats</span>(<span class="fu">table</span>(frs_data<span class="sc">$</span>health, frs_data<span class="sc">$</span>age_group))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   X^2 df P(&gt; X^2)
+Likelihood Ratio 26557 75        0
+Pearson          23854 75        0
+
+Phi-Coefficient   : NA 
+Contingency Coeff.: 0.592 
+Cramer's V        : 0.329 </code></pre>
+</div>
+</div>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Research Question 1. Which of our selected person-level variables is most strongly correlated with an individual’s health status?</strong></p>
+</div>
+<p>Use the codes of Chi-test and Cramer’s V to answer this question by completing Table 1.</p>
+<p><strong>Table 1 Person-level correlations with health status</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Covariates</strong></td>
+<td></td>
+<td><strong>Correlation Coefficient</strong></td>
+<td><strong>Statistical Significance</strong></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><em>Cramer’s V</em></td>
+<td><em>p-value</em></td>
+</tr>
+<tr class="odd">
+<td><em>health</em></td>
+<td><em>age_group</em></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>Health</em></td>
+<td><em>highest_qual</em></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><em>health</em></td>
+<td><em>marital_status</em></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>Health</em></td>
+<td><em>nssec</em></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="implementing-a-linear-regression-model-with-a-qualitative-independent-variable" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="implementing-a-linear-regression-model-with-a-qualitative-independent-variable"><span class="header-section-number">3.2</span> <strong>Implementing a linear regression model with a qualitative independent variable</strong></h2>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Research Question 2: How does health vary across regions in the UK?</strong></p>
+</div>
+<p>The practical is split into two main parts. The first focuses on implementing a linear regression model with a qualitative independent variable. <strong>Note that</strong> you need first to set the reference category (baseline) as the outcomes of the model reflects the <strong>differences</strong> between categories with the baseline. The second part focuses prediction based the estimated linear regression model.</p>
+<p>First we load the UK district-level census dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>LAcensus <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/Census2011/UK_DistrictPercentages.csv"</span>) <span class="co"># Local authority level</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Using the district-level census dataset “<strong>UK_DistrictPercentages.csv</strong>”. the variable “Region” (labelled as Government Office Region) is used to explore regional inequality in health.</p>
+<p>Familiar yourself with the dataset by using the same codes as last week:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view the data </span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(LAcensus)  </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(LAcensus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The names() function returns all the column names.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The dim() function can merely returns the number of rows and number of columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(LAcensus) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 406 128</code></pre>
+</div>
+</div>
+<p>There are 406 rows and 130 columns in the dataset. It would be very hard to scan throught the data if we use so many variables altogether. Therefore, we can select several columns to tailor for this practical. You can of course include other variables you are interested in also by their names:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> LAcensus <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"pct_Long_term_ill"</span>,</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"pct_No_qualifications"</span>,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"pct_Males"</span>,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"pct_Higher_manager_prof"</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"Region"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Simply descriptive of this new data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> pct_Long_term_ill pct_No_qualifications   pct_Males    
+ Min.   :11.20     Min.   : 6.721        Min.   :47.49  
+ 1st Qu.:15.57     1st Qu.:19.406        1st Qu.:48.67  
+ Median :18.41     Median :23.056        Median :49.09  
+ Mean   :18.27     Mean   :23.257        Mean   :49.10  
+ 3rd Qu.:20.72     3rd Qu.:26.993        3rd Qu.:49.48  
+ Max.   :27.97     Max.   :40.522        Max.   :55.47  
+ pct_Higher_manager_prof     Region      
+ Min.   : 4.006          Min.   : 1.000  
+ 1st Qu.: 7.664          1st Qu.: 3.000  
+ Median : 9.969          Median : 6.000  
+ Mean   :10.747          Mean   : 6.034  
+ 3rd Qu.:12.986          3rd Qu.: 8.000  
+ Max.   :37.022          Max.   :12.000  </code></pre>
+</div>
+</div>
+<p>Now we can retrieve the “Region” column from the data frame by simply use <strong>df$Region</strong>. But what if we want to understand the data better, like the following questions?</p>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Q2. How many categories do the variable “Region” entail? How many local authority districts does each region include?</strong></p>
+</div>
+<p>Simply use the function table() would return you the answer.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Region) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ 1  2  3  4  5  6  7  8  9 10 11 12 
+40 47 33 12 39 67 37 30 21 22 32 26 </code></pre>
+</div>
+</div>
+<p>The numbers in Region column indicate different regions in the UK - 1: East Midlands; 2: East of England; 3: London; 4: North East; 5: North West; 6: South East; 7: South West; 8: West Midlands; 9: Yorkshire and the Humber; 10: Wales; 11: Scotland; and 12: Northern Ireland.</p>
+<p>The <code>table()</code> function tells us that this data frame contains 12 regions, and the number of LAs belongs to each region.</p>
+<p>Now, for better interpration of our regions with their real name rather than the code, we can create a new column named “<em>Region_label</em>” by using the following code. **R can only include the categorical variables in the <strong>factor</strong> type, so we set the new column <em>Region_label</em> in <code>factor()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Region_label <span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Region,<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>),<span class="at">labels=</span><span class="fu">c</span>(<span class="st">"East Midlands"</span>,</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"East of England"</span>,</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"London"</span>,</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"North East"</span>,</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"North West"</span>,</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"South East"</span>,</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"South West"</span>,</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"West Midlands"</span>,</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Yorkshire and the Humber"</span>,</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Wales"</span>,</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Scotland"</span>,</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>                                                     <span class="st">"Northern Ireland"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>If you re-run the table() function, the output is now more readable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Region_label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+           East Midlands          East of England                   London 
+                      40                       47                       33 
+              North East               North West               South East 
+                      12                       39                       67 
+              South West            West Midlands Yorkshire and the Humber 
+                      37                       30                       21 
+                   Wales                 Scotland         Northern Ireland 
+                      22                       32                       26 </code></pre>
+</div>
+</div>
+<section id="include-the-categorical-variables-into-a-regression-model" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="include-the-categorical-variables-into-a-regression-model"><span class="header-section-number">3.2.1</span> <strong>Include the categorical variables into a regression model</strong></h3>
+<p>We will continue with a very similar regression model fitted in last week that relates Percentages long-term illness (<em>pct_Long_term_ill</em>) to Percentages no-qualification (<em>pct_No_qualifications</em>), Percentage Males (<em>pct_Males</em>) and Percentages Higher Managerial or Professional occupation (<em>pct_Higher_manager_prof</em>).</p>
+<p>Decide which region to be set as the baseline category. The principle is that if you want to compare the (average) long term illness outcome of Region A to those of other regions, Region A should be chosen as the baseline category. For example, if you want to compare the (average) long term illness outcome of London to rest of regions in the UK, London should be selected as the baseline category.</p>
+<p>Implement the regression model with the newly created categorical variables - <em>Region_label</em> in our case. R will automatically handle the qualitative variable as dummy variables so you don’t need to concern any of that. But you need to let R knows which category of your qualitative variable is your reference category or the baseline. Here we will use London as our first go. <strong>Note:</strong> We choose London as the baseline category so the London region will be <u><strong>excluded</strong></u> in the independent variable list.</p>
+<p>Therefore, first, we set London as the reference:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Region_label <span class="ot">&lt;-</span> <span class="fu">fct_relevel</span>(df<span class="sc">$</span>Region_label,  <span class="st">"London"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Similar to last week, we build our linear regression model, but also include the <em>Region_label</em> variable into the model.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(pct_Long_term_ill <span class="sc">~</span> pct_Males <span class="sc">+</span> pct_No_qualifications <span class="sc">+</span> pct_Higher_manager_prof <span class="sc">+</span> Region_label, <span class="at">data =</span> df)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = pct_Long_term_ill ~ pct_Males + pct_No_qualifications + 
+    pct_Higher_manager_prof + Region_label, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.2963 -0.9090 -0.1266  0.8168  5.2821 
+
+Coefficients:
+                                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                          41.54134    5.22181   7.955 1.95e-14 ***
+pct_Males                            -0.75756    0.10094  -7.505 4.18e-13 ***
+pct_No_qualifications                 0.50573    0.03062  16.515  &lt; 2e-16 ***
+pct_Higher_manager_prof               0.08910    0.03674   2.426  0.01574 *  
+Region_labelEast Midlands             1.14167    0.35015   3.260  0.00121 ** 
+Region_labelEast of England          -0.01113    0.33140  -0.034  0.97322    
+Region_labelNorth East                2.70447    0.49879   5.422 1.03e-07 ***
+Region_labelNorth West                2.64240    0.35468   7.450 6.03e-13 ***
+Region_labelSouth East                0.48327    0.30181   1.601  0.11013    
+Region_labelSouth West                2.62729    0.34572   7.600 2.22e-13 ***
+Region_labelWest Midlands             0.91064    0.37958   2.399  0.01690 *  
+Region_labelYorkshire and the Humber  1.03930    0.41050   2.532  0.01174 *  
+Region_labelWales                     4.63424    0.41368  11.202  &lt; 2e-16 ***
+Region_labelScotland                  0.46291    0.38916   1.189  0.23497    
+Region_labelNorthern Ireland          0.55722    0.42215   1.320  0.18762    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.394 on 391 degrees of freedom
+Multiple R-squared:  0.8298,    Adjusted R-squared:  0.8237 
+F-statistic: 136.2 on 14 and 391 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>You have already learnt how to interpret the output of regression model last week: <strong>Significance</strong> (p-value), <strong>Coefficient Estimates, and Model fit</strong> (R squared and Adjusted R-squared).</p>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Q3. Relating back to this week’s lecture notes, indicate what regions have statistically significant differences in the percentage of long-term illness, compared to London?</strong></p>
+</div>
+<p>First, the <strong>Significance</strong> and the <strong>Coefficient Estimates</strong>. By examining the P-value, which is the last column in the output table, we can see that most of the independent variables are significant predictor of <code>pct_Long_term_ill</code>.</p>
+<ul>
+<li><p>Similarly to last week, we learn that the changes in <code>pct_No_qualifications</code> and <code>pct_Males</code>are significantly associated with changes in <code>pct_Long_term_ill</code> at the &lt;0.001 level (with the three asterisks *** ), which is actually an indicator of highly statistically significant, while we are less confident that the observed relationship between <code>pct_Higher_manager_prof</code> and <code>pct_Long_term_ill</code> are statistically significant (with the two asterisks **). Through their coefficient estimates, we learn that:</p>
+<ul>
+<li><p>The association of <code>pct_Males</code> is negative and strong: each decrease in 1% of <code>pct_Males</code> is associated with an increase of 0.75% of long term illness rate in the population of UK.</p></li>
+<li><p>The association of <code>pct_No_qualifications</code> is positive and strong: each increase in 1% of <code>pct_No_qualifications</code> is associated with an increase of 0.5% of long term illness rate.</p></li>
+<li><p>The association of <code>pct_Higher_manager_prof</code> is positive but weak: each increase in 1% of <code>pct_Higher_manager_prof</code> is associated with an increase of 0.08% of <code>pct_Long_term_ill</code>.</p></li>
+</ul></li>
+<li><p>Now comes to the dummy variables (all the items starts with Region_label) created by R for our qualitative variable <em>Region_label</em>: <code>Region_labelNorth East</code>, <code>Region_labelNorth West</code>, <code>Region_labelSouth West</code> and <code>Region_labelWales</code> are also statistically significant at the &lt;0.001 level. The changes in <code>Region_labelEast Midlands</code> are significantly associated with changes in <code>pct_Long_term_ill</code> at the 0.001 level, while the changes in <code>Region_labelWest Midlands</code> and <code>Region_labelYorkshire and the Humber</code> are significantly associated with changes in <code>pct_Long_term_ill</code> at the 0.01 level. The 0.01 level suggests that it is a mild likelihood that the relationship between these independent variables and the dependent variable is not due to random change. They are just mildly statistically significant.</p></li>
+<li><p>The coefficient estimates of them need to be interpreted by comparing to the reference category London. The Estimate column tells us: North East region is associated with a 2.7% higher rate of long term illness than London when the other predictors remain the same. Similarly, Wales is 4.6% higher rate of long term illness than London when the other predictors remain the same. You can draw the conclusion for the other regions in this way by using their coefficient estimate values.</p>
+<p><strong>Reminder</strong>: You <strong>cannot</strong> draw conclusion between North East and Wales, nor comparison between any regions beyond London. It is because the regression model is built for the comparison between regions to your reference category London. If we want to compare between North East and Wales, we need to set either of them as the reference category by using <code>df$Region_label &lt;- fct_relevel(df$Region_label, "North East")</code> or <code>df$Region_label &lt;- fct_relevel(df$Region_label, "Wales")</code>.</p></li>
+<li><p><code>Region_labelEast of England</code>, <code>Region_labelSouth Eest</code>, <code>Region_labelScotland</code> and <code>RegionlabelNorthern Ireland</code> were not found to be significantly associated with <code>pct_Long_term_ill</code>.</p></li>
+</ul>
+<p>Last but not least, the <strong>Measure of Model Fit</strong>. The model output suggests the R-squared and Adjusted R-squared are of greater than 0.8 indicate a reasonably well fitting model. he model explains 83.0 % of the variance in the dependent variable. After adjusting for the number of independent variable, the model explains 82.4% of the variance. They two suggest a strong fit of the model.</p>
+<p>Now, complete the following table.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Region names</th>
+<th style="text-align: center;">Higher or lower than London</th>
+<th style="text-align: center;">Whether the difference is statistically significant (Yes or No)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">East Midlands</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">East of England</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">North East</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">North West</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">South East</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">South West</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">West Midlands</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Yorkshire and The Humber</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Wales</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Scotland</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Northern Ireland</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="change-the-baseline-category" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="change-the-baseline-category"><span class="header-section-number">3.2.2</span> <strong>Change the baseline category</strong></h3>
+<p>If you would like to learn about differences in long-term illness between North East and other regions in the UK, you need to change the baseline category (from London) to the North East region (with variable name “Region_2”).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Region_label <span class="ot">&lt;-</span> <span class="fu">fct_relevel</span>(df<span class="sc">$</span>Region_label, <span class="st">"North East"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The regression model is specified again as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>  pct_Long_term_ill <span class="sc">~</span> pct_Males <span class="sc">+</span> pct_No_qualifications <span class="sc">+</span> pct_Higher_manager_prof <span class="sc">+</span> Region_label,</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = pct_Long_term_ill ~ pct_Males + pct_No_qualifications + 
+    pct_Higher_manager_prof + Region_label, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.2963 -0.9090 -0.1266  0.8168  5.2821 
+
+Coefficients:
+                                     Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                          44.24582    5.20125   8.507 3.85e-16 ***
+pct_Males                            -0.75756    0.10094  -7.505 4.18e-13 ***
+pct_No_qualifications                 0.50573    0.03062  16.515  &lt; 2e-16 ***
+pct_Higher_manager_prof               0.08910    0.03674   2.426 0.015738 *  
+Region_labelLondon                   -2.70447    0.49879  -5.422 1.03e-07 ***
+Region_labelEast Midlands            -1.56281    0.46292  -3.376 0.000809 ***
+Region_labelEast of England          -2.71561    0.45836  -5.925 6.87e-09 ***
+Region_labelNorth West               -0.06208    0.46209  -0.134 0.893206    
+Region_labelSouth East               -2.22120    0.45667  -4.864 1.67e-06 ***
+Region_labelSouth West               -0.07718    0.47482  -0.163 0.870957    
+Region_labelWest Midlands            -1.79384    0.48230  -3.719 0.000229 ***
+Region_labelYorkshire and the Humber -1.66517    0.50695  -3.285 0.001113 ** 
+Region_labelWales                     1.92976    0.50111   3.851 0.000137 ***
+Region_labelScotland                 -2.24157    0.47299  -4.739 3.01e-06 ***
+Region_labelNorthern Ireland         -2.14725    0.49296  -4.356 1.70e-05 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.394 on 391 degrees of freedom
+Multiple R-squared:  0.8298,    Adjusted R-squared:  0.8237 
+F-statistic: 136.2 on 14 and 391 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Now it is very easy to use your model to estimate the results Y (dependent variable) by setting all the input independent variable X.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>obj_London <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Males =</span> <span class="fl">49.7</span>,</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_No_qualifications =</span> <span class="fl">24.3</span>,</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Higher_manager_prof =</span> <span class="fl">14.7</span>,</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Region_label =</span> <span class="st">"London"</span></span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>obj_NW <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Males =</span> <span class="fl">49.8</span>,</span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_No_qualifications =</span> <span class="fl">23.3</span>,</span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Higher_manager_prof =</span> <span class="fl">11.2</span>,</span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">Region_label =</span> <span class="st">"North West"</span></span>
+<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb62-13"><a href="#cb62-13" aria-hidden="true" tabindex="-1"></a>obj_NE <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb62-14"><a href="#cb62-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Males =</span> <span class="fl">49.8</span>,</span>
+<span id="cb62-15"><a href="#cb62-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_No_qualifications =</span> <span class="fl">23.3</span>,</span>
+<span id="cb62-16"><a href="#cb62-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Higher_manager_prof =</span> <span class="fl">11.2</span>,</span>
+<span id="cb62-17"><a href="#cb62-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">Region_label =</span> <span class="st">"North East"</span></span>
+<span id="cb62-18"><a href="#cb62-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb62-19"><a href="#cb62-19" aria-hidden="true" tabindex="-1"></a>) </span>
+<span id="cb62-20"><a href="#cb62-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-21"><a href="#cb62-21" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model1, obj_London) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1 
+17.48952 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model1, obj_NW) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1 
+19.23858 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model1, obj_NE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1 
+19.30065 </code></pre>
+</div>
+</div>
+</section>
+<section id="recode-the-region-variable-and-explore-regional-inequality-in-health" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="recode-the-region-variable-and-explore-regional-inequality-in-health"><span class="header-section-number">3.2.3</span> Recode the Region variable and explore regional inequality in health</h3>
+<p>In many real-word studies, we might not be interested in health inequality across all regions. For example, in this case study, we are interested in health inequality between <em>London</em>, <em>Other regions in England</em>, <em>Wales</em>, <em>Scotland</em> and <em>Northern Ireland</em>. We can achieve this by re-grouping regions in the UK based on the variable “Region”. That said, we need to have a new grouping of regions as follows:</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td><strong>Original region labels</strong></td>
+<td><strong>New region labels</strong></td>
+</tr>
+<tr class="even">
+<td>East Midlands</td>
+<td>Other regions in England</td>
+</tr>
+<tr class="odd">
+<td>East of England</td>
+<td>Other regions in England</td>
+</tr>
+<tr class="even">
+<td>London</td>
+<td>London</td>
+</tr>
+<tr class="odd">
+<td>North East</td>
+<td>Other regions in England</td>
+</tr>
+<tr class="even">
+<td>North West</td>
+<td>Other regions in England</td>
+</tr>
+<tr class="odd">
+<td>South East</td>
+<td>Other regions in England</td>
+</tr>
+<tr class="even">
+<td>South West</td>
+<td>Other regions in England</td>
+</tr>
+<tr class="odd">
+<td>West Midlands</td>
+<td>Other regions in England</td>
+</tr>
+<tr class="even">
+<td>Yorkshire and The Humber</td>
+<td>Other regions in England</td>
+</tr>
+<tr class="odd">
+<td>Wales</td>
+<td>Wales</td>
+</tr>
+<tr class="even">
+<td>Scotland</td>
+<td>Scotland</td>
+</tr>
+<tr class="odd">
+<td>Northern Ireland</td>
+<td>Northern Ireland</td>
+</tr>
+</tbody>
+</table>
+<p>Here we use mutate() function in R to make it happen:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">New_region_label =</span> <span class="fu">fct_other</span>(</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>  Region_label,</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">keep =</span> <span class="fu">c</span>(<span class="st">"London"</span>, <span class="st">"Wales"</span>, <span class="st">"Scotland"</span>, <span class="st">"Northern Ireland"</span>),</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">other_level =</span> <span class="st">"Other regions in England"</span></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This code may looks a bit complex. You can simply type ?mutate in your console. Now in your right hand Help window, the R studio offers your the explanation of the mutate function. This is a common way you can use R studio to help you learn what the function ca<code>ate()</code> creates new columns that are functions of existing variables. Therefore, the <code>df %&gt;% mutate()</code> means add a new column into the current dataframe <code>df</code>; the <code>New_region_label</code> in the <code>mutate()</code> function indicates the name of this new column is <code>New_region_label</code>. The right side of the <code>New_region_label =</code> indicates the value we want to assign to the <code>New_region_label</code> in each row.</p>
+<p>The right side of <code>New_region_label</code> is</p>
+<p><code>fct_other(Region_label, keep=c("London","Wales","Scotland","Northern Ireland"), other_level="Other regions in England")</code></p>
+<p>By using the code, the <code>fct_other()</code> function checks whether each value in the <code>Region_label</code> column is one of the <strong>keep</strong> regions: “London”, “Wales”, “Scotland”, or “Northern Ireland”. If the region is not in this list, the value is replaced with the label “Other regions in England”. If the region is one of these four, the original value in <code>Region_label</code> is kept. This process categorizes regions that are outside of the four specified ones into a new group labeled “Other regions in England”, while preserving the original labels for the specified regions.</p>
+<p>Now we use the same way to examine our new column <code>New_region_label</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>New_region_label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+                  London                    Wales                 Scotland 
+                      33                       22                       32 
+        Northern Ireland Other regions in England 
+                      26                      293 </code></pre>
+</div>
+</div>
+<p>Comparing with the <code>Region_label</code>, we now can see the mutate worked:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>df[,<span class="fu">c</span>(<span class="st">"Region_label"</span>,<span class="st">"New_region_label"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now you will have a new qualitative variable named <code>New_region_label</code> in which the UK is divided into five regions: London, Other regions in England, Wales, Scotland and Northern Ireland.</p>
+<p><em>Based on the newly generated qualitative variable</em> <code>New_region_label</code>, we can now build our new linear regression model. Don’t forget:</p>
+<p>(1) R need to deal with the categorical variables in regression model in the factor type;</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(df<span class="sc">$</span>New_region_label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "factor"</code></pre>
+</div>
+</div>
+<p>The <code>class()</code> returns the type of the variable. The <code>New_region_label</code> is already a factor variable. If not, we need to convert it by the <code>as.factor()</code>, as we used above.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>New_region_label <span class="ot">=</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>New_region_label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>2) Let R know which region you want to use as the baseline category. Here I will use London again, but of course you can choose other regions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>New_region_label <span class="ot">&lt;-</span> <span class="fu">fct_relevel</span>(df<span class="sc">$</span>New_region_label, <span class="st">"London"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The linear regression window is set up below. This time we include <code>New_region_label</code> rather than <code>Region_label</code> as the region variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>  pct_Long_term_ill <span class="sc">~</span> pct_Males <span class="sc">+</span> pct_No_qualifications <span class="sc">+</span> pct_Higher_manager_prof <span class="sc">+</span> New_region_label,</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> df</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = pct_Long_term_ill ~ pct_Males + pct_No_qualifications + 
+    pct_Higher_manager_prof + New_region_label, data = df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-4.6719 -1.1252 -0.0556  0.9564  7.3768 
+
+Coefficients:
+                                          Estimate Std. Error t value Pr(&gt;|t|)
+(Intercept)                              47.217525   5.795439   8.147 4.86e-15
+pct_Males                                -0.834471   0.113398  -7.359 1.07e-12
+pct_No_qualifications                     0.472354   0.032764  14.417  &lt; 2e-16
+pct_Higher_manager_prof                   0.000497   0.040851   0.012 0.990300
+New_region_labelWales                     4.345262   0.471088   9.224  &lt; 2e-16
+New_region_labelScotland                  0.143672   0.442989   0.324 0.745863
+New_region_labelNorthern Ireland          0.264425   0.474074   0.558 0.577314
+New_region_labelOther regions in England  1.071719   0.312746   3.427 0.000674
+                                            
+(Intercept)                              ***
+pct_Males                                ***
+pct_No_qualifications                    ***
+pct_Higher_manager_prof                     
+New_region_labelWales                    ***
+New_region_labelScotland                    
+New_region_labelNorthern Ireland            
+New_region_labelOther regions in England ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.609 on 398 degrees of freedom
+Multiple R-squared:  0.7693,    Adjusted R-squared:  0.7653 
+F-statistic: 189.6 on 7 and 398 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Q4. Are there statistically significant differences in the percentage of people with long-term illness between London and Scotland, and between London and Wales, controlling for other variables? What conclusions could be drawn in terms of regional differences in health outcome?</strong></p>
+</div>
+</section>
+</section>
+<section id="predictions-using-fitted-regression-model" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="predictions-using-fitted-regression-model"><span class="header-section-number">3.3</span> Predictions using fitted regression model</h2>
+<section id="write-down-the-illness-regression-model-with-the-new-region-label-categorical-variables" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="write-down-the-illness-regression-model-with-the-new-region-label-categorical-variables"><span class="header-section-number">3.3.1</span> <strong>Write down the % illness regression model with the new region label categorical variables</strong></h3>
+<p>Relating to this week’s lecture, the % <em>pct_Long_term_ill</em> is equal to:</p>
+<p><strong>[write down the model]</strong></p>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Q5. Now imagine that the values of variables <em>pct_Males, pct_No_qualifications, and pct_Higher_manager_prof</em> are 49, 23 and 11, respectively, what would the percentage of persons with long-term illness in Wales and London be?</strong></p>
+</div>
+<p>Check the answer at the end of this practical page.</p>
+</section>
+</section>
+<section id="income-inequality-with-respect-to-gender-and-health-status" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="income-inequality-with-respect-to-gender-and-health-status"><span class="header-section-number">3.4</span> Income inequality with respect to gender and health status</h2>
+<p>In this section, we will work with individual-level data (“FRS 2016-17_label.csv”) again to explore income inequality with respect to gender and health status.</p>
+<p>To explore income inequality, we need to work with a data set excluding dependent children. In addition, we look at individuals who are the representative persons of households. Therefore, we will select cases (or samples) that meet both conditions.</p>
+<p>We want R to select persons only if they are the representative persons of households and they are not dependent children. The involved variables are <code>hrp</code> and <code>Dependent</code> for the categories “Household Reference Person” and “independent”, you can select the appropriate cases. We also want to exclude the health variable reported as “Not known”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>frs_df <span class="ot">&lt;-</span> frs_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(hrp <span class="sc">==</span> <span class="st">"HRP"</span> <span class="sc">&amp;</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>                                dependent <span class="sc">==</span> <span class="st">"Independent"</span> <span class="sc">&amp;</span> health <span class="sc">!=</span> <span class="st">"Not known"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then, we create a new numeric variable <code>Net_inc_perc</code> indicate net income per capita as our dependent variable:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>frs_df<span class="sc">$</span>Net_inc_pp <span class="ot">=</span> frs_df<span class="sc">$</span>hh_income_net <span class="sc">/</span> frs_df<span class="sc">$</span>hh_size</span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frs_df<span class="sc">$</span>Net_inc_pp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+-238160    9074   13347   15834   19136  864812 </code></pre>
+</div>
+</div>
+<p>The distribution of the net household income per capita can be visualised by using <code>ggplot()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(frs_df, <span class="fu">aes</span>(<span class="at">x =</span> Net_inc_pp)) <span class="sc">+</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">1000</span>,</span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.7</span></span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Net_inc_pp"</span>, <span class="at">x =</span> <span class="st">"Value"</span>, <span class="at">y =</span>  <span class="st">"Frequency"</span>) <span class="sc">+</span></span>
+<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">label_comma</span>()) <span class="sc">+</span>  <span class="co"># Prevent scientific notation on the x axis</span></span>
+<span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03.QualitativeVariable_files/figure-html/unnamed-chunk-38-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Our two qualitative independent variables “<code>sex</code>” and “<code>health</code>”. Let’s first know what they look like:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_df<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Female   Male 
+  7647   9180 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_df<span class="sc">$</span>health)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+      Bad      Fair      Good  Very Bad Very Good 
+     1472      4253      6277       426      4399 </code></pre>
+</div>
+</div>
+<p>Remember what we did in the Region long-term illness practical previously before we put the qualitative variable into the regression model? Yes. First, make sure they are in factor type and Second, decide the reference category. Here, I will use Female and Very Bad health status as my base categories. You can decide what you wish to use. This time, I use the following codes to combine these two steps in one line.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>frs_df<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">fct_relevel</span>(<span class="fu">as.factor</span>(frs_df<span class="sc">$</span>sex), <span class="st">"Female"</span>)</span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>frs_df<span class="sc">$</span>health <span class="ot">&lt;-</span> <span class="fu">fct_relevel</span>(<span class="fu">as.factor</span>(frs_df<span class="sc">$</span>health), <span class="st">"Very Bad"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Implement the regression model with the two qualitative independent variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>model_frs <span class="ot">&lt;-</span> <span class="fu">lm</span>(Net_inc_pp <span class="sc">~</span> sex <span class="sc">+</span> health, <span class="at">data =</span> frs_df)</span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_frs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Net_inc_pp ~ sex + health, data = frs_df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-255133   -6547   -2213    3515  845673 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      12115.5      762.9  15.881  &lt; 2e-16 ***
+sexMale           2091.2      240.6   8.691  &lt; 2e-16 ***
+healthBad         -102.8      854.3  -0.120 0.904205    
+healthFair        1051.3      789.0   1.332 0.182751    
+healthGood        2766.0      777.4   3.558 0.000375 ***
+healthVery Good   4931.8      787.8   6.260 3.95e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 15530 on 16821 degrees of freedom
+Multiple R-squared:  0.01646,   Adjusted R-squared:  0.01616 
+F-statistic: 56.29 on 5 and 16821 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>The result can be formatted by:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(model_frs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 5
+  term            estimate std.error statistic  p.value
+  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)       12116.      763.    15.9   2.21e-56
+2 sexMale            2091.      241.     8.69  3.90e-18
+3 healthBad          -103.      854.    -0.120 9.04e- 1
+4 healthFair         1051.      789.     1.33  1.83e- 1
+5 healthGood         2766.      777.     3.56  3.75e- 4
+6 healthVery Good    4932.      788.     6.26  3.95e-10</code></pre>
+</div>
+</div>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Q6.</strong> <strong>What conclusions could be drawn in terms of income inequalities with respect to gender and health status? Also think about the statistical significance of these differences.</strong></p>
+</div>
+</section>
+<section id="extension-activities" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="extension-activities"><span class="header-section-number">3.5</span> <strong>Extension activities</strong></h2>
+<p>The extension activities are designed to get yourself prepared for the Assignment 2 in progress. For this week, try whether you can:</p>
+<ul>
+<li><p>Present descriptive statistics for independent variable and the dependent variable: counts, percentages, a centrality measure, a spread measure, histograms or any relevant statistic</p></li>
+<li><p>Report the observed association between the dependent and independent variables: correlation plus a graphic or tabular visualisation</p></li>
+<li><p>Briefly describe and critically discuss the results</p></li>
+<li><p>Think about other potential factors of long-term illness and income, and then test your ideas with linear regression models</p></li>
+<li><p>Summaries your model outputs and interpret the results.</p></li>
+</ul>
+<p><strong>Answer of the written down model and Q5</strong></p>
+<p>The model of the new region label is: <em>pct_Long_term_ill</em> (%) <em>= 47.218+ (-0.834)* pct_Males</em> (%) <em>+ 0.472 * pct_No_qualifications</em> (%) <em>+ 1.072*Other Regions in England + 4.345* Wales</em></p>
+<p>So if the values of variables <em>pct_Males, pct_No_qualifications, and pct_Higher_manager_prof</em> are 49, 23 and 11,</p>
+<p>the model of Wales will be: <em>pct_Long_term_ill</em> (%) <em>= 47.218+ (-0.834)* 49 + 0.472 * 23 + 1.072*0+ 4.345* 1 = 21.553</em> (you can direct paste the number sentence into your R studio Console and the result will be returned)</p>
+<p>the model of London will be: <em>pct_Long_term_ill</em> (%) <em>= 47.218+ (-0.834)* 49 + 0.472 * 23 + 1.072*0+ 4.345* 0 = 17.208</em></p>
+<p>You can also make a new object like</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>obj_London <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Males =</span> <span class="dv">49</span>,</span>
+<span id="cb91-3"><a href="#cb91-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_No_qualifications =</span> <span class="dv">23</span>,</span>
+<span id="cb91-4"><a href="#cb91-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Higher_manager_prof =</span> <span class="dv">11</span>,</span>
+<span id="cb91-5"><a href="#cb91-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">New_region_label =</span> <span class="st">"London"</span></span>
+<span id="cb91-6"><a href="#cb91-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb91-7"><a href="#cb91-7" aria-hidden="true" tabindex="-1"></a>obj_Wales <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb91-8"><a href="#cb91-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Males =</span> <span class="dv">49</span>,</span>
+<span id="cb91-9"><a href="#cb91-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_No_qualifications =</span> <span class="dv">23</span>,</span>
+<span id="cb91-10"><a href="#cb91-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Higher_manager_prof =</span> <span class="dv">11</span>,</span>
+<span id="cb91-11"><a href="#cb91-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">New_region_label =</span> <span class="st">"Wales"</span></span>
+<span id="cb91-12"><a href="#cb91-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb91-13"><a href="#cb91-13" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model2, obj_London)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1 
+17.19808 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(model2, obj_Wales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       1 
+21.54334 </code></pre>
+</div>
+</div>
+<p><strong>Therefore, the percentage of persons with long-term illness in Wales and London be 21.5% and 17.2% separately. If you got the right answers, then congratulations you can now use regression model to make prediction.</strong></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/gdsl-ul\.github\.io\/stats");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../labs/02.MultipleLinear.html" class="pagination-link" aria-label="Lab: Correlation, Single, and Multiple Linear Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Correlation, Single, and Multiple Linear Regression</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../labs/04.LogisticRegression.html" class="pagination-link" aria-label="Lab: LogisticRegression">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: LogisticRegression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Exploring the Social World - Quantitative Block: Statistics by Gabriele Filomena and Zi Ye.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/labs/03.QualitativeVariable.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
