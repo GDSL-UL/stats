@@ -5,6 +5,8 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+The lecture’s slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture09.pdf).
+
 In last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R, we create and interpret the model:
 
 `model <- lm(pct_Very_bad_health ~ pct_No_qualifications + pct_Males + pct_Higher_manager_prof, data = census)`
@@ -60,6 +62,8 @@ Check the relative path of your data folder on your PC/laptop, make sure you kno
 -   **`forcats`**: designed to work with factors, which are used to represent categorical data. It simplifies the process of creating, modifying, and ordering factors.
 
 -   **`vcd`**: visualise and analyse categorical data.
+
+**A useful shortcut to format your code: select all your code lines, use Ctrl+Shift+A for automatically format them in a tidy way.**
 
 ### Data overview
 
@@ -356,7 +360,7 @@ First, the **Significance** and the **Coefficient Estimates**. By examining the 
 
 -   The coefficient estimates of them need to be interpreted by comparing to the reference category London. The Estimate column tells us: North East region is associated with a 2.7% higher rate of long term illness than London when the other predictors remain the same. Similarly, Wales is 4.6% higher rate of long term illness than London when the other predictors remain the same. You can draw the conclusion for the other regions in this way by using their coefficient estimate values.
 
-    **Reminder**: You **cannot** draw conclusion between North East and Wales, nor comparison between any regions beyond London. It is because the regression model is built for the comparison between regions to your reference category London. If we want to compare between North East and Wales, we need to set either of them as the reference category by using `df$Region_label <- relevel(df$Region_label, ref = "North East")` or `df$Region_label <- relevel(df$Region_label, ref = "Wales")`.
+    **Reminder**: You **cannot** draw conclusion between North East and Wales, nor comparison between any regions beyond London. It is because the regression model is built for the comparison between regions to your reference category London. If we want to compare between North East and Wales, we need to set either of them as the reference category by using `df$Region_label <- fct_relevel(df$Region_label, "North East")` or `df$Region_label <- fct_relevel(df$Region_label, "Wales")`.
 
 -   `Region_labelEast of England`, `Region_labelSouth Eest`, `Region_labelScotland` and `RegionlabelNorthern Ireland` were not found to be significantly associated with `pct_Long_term_ill`.
 
@@ -380,19 +384,53 @@ Now, complete the following table.
 
 ### **Change the baseline category**
 
-If you would like to learn about differences in long-term illness between East of England and other regions in the UK, you need to change the baseline category (from London) to the East of England region (with variable name “Region_2”).
+If you would like to learn about differences in long-term illness between North East and other regions in the UK, you need to change the baseline category (from London) to the North East region (with variable name “Region_2”).
 
 ```{r}
-df$Region_label <- fct_relevel(df$Region_label, "East of England")
+df$Region_label <- fct_relevel(df$Region_label, "North East")
 ```
 
 The regression model is specified again as follows:
 
 ```{r}
-model1 <- lm(pct_Long_term_ill ~ pct_Males + pct_No_qualifications + pct_Higher_manager_prof + Region_label, data = df)
+model1 <- lm(
+  pct_Long_term_ill ~ pct_Males + pct_No_qualifications + pct_Higher_manager_prof + Region_label,
+  data = df
+)
 
 summary(model1)
 ```
+
+Now it is very easy to use your model to estimate the results Y (dependent variable) by setting all the input independent variable X.
+
+```{r}
+obj_London <- data.frame(
+  pct_Males = 49.7,
+  pct_No_qualifications = 24.3,
+  pct_Higher_manager_prof = 14.7,
+  Region_label = "London"
+) 
+obj_NW <- data.frame(
+  pct_Males = 49.8,
+  pct_No_qualifications = 23.3,
+  pct_Higher_manager_prof = 11.2,
+  Region_label = "North West"
+) 
+obj_NE <- data.frame(
+  pct_Males = 49.8,
+  pct_No_qualifications = 23.3,
+  pct_Higher_manager_prof = 11.2,
+  Region_label = "North East"
+  
+) 
+
+predict(model1, obj_London) 
+predict(model1, obj_NW) 
+predict(model1, obj_NE)
+```
+
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+:::
 
 ### Recode the Region variable and explore regional inequality in health
 
@@ -417,7 +455,11 @@ In many real-word studies, we might not be interested in health inequality acros
 Here we use mutate() function in R to make it happen:
 
 ```{r}
-df <- df %>% mutate(New_region_label = fct_other(Region_label, keep=c("London","Wales","Scotland","Northern Ireland"), other_level="Other regions in England"))
+df <- df %>% mutate(New_region_label = fct_other(
+  Region_label,
+  keep = c("London", "Wales", "Scotland", "Northern Ireland"),
+  other_level = "Other regions in England"
+))
 ```
 
 This code may looks a bit complex. You can simply type ?mutate in your console. Now in your right hand Help window, the R studio offers your the explanation of the mutate function. This is a common way you can use R studio to help you learn what the function ca`ate()` creates new columns that are functions of existing variables. Therefore, the `df %>% mutate()` means add a new column into the current dataframe `df`; the `New_region_label` in the `mutate()` function indicates the name of this new column is `New_region_label`. The right side of the `New_region_label =` indicates the value we want to assign to the `New_region_label` in each row.
@@ -465,7 +507,10 @@ df$New_region_label <- fct_relevel(df$New_region_label, "London")
 The linear regression window is set up below. This time we include `New_region_label` rather than `Region_label` as the region variable:
 
 ```{r}
-model2 <- lm(pct_Long_term_ill ~ pct_Males + pct_No_qualifications + pct_Higher_manager_prof + New_region_label, data = df)
+model2 <- lm(
+  pct_Long_term_ill ~ pct_Males + pct_No_qualifications + pct_Higher_manager_prof + New_region_label,
+  data = df
+)
 
 summary(model2)
 ```
@@ -486,7 +531,7 @@ Relating to this week’s lecture, the % *pct_Long_term_ill* is equal to:
 **Q5. Now imagine that the values of variables *pct_Males, pct_No_qualifications, and pct_Higher_manager_prof* are 49, 23 and 11, respectively, what would the percentage of persons with long-term illness in Wales and London be?**
 :::
 
-Check the answer at the end of this practical page
+Check the answer at the end of this practical page.
 
 ## Income inequality with respect to gender and health status
 
@@ -497,13 +542,31 @@ To explore income inequality, we need to work with a data set excluding dependen
 We want R to select persons only if they are the representative persons of households and they are not dependent children. The involved variables are `hrp` and `Dependent` for the categories “Household Reference Person” and “independent”, you can select the appropriate cases. We also want to exclude the health variable reported as "Not known".
 
 ```{r}
-frs_df <- frs_data %>% filter(hrp=="HRP" & dependent=="Independent" & health!="Not known") 
+frs_df <- frs_data %>% filter(hrp == "HRP" &
+                                dependent == "Independent" & health != "Not known") 
 ```
 
 Then, we create a new numeric variable `Net_inc_perc` indicate net income per capita as our dependent variable:
 
 ```{r}
-frs_df$Net_inc_perc = frs_df$hh_income_net / frs_df$hh_size
+frs_df$Net_inc_pp = frs_df$hh_income_net / frs_df$hh_size
+
+summary(frs_df$Net_inc_pp)
+```
+
+The distribution of the net household income per capita can be visualised by using `ggplot()`
+
+```{r}
+ggplot(frs_df, aes(x = Net_inc_pp)) +
+  geom_histogram(
+    bins = 1000,
+    color = "black",
+    fill = "skyblue",
+    alpha = 0.7
+  ) +
+  labs(title = "Distribution of Net_inc_pp", x = "Value", y =  "Frequency") +
+  scale_x_continuous(labels = scales::label_comma()) +  # Prevent scientific notation on the x axis
+  theme_minimal()
 ```
 
 Our two qualitative independent variables “`sex`” and “`health`”. Let's first know what they look like:
@@ -513,17 +576,17 @@ table(frs_df$sex)
 table(frs_df$health)
 ```
 
-Remember what we did in the Region long-term illness practical previously before we put the qualitative variable into the regression model? Yes. First, make sure they are in factor type and Second, decide the reference category. Here, I will use Male and Fair health status as my base categories. You can decide what you wish to use. This time, I use the following codes to combine these two steps in one line.
+Remember what we did in the Region long-term illness practical previously before we put the qualitative variable into the regression model? Yes. First, make sure they are in factor type and Second, decide the reference category. Here, I will use Female and Very Bad health status as my base categories. You can decide what you wish to use. This time, I use the following codes to combine these two steps in one line.
 
 ```{r}
-frs_df$sex <- relevel(as.factor(frs_df$sex), ref = "Male")
-frs_df$health <- relevel(as.factor(frs_df$health), ref = "Fair")
+frs_df$sex <- fct_relevel(as.factor(frs_df$sex), "Female")
+frs_df$health <- fct_relevel(as.factor(frs_df$health), "Very Bad")
 ```
 
 Implement the regression model with the two qualitative independent variables.
 
 ```{r}
-model_frs <- lm(Net_inc_perc ~ sex + health, data = frs_df)
+model_frs <- lm(Net_inc_pp ~ sex + health, data = frs_df)
 summary(model_frs)
 ```
 
@@ -565,10 +628,20 @@ the model of London will be: *pct_Long_term_ill* (%) *= 47.218+ (-0.834)\* 49 + 
 You can also make a new object like
 
 ```{r}
-obj_London <- data.frame(pct_Males = 49, pct_No_qualifications=23,pct_Higher_manager_prof =11, New_region_label ="London")
-obj_Wales <- data.frame(pct_Males = 49, pct_No_qualifications=23,pct_Higher_manager_prof =11, New_region_label ="Wales")
-predict(model2,obj_London)
-predict(model2,obj_Wales)
+obj_London <- data.frame(
+  pct_Males = 49,
+  pct_No_qualifications = 23,
+  pct_Higher_manager_prof = 11,
+  New_region_label = "London"
+)
+obj_Wales <- data.frame(
+  pct_Males = 49,
+  pct_No_qualifications = 23,
+  pct_Higher_manager_prof = 11,
+  New_region_label = "Wales"
+)
+predict(model2, obj_London)
+predict(model2, obj_Wales)
 ```
 
 **Therefore, the percentage of persons with long-term illness in Wales and London be 21.5% and 17.2% separately. If you got the right answers, then congratulations you can now use regression model to make prediction.**
