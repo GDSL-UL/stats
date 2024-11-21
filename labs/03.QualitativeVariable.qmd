@@ -1,5 +1,5 @@
 ---
-title: "Correlation and Multiple Linear Regression with Qualitative Variables"
+title: "Lab: Correlation and Multiple Linear Regression with Qualitative Variables"
 author: "Zi Ye"
 date: "`r Sys.Date()`"
 output: html_document
@@ -41,7 +41,7 @@ Recall in Week 7, you get familiar to R by using the Family Resource Survey data
 
 Check your working directory by
 
-```{r}
+```{r,results='hide',message=FALSE}
 getwd()
 ```
 
@@ -49,34 +49,52 @@ Check the relative path of your data folder on your PC/laptop, make sure you kno
 
 **Library knowledge used in today:**
 
-dplyr: a basic library provides a suite of functions for data manipulation
+-   **`dplyr`**: a basic library provides a suite of functions for data manipulation
 
-ggplot2: a widely-used data visualisation library to help you create nice plots through layered plotting.
+-   **`ggplot2`**: a widely-used data visualisation library to help you create nice plots through layered plotting.
 
-tidyverse: a collection of R packages designed for data science, offering a cohesive framework for data manipulation, visualization, and analysis. Containing dyplyr, ggplot2 and other basic libraries.
+-   **`tidyverse`**: a collection of R packages designed for data science, offering a cohesive framework for data manipulation, visualization, and analysis. Containing dyplyr, ggplot2 and other basic libraries.
 
-broom: a part of the tidyverse and is designed to convert statistical analysis results into tidy data frames.
+-   **`broom`**: a part of the tidyverse and is designed to convert statistical analysis results into tidy data frames.
+
+-   **`forcats`**: designed to work with factors, which are used to represent categorical data. It simplifies the process of creating, modifying, and ordering factors.
+
+-   **`vcd`**: visualise and analyse categorical data.
 
 ### Data overview
 
-```{r,results='hide',message=FALSE}
+```{r,warning=FALSE}
 if(!require("dplyr"))
-  install.packages("dplyr")
+  install.packages("dplyr",dependencies = T)
 # Load necessary libraries 
 if(!require("ggplot2"))
-  install.packages("ggplot2")
+  install.packages("ggplot2",dependencies = T)
+if(!require("broom"))
+  install.packages("broom",dependencies = T)
+
 
 library(dplyr) 
-library(ggplot2) 
+library(ggplot2)
+library(broom)
+
 ```
 
-Or we can use library `tidyverse` which complies `ggplot2`, `dplyr` and other foundamental libraries together already, remember you need first install the package if you haven't by using `install.packages("tidyverse")`.
+Or we can use library `tidyverse` which includes `ggplot2`, `dplyr,broom` and other foundamental libraries together already, remember you need first install the package if you haven't by using `install.packages("tidyverse")`.
 
-```{r,results='hide',message=FALSE}
+```{r,warning=FALSE}
 if(!require("tidyverse"))
-  install.packages("tidyverse")
+  install.packages("tidyverse",dependencies = T)
 
 library(tidyverse)
+```
+
+We will also use forcat library, so
+
+```{r,warning=FALSE}
+if(!require("forcats"))
+  install.packages("forcats")
+
+library(forcats)
 ```
 
 Exactly as you did in previous weeks, we first load in the dataset:
@@ -137,6 +155,18 @@ ggplot(frs_data, aes(x = nssec)) +
  
 ```
 
+If we want to reorder the Y axis by from highest to lowest, we use the functions in `forcats` library. `fct_infreq()`: orders by the value's frequency of the variable `nssec`. `fct_rev()`: reverses the order to go from highest to lowest.
+
+```{r}
+ggplot(frs_data, aes(x = fct_rev(fct_infreq(nssec)))) + 
+  geom_bar(fill = "yellow4") + 
+  labs(title = "Histogram of NSSEC in FRS", x = "NSSEC", y = "Count") +
+  coord_flip()+ #Flip the Axes, add a # in front of this line, to make the code in gray and you will see why we would better flip the axes at here
+  theme_bw() 
+ 
+
+```
+
 You can change the variables in ggplot() to make your own histogram chart for the variables you are interested in. You will learn more of visualisation methods in Week11's practical.
 
 ### Correlation
@@ -162,11 +192,17 @@ If you see a warning message of Chi-squared approximation may be incorrect. This
 ```{r}
 # Install the 'vcd' package if not installed 
 if(!require("vcd"))   
-install.packages("vcd", repos = "https://cran.r-project.org")
+install.packages("vcd", repos = "https://cran.r-project.org", dependencies = T)
 library(vcd)  
 
+# creat the crosstable 
+crosstab <- table(frs_data$health, frs_data$happy)
+
 # Calculate Cramér's V 
-assocstats(table(frs_data$health, frs_data$happy))
+assocstats(crosstab)
+
+#you can also directly calculate the assoication between variables
+assocstats(table(frs_data$health, frs_data$age_group))
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
@@ -289,7 +325,7 @@ Implement the regression model with the newly created categorical variables - *R
 Therefore, first, we set London as the reference:
 
 ```{r}
-df$Region_label <- relevel(df$Region_label, ref = "London")
+df$Region_label <- fct_relevel(df$Region_label,  "London")
 ```
 
 Similar to last week, we build our linear regression model, but also include the *Region_label* variable into the model.
@@ -347,7 +383,7 @@ Now, complete the following table.
 If you would like to learn about differences in long-term illness between East of England and other regions in the UK, you need to change the baseline category (from London) to the East of England region (with variable name “Region_2”).
 
 ```{r}
-df$Region_label <- relevel(df$Region_label, ref = "East of England")
+df$Region_label <- fct_relevel(df$Region_label, "East of England")
 ```
 
 The regression model is specified again as follows:
@@ -381,16 +417,16 @@ In many real-word studies, we might not be interested in health inequality acros
 Here we use mutate() function in R to make it happen:
 
 ```{r}
-df <- df %>% mutate(New_region_label = if_else(!Region_label %in% c("London","Wales","Scotland","Northern Ireland"), "Other regions in England",Region_label))
+df <- df %>% mutate(New_region_label = fct_other(Region_label, keep=c("London","Wales","Scotland","Northern Ireland"), other_level="Other regions in England"))
 ```
 
 This code may looks a bit complex. You can simply type ?mutate in your console. Now in your right hand Help window, the R studio offers your the explanation of the mutate function. This is a common way you can use R studio to help you learn what the function ca`ate()` creates new columns that are functions of existing variables. Therefore, the `df %>% mutate()` means add a new column into the current dataframe `df`; the `New_region_label` in the `mutate()` function indicates the name of this new column is `New_region_label`. The right side of the `New_region_label =` indicates the value we want to assign to the `New_region_label` in each row.
 
 The right side of `New_region_label` is
 
-`if_else(!Region_label %in% c("London","Wales","Scotland","Northern Ireland"), "Other regions in England",Region_label))`
+`fct_other(Region_label, keep=c("London","Wales","Scotland","Northern Ireland"), other_level="Other regions in England")`
 
-By using the code, the `if_else()` function checks whether each value in the `Region_label` column is **not** (`!`)one of the specified regions: "London", "Wales", "Scotland", or "Northern Ireland". If the region is not in this list, the value is replaced with the label "Other regions in England". If the region is one of these four, the original value in `Region_label` is retained. This process categorizes regions that are outside of the four specified ones into a new group labeled "Other regions in England", while preserving the original labels for the specified regions.
+By using the code, the `fct_other()` function checks whether each value in the `Region_label` column is one of the **keep** regions: "London", "Wales", "Scotland", or "Northern Ireland". If the region is not in this list, the value is replaced with the label "Other regions in England". If the region is one of these four, the original value in `Region_label` is kept. This process categorizes regions that are outside of the four specified ones into a new group labeled "Other regions in England", while preserving the original labels for the specified regions.
 
 Now we use the same way to examine our new column `New_region_label`:
 
@@ -411,13 +447,19 @@ Now you will have a new qualitative variable named `New_region_label` in which t
 \(1\) R need to deal with the categorical variables in regression model in the factor type;
 
 ```{r}
+class(df$New_region_label)
+```
+
+The `class()` returns the type of the variable. The `New_region_label` is already a factor variable. If not, we need to convert it by the `as.factor()`, as we used above.
+
+```{r}
 df$New_region_label = as.factor(df$New_region_label)
 ```
 
 2\) Let R know which region you want to use as the baseline category. Here I will use London again, but of course you can choose other regions.
 
 ```{r}
-df$New_region_label <- relevel(df$New_region_label, ref = "London")
+df$New_region_label <- fct_relevel(df$New_region_label, "London")
 ```
 
 The linear regression window is set up below. This time we include `New_region_label` rather than `Region_label` as the region variable:
