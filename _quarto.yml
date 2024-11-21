@@ -27,7 +27,7 @@ book:
     - labs/01.introR.qmd
     - labs/02.MultipleLinear.qmd
     - labs/03.QualitativeVariable.qmd
-   # - labs/04.LogisticRegression.qmd
+    - labs/04.LogisticRegression.qmd
 
 bibliography: references.bib
 
