@@ -1,8 +1,6 @@
 # Welcome {.unnumbered}
 
-This is the website for "Exploring the Social World - Quantitative Block: Statistics" (module **ENVS225**) at the University of Liverpool. This block of the module is designed and delivered by Dr. Gabriele Filomena and Dr. Zi Ye from the Geographic Data Science Lab at the University of Liverpool.
-The module seeks to provide hands-on experience and training in introductory statistics for human geographers.
-
+This is the website for "Exploring the Social World - Quantitative Block: Statistics" (module **ENVS225**) at the University of Liverpool. This block of the module is designed and delivered by Dr. Gabriele Filomena and Dr. Zi Ye from the Geographic Data Science Lab at the University of Liverpool. The module seeks to provide hands-on experience and training in introductory statistics for human geographers.
 
 The website is **free to use** and is licensed under the [Attribution-NonCommercial-NoDerivatives 4.0 International](https://creativecommons.org/licenses/by-nc-nd/4.0/). A compilation of this web course is hosted as a GitHub repository that you can access:
 

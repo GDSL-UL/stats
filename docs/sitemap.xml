@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gdsl-ul.github.io/stats/index.html</loc>
-    <lastmod>2024-11-06T18:40:41.424Z</lastmod>
+    <lastmod>2024-11-21T14:19:47.797Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/overview.html</loc>
@@ -10,22 +10,26 @@
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/assessment.html</loc>
-    <lastmod>2024-11-14T16:37:54.312Z</lastmod>
+    <lastmod>2024-11-21T14:16:56.179Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/01.introR.html</loc>
-    <lastmod>2024-11-14T16:18:54.515Z</lastmod>
+    <lastmod>2024-11-21T14:19:47.937Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/02.MultipleLinear.html</loc>
-    <lastmod>2024-11-14T16:18:55.704Z</lastmod>
+    <lastmod>2024-11-21T14:16:56.182Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/03.QualitativeVariable.html</loc>
-    <lastmod>2024-11-14T13:07:36.230Z</lastmod>
+    <lastmod>2024-11-21T20:09:27.604Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/Exploring-the-Social-World---Quantitative-Block--Statistics.pdf</loc>
     <lastmod>2024-11-14T16:40:47.700Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gdsl-ul.github.io/stats/labs/04.LogisticRegression.html</loc>
+    <lastmod>2024-11-14T13:29:43.638Z</lastmod>
   </url>
 </urlset>
