@@ -27,34 +27,40 @@ The practical is split into two main parts. The first focuses on implementing a 
 
 ## Preparing the input variables
 
-Prepare the data for implementing a logistic regression model. The data set used in this practical is the “SAR.csv”.
+Prepare the data for implementing a logistic regression model. The data set used in this practical is the “sar_sample_label.csv” and "sar_sample_code.csv". They are actually the same dataframe, only one uses the label as the value but the other uses the code. We will first read in both for the data overview the labels are more friendly, and then we focus on using "sar_sample_code.csv" in the regression model as it is easier for coding.
 
 ```{r, warning=FALSE}
 library(tidyverse)
+library(broom)
+```
+
+```{r,results='hide'}
+sar_label <- read_csv("../data/SAR/sar_sample_label.csv")
+sar_code <- read_csv("../data/SAR/sar_sample_code.csv")
+```
+
+```{r,results='hide'}
+glimpse(sar_label)
+glimpse(sar_code)
 ```
 
 ```{r}
-#sar <- read.csv("../data/FamilyResourceSurvey/FRS16-17.csv")
-sar <- haven::read_sav("../../Week 11/SAR.sav")
-```
-
-```{r}
-glimpse(sar)
-```
-
-```{r}
-summary(sar)
+summary(sar_label)
 ```
 
 The outcome variable is a person’s commuting distance captured by the variable “work_distance”.
 
 ```{r}
-table(sar$work_distance)
+table(sar_label$work_distance)
+```
+
+```{r}
+table(sar_code$work_distance)
 ```
 
 There are a variety of categories in the variable, however, we are only interested in commuting distance and therefore in people reporting their commuting distance. Thus, we will explore the numeric codes of the variable ranging from 1 to 8.
 
-| Code for Work_distance | Cateogories                                  |
+| Code for Work_distance | Categories                                   |
 |------------------------|----------------------------------------------|
 | 1                      | Less than 2 km                               |
 | 2                      | 2 to \<5 km                                  |
@@ -72,7 +78,8 @@ There are a variety of categories in the variable, however, we are only interest
 As we are also interested in exploring whether people with different socio-economic statuses (or occupations) tend to be associated with varying probabilities of commuting over long distances, we further filter or select cases.
 
 ```{r}
-table(sar$nssec)
+table(sar_label$nssec)
+table(sar_code$nssec)
 ```
 
 Using `nssec`, we select people who reported an occupation, and delete cases with numeric codes from 9 to 12, who are *unemployed*, *full-time students*, *children* and *not classifiable*.
@@ -89,13 +96,13 @@ Using `nssec`, we select people who reported an occupation, and delete cases wit
 | 8              | Routine occupations                           |
 | 9              | Never worked or long-term employed            |
 | 10             | Full-time student                             |
-| 11             | Not classificable                             |
+| 11             | Not classifiable                              |
 | 12             | Child aged 0-15                               |
 
-Now, similar to next week, we use the `filter()` to prepare our dataframe today.
+Now, similar to next week, we use the `filter()` to prepare our dataframe today. You may already realise that using `sar_code` is easier to do the filtering.
 
 ```{r}
-sar_df <- sar %>% filter(work_distance<=8 & nssec <=8 )
+sar_df <- sar_code %>% filter(work_distance<=8 & nssec <=8 )
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
@@ -180,8 +187,6 @@ library(pscl)
 
 # Pseudo R-squared
 tidy(pR2(m.glm))
-
-AIC(m.glm)
 ```
 
 ### **Interpreting estimated regression coefficients**

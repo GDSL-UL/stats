@@ -151,14 +151,14 @@ Use the codes of Chi-test and Cramer's V to answer this question by completing T
 
 **Table 1 Person-level correlations with health status**
 
-|                |                  |                             |                              |
-|------------------|------------------|-------------------|-------------------|
-| **Covariates** |                  | **Correlation Coefficient** | **Statistical Significance** |
-|                |                  | *Cramer’s V*                | *p-value*                    |
-| *health*       | *age_group*      |                             |                              |
-| *Health*       | *highest_qual*   |                             |                              |
-| *health*       | *marital_status* |                             |                              |
-| *Health*       | *nssec*          |                             |                              |
+|  |  |  |  |
+|------------------|------------------|------------------|------------------|
+| **Covariates** |  | **Correlation Coefficient** | **Statistical Significance** |
+|  |  | *Cramer’s V* | *p-value* |
+| *health* | *age_group* |  |  |
+| *Health* | *highest_qual* |  |  |
+| *health* | *marital_status* |  |  |
+| *Health* | *nssec* |  |  |
 
 ## **Implementing a linear regression model with a qualitative independent variable**
 
@@ -302,19 +302,19 @@ Last but not least, the **Measure of Model Fit**. The model output suggests the 
 
 Now, complete the following table.
 
-|       Region names       | Higher or lower than London | Whether the difference is statistically significant (Yes or No) |
-|:----------------:|:----------------:|:---------------------------------:|
-|      East Midlands       |                             |                                                                 |
-|     East of England      |                             |                                                                 |
-|        North East        |                             |                                                                 |
-|        North West        |                             |                                                                 |
-|        South East        |                             |                                                                 |
-|        South West        |                             |                                                                 |
-|      West Midlands       |                             |                                                                 |
-| Yorkshire and The Humber |                             |                                                                 |
-|          Wales           |                             |                                                                 |
-|         Scotland         |                             |                                                                 |
-|     Northern Ireland     |                             |                                                                 |
+| Region names | Higher or lower than London | Whether the difference is statistically significant (Yes or No) |
+|:-----------------:|:-----------------:|:---------------------------------:|
+| East Midlands |  |  |
+| East of England |  |  |
+| North East |  |  |
+| North West |  |  |
+| South East |  |  |
+| South West |  |  |
+| West Midlands |  |  |
+| Yorkshire and The Humber |  |  |
+| Wales |  |  |
+| Scotland |  |  |
+| Northern Ireland |  |  |
 
 ### **Change the baseline category**
 
@@ -494,4 +494,13 @@ the model of Wales will be: *pct_Long_term_ill* (%) *= 47.218+ (-0.834)\* 49 + 0
 
 the model of London will be: *pct_Long_term_ill* (%) *= 47.218+ (-0.834)\* 49 + 0.472 \* 23 + 1.072\*0+ 4.345\* 0 = 17.208*
 
-**Therefore, the percentage of persons with long-term illness in Wales and London be 21.533% and 17.208% separately. If you got the right answers, then congratulations you can now use regression model to make prediction.**
+You can also make a new object like
+
+```{r}
+obj_London <- data.frame(pct_Males = 49, pct_No_qualifications=23,pct_Higher_manager_prof =11, New_region_label ="London")
+obj_Wales <- data.frame(pct_Males = 49, pct_No_qualifications=23,pct_Higher_manager_prof =11, New_region_label ="Wales")
+predict(model2,obj_London)
+predict(model2,obj_Wales)
+```
+
+**Therefore, the percentage of persons with long-term illness in Wales and London be 21.5% and 17.2% separately. If you got the right answers, then congratulations you can now use regression model to make prediction.**
