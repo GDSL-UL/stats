@@ -429,9 +429,6 @@ predict(model1, obj_NW)
 predict(model1, obj_NE)
 ```
 
-::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-:::
-
 ### Recode the Region variable and explore regional inequality in health
 
 In many real-word studies, we might not be interested in health inequality across all regions. For example, in this case study, we are interested in health inequality between *London*, *Other regions in England*, *Wales*, *Scotland* and *Northern Ireland*. We can achieve this by re-grouping regions in the UK based on the variable “Region”. That said, we need to have a new grouping of regions as follows:
