@@ -275,7 +275,7 @@ The extension activities are designed to get yourself prepared for the Assignmen
 
 -   Perform one or a series of regression models, including different combinations of your chosen independent variables to explain and/or predict your dependent variable
 
-### Answer for the model in Q3
+**Answer for the model in Q3**
 
 In Q3, we we want to explore whether people with occupation being "Large employers and higher managers", "Higher professional occupations" and "Routine occupations" are associated with higher probability of commuting over long distance when comparing to people in other occupation. So we create the variable `New_nssec` with 0 "Other occupations", but still keep "1", "2" and "8" still as original categories.
 
