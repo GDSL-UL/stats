@@ -33,7 +33,7 @@ Prepare the data for implementing a logistic regression model. The data set used
 
 You may need to download the two datasets from our [github website](https://github.com/GDSL-UL/stats/tree/main/data/SAR) if you haven't. The two csv are actually the same dataframe, only one uses the label as the value but the other uses the code. We will first read in both for the data overview the labels are more friendly, and then we focus on using "sar_sample_code.csv" in the regression model as it is easier for coding.
 
-```{r, warning=FALSE}
+```{r, message=FALSE}
 if(!require("tidyverse"))
   install.packages("tidyverse",dependencies = T)
 if(!require("broom"))
@@ -179,15 +179,27 @@ exp(coef(m.glm))
 exp(confint(m.glm, level = 0.95)) 
 ```
 
-Q3. If we want to explore whether people with occupation being "Large employers and higher managers", "Higher professional occupations" and "Routine occupations" are associated with higher probability of commuting over long distance when comparing to people in other occupation, how will we prepare the input independent variables and what will be the specified regression model?
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**Q3**. If we want to explore whether people with occupation being "Large employers and higher managers", "Higher professional occupations" and "Routine occupations" are associated with higher probability of commuting over long distance when comparing to people in other occupation, how will we prepare the input independent variables and what will be the specified regression model?
+:::
 
-Hint: use mutate() to create a new column, set the value of "Large employers and higher managers", "Higher professional occupations" and "Routine occupations" as original, while the rest as "Other occupations" ().
+Hint: use mutate() to create a new column, set the value of "Large employers and higher managers", "Higher professional occupations" and "Routine occupations" as original, while the rest as "Other occupations" (recall in Lab 3 what we did for assigning the regions not within "London", "Wales", "Scotland" and "Northern Ireland" as "Other Regions in England"). Here by using the SAR in code format, we can make this more easier by using:
+
+```{r}
+sar_df <- sar_df %>% mutate(New_nssec = fct_other(
+  nssec,
+  keep = c("1", "2", "8"),
+  other_level = "0"
+))
+```
+
+Or by using `if_else` and `%in%` in R, we can achieve the same result. `%in%` is an operator used to test if elements of one vector are present in another. It returns `TRUE` for elements found and `FALSE` otherwise.
 
 ```{r}
 sar_df <- sar_df %>% mutate(New_nssec = if_else(!nssec %in% c(1,2,8), "0" ,nssec))
 ```
 
-Use "Other occupations" (code: 0) as the reference category by `relevel(as.factor())` and then create the regression model: `glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")`
+Use "Other occupations" (code: 0) as the reference category by `relevel(as.factor())` and then create the regression model: `glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")`. Can you now run the model by yourself? Find the answer at the end of the practical.
 
 ### **Model fit**
 
@@ -237,15 +249,15 @@ Similar to the statistical inference in a linear regression model context, p-val
 
 -   Interpreting the regression coefficients.
 
-o   For the variable **Sex**, a negative sign and the odds ratio estimate indicate that the probability of commuting over long distances for female is 0.693 times less likely than male (the reference group), with the confidence intervals (CI) or likely range between 0.6 to 0.7, holding all other variables constant (the socio-economic classification variable). Put it differently, being females reduces the probability of long-distance commuting by 30.7% (1-0.693).
+o   For the variable **`sex`**, a negative sign and the odds ratio estimate indicate that the probability of commuting over long distances for female is 0.693 times less likely than male (the reference group), with the confidence intervals (CI) or likely range between 0.6 to 0.7, holding all other variables constant (the socio-economic classification variable). Put it differently, being females reduces the probability of long-distance commuting by 30.7% (1-0.693).
 
-o   For variable “**nssec**”, a positive significant and the odds ratio estimate indicate that the probability of long-distance commuting for those whose socio-economic classification as:
+o   For variable **`nssec`**, a positive significant and the odds ratio estimate indicate that the probability of long-distance commuting for those whose socio-economic classification as:
 
 -    small employers and own account workers (nssec=5) are 3.409 times more likely than the higher prof occupations, holding all other variables constant (the Sex variable), with a likely range (CI) of between 3.0 to 3.8.
 
 -   the p-value of Large employers and higher managers (nssec=1) is \> 0.05, so thre is no statistically significant relationship between large employers and higher managers and long-distance commuting.
 
--   Routine occupations (nssec=8) are 0.226 times (or 22.6%) less likely than the higher professional occupations, when other variable constant. Or, we can see being routine occupations decreases the probability of long-distance commuting by 77.4% (1-0.226).
+-   Routine occupations (nssec=8) are 0.226 times (or 22.6%) less likely than the higher professional occupations, with the CI between 0.18 to 0.27. when other variable constant. Or, we can see being routine occupations decreases the probability of long-distance commuting by 77.4% (1-0.226).
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
 **Q4.** Interpret the regression coefficients (i.e. Exp(B)) of variables “nssec=Lower managerial and professional occupations” and “nssec=Semi-routine occupation".
@@ -262,3 +274,42 @@ The extension activities are designed to get yourself prepared for the Assignmen
 -   Select a regression strategy and explain why a linear or logit model is appropriate
 
 -   Perform one or a series of regression models, including different combinations of your chosen independent variables to explain and/or predict your dependent variable
+
+### Answer for the model in Q3
+
+In Q3, we we want to explore whether people with occupation being "Large employers and higher managers", "Higher professional occupations" and "Routine occupations" are associated with higher probability of commuting over long distance when comparing to people in other occupation. So we create the variable `New_nssec` with 0 "Other occupations", but still keep "1", "2" and "8" still as original categories.
+
+So we can first have a check of our new variable `New_nssec`:
+
+```{r}
+table(sar_df$New_nssec)
+```
+
+Then we set the reference categories: `sex` as `1` (male) and `New_nssec` as `0`, which is "Other occupations":
+
+```{r}
+sar_df$sex <- relevel(as.factor(sar_df$sex),ref="1")
+sar_df$New_nssec <- relevel(as.factor(sar_df$New_nssec),ref="0")
+```
+
+Now, we build the logistic regression model and check out the outcomes:
+
+```{r}
+model_new = glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")
+
+summary(model_new)
+```
+
+For the model interpretation, we need:
+
+```{r}
+# odds ratios
+exp(coef(model_new)) 
+
+
+# confidence intervals
+exp(confint(model_new, level = 0.95)) 
+
+# model fit
+pR2(model_new) %>% round(4) %>% tidy()
+```
