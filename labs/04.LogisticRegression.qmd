@@ -271,7 +271,7 @@ o   For variable **`nssec`**, a positive significant and the odds ratio estima
 
 The extension activities are designed to get yourself prepared for the Assignment 2 in progress. For this week, try whether you can:
 
--   Select a regression strategy and explain why a linear or logit model is appropriate
+-   Select a regression strategy and explain why a linear or logistic model is appropriate
 
 -   Perform one or a series of regression models, including different combinations of your chosen independent variables to explain and/or predict your dependent variable
 
