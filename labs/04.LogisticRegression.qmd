@@ -21,11 +21,9 @@ The application context of a binomial logistic regression model is when the depe
 
 In this week’s practical, we are going to apply logistic regression analysis in an attempt to answer the following research question:
 
-<div>
-
-***RESEARCH QUESTION: Who is willing to commute long distances?***
-
-</div>
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**RESEARCH QUESTION: Who is willing to commute long distances?**
+:::
 
 The practical is split into two main parts. The first focuses on implementing a binary logistic regression model with R. The second part focuses the interpretation of the resulting estimates.
 
