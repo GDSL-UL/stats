@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zi Ye">
-<meta name="dcterms.date" content="2024-11-21">
+<meta name="dcterms.date" content="2024-11-28">
 
 <title>4&nbsp; Lab: LogisticRegression – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
@@ -202,8 +202,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#implementing-a-logistic-regression-model" id="toc-implementing-a-logistic-regression-model" class="nav-link" data-scroll-target="#implementing-a-logistic-regression-model"><span class="header-section-number">4.1.1</span> <strong>Implementing a logistic regression model</strong></a></li>
   <li><a href="#model-fit" id="toc-model-fit" class="nav-link" data-scroll-target="#model-fit"><span class="header-section-number">4.1.2</span> <strong>Model fit</strong></a></li>
-  <li><a href="#interpreting-estimated-regression-coefficients" id="toc-interpreting-estimated-regression-coefficients" class="nav-link" data-scroll-target="#interpreting-estimated-regression-coefficients"><span class="header-section-number">4.1.3</span> <strong>Interpreting estimated regression coefficients</strong></a></li>
-  <li><a href="#statistical-significance-of-regression-coefficients-or-covariate-effects" id="toc-statistical-significance-of-regression-coefficients-or-covariate-effects" class="nav-link" data-scroll-target="#statistical-significance-of-regression-coefficients-or-covariate-effects"><span class="header-section-number">4.1.4</span> <strong>Statistical significance of regression coefficients or covariate effects</strong></a></li>
+  <li><a href="#statistical-significance-of-regression-coefficients-or-covariate-effects" id="toc-statistical-significance-of-regression-coefficients-or-covariate-effects" class="nav-link" data-scroll-target="#statistical-significance-of-regression-coefficients-or-covariate-effects"><span class="header-section-number">4.1.3</span> <strong>Statistical significance of regression coefficients or covariate effects</strong></a></li>
+  <li><a href="#interpreting-estimated-regression-coefficients" id="toc-interpreting-estimated-regression-coefficients" class="nav-link" data-scroll-target="#interpreting-estimated-regression-coefficients"><span class="header-section-number">4.1.4</span> <strong>Interpreting estimated regression coefficients</strong></a></li>
   </ul></li>
   <li><a href="#extension-activities" id="toc-extension-activities" class="nav-link" data-scroll-target="#extension-activities"><span class="header-section-number">4.2</span> <strong>Extension activities</strong></a></li>
   </ul>
@@ -231,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">November 21, 2024</p>
+      <p class="date">November 28, 2024</p>
     </div>
   </div>
   
@@ -243,23 +243,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p>Last week, we learnt how to use qualitative variables in multiple linear regression model to understand the relationship between independent variables X1 … Xn and the dependent variable Y. Today we will learn to use logistic regression for binary dependent variable. A <strong>logistic regression model</strong> is a type of regression analysis used when the dependent variable is binary (e.g., “success/failure” or “0/1”). It estimates the probability of one outcome relative to the other using a logistic function. This model is commonly used in situations like predicting disease presence (yes/no) or customer churn (stay/leave). The independent variables can be continuous, categorical, or a mix of both. The model’s output is in the form of odds ratios, showing how predictors affect the likelihood of the outcome.</p>
+<p>The lecture’s slides can be found&nbsp;<a href="https://github.com/GDSL-UL/stats/blob/main/lectures/Lecture10.pdf">here</a>.</p>
 <p><strong>Learning objectives</strong></p>
 <p>An understanding of, and ability to:</p>
 <ul>
 <li><p>Estimate and interpret a logistic regression model</p></li>
 <li><p>Assess the model fit</p></li>
 </ul>
-<p>The application context of a logistic regression model is when the dependent variable under investigation is a binary variable. Usually, a value of 1 for this dependent variable means the occurrence of an event; and, 0 otherwise. For example, the dependent variable for this practical is whether a person is a long-distance commuter i.e.&nbsp;1, and 0 otherwise.</p>
+<p>The application context of a binomial logistic regression model is when the dependent variable under investigation is a binary variable. Usually, a value of 1 for this dependent variable means the occurrence of an event; and, 0 otherwise. For example, the dependent variable for this practical is whether a person is a long-distance commuter i.e.&nbsp;1, and 0 otherwise.</p>
 <p>In this week’s practical, we are going to apply logistic regression analysis in an attempt to answer the following research question:</p>
 <div>
 <p><strong><em>RESEARCH QUESTION: Who is willing to commute long distances?</em></strong></p>
 </div>
-<p>The practical is split into two main parts. The first focuses on implementing a binary logistic regression model with SPSS. The second part focuses the interpretation of the resulting estimates.</p>
+<p>The practical is split into two main parts. The first focuses on implementing a binary logistic regression model with R. The second part focuses the interpretation of the resulting estimates.</p>
 <section id="preparing-the-input-variables" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="preparing-the-input-variables"><span class="header-section-number">4.1</span> Preparing the input variables</h2>
-<p>Prepare the data for implementing a logistic regression model. The data set used in this practical is the “sar_sample_label.csv” and “sar_sample_code.csv”. They are actually the same dataframe, only one uses the label as the value but the other uses the code. We will first read in both for the data overview the labels are more friendly, and then we focus on using “sar_sample_code.csv” in the regression model as it is easier for coding.</p>
+<p>Prepare the data for implementing a logistic regression model. The data set used in this practical is the “sar_sample_label.csv” and “sar_sample_code.csv”. The SAR is a snapshot of census microdata, which are individual level data. The data sample has been drawn and anonymised from census and known as the Samples of Anonymised Records (SARs).</p>
+<p>You may need to download the two datasets from our <a href="https://github.com/GDSL-UL/stats/tree/main/data/SAR">github website</a> if you haven’t. The two csv are actually the same dataframe, only one uses the label as the value but the other uses the code. We will first read in both for the data overview the labels are more friendly, and then we focus on using “sar_sample_code.csv” in the regression model as it is easier for coding.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>))</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>,<span class="at">dependencies =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: tidyverse</code></pre>
+</div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -272,10 +279,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"broom"</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"broom"</span>,<span class="at">dependencies =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: broom</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sar_label <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/SAR/sar_sample_label.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sar_label <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/SAR/sar_sample_label.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 50000 Columns: 39
 ── Column specification ────────────────────────────────────────────────────────
@@ -285,7 +298,7 @@ chr (39): country, region, county, la_group, age_group, sex, marital_status,...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>sar_code <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/SAR/sar_sample_code.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sar_code <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/SAR/sar_sample_code.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 50000 Columns: 39
 ── Column specification ────────────────────────────────────────────────────────
@@ -297,57 +310,19 @@ dbl (39): country, region, county, la_group, age_group, sex, marital_status,...
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sar_label)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sar_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(sar_label)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(sar_code)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sar_label)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sar_code)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sar_label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   country             region             county            la_group        
- Length:50000       Length:50000       Length:50000       Length:50000      
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-  age_group             sex            marital_status      ethnicity        
- Length:50000       Length:50000       Length:50000       Length:50000      
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-  accom_type        arrival_year       birth_country       care_hours       
- Length:50000       Length:50000       Length:50000       Length:50000      
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-     cars           census_return      central_heating      crowding        
- Length:50000       Length:50000       Length:50000       Length:50000      
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
- dependent_children english_ability       health          hh_composition    
- Length:50000       Length:50000       Length:50000       Length:50000      
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-   hh_size          highest_qual         industry         last_worked       
- Length:50000       Length:50000       Length:50000       Length:50000      
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
- long_term_ill      main_language      move_distance      move_origin       
- Length:50000       Length:50000       Length:50000       Length:50000      
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
- national_identity     nssec           ons_supergroup     relation_to_hrp   
- Length:50000       Length:50000       Length:50000       Length:50000      
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-   religion         rural_urban           tenure          work_distance     
- Length:50000       Length:50000       Length:50000       Length:50000      
- Class :character   Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character   Mode  :character  
-  work_hours        work_status        work_transport    
- Length:50000       Length:50000       Length:50000      
- Class :character   Class :character   Class :character  
- Mode  :character   Mode  :character   Mode  :character  </code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sar_code)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(sar_label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The outcome variable is a person’s commuting distance captured by the variable “work_distance”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sar_label<span class="sc">$</span>work_distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sar_label<span class="sc">$</span>work_distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
                                 10 to &lt;20 km 
@@ -379,7 +354,7 @@ Work outside England and Wales but within UK
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sar_code<span class="sc">$</span>work_distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sar_code<span class="sc">$</span>work_distance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    -9     1     2     3     4     5     6     7     8     9    10    11    12 
@@ -451,7 +426,7 @@ Work outside England and Wales but within UK
 </table>
 <p>As we are also interested in exploring whether people with different socio-economic statuses (or occupations) tend to be associated with varying probabilities of commuting over long distances, we further filter or select cases.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sar_label<span class="sc">$</span>nssec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sar_label<span class="sc">$</span>nssec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
                               Child aged 0-15 
@@ -477,7 +452,7 @@ Lower managerial and professional occupations
       Small employers and own account workers 
                                          3819 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sar_code<span class="sc">$</span>nssec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sar_code<span class="sc">$</span>nssec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
    1    2    3    4    5    6    7    8    9   10   12 
@@ -545,7 +520,7 @@ Lower managerial and professional occupations
 </table>
 <p>Now, similar to next week, we use the <code>filter()</code> to prepare our dataframe today. You may already realise that using <code>sar_code</code> is easier to do the filtering.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sar_df <span class="ot">&lt;-</span> sar_code <span class="sc">%&gt;%</span> <span class="fu">filter</span>(work_distance<span class="sc">&lt;=</span><span class="dv">8</span> <span class="sc">&amp;</span> nssec <span class="sc">&lt;=</span><span class="dv">8</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sar_df <span class="ot">&lt;-</span> sar_code <span class="sc">%&gt;%</span> <span class="fu">filter</span>(work_distance<span class="sc">&lt;=</span><span class="dv">8</span> <span class="sc">&amp;</span> nssec <span class="sc">&lt;=</span><span class="dv">8</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Q1.</strong> Summarise the frequencies of the two variables “work_distance” and “nssec” with the new data.</p>
@@ -553,17 +528,17 @@ Lower managerial and professional occupations
 <p><strong>Recode the “work_distance” variable into a binary dependent variable</strong></p>
 <p>A simple way to create a binary dependent variable representing long-distance commuting is to use the mutate() function as discussed in last week’s practical session. Before creating the binary variables from the “work_distance” variable, we need to define <em>what counts as a long-distance commuting move</em>. Such definition can vary. Here we define a long-distance commuting move as any commuting move over a distance above 60km (the category of “60km or more”).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sar_df <span class="ot">&lt;-</span> sar_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">New_work_distance =</span> <span class="fu">if_else</span>(work_distance <span class="sc">&gt;</span><span class="dv">6</span>, <span class="dv">1</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sar_df <span class="ot">&lt;-</span> sar_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">New_work_distance =</span> <span class="fu">if_else</span>(work_distance <span class="sc">&gt;</span><span class="dv">6</span>, <span class="dv">1</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Q2.</strong> Check the new <code>sar_df</code> dataframe with new column named <code>New_work_distance</code> by using the codes you have learnt.</p>
 </div>
 <p><strong>Prepare your “nssec” variable before the regression model</strong></p>
 <p>The <code>nssec</code> is a categorical variable. Therefore, as we’ve learnt last week, before adding the categorical variables into the regression model, we need first make it a factor and then identify the reference category.</p>
-<p>We are interested in whether people with occupations being “Small-employers and Own account workers” are associated with a lower probability of commuting over long distances when comparing to people in other occupations.</p>
+<p>We are interested in whether people with occupations being “Higher professional occupations” are associated with a lower probability of commuting over long distances when comparing to people in other occu</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>sar_df<span class="sc">$</span>nssec <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(sar_df<span class="sc">$</span>nssec), <span class="at">ref =</span> <span class="st">"5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>sar_df<span class="sc">$</span>nssec <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(sar_df<span class="sc">$</span>nssec), <span class="at">ref =</span> <span class="st">"2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="implementing-a-logistic-regression-model" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="implementing-a-logistic-regression-model"><span class="header-section-number">4.1.1</span> <strong>Implementing a logistic regression model</strong></h3>
@@ -571,16 +546,16 @@ Lower managerial and professional occupations
 <p>The independent variables are gender and socio-economic status.</p>
 <p>For gender, we use male as the basline.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sar_df<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(sar_df<span class="sc">$</span>sex),<span class="at">ref=</span><span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>sar_df<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(sar_df<span class="sc">$</span>sex),<span class="at">ref=</span><span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>For socio-economic status, we use code 5 (Small employers and Own account workers) as the baseline category to explore whether people work as independent employers show lower probability of commuting longer than 60km compared with other occupations.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create the model</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>m.glm <span class="ot">=</span> <span class="fu">glm</span>(New_work_distance<span class="sc">~</span>sex <span class="sc">+</span> nssec, </span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> sar_df, </span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">family=</span> <span class="st">"binomial"</span>)</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect the results</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m.glm) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create the model</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>m.glm <span class="ot">=</span> <span class="fu">glm</span>(New_work_distance<span class="sc">~</span>sex <span class="sc">+</span> nssec, </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">data =</span> sar_df, </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">family=</span> <span class="st">"binomial"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># inspect the results</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(m.glm) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -589,15 +564,15 @@ glm(formula = New_work_distance ~ sex + nssec, family = "binomial",
 
 Coefficients:
             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept) -0.44698    0.04138 -10.801   &lt;2e-16 ***
-sex2        -0.36678    0.04196  -8.742   &lt;2e-16 ***
-nssec1      -1.35519    0.10782 -12.569   &lt;2e-16 ***
-nssec2      -1.22639    0.06489 -18.898   &lt;2e-16 ***
-nssec3      -1.61400    0.05482 -29.442   &lt;2e-16 ***
-nssec4      -2.25717    0.07696 -29.329   &lt;2e-16 ***
-nssec6      -2.61631    0.10377 -25.212   &lt;2e-16 ***
-nssec7      -2.66548    0.08317 -32.047   &lt;2e-16 ***
-nssec8      -2.71172    0.09021 -30.059   &lt;2e-16 ***
+(Intercept) -1.67337    0.05329 -31.401  &lt; 2e-16 ***
+sex2        -0.36678    0.04196  -8.742  &lt; 2e-16 ***
+nssec1      -0.12881    0.11306  -1.139    0.255    
+nssec3      -0.38761    0.06467  -5.994 2.05e-09 ***
+nssec4      -1.03079    0.08439 -12.214  &lt; 2e-16 ***
+nssec5       1.22639    0.06489  18.898  &lt; 2e-16 ***
+nssec6      -1.38992    0.10919 -12.730  &lt; 2e-16 ***
+nssec7      -1.43909    0.09002 -15.986  &lt; 2e-16 ***
+nssec8      -1.48534    0.09646 -15.398  &lt; 2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -611,47 +586,47 @@ Number of Fisher Scoring iterations: 6</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratios</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(m.glm)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratios</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(m.glm)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(Intercept)        sex2      nssec1      nssec2      nssec3      nssec4 
- 0.63955383  0.69296493  0.25789714  0.29335107  0.19909052  0.10464615 
+<pre><code>(Intercept)        sex2      nssec1      nssec3      nssec4      nssec5 
+  0.1876138   0.6929649   0.8791416   0.6786766   0.3567267   3.4088847 
      nssec6      nssec7      nssec8 
- 0.07307217  0.06956621  0.06642224 </code></pre>
+  0.2490946   0.2371432   0.2264258 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence intervals</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(m.glm, <span class="at">level =</span> <span class="fl">0.95</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># confidence intervals</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">confint</span>(m.glm, <span class="at">level =</span> <span class="fl">0.95</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Waiting for profiling to be done...</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                 2.5 %     97.5 %
-(Intercept) 0.58959085 0.69343772
-sex2        0.63818099 0.75227729
-nssec1      0.20787318 0.31733101
-nssec2      0.25813190 0.33291942
-nssec3      0.17876868 0.22162844
-nssec4      0.08984430 0.12149367
-nssec6      0.05933796 0.08915692
-nssec7      0.05895858 0.08169756
-nssec8      0.05547661 0.07902917</code></pre>
+<pre><code>                2.5 %    97.5 %
+(Intercept) 0.1688060 0.2080319
+sex2        0.6381810 0.7522773
+nssec1      0.7017990 1.0935602
+nssec3      0.5981911 0.7708192
+nssec4      0.3020431 0.4205270
+nssec5      3.0037298 3.8739884
+nssec6      0.2002766 0.3073830
+nssec7      0.1984396 0.2824629
+nssec8      0.1869397 0.2729172</code></pre>
 </div>
 </div>
 <p>Q3. If we want to explore whether people with occupation being “Large employers and higher managers”, “Higher professional occupations” and “Routine occupations” are associated with higher probability of commuting over long distance when comparing to people in other occupation, how will we prepare the input independent variables and what will be the specified regression model?</p>
 <p>Hint: use mutate() to create a new column, set the value of “Large employers and higher managers”, “Higher professional occupations” and “Routine occupations” as original, while the rest as “Other occupations” ().</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sar_df <span class="ot">&lt;-</span> sar_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">New_nssec =</span> <span class="fu">if_else</span>(<span class="sc">!</span>nssec <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">8</span>), <span class="st">"0"</span> ,nssec))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>sar_df <span class="ot">&lt;-</span> sar_df <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">New_nssec =</span> <span class="fu">if_else</span>(<span class="sc">!</span>nssec <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">8</span>), <span class="st">"0"</span> ,nssec))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Use “Other occupations” (code: 0) as the reference category by <code>relevel(as.factor())</code> and then create the regression model: <code>glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")</code></p>
 </section>
 <section id="model-fit" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="model-fit"><span class="header-section-number">4.1.2</span> <strong>Model fit</strong></h3>
-<p>Relating back to this week’s lecture notes, what is the Pseudo R<sup>2</sup> of the fitted logistic model (from the Model Summary table below)?</p>
+<p>We include the R library <code>pscl</code> for calculate the measures of fit.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pscl"</span>))</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"pscl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pscl"</span>))</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"pscl"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: pscl</code></pre>
 </div>
@@ -666,16 +641,25 @@ Stanford University (2002-2015),
 by and under the direction of Simon Jackman.
 hurdle and zeroinfl functions by Achim Zeileis.</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pscl)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Pseudo R-squared</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(<span class="fu">pR2</span>(m.glm))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pscl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Relating back to this week’s lecture notes, what is the Pseudo R<sup>2</sup> of the fitted logistic model (from the Model Summary table below)?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pseudo R-squared</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pR2</span>(m.glm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>fitting null model for pseudo-r2</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: 'tidy.numeric' is deprecated.
-See help("Deprecated")</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>          llh       llhNull            G2      McFadden          r2ML 
+-8.983928e+03 -1.022037e+04  2.472890e+03  1.209785e-01  7.214246e-02 
+         r2CU 
+ 1.563288e-01 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># or in better format</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pR2</span>(m.glm) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="dv">4</span>) <span class="sc">%&gt;%</span> <span class="fu">tidy</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fitting null model for pseudo-r2</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
@@ -689,24 +673,38 @@ See help("Deprecated")</code></pre>
 6 r2CU          0.156 </code></pre>
 </div>
 </div>
+<ul>
+<li><p><strong>llh</strong>: The log-likelihood of the fitted model.</p></li>
+<li><p><strong>llhNull</strong>: The log-likelihood of the null model (without predictors).</p></li>
+<li><p><strong>G2</strong>: The likelihood ratio statistic, showing the model’s improvement over the null model.</p></li>
+<li><p><strong>McFadden</strong>: McFadden’s pseudo R-squared (a common measure of model fit).</p></li>
+<li><p><strong>r2ML</strong>: Maximum likelihood pseudo R-squared.</p></li>
+<li><p><strong>r2CU</strong>: Cox &amp; Snell pseudo R-squared.</p></li>
+</ul>
+<p>Different from the multiple linear regression, whose R-squared indicates % of the variance in the dependent variables that is explained by the independent variable. In logistic regression model, R-squared is not directly applicable. Instead, we use pseudo R-squared measures, such as McFadden’s pseudo R-squared, or Cox &amp; Snell pseudo R-squared to provide an indication of model fit. For the individual level dataset like SAR, value around 0.3 is considered good for well-fitting.</p>
 </section>
-<section id="interpreting-estimated-regression-coefficients" class="level3" data-number="4.1.3">
-<h3 data-number="4.1.3" class="anchored" data-anchor-id="interpreting-estimated-regression-coefficients"><span class="header-section-number">4.1.3</span> <strong>Interpreting estimated regression coefficients</strong></h3>
+<section id="statistical-significance-of-regression-coefficients-or-covariate-effects" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="statistical-significance-of-regression-coefficients-or-covariate-effects"><span class="header-section-number">4.1.3</span> <strong>Statistical significance of regression coefficients or covariate effects</strong></h3>
+<p>Similar to the statistical inference in a linear regression model context, p-values of regression coefficients are used to assess significances of coefficients; for instance, by comparing p-values to the conventional level of significance of 0.05:</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If the p-value of a coefficient is smaller than 0.05, the coefficient is statistically significant. In this case, you can say that the relationship between an independent variable and the outcome variable is <em>statistically</em> significant.</p>
+<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If the p-value of a coefficient is larger than 0.05, the coefficient is statistically insignificant. In this case, you can say or conclude that there is no statistically significant association or relationship between an independent variable and the outcome variable.</p>
+</section>
+<section id="interpreting-estimated-regression-coefficients" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="interpreting-estimated-regression-coefficients"><span class="header-section-number">4.1.4</span> <strong>Interpreting estimated regression coefficients</strong></h3>
 <ul>
 <li><p>The interpretation of coefficients (B) and odds ratios (Exp(B)) for the independent variables differs from that in a linear regression setting.</p></li>
 <li><p>Interpreting the regression coefficients.</p></li>
 </ul>
-<p>o&nbsp;&nbsp; For the variable <strong>Sex</strong>, a negative sign and the odds ratio estimate indicate that being female decreases the odds of commuting over long distances by a factor of 0.462, holding all other variables constant. Put it differently, the odds of commuting over long distances for females are 53.8% (i.e., 1 – 0.462, presented as percentages) smaller than that for males, holding all other variables constant.</p>
-<p>o&nbsp;&nbsp; For variable “<strong>nssec=Higher professional occupations</strong>”, a positive sign and the odds ratio estimate indicate that being employed in a higher professional occupation increases the odds of commuting over long distances by a factor of 1.873 comparing to being employed in other occupations (the baseline categories), holding all other variables constant (the Sex variable).</p>
+<p>o&nbsp;&nbsp; For the variable <strong>Sex</strong>, a negative sign and the odds ratio estimate indicate that the probability of commuting over long distances for female is 0.693 times less likely than male (the reference group), with the confidence intervals (CI) or likely range between 0.6 to 0.7, holding all other variables constant (the socio-economic classification variable). Put it differently, being females reduces the probability of long-distance commuting by 30.7% (1-0.693).</p>
+<p>o&nbsp;&nbsp; For variable “<strong>nssec</strong>”, a positive significant and the odds ratio estimate indicate that the probability of long-distance commuting for those whose socio-economic classification as:</p>
+<ul>
+<li><p>small employers and own account workers (nssec=5) are 3.409 times more likely than the higher prof occupations, holding all other variables constant (the Sex variable), with a likely range (CI) of between 3.0 to 3.8.</p></li>
+<li><p>the p-value of Large employers and higher managers (nssec=1) is &gt; 0.05, so thre is no statistically significant relationship between large employers and higher managers and long-distance commuting.</p></li>
+<li><p>Routine occupations (nssec=8) are 0.226 times (or 22.6%) less likely than the higher professional occupations, when other variable constant. Or, we can see being routine occupations decreases the probability of long-distance commuting by 77.4% (1-0.226).</p></li>
+</ul>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q4.</strong> Interpret the regression coefficients (i.e.&nbsp;Exp(B)) of variables “nssec=Large employers and higher managers” and “nssec=Routine occupations”.</p>
+<p><strong>Q4.</strong> Interpret the regression coefficients (i.e.&nbsp;Exp(B)) of variables “nssec=Lower managerial and professional occupations” and “nssec=Semi-routine occupation”.</p>
 </div>
-</section>
-<section id="statistical-significance-of-regression-coefficients-or-covariate-effects" class="level3" data-number="4.1.4">
-<h3 data-number="4.1.4" class="anchored" data-anchor-id="statistical-significance-of-regression-coefficients-or-covariate-effects"><span class="header-section-number">4.1.4</span> <strong>Statistical significance of regression coefficients or covariate effects</strong></h3>
-<p>Similar to the statistical inference in a linear regression model context, p-values of regression coefficients are used to assess significances of coefficients; for instance, by comparing p-values to the conventional level of significance of 0.05:</p>
-<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If the p-value of a coefficient is smaller than 0.05, the coefficient is statistically significant. In this case, you can say that the relationship between an independent variable and the outcome variable is <em>statistically</em> significant.</p>
-<p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If the p-value of a coefficient is larger than 0.05, the coefficient is statistically insignificant. In this case, you can say or conclude that there is no statistically significant association or relationship between an independent variable and the outcome variable.</p>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Q5.</strong> Could you identify significant factors of commuting over long distances?</p>
 </div>

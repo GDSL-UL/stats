@@ -5,6 +5,10 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+Last week, we learnt how to use qualitative variables in multiple linear regression model to understand the relationship between independent variables X1 ... Xn and the dependent variable Y. Today we will learn to use logistic regression for binary dependent variable. A **logistic regression model** is a type of regression analysis used when the dependent variable is binary (e.g., "success/failure" or "0/1"). It estimates the probability of one outcome relative to the other using a logistic function. This model is commonly used in situations like predicting disease presence (yes/no) or customer churn (stay/leave). The independent variables can be continuous, categorical, or a mix of both. The model's output is in the form of odds ratios, showing how predictors affect the likelihood of the outcome.
+
+The lecture’s slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/Lecture10.pdf).
+
 **Learning objectives**
 
 An understanding of, and ability to:
@@ -13,7 +17,7 @@ An understanding of, and ability to:
 
 -   Assess the model fit
 
-The application context of a logistic regression model is when the dependent variable under investigation is a binary variable. Usually, a value of 1 for this dependent variable means the occurrence of an event; and, 0 otherwise. For example, the dependent variable for this practical is whether a person is a long-distance commuter i.e. 1, and 0 otherwise.
+The application context of a binomial logistic regression model is when the dependent variable under investigation is a binary variable. Usually, a value of 1 for this dependent variable means the occurrence of an event; and, 0 otherwise. For example, the dependent variable for this practical is whether a person is a long-distance commuter i.e. 1, and 0 otherwise.
 
 In this week’s practical, we are going to apply logistic regression analysis in an attempt to answer the following research question:
 
@@ -23,13 +27,20 @@ In this week’s practical, we are going to apply logistic regression analysis i
 
 </div>
 
-The practical is split into two main parts. The first focuses on implementing a binary logistic regression model with SPSS. The second part focuses the interpretation of the resulting estimates.
+The practical is split into two main parts. The first focuses on implementing a binary logistic regression model with R. The second part focuses the interpretation of the resulting estimates.
 
 ## Preparing the input variables
 
-Prepare the data for implementing a logistic regression model. The data set used in this practical is the “sar_sample_label.csv” and "sar_sample_code.csv". They are actually the same dataframe, only one uses the label as the value but the other uses the code. We will first read in both for the data overview the labels are more friendly, and then we focus on using "sar_sample_code.csv" in the regression model as it is easier for coding.
+Prepare the data for implementing a logistic regression model. The data set used in this practical is the “sar_sample_label.csv” and "sar_sample_code.csv". The SAR is a snapshot of census microdata, which are individual level data. The data sample has been drawn and anonymised from census and known as the Samples of Anonymised Records (SARs).
+
+You may need to download the two datasets from our [github website](https://github.com/GDSL-UL/stats/tree/main/data/SAR) if you haven't. The two csv are actually the same dataframe, only one uses the label as the value but the other uses the code. We will first read in both for the data overview the labels are more friendly, and then we focus on using "sar_sample_code.csv" in the regression model as it is easier for coding.
 
 ```{r, warning=FALSE}
+if(!require("tidyverse"))
+  install.packages("tidyverse",dependencies = T)
+if(!require("broom"))
+  install.packages("broom",dependencies = T)
+
 library(tidyverse)
 library(broom)
 ```
@@ -40,11 +51,15 @@ sar_code <- read_csv("../data/SAR/sar_sample_code.csv")
 ```
 
 ```{r,results='hide'}
+View(sar_label)
+View(sar_code)
+
 glimpse(sar_label)
 glimpse(sar_code)
 ```
 
-```{r}
+```{r,results='hide'}
+summary(sar_code)
 summary(sar_label)
 ```
 
@@ -127,10 +142,10 @@ sar_df <- sar_df %>% mutate(
 
 The `nssec` is a categorical variable. Therefore, as we've learnt last week, before adding the categorical variables into the regression model, we need first make it a factor and then identify the reference category.
 
-We are interested in whether people with occupations being "Small-employers and Own account workers” are associated with a lower probability of commuting over long distances when comparing to people in other occupations.
+We are interested in whether people with occupations being "Higher professional occupations” are associated with a lower probability of commuting over long distances when comparing to people in other occu
 
 ```{r}
-sar_df$nssec <- relevel(as.factor(sar_df$nssec), ref = "5")
+sar_df$nssec <- relevel(as.factor(sar_df$nssec), ref = "2")
 ```
 
 ### **Implementing a logistic regression model**
@@ -178,30 +193,37 @@ Use "Other occupations" (code: 0) as the reference category by `relevel(as.facto
 
 ### **Model fit**
 
-Relating back to this week’s lecture notes, what is the Pseudo R^2^ of the fitted logistic model (from the Model Summary table below)?
+We include the R library `pscl` for calculate the measures of fit.
 
 ```{r}
 if(!require("pscl"))
   install.packages("pscl")
 library(pscl)
-
-# Pseudo R-squared
-tidy(pR2(m.glm))
 ```
 
-### **Interpreting estimated regression coefficients**
+Relating back to this week’s lecture notes, what is the Pseudo R^2^ of the fitted logistic model (from the Model Summary table below)?
 
--   The interpretation of coefficients (B) and odds ratios (Exp(B)) for the independent variables differs from that in a linear regression setting.
+```{r,warning=FALSE}
+# Pseudo R-squared
+pR2(m.glm)
 
--   Interpreting the regression coefficients.
+# or in better format
+pR2(m.glm) %>% round(4) %>% tidy()
+```
 
-o   For the variable **Sex**, a negative sign and the odds ratio estimate indicate that being female decreases the odds of commuting over long distances by a factor of 0.462, holding all other variables constant. Put it differently, the odds of commuting over long distances for females are 53.8% (i.e., 1 – 0.462, presented as percentages) smaller than that for males, holding all other variables constant.
+-   **llh**: The log-likelihood of the fitted model.
 
-o   For variable “**nssec=Higher professional occupations**”, a positive sign and the odds ratio estimate indicate that being employed in a higher professional occupation increases the odds of commuting over long distances by a factor of 1.873 comparing to being employed in other occupations (the baseline categories), holding all other variables constant (the Sex variable).
+-   **llhNull**: The log-likelihood of the null model (without predictors).
 
-::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q4.** Interpret the regression coefficients (i.e. Exp(B)) of variables “nssec=Large employers and higher managers” and “nssec=Routine occupations”.
-:::
+-   **G2**: The likelihood ratio statistic, showing the model’s improvement over the null model.
+
+-   **McFadden**: McFadden’s pseudo R-squared (a common measure of model fit).
+
+-   **r2ML**: Maximum likelihood pseudo R-squared.
+
+-   **r2CU**: Cox & Snell pseudo R-squared.
+
+Different from the multiple linear regression, whose R-squared indicates % of the variance in the dependent variables that is explained by the independent variable. In logistic regression model, R-squared is not directly applicable. Instead, we use pseudo R-squared measures, such as McFadden’s pseudo R-squared, or Cox & Snell pseudo R-squared to provide an indication of model fit. For the individual level dataset like SAR, value around 0.3 is considered good for well-fitting.
 
 ### **Statistical significance of regression coefficients or covariate effects**
 
@@ -210,6 +232,26 @@ Similar to the statistical inference in a linear regression model context, p-val
 ·       If the p-value of a coefficient is smaller than 0.05, the coefficient is statistically significant. In this case, you can say that the relationship between an independent variable and the outcome variable is *statistically* significant.
 
 ·       If the p-value of a coefficient is larger than 0.05, the coefficient is statistically insignificant. In this case, you can say or conclude that there is no statistically significant association or relationship between an independent variable and the outcome variable.
+
+### **Interpreting estimated regression coefficients**
+
+-   The interpretation of coefficients (B) and odds ratios (Exp(B)) for the independent variables differs from that in a linear regression setting.
+
+-   Interpreting the regression coefficients.
+
+o   For the variable **Sex**, a negative sign and the odds ratio estimate indicate that the probability of commuting over long distances for female is 0.693 times less likely than male (the reference group), with the confidence intervals (CI) or likely range between 0.6 to 0.7, holding all other variables constant (the socio-economic classification variable). Put it differently, being females reduces the probability of long-distance commuting by 30.7% (1-0.693).
+
+o   For variable “**nssec**”, a positive significant and the odds ratio estimate indicate that the probability of long-distance commuting for those whose socio-economic classification as:
+
+-    small employers and own account workers (nssec=5) are 3.409 times more likely than the higher prof occupations, holding all other variables constant (the Sex variable), with a likely range (CI) of between 3.0 to 3.8.
+
+-   the p-value of Large employers and higher managers (nssec=1) is \> 0.05, so thre is no statistically significant relationship between large employers and higher managers and long-distance commuting.
+
+-   Routine occupations (nssec=8) are 0.226 times (or 22.6%) less likely than the higher professional occupations, when other variable constant. Or, we can see being routine occupations decreases the probability of long-distance commuting by 77.4% (1-0.226).
+
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**Q4.** Interpret the regression coefficients (i.e. Exp(B)) of variables “nssec=Lower managerial and professional occupations” and “nssec=Semi-routine occupation".
+:::
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
 **Q5.** Could you identify significant factors of commuting over long distances?
