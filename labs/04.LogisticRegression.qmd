@@ -146,7 +146,7 @@ We are interested in whether people with occupations being "Higher professional 
 sar_df$nssec <- relevel(as.factor(sar_df$nssec), ref = "2")
 ```
 
-### **Implementing a logistic regression model**
+## **Implementing a logistic regression model**
 
 The binary dependent variable is long-distance commuting, variable name `New_work_distance`.
 
