@@ -267,6 +267,26 @@ o   For variable **`nssec`**, a positive significant and the odds ratio estima
 **Q5.** Could you identify significant factors of commuting over long distances?
 :::
 
+### Prediction using fitted regression model
+
+Relating to this week's lecture, the log odds of the person who is will to long-distance commuting is equal to:
+
+Log odds of long-distance commuting = 0.188 + 0.693 \* sexFemale + 0.679 \* nssec3 + 0.357\*nssec4 + 3.409\*nssec5 + 0.249\*nssec6 + 0.237\*nssec7 + 0.226\*nssec8
+
+By using R, you can create the object you would like to predict. Here we created three person, see whether you can interpret their gender and socio-economic classification?
+
+```{r}
+objs <- data.frame(sex=c("1","2","1"),nssec=c("7","3","5"))
+```
+
+Then we can predict by using our model `m.glm`:
+
+```{r}
+predict(m.glm, objs,type = "response")
+```
+
+So let us look at these three people. The first one, for a male who classified as Semi-routine occupation in NSSEC, the probability of he travel over 60km to work is only 4.26%. For the second one, a female who is in Lower managerial and professional occupation, the probability of long-distance commuting is 8.11%. Now you know the prediction outcomes for our last person.
+
 ## **Extension activities**
 
 The extension activities are designed to get yourself prepared for the Assignment 2 in progress. For this week, try whether you can:
