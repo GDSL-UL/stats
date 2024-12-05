@@ -1,6 +1,7 @@
 # Assessment {.unnumbered}
 
 **Deadline**: Tuesday 7th January 2025.
+**Word count**: 2000 words - including tables, excluding references.
 
 The assignment **Data Exploration and Analysis** consists of writing a research report using one of the regression techniques learned during the module. The basic idea is to put in practice the methods learned during the quantitative block of the module. You are required to apply a linear or logistic regression model to the data provided for the module. The report needs to include the following sections (in brackets, % of the whole lenght):
 
@@ -48,35 +49,6 @@ The first stage is to identify **ONE** a relevant research question to be addres
 **To detail in the Methods Section:** Once the variables have been chosen, you will need to describe the data and **appropriate** type of regression to be used for the analysis. You need to explain any transformation done to the original data source, such as reclassifying variables, or changing variables from continuous to nominal scales. You also need to briefly describe the data use: source of data, year of data collection, indicate the number of records used, state if you are using individual records or geographical units, explain if you are selecting a sample, and any relevant details. You also need to identify type of regression to be used and why.
 
 **To detail in the Results and Discussion Section:** Firstly, you need to provide two types of analyses. First, you need to provide a descriptive analysis of the data. Here you could use tables and/or plots reporting relevant descriptive statistics, such as the mean, median and standard deviation; variable distributions using histograms; and relationships between variables using correlation matrices or scatter plots. Secondly, you need to present an estimated regression model or models and the interpretation of the estimated coefficients. You need a careful and critical analysis of the regression estimates. You should think that you intend to use your regression models to advice your boss who is expecting to make some decisions based on the information you will provide. As part of this process, you need to discuss the model assessment results for the overall model and regression coefficients. Remember to substantiate your arguments using relevant literature and evidence, and present results clearly in tables and graphs.
-
-## How to submit
-
-You should submit a `.pdf` file, that is a rendered version of a Quarto Markdown file (`qmd` file). This will allow you to write a research paper that also includes your working code, without the need of including the data (rendered `.qmd` files are executed before being converted to R).
-
-How to get a PDF?
-
-1.  **Install Quarto**: Make sure you have Quarto installed. You can download it from quarto.org.
-2.  **LaTeX Installation**: For PDF output, you’ll need a LaTeX distribution like **TinyTeX** from R, by executing this in the R console:
-
-``` r
-install.packages("tinytex")
-tinytex::install_tinytex()
-```
-
-3.  **Open the Quarto File**: Open your `.qmd` file in RStudio.
-4.  **Set Output Format**: In the YAML header at the top of your Quarto file, specify `pdf` under `format`:
-
-```{r class.source = "fold-show", echo = F}
-knitr::include_graphics("../img/quartoHeader.png")
-```
-
-```         
-    title: "Your Document Title"
-    author: "Anonymous" # do not change
-    format: pdf
-```
-
-5.  Click the **Render** button in the RStudio toolbar (next to the Knit button).
 
 ## How is it graded?
 
