@@ -24,10 +24,12 @@ book:
     - index.qmd
     - general/overview.qmd
     - general/assessment.qmd
+    - general/howSubmit.qmd
     - labs/01.introR.qmd
     - labs/02.MultipleLinear.qmd
     - labs/03.QualitativeVariable.qmd
     - labs/04.LogisticRegression.qmd
+    - labs/05.Visualisation.qmd
 
 bibliography: references.bib
 
