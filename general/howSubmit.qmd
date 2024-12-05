@@ -1,0 +1,28 @@
+# Assessment: How to submit {.unnumbered}
+
+You should submit a `.pdf` file, that is a rendered version of a Quarto Markdown file (`qmd` file). This will allow you to write a research paper that also includes your working code, without the need of including the data (rendered `.qmd` files are executed before being converted to R).
+
+How to get a PDF?
+
+1.  **Install Quarto**: Make sure you have Quarto installed. You can download it from quarto.org.
+2.  **LaTeX Installation**: For PDF output, you’ll need a LaTeX distribution like **TinyTeX** from R, by executing this in the R console:
+        
+```r
+install.packages("tinytex")
+tinytex::install_tinytex()
+```
+   
+3.  **Open the Quarto File**: Open your `.qmd` file in RStudio.
+4.  **Set Output Format**: In the YAML header at the top of your Quarto file, specify `pdf` under `format`:
+
+```{r class.source = "fold-show", echo = F}
+knitr::include_graphics("../img/quartoHeader.png")
+```
+    
+```
+    title: "Your Document Title"
+    author: "Anonymous" # do not change
+    format: pdf
+```  
+
+5.  Click the **Render** button in the RStudio toolbar (next to the Knit button).
