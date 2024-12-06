@@ -35,9 +35,9 @@ You may need to download the two datasets from our [github website](https://gith
 
 ```{r, message=FALSE}
 if(!require("tidyverse"))
-  install.packages("tidyverse",dependencies = T)
+  install.packages("tidyverse",dependencies = T, repos = "https://cloud.r-project.org/")
 if(!require("broom"))
-  install.packages("broom",dependencies = T)
+  install.packages("broom",dependencies = T, repos = "https://cloud.r-project.org/")
 
 library(tidyverse)
 library(broom)
@@ -207,7 +207,7 @@ We include the R library `pscl` for calculate the measures of fit.
 
 ```{r}
 if(!require("pscl"))
-  install.packages("pscl")
+  install.packages("pscl", repos = "https://cloud.r-project.org/")
 library(pscl)
 ```
 
