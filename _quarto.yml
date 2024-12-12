@@ -30,6 +30,7 @@ book:
     - labs/03.QualitativeVariable.qmd
     - labs/04.LogisticRegression.qmd
     - labs/05.Visualisation.qmd
+    - labs/06.Summary.qmd
 
 bibliography: references.bib
 

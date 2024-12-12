@@ -253,7 +253,7 @@ o   For the variable **`sex`**, a negative sign and the odds ratio estimate in
 
 o   For variable **`nssec`**, a positive significant and the odds ratio estimate indicate that the probability of long-distance commuting for those whose socio-economic classification as:
 
--    small employers and own account workers (nssec=5) are 3.409 times more likely than the higher prof occupations, holding all other variables constant (the Sex variable), with a likely range (CI) of between 3.0 to 3.8.
+-   small employers and own account workers (nssec=5) are 3.409 times more likely than the higher prof occupations, holding all other variables constant (the Sex variable), with a likely range (CI) of between 3.0 to 3.8.
 
 -   the p-value of Large employers and higher managers (nssec=1) is \> 0.05, so thre is no statistically significant relationship between large employers and higher managers and long-distance commuting.
 
