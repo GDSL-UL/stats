@@ -2,46 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gdsl-ul.github.io/stats/index.html</loc>
-    <lastmod>2024-12-05T18:00:51.739Z</lastmod>
+    <lastmod>2024-11-21T14:19:47.797Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/overview.html</loc>
-    <lastmod>2024-11-07T11:07:51.007Z</lastmod>
+    <lastmod>2024-11-11T10:49:33.309Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/assessment.html</loc>
-    <lastmod>2024-12-05T18:05:02.447Z</lastmod>
+    <lastmod>2024-12-12T22:10:25.209Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/howSubmit.html</loc>
-    <lastmod>2024-12-05T18:03:08.199Z</lastmod>
+    <lastmod>2024-12-12T22:10:25.211Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/01.introR.html</loc>
-    <lastmod>2024-12-05T18:00:51.753Z</lastmod>
+    <lastmod>2024-11-21T20:53:39.870Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/02.MultipleLinear.html</loc>
-    <lastmod>2024-12-05T18:00:51.758Z</lastmod>
+    <lastmod>2024-11-21T20:36:56.086Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/03.QualitativeVariable.html</loc>
-    <lastmod>2024-12-05T18:00:51.761Z</lastmod>
+    <lastmod>2024-11-28T10:43:55.218Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/04.LogisticRegression.html</loc>
-    <lastmod>2024-12-05T19:05:09.745Z</lastmod>
+    <lastmod>2024-12-12T22:12:06.255Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/05.Visualisation.html</loc>
     <lastmod>2024-12-12T22:20:51.605Z</lastmod>
   </url>
   <url>
-    <loc>https://gdsl-ul.github.io/stats/Exploring-the-Social-World---Quantitative-Block--Statistics.pdf</loc>
-    <lastmod>2024-12-06T09:52:53.626Z</lastmod>
+    <loc>https://gdsl-ul.github.io/stats/labs/06.Summary.html</loc>
+    <lastmod>2024-12-12T22:32:25.685Z</lastmod>
   </url>
   <url>
-    <loc>https://gdsl-ul.github.io/stats/labs/06.Summary.html</loc>
-    <lastmod>2024-12-12T22:22:05.724Z</lastmod>
+    <loc>https://gdsl-ul.github.io/stats/Exploring-the-Social-World---Quantitative-Block--Statistics.pdf</loc>
+    <lastmod>2024-12-12T22:38:10.849Z</lastmod>
   </url>
 </urlset>
