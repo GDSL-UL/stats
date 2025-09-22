@@ -1,6 +1,7 @@
 # Assessment: How to submit {.unnumbered}
 
-You should submit a `.pdf` file, that is a rendered version of a Quarto Markdown file (`qmd` file). This will allow you to write a research paper that also includes your working code, without the need of including the data (rendered `.qmd` files are executed before being converted to R).
+You must submit a `.pdf` file, that is a rendered version of a Quarto Markdown file (`qmd` file). 
+This will allow you to write a research paper that also includes your working code, without the need of including the data (rendered `.qmd` files are executed before being converted to R).
 
 How to get a PDF?
 
