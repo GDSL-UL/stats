@@ -212,7 +212,9 @@ var * another_var
 
 As your analysis gets more complicated, you'll want to save the results to a variable so that you can access the results later. *If you don't assign the result to a variable, you have no way of accessing the result.*
 
-### Working with Scripts -\> WHAT YOU NEED TO DO. Avoid using the Console, if not for quick calculations
+### Working with Scripts
+
+**This is what you are going to do for the practical sessions. Avoid using the Console, if not for quick calculations**
 
 **R Scripts (.R files)**
 
@@ -267,6 +269,10 @@ Once a package is downloaded and installed on your computer, it is available, bu
 ```{r, warning=FALSE, message=FALSE}
 library(dplyr)   # load the dplyr library, will be useful later
 ```
+
+::: {style="red"}
+**Stop here for 5 min and wait for instructions**
+:::
 
 ## Practice: Dataset and Dataframes
 
@@ -434,9 +440,9 @@ The fundamental operations to perform on a data set are:
 
 Each of these operations is a function in the package `dplyr`. These functions all have a similar calling syntax:
 
-- The first argument is a data set.
+-   The first argument is a data set.
 
-- Subsequent arguments describe what to do with the input data frame and you can refer to the columns without using the `df$column` notation.
+-   Subsequent arguments describe what to do with the input data frame and you can refer to the columns without using the `df$column` notation.
 
 All of these functions will return a data set.
 
@@ -462,9 +468,9 @@ Grades %>%
 
 The `%>%` operator works by translating the command `a %>% f(b)` to the expression `f(a,b)`. This operator works on any function `f`. This is useful when we want to start with `x`, and first apply a function `f()`, then `g()`, and then `h()`; the usual R command would be `h(g(f(x)))` which is hard to read. Using the pipe command `%>%`, this sequence of operations becomes `x %>% f() %>% g() %>% h()`.
 
-Below, the code takes the Grades dataframe and calculates a column for the average exam score, and then sorts the data  according to the that average score
+Below, the code takes the Grades dataframe and calculates a column for the average exam score, and then sorts the data according to the that average score
 
-```{r, warning=FALSE, message=FALSE} 
+```{r, warning=FALSE, message=FALSE}
 Grades %>%   mutate( Avg.Score = (Exam.1 + Exam.2) / 2 ) %>%   arrange( Avg.Score )
 ```
 
