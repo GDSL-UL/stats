@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gabriele Filomena">
-<meta name="dcterms.date" content="2024-12-06">
+<meta name="dcterms.date" content="2025-09-22">
 
 <title>Exploring the Social World - Quantitative Block: Statistics - 1&nbsp; Lab: Introduction to R for Statistics</title>
 <style>
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#using-the-console" id="toc-using-the-console" class="nav-link" data-scroll-target="#using-the-console"><span class="header-section-number">1.2.2</span> Using the console</a></li>
   <li><a href="#r-as-a-simple-calculator" id="toc-r-as-a-simple-calculator" class="nav-link" data-scroll-target="#r-as-a-simple-calculator"><span class="header-section-number">1.2.3</span> R as a simple calculator</a></li>
   <li><a href="#variables-assignment" id="toc-variables-assignment" class="nav-link" data-scroll-target="#variables-assignment"><span class="header-section-number">1.2.4</span> Variables Assignment</a></li>
-  <li><a href="#working-with-scripts" id="toc-working-with-scripts" class="nav-link" data-scroll-target="#working-with-scripts"><span class="header-section-number">1.2.5</span> Working with Scripts</a></li>
+  <li><a href="#working-with-scripts---what-you-need-to-do.-avoid-using-the-console-if-not-for-quick-calculations" id="toc-working-with-scripts---what-you-need-to-do.-avoid-using-the-console-if-not-for-quick-calculations" class="nav-link" data-scroll-target="#working-with-scripts---what-you-need-to-do.-avoid-using-the-console-if-not-for-quick-calculations"><span class="header-section-number">1.2.5</span> Working with Scripts -&gt; WHAT YOU NEED TO DO. Avoid using the Console, if not for quick calculations</a></li>
   <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages"><span class="header-section-number">1.2.6</span> R Packages</a></li>
   </ul></li>
   <li><a href="#practice-dataset-and-dataframes" id="toc-practice-dataset-and-dataframes" class="nav-link" data-scroll-target="#practice-dataset-and-dataframes"><span class="header-section-number">1.3</span> Practice: Dataset and Dataframes</a>
@@ -257,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">December 6, 2024</p>
+      <p class="date">September 22, 2025</p>
     </div>
   </div>
   
@@ -274,11 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>https://dereksonderegger.github.io/570L/1-introduction.html by Derek L. Sonderegger;</li>
 <li>https://pietrostefani.github.io/gds/environR.html by Elisabetta Pietrostefani and Carmen Cabrera-Arnau</li>
 </ul>
-<p>The lecture’s slides can be found <a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture07.pdf">here</a>.</p>
+<p>The lecture’s slides can be found <a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture01.pdf">here</a>.</p>
+<p>Before completing the practical, please take this <a href="https://canvas.liverpool.ac.uk/courses/84668/quizzes/168721">quiz</a>.</p>
 <p>For the lab sessions and your assignment, you will need the following software:</p>
 <ul>
-<li>R-4.2.2</li>
-<li>RStudio 2022.12.0-353</li>
+<li>R-4.2.2 (or higher)</li>
+<li>RStudio 2022.12.0-353 (or higher)</li>
 <li>The list of libraries in the next section</li>
 </ul>
 <p>To install and update:</p>
@@ -349,7 +350,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>In R, we are going to be working with <strong>relative paths</strong>. With the command <code>getwd()</code>, you can see where your working directory is currently set.</p>
+<p>In R, we are going to workin with <strong>relative paths</strong>. With the command <code>getwd()</code>, you can see where your working directory is currently set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -360,10 +361,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 ├── labs_img/
 └── labs/</code></pre>
 <p>You can delete other sub-folders (e.g.&nbsp;docs).</p>
-<p><span style="color: red;">This should be on your personal computer or if on a local machine, I suggest using the directory M: to store the folder, it can be accessed from every computer.</span></p>
-<p>Then, in R Studio - on Windows by clicking RStudio&gt;Tools&gt;Global Options&gt;General.. - on Mac OS by clicking RStudio&gt;Preferences&gt;Appearance or Pane Layout…</p>
-<p>browse and set the folder you just creted as your working directory.</p>
-<p>Check if that has been applied.</p>
+<p><span style="color: red;"><strong>This should be on your personal computer. On a local machine, I suggest using the directory M: to store the folder, it can then be accessed from every other computer on campus.</strong></span></p>
+<p>Then, in R Studio - on Windows by clicking <em>RStudio&gt;Tools&gt;Global Options&gt;General.</em>. - on Mac OS by clicking <em>RStudio&gt;Preferences&gt;Appearance</em> or Pane Layout&gt;browse and set the folder you just created as your working directory.</p>
+<p>Restart Rstudio and check if that has been applied.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -477,7 +477,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="variables-assignment" class="level3" data-number="1.2.4">
 <h3 data-number="1.2.4" class="anchored" data-anchor-id="variables-assignment"><span class="header-section-number">1.2.4</span> Variables Assignment</h3>
 <p>We need to be able to assign a value to a variable to be able to use it later. R does this by using an arrow <code>&lt;-</code> or an equal sign <code>=</code>. While R supports either, for readability, I suggest people pick one assignment operator and stick with it.</p>
-<p><strong>Variable names cannot start with a number, may not include spaces, and are case sensitive.</strong></p>
+<p><strong>Variable names cannot start with a number, include spaces, and they are case sensitive.</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>var <span class="ot">&lt;-</span> <span class="dv">2</span><span class="sc">*</span><span class="fl">7.5</span>       <span class="co"># create two variables</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>another_var <span class="ot">=</span> <span class="dv">5</span>   <span class="co"># notice they show up in 'Environment' tab in RStudio!</span></span>
@@ -492,8 +492,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>As your analysis gets more complicated, you’ll want to save the results to a variable so that you can access the results later. <em>If you don’t assign the result to a variable, you have no way of accessing the result.</em></p>
 </section>
-<section id="working-with-scripts" class="level3" data-number="1.2.5">
-<h3 data-number="1.2.5" class="anchored" data-anchor-id="working-with-scripts"><span class="header-section-number">1.2.5</span> Working with Scripts</h3>
+<section id="working-with-scripts---what-you-need-to-do.-avoid-using-the-console-if-not-for-quick-calculations" class="level3" data-number="1.2.5">
+<h3 data-number="1.2.5" class="anchored" data-anchor-id="working-with-scripts---what-you-need-to-do.-avoid-using-the-console-if-not-for-quick-calculations"><span class="header-section-number">1.2.5</span> Working with Scripts -&gt; WHAT YOU NEED TO DO. Avoid using the Console, if not for quick calculations</h3>
 <p><strong>R Scripts (.R files)</strong></p>
 <p>Traditional script files look like this:</p>
 <div class="cell">
@@ -530,7 +530,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [1] 5</code></pre>
 </div>
 </div>
-<p><strong>In ENVS225: In this module we will be using <code>.qmd</code> a more flexible development of <code>.rmd</code> files.</strong></p>
+<div style="red">
+<p><strong>In this module we will be using <code>.qmd</code> a more flexible development of <code>.rmd</code> files.</strong></p>
+</div>
 <p>Markdown files present several advantages compared to writing your code in the console or just using scripts. You’ll save yourself a huge amount of work by embracing Markdown files from the beginning; you will keep track of your code and your steps, be able to document and present how you did your analysis (helpful when writing the methods section of a paper), and it will make it easier to re-run an analysis after a change in the data (such as additional data values, transformed data, or removal of outliers) or once you spot an error. Finally, it makes the script more readable.</p>
 </section>
 <section id="r-packages" class="level3" data-number="1.2.6">
@@ -545,7 +547,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="practice-dataset-and-dataframes" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="practice-dataset-and-dataframes"><span class="header-section-number">1.3</span> Practice: Dataset and Dataframes</h2>
 <blockquote class="blockquote">
-<p><strong>First of all</strong>, create a new Markdown document. We use the <code>File -&gt; New File -&gt; Quarto Document..</code> dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML, but you will need your assignment to be submitted in PDF; more on that later.</p>
+<p>First of all, create a new Markdown document. We use the <code>File -&gt; New File -&gt; Quarto Document..</code> dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML, but you will need your assignment to be submitted in PDF; more on that later.</p>
 <p>Follow the practical below. You can describe what you are doing in normal text. See <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a> for how to format normal text in Markdown documents</p>
 <p>Remember, when you want to write code in a markdown document you have to enclose it like this:</p>
 </blockquote>
@@ -758,9 +760,9 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 <section id="summarizing-data" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="summarizing-data"><span class="header-section-number">1.4.1</span> Summarizing Data</h3>
 <p>It is very important to be able to take a data set and produce summary statistics such as the mean and standard deviation of a column. For this sort of manipulation, we use the package <code>dplyr</code>. This package allows chaining together many common actions to form a particular task.</p>
-<p>The foundational operations to perform on a data set are:</p>
+<p>The fundamental operations to perform on a data set are:</p>
 <ul>
-<li><p>Subsetting - Returns a with only particular columns or rows</p>
+<li><p><strong>Subsetting</strong> - Returns a dataframe with only particular columns or rows</p>
 <p>– <code>select</code> - Selecting a subset of columns by name or column number.</p>
 <p>– <code>filter</code> - Selecting a subset of rows from a data frame based on logical expressions.</p>
 <p>– <code>slice</code> - Selecting a subset of rows by row number.</p></li>
@@ -768,38 +770,17 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 <li><p><code>mutate</code> - Add a new column that is some function of other columns.</p></li>
 <li><p><code>summarise</code> - calculate some summary statistic of a column of data. This collapses a set of rows into a single row.</p></li>
 </ul>
-<p>Each of these operations is a function in the package <code>dplyr</code>. These functions all have a similar calling syntax,: - The first argument is a data set;. - Subsequent arguments describe what to do with the input data frame and you can refer to the columns without using the <code>df$column</code> notation.</p>
+<p>Each of these operations is a function in the package <code>dplyr</code>. These functions all have a similar calling syntax:</p>
+<ul>
+<li><p>The first argument is a data set.</p></li>
+<li><p>Subsequent arguments describe what to do with the input data frame and you can refer to the columns without using the <code>df$column</code> notation.</p></li>
+</ul>
 <p>All of these functions will return a data set.</p>
-<p>The <code>dplyr</code> package also includes a function that “pipes” commands together. The idea is that the <code>%&gt;%</code> operator works by translating the command <code>a %&gt;% f(b)</code> to the expression <code>f(a,b)</code>. This operator works on any function <code>f</code>. The beauty of this comes when you have a suite of functions that takes input arguments of the same type as their output. For example if we wanted to start with <code>x</code>, and first apply function <code>f()</code>, then <code>g()</code>, and then <code>h()</code>, the usual R command would be <code>h(g(f(x)))</code> which is hard to read because you have to start reading at the innermost set of parentheses. Using the pipe command <code>%&gt;%</code>, this sequence of operations becomes <code>x %&gt;% f() %&gt;% g() %&gt;% h()</code>. For example:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>Grades <span class="co"># Recall the Grades data </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     Name Exam.1 Exam.2
-1     Bob     90     87
-2    Jeff     75     71
-3    Mary     92     95
-4 Valerie     85     81</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The following code takes the Grades data.frame and calculates </span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="co"># a column for the average exam score, and then sorts the data </span></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># according to the that average score</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span></span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>( <span class="at">Avg.Score =</span> (Exam<span class="fl">.1</span> <span class="sc">+</span> Exam<span class="fl">.2</span>) <span class="sc">/</span> <span class="dv">2</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>( Avg.Score )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     Name Exam.1 Exam.2 Avg.Score
-1    Jeff     75     71      73.0
-2 Valerie     85     81      83.0
-3     Bob     90     87      88.5
-4    Mary     92     95      93.5</code></pre>
-</div>
-</div>
-<p>Keep it in mind, it is not necessary to memorise this.</p>
 <p>Let’s consider the <code>summarize</code> function to calculate the mean score for <code>Exam.1</code>. Notice that this takes a data frame of four rows, and summarizes it down to just one row that represents the summarized data for all four students.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># load the library</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( <span class="at">Exam.1.mean =</span> <span class="fu">mean</span>( Exam<span class="fl">.1</span> ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) <span class="co"># load the library</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( <span class="at">Exam.1.mean =</span> <span class="fu">mean</span>( Exam<span class="fl">.1</span> ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Exam.1.mean
 1        85.5</code></pre>
@@ -807,9 +788,9 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 </div>
 <p>Similarly you could calculate the <strong>standard deviation</strong> for the exam as well.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( <span class="at">Exam.1.mean =</span> <span class="fu">mean</span>( Exam<span class="fl">.1</span> ),</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">Exam.1.sd   =</span> <span class="fu">sd</span>(   Exam<span class="fl">.1</span>   ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>( <span class="at">Exam.1.mean =</span> <span class="fu">mean</span>( Exam<span class="fl">.1</span> ),</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">Exam.1.sd   =</span> <span class="fu">sd</span>(   Exam<span class="fl">.1</span>   ) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Exam.1.mean Exam.1.sd
 1        85.5  7.593857</code></pre>
@@ -818,9 +799,22 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Task:</strong> Write the code above in your markdown file and run it. Do not to copy it this time.</p>
 </div>
-<p>Let’s go back to the terrorist attacks. There are attacks perpetrated by several different groups. Each record is a single attack and contains information about who perpetrated the attack, what year, how many were killed and how many were wounded. You can get a glimpse of the dataframe with the function head</p>
+<p>The <code>%&gt;%</code> operator works by translating the command <code>a %&gt;% f(b)</code> to the expression <code>f(a,b)</code>. This operator works on any function <code>f</code>. This is useful when we want to start with <code>x</code>, and first apply a function <code>f()</code>, then <code>g()</code>, and then <code>h()</code>; the usual R command would be <code>h(g(f(x)))</code> which is hard to read. Using the pipe command <code>%&gt;%</code>, this sequence of operations becomes <code>x %&gt;% f() %&gt;% g() %&gt;% h()</code>.</p>
+<p>Below, the code takes the Grades dataframe and calculates a column for the average exam score, and then sorts the data according to the that average score</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(attacks, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>Grades <span class="sc">%&gt;%</span>   <span class="fu">mutate</span>( <span class="at">Avg.Score =</span> (Exam<span class="fl">.1</span> <span class="sc">+</span> Exam<span class="fl">.2</span>) <span class="sc">/</span> <span class="dv">2</span> ) <span class="sc">%&gt;%</span>   <span class="fu">arrange</span>( Avg.Score )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Name Exam.1 Exam.2 Avg.Score
+1    Jeff     75     71      73.0
+2 Valerie     85     81      83.0
+3     Bob     90     87      88.5
+4    Mary     92     95      93.5</code></pre>
+</div>
+</div>
+<p>You don’t have to memorise this.</p>
+<p>Let’s go back to the terrorist attacks dataframe. There are attacks perpetrated by several different groups. Each record is a single attack and contains information about who perpetrated the attack, what year, how many were killed and how many were wounded. You can get a glimpse of the dataframe with the function head</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(attacks, <span class="at">n =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   nrKilled nrWound year        country                        group
 1         0       0 2005 United Kingdom   Abu Hafs al-Masri Brigades
@@ -859,10 +853,10 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 </div>
 <p>We might want to compare different actors and see the mean and standard deviation of the number of people wound, by each group’s attack, across time. To do this, we are still going to use the <code>summarize</code>, but we will precede that with <code>group_by(group)</code> to tell the subsequent <code>dplyr</code> functions to perform the actions separately for each breed.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>attacks <span class="sc">%&gt;%</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>( group) <span class="sc">%&gt;%</span></span>
-<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">Mean =</span> <span class="fu">mean</span>(attacks<span class="sc">$</span>nrWound), </span>
-<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">Std.Dev =</span> <span class="fu">sd</span>(attacks<span class="sc">$</span>nrWound))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>attacks <span class="sc">%&gt;%</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>( group) <span class="sc">%&gt;%</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>( <span class="at">Mean =</span> <span class="fu">mean</span>(attacks<span class="sc">$</span>nrWound), </span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">Std.Dev =</span> <span class="fu">sd</span>(attacks<span class="sc">$</span>nrWound))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 38 × 3
    group                                               Mean Std.Dev
@@ -883,7 +877,8 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Task:</strong> Write the code above in your markdown file and run it. Try out another categorical variable instead of <code>group</code> (e.g.&nbsp;<code>year</code>) and <code>nrKilled</code> instead of <code>nrWound</code>.</p>
 </div>
-<p>Let’s now move to another dataset to address a research question. For illustration purposes, we will use the <strong>Family Resources Survey (FRS)</strong>. The FRS is an annual survey conducted by the UK government that collects detailed information about the income, living conditions, and resources of private households across the United Kingdom. Managed by the Department for Work and Pensions (DWP), the FRS provides data that is essential for understanding the economic and social conditions of households and informing public policy.</p>
+<p>Let’s now move to another dataset to address a research question.</p>
+<p>For illustration purposes, we will use the <strong>Family Resources Survey (FRS)</strong>. The FRS is an annual survey conducted by the UK government that collects detailed information about the income, living conditions, and resources of private households across the United Kingdom. Managed by the Department for Work and Pensions (DWP), the FRS provides data that is essential for understanding the economic and social conditions of households and informing public policy.</p>
 <p>Consider questions such as:</p>
 <ul>
 <li>How many respondents (persons) are there in the 2016-17 FRS?</li>
@@ -892,14 +887,14 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 <li>What is the most detailed geography available in the FRS?</li>
 </ul>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Task</strong>: To answer these questions, load and inspect the dataset.</p>
+<p><strong>Task</strong>: To answer these questions, <a href="https://canvas.liverpool.ac.uk/courses/84668/files/12887864?wrap=1">download</a> from Canvas, save in the data folder, load and inspect the dataset.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the FRS dataset should be already loaded, otherwise</span></span>
-<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>frs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/FamilyResourceSurvey/FRS16-17_labels.csv"</span>) </span>
-<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display basic structure </span></span>
-<span id="cb59-5"><a href="#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(frs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the FRS dataset should be already loaded, otherwise</span></span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>frs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/FRS/FRS16-17_labels.csv"</span>) </span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display basic structure </span></span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(frs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 44,145
 Columns: 45
@@ -952,7 +947,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 </div>
 <p>and summary:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   household         family          person       country         
  Min.   :    1   Min.   :1.000   Min.   :1.00   Length:44145      
@@ -1218,14 +1213,10 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Task</strong>: Load the FRS dataset into your R environment, if it’s not already loaded, and inspect the data.</p>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset (replace 'frs_data.csv' with the actual file path)</span></span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>frs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/FamilyResourceSurvey/FRS16-17_labels.csv"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <p>Open the dataset in RStudio’s <strong>Data Viewer</strong> to explore its structure, including the <code>income_gross</code> and <code>income_net</code> variables.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># Open the data in the RStudio Viewer</span></span>
-<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">View</span>(frs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a> <span class="co"># Open the data in the RStudio Viewer</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(frs_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>in the <strong>Data Viewer</strong> tab, scroll horizontally to locate the <code>income_gross</code> and <code>income_net</code> columns. If columns are listed alphabetically, they will appear near other attributes that start with “income.”</p>
 <p>You should notice two things:</p>
@@ -1238,16 +1229,16 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <p><strong>Task</strong>: Determine the Scale of the Outcome Variable.</p>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize income variables</span></span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frs_data<span class="sc">$</span>income_gross)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize income variables</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frs_data<span class="sc">$</span>income_gross)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 -354848      52   12740   17305   23712 1127360 </code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize income variables</span></span>
-<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frs_data<span class="sc">$</span>income_net)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize income variables</span></span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frs_data<span class="sc">$</span>income_net)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 -358592       0   12012   14204   20384 1110928 </code></pre>
@@ -1258,29 +1249,29 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 </div>
 <p>You need to select all cases (persons) that are independent, that is where the variable <code>dependent</code> has values different from <code>!=</code> “Dependent” or equal <code>==</code> “Independent”.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to include only independent persons</span></span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>frs_independent <span class="ot">&lt;-</span> frs_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dependent <span class="sc">!=</span> <span class="st">"Dependent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to include only independent persons</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>frs_independent <span class="ot">&lt;-</span> frs_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dependent <span class="sc">!=</span> <span class="st">"Dependent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Task</strong>: Create a basic histogram (a visualisation lecture is scheduled later on).</p>
 </div>
 <p>The income variables in the FRS are all scale variables so a good starting point is to examine its distribution looking at a histogram of <code>income_gross</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(frs_independent, <span class="fu">aes</span>(<span class="at">x =</span> income_gross)) <span class="sc">+</span></span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5000</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Distribution of Gross Household Income"</span>,</span>
-<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> <span class="st">"Gross Income (£)"</span>,</span>
-<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Frequency"</span></span>
-<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
-<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">90000</span>) <span class="sc">+</span></span>
-<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(frs_independent, <span class="fu">aes</span>(<span class="at">x =</span> income_gross)) <span class="sc">+</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5000</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Distribution of Gross Household Income"</span>,</span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> <span class="st">"Gross Income (£)"</span>,</span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> <span class="st">"Frequency"</span></span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">90000</span>) <span class="sc">+</span></span>
+<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01.introR_files/figure-html/unnamed-chunk-34-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="01.introR_files/figure-html/unnamed-chunk-33-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1302,16 +1293,16 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 </div>
 <p>Recode <code>income_gross</code> into categories based on the chosen thresholds.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define thresholds for income categories </span></span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>LOW_THRESHOLD <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># Replace with the upper limit for low income </span></span>
-<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>HIGH_THRESHOLD <span class="ot">&lt;-</span> <span class="dv">50000</span> <span class="co"># Replace with the lower limit for high income </span></span>
-<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define income categories based on thresholds </span></span>
-<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>frs_independent <span class="ot">&lt;-</span> frs_independent <span class="sc">%&gt;%</span> </span>
-<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">income_category =</span> <span class="fu">case_when</span>( </span>
-<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>        income_gross <span class="sc">&lt;=</span> LOW_THRESHOLD <span class="sc">~</span> <span class="st">"Low"</span>, </span>
-<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>        income_gross <span class="sc">&gt;=</span> HIGH_THRESHOLD <span class="sc">~</span> <span class="st">"High"</span>, </span>
-<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Middle"</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define thresholds for income categories </span></span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>LOW_THRESHOLD <span class="ot">&lt;-</span> <span class="dv">10000</span> <span class="co"># Replace with the upper limit for low income </span></span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>HIGH_THRESHOLD <span class="ot">&lt;-</span> <span class="dv">50000</span> <span class="co"># Replace with the lower limit for high income </span></span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define income categories based on thresholds </span></span>
+<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>frs_independent <span class="ot">&lt;-</span> frs_independent <span class="sc">%&gt;%</span> </span>
+<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">income_category =</span> <span class="fu">case_when</span>( </span>
+<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>        income_gross <span class="sc">&lt;=</span> LOW_THRESHOLD <span class="sc">~</span> <span class="st">"Low"</span>, </span>
+<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>        income_gross <span class="sc">&gt;=</span> HIGH_THRESHOLD <span class="sc">~</span> <span class="st">"High"</span>, </span>
+<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"Middle"</span> ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The <code>mutate()</code> function in R, from the <strong>dplyr</strong> package, is used to add or modify columns in a data frame. It allows you to create new variables or transform existing ones by applying calculations or conditional statements directly within the function.</p>
 <p>Explanation of the code</p>
@@ -1336,10 +1327,10 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 </div>
 <p>Define metadata for the new variable by labeling income categories.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add metadata by converting to a factor and defining labels</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>frs_independent<span class="sc">$</span>income_category <span class="ot">&lt;-</span> <span class="fu">factor</span>(frs_independent<span class="sc">$</span>income_category,</span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Middle"</span>, <span class="st">"High"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"&lt;= £10,000"</span>, <span class="st">"£10,001 - £49,999"</span>, <span class="st">"&gt;= £50,000"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add metadata by converting to a factor and defining labels</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>frs_independent<span class="sc">$</span>income_category <span class="ot">&lt;-</span> <span class="fu">factor</span>(frs_independent<span class="sc">$</span>income_category,</span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Low"</span>, <span class="st">"Middle"</span>, <span class="st">"High"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"&lt;= £10,000"</span>, <span class="st">"£10,001 - £49,999"</span>, <span class="st">"&gt;= £50,000"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Task</strong>: Check your work.</p>
@@ -1350,8 +1341,8 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <li>You forgot to allocate a new value to one of the old variable categories, in which case the new variable will have more missing cases than the old variable.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequency distribution of income categories</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_independent<span class="sc">$</span>income_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequency distribution of income categories</span></span>
+<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_independent<span class="sc">$</span>income_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
        &lt;= £10,000 £10,001 - £49,999        &gt;= £50,000 
@@ -1360,8 +1351,8 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 </div>
 <p>After preparing the data, use cross-tabulations to compare income levels across demographic groups.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulate income category by age group, nationality, etc.</span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_independent<span class="sc">$</span>income_category, frs_independent<span class="sc">$</span>age_group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulate income category by age group, nationality, etc.</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_independent<span class="sc">$</span>income_category, frs_independent<span class="sc">$</span>age_group)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   
                     16-19 20-24 25-29 30-34 35-39 40-44 45-49 50-54 55-59 60-64
@@ -1377,8 +1368,8 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 </div>
 <p>Explore income distribution across different regions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulate income category by region</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_independent<span class="sc">$</span>income_category, frs_independent<span class="sc">$</span>region) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-tabulate income category by region</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(frs_independent<span class="sc">$</span>income_category, frs_independent<span class="sc">$</span>region) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   
                     East Midlands East of England London North East North West
