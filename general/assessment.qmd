@@ -1,6 +1,7 @@
+
 # Assessment {.unnumbered}
 
-**Deadline**: Tuesday 7th January 2025.
+**Deadline**: Monday 3rd November 2025 - 2pm.
 **Word count**: 2000 words - including tables, excluding references.
 
 The assignment **Data Exploration and Analysis** consists of writing a research report using one of the regression techniques learned during the module. The basic idea is to put in practice the methods learned during the quantitative block of the module. You are required to apply a linear or logistic regression model to the data provided for the module. The report needs to include the following sections (in brackets, % of the whole lenght):
@@ -18,7 +19,7 @@ The assignment **Data Exploration and Analysis** consists of writing a research 
     -   Context: Why is the topic relevant or worth being investigated?
     -   Brief discussion of existing literature.
     -   Knowledge gap and Aim.
-    -   Research questions.
+    -   1 Research question.
 2.  **Literature review**
     -   More detailed Literature review, i.e. what do we already know about this subject
     -   Rationale for including certain predictor variables in the model.
@@ -37,8 +38,7 @@ The assignment **Data Exploration and Analysis** consists of writing a research 
 5.  **Conclusion**
     -   Summary of main findings.
     -   Limitations of study (self-critique).
-
--   Highlight any implications derived from the study.
+    - Highlight any implications derived from the study.
 
 Follow this structure and include **ALL** these points, do not make your life harder.
 
