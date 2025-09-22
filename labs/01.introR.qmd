@@ -10,12 +10,14 @@ output: html_document
 -   https://dereksonderegger.github.io/570L/1-introduction.html by Derek L. Sonderegger;
 -   https://pietrostefani.github.io/gds/environR.html by Elisabetta Pietrostefani and Carmen Cabrera-Arnau
 
-The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture07.pdf).
+The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture01.pdf).
+
+Before completing the practical, please take this [quiz](https://canvas.liverpool.ac.uk/courses/84668/quizzes/168721).
 
 For the lab sessions and your assignment, you will need the following software:
 
--   R-4.2.2
--   RStudio 2022.12.0-353
+-   R-4.2.2 (or higher)
+-   RStudio 2022.12.0-353 (or higher)
 -   The list of libraries in the next section
 
 To install and update:
@@ -96,7 +98,7 @@ At the start of a session, it's good practice clearing your R environment (conso
 rm(list = ls())
 ```
 
-In R, we are going to be working with **relative paths**. With the command `getwd()`, you can see where your working directory is currently set.
+In R, we are going to workin with **relative paths**. With the command `getwd()`, you can see where your working directory is currently set.
 
 ```{r results='hide'}
 getwd() 
@@ -115,13 +117,11 @@ stats/
 
 You can delete other sub-folders (e.g. docs).
 
-[This should be on your personal computer or if on a local machine, I suggest using the directory M: to store the folder, it can be accessed from every computer.]{style="color: red;"}
+[**This should be on your personal computer. On a local machine, I suggest using the directory M: to store the folder, it can then be accessed from every other computer on campus.**]{style="color: red;"}
 
-Then, in R Studio - on Windows by clicking RStudio\>Tools\>Global Options\>General.. - on Mac OS by clicking RStudio\>Preferences\>Appearance or Pane Layout...
+Then, in R Studio - on Windows by clicking *RStudio\>Tools\>Global Options\>General.*. - on Mac OS by clicking *RStudio\>Preferences\>Appearance* or Pane Layout\>browse and set the folder you just created as your working directory.
 
-browse and set the folder you just creted as your working directory.
-
-Check if that has been applied.
+Restart Rstudio and check if that has been applied.
 
 ```{r results='hide'}
 getwd() 
@@ -129,9 +129,9 @@ getwd()
 
 File paths in R work like this:
 
-| File Path | Description |
-|----|----|
-| `MyFile.csv` | Look in the working directory for `MyFile.csv`. |
+| File Path             | Description                                                                                                 |
+|------------------------------------|------------------------------------|
+| `MyFile.csv`          | Look in the working directory for `MyFile.csv`.                                                             |
 | `MyFolder/MyFile.csv` | In the working directory, there is a subdirectory called `MyFolder` and inside that folder is `MyFile.csv`. |
 
 You do not need to set your working directory if you are using an R-markdown or Quarto document and you have it saved in the right location. The pathway will start from where your document is saved.
@@ -201,7 +201,7 @@ When we want to specify the arguments, we can do so using the `name=value` notat
 
 We need to be able to assign a value to a variable to be able to use it later. R does this by using an arrow `<-` or an equal sign `=`. While R supports either, for readability, I suggest people pick one assignment operator and stick with it.
 
-**Variable names cannot start with a number, may not include spaces, and are case sensitive.**
+**Variable names cannot start with a number, include spaces, and they are case sensitive.**
 
 ```{r, warning=FALSE, message=FALSE}
 var <- 2*7.5       # create two variables
@@ -212,7 +212,7 @@ var * another_var
 
 As your analysis gets more complicated, you'll want to save the results to a variable so that you can access the results later. *If you don't assign the result to a variable, you have no way of accessing the result.*
 
-### Working with Scripts
+### Working with Scripts -\> WHAT YOU NEED TO DO. Avoid using the Console, if not for quick calculations
 
 **R Scripts (.R files)**
 
@@ -252,7 +252,9 @@ The R code in a R Markdown document (`.rmd` file extension) can be nicely separa
     for (i in 1:5) {print(i)}
 ```
 
-**In ENVS225: In this module we will be using `.qmd` a more flexible development of `.rmd` files.**
+::: {style="red"}
+**In this module we will be using `.qmd` a more flexible development of `.rmd` files.**
+:::
 
 Markdown files present several advantages compared to writing your code in the console or just using scripts. You'll save yourself a huge amount of work by embracing Markdown files from the beginning; you will keep track of your code and your steps, be able to document and present how you did your analysis (helpful when writing the methods section of a paper), and it will make it easier to re-run an analysis after a change in the data (such as additional data values, transformed data, or removal of outliers) or once you spot an error. Finally, it makes the script more readable.
 
@@ -268,7 +270,7 @@ library(dplyr)   # load the dplyr library, will be useful later
 
 ## Practice: Dataset and Dataframes
 
-> **First of all**, create a new Markdown document. We use the `File -> New File -> Quarto Document..` dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML, but you will need your assignment to be submitted in PDF; more on that later.
+> First of all, create a new Markdown document. We use the `File -> New File -> Quarto Document..` dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML, but you will need your assignment to be submitted in PDF; more on that later.
 >
 > Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents
 >
@@ -308,6 +310,7 @@ In R, we want a way of storing data where it feels just as if we had an Excel Sp
 :::
 
 ```{r, warning=FALSE, message=FALSE}
+
 Grades <- data.frame(
   Name  = c('Bob','Jeff','Mary','Valerie'), 	
   Exam.1 = c(90, 75, 92, 85),
@@ -316,6 +319,7 @@ Grades <- data.frame(
 # Show the data.frame 
 # View(Grades)  # show the data in an Excel-like tab.  Doesn't work when knitting 
 Grades          # show the output in the console. This works when knitting
+
 ```
 
 **To execute just one chunk of code press the green arrow top-right of the chunk:**
@@ -382,18 +386,18 @@ To make R read in the data arranged in this format, we need to tell R three thin
 
 The primary function that we'll use to read data from a file and into R is the function `read.csv()`. This function has many optional arguments but the most commonly used ones are outlined in the table below.
 
-| Argument | Default | Description |
-|----|----|----|
-| `file` | Required | A character string denoting the file location. |
-| `header` | `TRUE` | Specifies whether the first line contains column headers. |
-| `sep` | `","` | Specifies the character that separates columns. For `read.csv()`, this is usually a comma. |
-| `skip` | `0` | The number of lines to skip before reading data; useful for files with descriptive text before the actual data. |
-| `na.strings` | `"NA"` | Values that represent missing data; multiple values can be specified, e.g., `c("NA", "-9999")`. |
-| `quote` | `"` | Specifies the character used to quote character strings, typically `"` or `'`. |
-| `stringsAsFactors` | `FALSE` | Controls whether character strings are converted to factors; `FALSE` means they remain as character data. |
-| `row.names` | `NULL` | Allows specifying a column as row names, or assigning `NULL` to use default indexing for rows. |
-| `colClasses` | `NULL` | Specifies the data type for each column to speed up reading for large files, e.g., `c("character", "numeric")`. |
-| `encoding` | `"unknown"` | Sets the text encoding of the file, which can be useful for files with special or international characters. |
+| Argument           | Default     | Description                                                                                                     |
+|------------------------|------------------------|------------------------|
+| `file`             | Required    | A character string denoting the file location.                                                                  |
+| `header`           | `TRUE`      | Specifies whether the first line contains column headers.                                                       |
+| `sep`              | `","`       | Specifies the character that separates columns. For `read.csv()`, this is usually a comma.                      |
+| `skip`             | `0`         | The number of lines to skip before reading data; useful for files with descriptive text before the actual data. |
+| `na.strings`       | `"NA"`      | Values that represent missing data; multiple values can be specified, e.g., `c("NA", "-9999")`.                 |
+| `quote`            | `"`         | Specifies the character used to quote character strings, typically `"` or `'`.                                  |
+| `stringsAsFactors` | `FALSE`     | Controls whether character strings are converted to factors; `FALSE` means they remain as character data.       |
+| `row.names`        | `NULL`      | Allows specifying a column as row names, or assigning `NULL` to use default indexing for rows.                  |
+| `colClasses`       | `NULL`      | Specifies the data type for each column to speed up reading for large files, e.g., `c("character", "numeric")`. |
+| `encoding`         | `"unknown"` | Sets the text encoding of the file, which can be useful for files with special or international characters.     |
 
 Most of the time you just need to specify the file. \|
 
@@ -412,9 +416,9 @@ View(attacks)
 
 It is very important to be able to take a data set and produce summary statistics such as the mean and standard deviation of a column. For this sort of manipulation, we use the package `dplyr`. This package allows chaining together many common actions to form a particular task.
 
-The foundational operations to perform on a data set are:
+The fundamental operations to perform on a data set are:
 
--   Subsetting - Returns a with only particular columns or rows
+-   **Subsetting** - Returns a dataframe with only particular columns or rows
 
     – `select` - Selecting a subset of columns by name or column number.
 
@@ -428,24 +432,13 @@ The foundational operations to perform on a data set are:
 
 -   `summarise` - calculate some summary statistic of a column of data. This collapses a set of rows into a single row.
 
-Each of these operations is a function in the package `dplyr`. These functions all have a similar calling syntax,: - The first argument is a data set;. - Subsequent arguments describe what to do with the input data frame and you can refer to the columns without using the `df$column` notation.
+Each of these operations is a function in the package `dplyr`. These functions all have a similar calling syntax:
+
+- The first argument is a data set.
+
+- Subsequent arguments describe what to do with the input data frame and you can refer to the columns without using the `df$column` notation.
 
 All of these functions will return a data set.
-
-The `dplyr` package also includes a function that "pipes" commands together. The idea is that the `%>%` operator works by translating the command `a %>% f(b)` to the expression `f(a,b)`. This operator works on any function `f`. The beauty of this comes when you have a suite of functions that takes input arguments of the same type as their output. For example if we wanted to start with `x`, and first apply function `f()`, then `g()`, and then `h()`, the usual R command would be `h(g(f(x)))` which is hard to read because you have to start reading at the innermost set of parentheses. Using the pipe command `%>%`, this sequence of operations becomes `x %>% f() %>% g() %>% h()`. For example:
-
-```{r, warning=FALSE, message=FALSE}
-Grades # Recall the Grades data 
-
-# The following code takes the Grades data.frame and calculates 
-# a column for the average exam score, and then sorts the data 
-# according to the that average score
-Grades %>%
-  mutate( Avg.Score = (Exam.1 + Exam.2) / 2 ) %>%
-  arrange( Avg.Score )
-```
-
-Keep it in mind, it is not necessary to memorise this.
 
 Let's consider the `summarize` function to calculate the mean score for `Exam.1`. Notice that this takes a data frame of four rows, and summarizes it down to just one row that represents the summarized data for all four students.
 
@@ -467,7 +460,17 @@ Grades %>%
 **Task:** Write the code above in your markdown file and run it. Do not to copy it this time.
 :::
 
-Let's go back to the terrorist attacks. There are attacks perpetrated by several different groups. Each record is a single attack and contains information about who perpetrated the attack, what year, how many were killed and how many were wounded. You can get a glimpse of the dataframe with the function head
+The `%>%` operator works by translating the command `a %>% f(b)` to the expression `f(a,b)`. This operator works on any function `f`. This is useful when we want to start with `x`, and first apply a function `f()`, then `g()`, and then `h()`; the usual R command would be `h(g(f(x)))` which is hard to read. Using the pipe command `%>%`, this sequence of operations becomes `x %>% f() %>% g() %>% h()`.
+
+Below, the code takes the Grades dataframe and calculates a column for the average exam score, and then sorts the data  according to the that average score
+
+```{r, warning=FALSE, message=FALSE} 
+Grades %>%   mutate( Avg.Score = (Exam.1 + Exam.2) / 2 ) %>%   arrange( Avg.Score )
+```
+
+You don't have to memorise this.
+
+Let's go back to the terrorist attacks dataframe. There are attacks perpetrated by several different groups. Each record is a single attack and contains information about who perpetrated the attack, what year, how many were killed and how many were wounded. You can get a glimpse of the dataframe with the function head
 
 ```{r, warning=FALSE, message=FALSE}
 head(attacks, n = 10)
@@ -486,7 +489,9 @@ attacks %>%
 **Task:** Write the code above in your markdown file and run it. Try out another categorical variable instead of `group` (e.g. `year`) and `nrKilled` instead of `nrWound`.
 :::
 
-Let's now move to another dataset to address a research question. For illustration purposes, we will use the **Family Resources Survey (FRS)**. The FRS is an annual survey conducted by the UK government that collects detailed information about the income, living conditions, and resources of private households across the United Kingdom. Managed by the Department for Work and Pensions (DWP), the FRS provides data that is essential for understanding the economic and social conditions of households and informing public policy.
+Let's now move to another dataset to address a research question.
+
+For illustration purposes, we will use the **Family Resources Survey (FRS)**. The FRS is an annual survey conducted by the UK government that collects detailed information about the income, living conditions, and resources of private households across the United Kingdom. Managed by the Department for Work and Pensions (DWP), the FRS provides data that is essential for understanding the economic and social conditions of households and informing public policy.
 
 Consider questions such as:
 
@@ -496,12 +501,12 @@ Consider questions such as:
 -   What is the most detailed geography available in the FRS?
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Task**: To answer these questions, load and inspect the dataset.
+**Task**: To answer these questions, [download](https://canvas.liverpool.ac.uk/courses/84668/files/12887864?wrap=1) from Canvas, save in the data folder, load and inspect the dataset.
 :::
 
 ```{r, warning=FALSE, message=FALSE}
 # the FRS dataset should be already loaded, otherwise
-frs_data <- read.csv("../data/FamilyResourceSurvey/FRS16-17_labels.csv") 
+frs_data <- read.csv("../data/FRS/FRS16-17_labels.csv") 
 
 # Display basic structure 
 glimpse(frs_data)
@@ -522,21 +527,21 @@ In the FRS data structure, each row represents a person, but:
 
 Below is an example dataset structure:
 
-| household | family | person | region | age_group | sex | marital_status | rel_to_hrp |
-|----|----|----|----|----|----|----|----|
-| 1 | 1 | 1 | London | 40-44 | Female | Married/Civil partnership | Spouse |
-| 1 | 1 | 2 | London | 40-44 | Male | Married/Civil partnership | Household Representative |
-| 1 | 1 | 3 | London | 5-10 | Male | Single | Son/daughter (incl. adopted) |
-| 1 | 1 | 4 | London | 5-10 | Female | Single | Son/daughter (incl. adopted) |
-| 1 | 1 | 5 | London | 16-19 | Male | Single | Step-son/daughter |
-| 2 | 1 | 1 | Scotland | 35-39 | Male | Single | Household Representative |
-| 3 | 1 | 1 | Yorks and the Humber | 35-39 | Female | Married/Civil partnership | Household Representative |
-| 3 | 1 | 2 | Yorks and the Humber | 35-39 | Male | Married/Civil partnership | Spouse |
-| 3 | 1 | 3 | Yorks and the Humber | 5-10 | Male | Single | Step-son/daughter |
-| 4 | 1 | 1 | Wales | 0-4 | Male | Single | Son/daughter (incl. adopted) |
-| 4 | 1 | 2 | Wales | 60-64 | Male | Married/Civil partnership | Household Representative |
-| 4 | 1 | 3 | Wales | 55-59 | Female | Married/Civil partnership | Spouse |
-| 4 | 2 | 3 | Wales | 30-34 | Female | Single | Son/daughter (incl. adopted) |
+| household | family | person | region               | age_group | sex    | marital_status            | rel_to_hrp                   |
+|---------|---------|---------|---------|---------|---------|---------|---------|
+| 1         | 1      | 1      | London               | 40-44     | Female | Married/Civil partnership | Spouse                       |
+| 1         | 1      | 2      | London               | 40-44     | Male   | Married/Civil partnership | Household Representative     |
+| 1         | 1      | 3      | London               | 5-10      | Male   | Single                    | Son/daughter (incl. adopted) |
+| 1         | 1      | 4      | London               | 5-10      | Female | Single                    | Son/daughter (incl. adopted) |
+| 1         | 1      | 5      | London               | 16-19     | Male   | Single                    | Step-son/daughter            |
+| 2         | 1      | 1      | Scotland             | 35-39     | Male   | Single                    | Household Representative     |
+| 3         | 1      | 1      | Yorks and the Humber | 35-39     | Female | Married/Civil partnership | Household Representative     |
+| 3         | 1      | 2      | Yorks and the Humber | 35-39     | Male   | Married/Civil partnership | Spouse                       |
+| 3         | 1      | 3      | Yorks and the Humber | 5-10      | Male   | Single                    | Step-son/daughter            |
+| 4         | 1      | 1      | Wales                | 0-4       | Male   | Single                    | Son/daughter (incl. adopted) |
+| 4         | 1      | 2      | Wales                | 60-64     | Male   | Married/Civil partnership | Household Representative     |
+| 4         | 1      | 3      | Wales                | 55-59     | Female | Married/Civil partnership | Spouse                       |
+| 4         | 2      | 3      | Wales                | 30-34     | Female | Single                    | Son/daughter (incl. adopted) |
 
 The first five people in the FRS all belong to the same household (household 1); they also all belong to the same family. This family comprises a married middle-aged couple plus their three children, one of whom is a stepson.
 
@@ -558,16 +563,11 @@ In the FRS each person’s annual income is recorded, both gross (pre-tax) and n
 **Task**: Load the FRS dataset into your R environment, if it’s not already loaded, and inspect the data.
 :::
 
-```{r, warning=FALSE, message=FALSE}
-# Load the dataset (replace 'frs_data.csv' with the actual file path)
-frs_data <- read.csv("../data/FamilyResourceSurvey/FRS16-17_labels.csv") 
-```
-
 Open the dataset in RStudio’s **Data Viewer** to explore its structure, including the `income_gross` and `income_net` variables.
 
 ```{r, warning=FALSE, message=FALSE}
  # Open the data in the RStudio Viewer
- View(frs_data)
+View(frs_data)
 ```
 
 in the **Data Viewer** tab, scroll horizontally to locate the `income_gross` and `income_net` columns. If columns are listed alphabetically, they will appear near other attributes that start with "income."
