@@ -1,3 +1,4 @@
+
 # Overview {.unnumbered}
 
 ## Aim and Learning Objectives
@@ -23,37 +24,45 @@ Dr Zi Ye and Dr Gabriele Filomena
 
 **Where and When**
 
-Quantitative Block (Weeks 7-12): 
 
- - **Lecture**: 10 am – 10.45 am Fridays
- - **PC Practical sessions**: 11am – 1 pm, following the Lecture
+<![endif]-->
 
-**Week 7**: Central Teaching Hub: PC Teaching Centre BLUE+GREEN+ORANGE ZONES
+**Week 1, 2, 4, 6 Tuesday @ Central Teaching Hub PCTC**
 
-**Week 8 -12**: Central Teaching Hub, PCTC
+ - Lecture (10 – 11 am). 
+ - Practical PC session (11 am – 1 pm).
+
+**Week 3**
+
+ - Lecture (3 – 4 pm) Thursday @ Central Teaching Hub – Lect. Theatre C.
+ - Practical PC session (9 – 11 am) Friday @ Central Teaching Hub PCTC.
+
+**Week 5**
+
+ - Lecture (3 – 4 pm) Thursday @ Central Teaching Hub – Lect. Theatre C.
+ - Practical PC session (10 – 12 am) Friday @ Central Teaching Hub PCTC.
 
 Lectures will introduce and explain the fundamentals of quantitative methods, with the opportunity to apply the method introduced in the labs later in the week.
 
-The computer practical sessions, will give you the chance to use and apply quantitative methods to real-world data. 
-These are primarily self-directed sessions, but with support on hand if you get stuck. Support and training in R will be provided through these sessions. Weekly sessions will be driven by empirical research questions.
+The computer practical sessions, will give you the chance to use and apply quantitative methods to real-world data. These are primarily self-directed sessions, but with support on hand if you get stuck. Support and training in R will be provided through these sessions. Weekly sessions will be driven by empirical research questions.
 
 
 | Week | Topic                                       | Format                          | Staff |
 |------|---------------------------------------------|---------------------------------|-------|
-| 7    | Introduction & Review                       | Lecture and Computer Lab Practical | GF    |
-| 8    | Single & Multiple Linear Regression         | Lecture and Computer Lab Practical | GF    |
-| 9    | Multiple Linear Regression with Categorical Variables | Lecture and Computer Lab Practical | ZY    |
-| 10   | Logistic Regression                         | Lecture and Computer Lab Practical | ZY    |
-| 11   | Data Visualisation                          | Lecture and Computer Lab Practical | GF    |
-| 12   | Summary and Assessment Support              | Lecture and Computer Lab Practical | ZY    |
+| 1    | Introduction & Review                       | Lecture and Computer Lab Practical | GF    |
+| 2    | Single & Multiple Linear Regression         | Lecture and Computer Lab Practical | GF    |
+| 3    | Multiple Linear Regression with Categorical Variables | Lecture and Computer Lab Practical | ZY    |
+| 4   | Logistic Regression                         | Lecture and Computer Lab Practical | ZY    |
+| 5   | Data Visualisation                          | Lecture and Computer Lab Practical | GF    |
+| 6   | Summary and Assessment Support              | Lecture and Computer Lab Practical | ZY    |
 
 
 ## Software and Data
 
 For quantitative training sessions, ensure you have installed and/or have access to **RStudio**. To run the analysis and reproduce the code in R, you need the following software installed on your machine:
 
-- R-4.2.2
-- RStudio 2022.12.0-353
+- R-4.2.2 (or later)
+- RStudio 2022.12.0-353 (or later)
 
 To install and update:
 
