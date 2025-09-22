@@ -18,6 +18,11 @@
 # PPT
 lectures/*.pptx
 
+# Some Data
+
+data/FRS
+data/APS
+
 # ipynb
 general/*.ipynb
 
