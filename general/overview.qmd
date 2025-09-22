@@ -24,9 +24,6 @@ Dr Zi Ye and Dr Gabriele Filomena
 
 **Where and When**
 
-
-<![endif]-->
-
 **Week 1, 2, 4, 6 Tuesday @ Central Teaching Hub PCTC**
 
  - Lecture (10 – 11 am). 
@@ -73,10 +70,11 @@ To install and update:
 
 **Data**
 
-Example datasets could be accessed through Canvas or the [GitHub](https://github.com/GDSL-UL/stats) Repository of the module. These include:
+Example datasets could be accessed through Canvas or (some) on [GitHub](https://github.com/GDSL-UL/stats) Repository of the module. These include:
 
 - 2021 UK Census Data.
-- 2021 Annulation Population Survey.
-- 2016 Family Resource Survey.
+- 2021 Annulation Population Survey (APS) - only on Canvas.
+- 2016 Family Resource Survey (FRS) - only on Canvas.
+- 2011 Sample of Anonymised Records (SAR).
 
-*Note: The Annual Population Survey requires the completion of a form prior to its usage, as it is licensed.*
+*Note: The Annual Population Survey requires the completion of a quiz prior to its usage, as it is licensed.*
