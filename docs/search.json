@@ -116,7 +116,7 @@
     "section": "",
     "text": "Setup\nLoad commonly used libraries for statistical analysis and data manipulation.\nCode\n# Core tidyverse\nlibrary(tidyverse)    # includes ggplot2, dplyr, tidyr, readr, purrr, tibble, stringr, forcats\n\n# Tables & reporting\nlibrary(knitr)\nlibrary(kableExtra)\n\n# Stats helpers\nlibrary(broom)\n\n## These need to be installed on your PC.",
     "crumbs": [
-      "Data Analysis Report"
+      "ENVS225 Assignment 1"
     ]
   },
   {
@@ -126,7 +126,7 @@
     "section": "Literature Review",
     "text": "Literature Review\nWhat we know. Summarise key findings from prior studies relevant to your RQ.\nPredictor rationale. Justify the inclusion of variables (theory-driven, prior empirical evidence).\nRemaining gap. Specify precisely the gap this report addresses (e.g., population, geography, time period, variable, method).\nNote: The goal is a clean, sensible analysis grounded in existing ideas—not necessarily novel theory.",
     "crumbs": [
-      "Data Analysis Report"
+      "ENVS225 Assignment 1"
     ]
   },
   {
@@ -136,7 +136,7 @@
     "section": "Methodology",
     "text": "Methodology\nData. Briefly describe the dataset (who collected it, when, sample size, key variables).\nTransformations. Describe any recoding/aggregation (e.g., bin income into bands; reduce age groups from 11 to 3). Provide justification.\nTechniques. Outline and justify the statistical methods used (e.g., GLM/LM, logistic regression, mixed models, matching).\nImportant: do not include statistics here, or graphs, or tables.",
     "crumbs": [
-      "Data Analysis Report"
+      "ENVS225 Assignment 1"
     ]
   },
   {
@@ -146,7 +146,7 @@
     "section": "Results and Discussion",
     "text": "Results and Discussion\n\n\nCode\n# summary variables, distribution, plots, etc\n\n\nPresent the variables Start with descriptive statistics for your variables and distribution. If relevant, include discuss one-to-one associations (briefly, e.g. correlation plots). You can provide correlation plots and/or boxplots but do not overload the report with graphs.***\n\n\nCode\n# run the model, show tables summarising the Regression model.\n\n\nResults + interpretation. Present estimates and interpret them in plain language, tying back to the RQ. The Regression model should the core of this section!! Link to literature. Compare/contrast with prior findings. Selective visuals. Use clear charts/tables to highlight key results only (avoid clutter). ————————————————————————",
     "crumbs": [
-      "Data Analysis Report"
+      "ENVS225 Assignment 1"
     ]
   },
   {
@@ -156,7 +156,7 @@
     "section": "Conclusion",
     "text": "Conclusion\nSummary. Recap the main findings vis‑à‑vis the RQs (do not introduce new results).\nLimitations. Offer a brief, honest self‑critique (data, measurement, design, external validity).\nImplications. Indicate what the findings suggest for practice, policy, or future research.",
     "crumbs": [
-      "Data Analysis Report"
+      "ENVS225 Assignment 1"
     ]
   },
   {
@@ -266,7 +266,7 @@
     "section": "",
     "text": "Once all the chunks execute correctly (no errors when running all the code, Ctrl +Alt + R ) you can render the qmd file. Follow the instructions here to render the document to a PDF. Remove this message and any irrelevant text from the final submission.",
     "crumbs": [
-      "Data Analysis Report"
+      "ENVS225 Assignment 1"
     ]
   },
   {
@@ -276,7 +276,7 @@
     "section": "Introduction",
     "text": "Introduction\nAim. State clearly what you want to investigate (e.g., association between X and Y).\nRelevance. Explain why the topic matters (theory, policy, practice).\nGap & Research Question (RQ). Identify what is missing in the current knowledge and pose 1 RQ (avoid yes/no questions; ask how, to what extent, which factors).\nStructure. Briefly preview how the rest of the article is organized.",
     "crumbs": [
-      "Data Analysis Report"
+      "ENVS225 Assignment 1"
     ]
   }
 ]
