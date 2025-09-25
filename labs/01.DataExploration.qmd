@@ -19,9 +19,9 @@ For the lab sessions and your assignment, you will need the following software:
 -   R-4.2.2 (or higher) [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/)
 -   RStudio 2022.12.0-353 (or higher) [Posit](https://posit.co/download/rstudio-desktop/)
 
-**IMPORTANT: Before starting: check that you set the directory correctly and familiarise yourself with working with directories and loading files. These are the [instructions](https://gdsl-ul.github.io/stats/general/wdPaths.html)**
+**IMPORTANT: Before starting: check that you set the directory correctly and familiarise yourself with working with directories and loading files. These are the [instructions](https://gdsl-ul.github.io/stats/general/wdPaths.html)**.
 
-**Now create a .qmd project. We use the `File -> New File -> Quarto Document..` dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it "week1" and save it in your main folder.**
+**Now create a .qmd project. We use the `File -> New File -> Quarto Document..` dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it "*week1*" and save it in your main folder.**
 
 Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents
 
@@ -139,7 +139,7 @@ To make R read in the data arranged in this format, we need to tell R three thin
 The primary function that we'll use to read data from a file and into R is the function `read.csv()`. This function has many optional arguments but the most commonly used ones are outlined in the table below.
 
 | Argument           | Default     | Description                                                                                                     |
-|----------------|----------------|----------------------------------------|
+|-----------------|-----------------|--------------------------------------|
 | `file`             | Required    | A character string denoting the file location.                                                                  |
 | `header`           | `TRUE`      | Specifies whether the first line contains column headers.                                                       |
 | `sep`              | `","`       | Specifies the character that separates columns. For `read.csv()`, this is usually a comma.                      |

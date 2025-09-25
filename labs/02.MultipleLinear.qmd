@@ -5,7 +5,13 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-In this week’s practical, we will review how to calculate and visualise correlation coefficients between variables. This practical is split into two parts. The first part focuses on measuring the correlation between and visualising the relationship between **continuous variables**. The second part goes through the implementation of a Linear Regression Model, again between continuous variables.
+**IMPORTANT: Before starting: check that you set the directory correctly and familiarise yourself with working with directories and loading files. These are the [instructions](https://gdsl-ul.github.io/stats/general/wdPaths.html)**.
+
+**Now create a .qmd project. We use the `File -> New File -> Quarto Document..` dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it "*week2*" and save it in your main folder.**
+
+Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents
+
+In this week’s practical, we will review how to calculate and visualise correlation coefficients between variables. This practical is split into two parts. The first part focuses on measuring and visualising the relationship between between **continuous variables**. The second part goes through the implementation of a Linear Regression Model, again between continuous variables.
 
 Before getting into it, have a look at this [resource](https://mlu-explain.github.io/linear-regression/), it really helps understand how regression models work.
 
@@ -17,8 +23,6 @@ The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/m
 -   Measure the strength of the association between two variables by calculating their correlation coefficient.
 -   Build a formal regression model.
 -   Understand how to estimate and interpret a multiple linear regression model.
-
-**Notes:** *Note for the practical: copy/edit/document the code in your own `.qmd` file. The code is supposed to be run as if the script was placed in the course folder or in the folder `labs`.*
 
 *Note on file paths*: When calling the `read.csv` function, the path will vary depending on the location of the script it is being executed or your working directory (WD):
 
@@ -63,12 +67,12 @@ summary_data
 
 **Q1**. Complete the table below by specifying each variable type (continuous or categorical) and reporting its mean and standard deviation.
 
-| Variable Name | Type (Continuous or Categorical) | Mean | Standard Deviation |
-|----|----|----|----|
-| pct_Very_bad_health |  |  |  |
-| pct_No_qualifications |  |  |  |
-| pct_Males |  |  |  |
-| pct_Higher_manager_prof |  |  |  |
+| Variable Name           | Type (Continuous or Categorical) | Mean | Standard Deviation |
+|------------------|------------------|------------------|------------------|
+| pct_Very_bad_health     |                                  |      |                    |
+| pct_No_qualifications   |                                  |      |                    |
+| pct_Males               |                                  |      |                    |
+| pct_Higher_manager_prof |                                  |      |                    |
 
 ### Simple visualisation for continuous data
 
