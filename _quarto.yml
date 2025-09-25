@@ -25,7 +25,10 @@ book:
     - general/overview.qmd
     - general/assessment.qmd
     - general/howSubmit.qmd
-    - labs/01.introR.qmd
+    - general/reportTemplate.qmd
+    - general/wdPaths.qmd
+    - labs/00.introR.qmd
+    - labs/01.DataExploration.qmd
     # - labs/02.MultipleLinear.qmd
     # - labs/03.QualitativeVariable.qmd
     # - labs/04.LogisticRegression.qmd
