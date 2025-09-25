@@ -1,5 +1,5 @@
 ---
-title: "Lab: Introduction to R for Statistics"
+title: "Lab: Introduction to Exploring a Dataset"
 author: "Gabriele Filomena"
 date: "`r Sys.Date()`"
 output: html_document
@@ -7,8 +7,8 @@ output: html_document
 
 *The following material has been readapted from*:
 
--   https://dereksonderegger.github.io/570L/1-introduction.html by Derek L. Sonderegger;
 -   https://pietrostefani.github.io/gds/environR.html by Elisabetta Pietrostefani and Carmen Cabrera-Arnau
+-   https://raw.githubusercontent.com/dereksonderegger/570L/master/07_DataImport.Rmd
 
 The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture01.pdf).
 
@@ -16,271 +16,16 @@ Before completing the practical, please take this [quiz](https://canvas.liverpoo
 
 For the lab sessions and your assignment, you will need the following software:
 
--   R-4.2.2 (or higher)
--   RStudio 2022.12.0-353 (or higher)
--   The list of libraries in the next section
+-   R-4.2.2 (or higher) [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/)
+-   RStudio 2022.12.0-353 (or higher) [Posit](https://posit.co/download/rstudio-desktop/)
 
-To install and update:
+**IMPORTANT: Before starting: check that you set the directory correctly and familiarise yourself with working with directories and loading files. These are the [instructions](https://gdsl-ul.github.io/stats/general/wdPaths.html)**
 
--   R, download the appropriate version from [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/)
--   RStudio, download the appropriate version from [Posit](https://posit.co/download/rstudio-desktop/)
+**Now create a .qmd project. We use the `File -> New File -> Quarto Document..` dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it "week1" and save it in your main folder.**
 
-## R?
+Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents
 
-R is an open-source program that is commonly used in Statistics. It runs on almost every platform and is completely free and is available at [www.r-project.org](www.r-project.org). Most of the cutting-edge statistical research is first available on R.
-
-R is a script based language, so there is no point and click interface. While the initial learning curve will be steeper, understanding how to write scripts will be valuable because it leaves a clear description of what steps you performed in your data analysis. Typically you will want to write a script in a separate file and then run individual lines. This saves you from having to retype a bunch of commands and speeds up the debugging process.
-
-## R(Studio) Basics
-
-We will be running R through the program RStudio which is located at [rstudio.com](http://www.rstudio.org). When you first open up RStudio the console window gives you some information about the version of R you are running and then it gives the prompt `>`. This prompt is waiting for you to input a command. The prompt + tells you that the current command is spanning multiple lines. In a script file you might have typed something like this:
-
-```         
-for( i in 1:5 ){
-    print(i)
-}
-```
-
-Finding help about a certain function is very easy. At the prompt, just type `help(function.name)` or `?function.name`. If you don't know the name of the function, your best bet is to go the the web page www.rseek.org which will search various R resources for your keyword(s). Another great resource is the coding question and answer site [stackoverflow](http://stackoverflow.com).
-
-### Starting a session in RStudio
-
-Upon startup, RStudio will look something like this.
-
-```{r class.source = "fold-show", echo = F}
-knitr::include_graphics("../img/environ_R_1.png")
-```
-
-*Note*: the **Pane Layout** and **Appearance** settings can be altered:
-
--   on Windows by clicking RStudio\>Tools\>Global Options\>Appearance or Pane Layout
--   on Mac OS by clicking RStudio\>Preferences\>Appearance or Pane Layout.
-
-You will also have a standard white background; but you can choose specific [themes](https://quarto.org/docs/output-formats/html-themes.html).
-
-**Source Panel (Top-Left)**
-
-This is where you write, edit, and view scripts, R Markdown/Quarto documents, or R scripts. It allows:
-
--   Editing Scripts: Write and edit R scripts or documents (`.R`, `.Rmd`, `.qmd`).
--   Executing the Code: Run lines, blocks, or the entire script directly from the editor.
-
-**Console Panel (Bottom-Left)**
-
-**The Console is the main place to run R commands interactively.** It allows:
-
--   Executing the Code: Type and run R commands directly.
--   Viewing outputs, warnings, and errors for immediate feedback.
--   Browsing and reusing past commands (History Tab).
--   Toggling between the R Console, and the Terminal (yuo don't really need the latter).
-
-**Environment Panel (Top-Right)**
-
-This panel helps track variables, functions, and the history of commands used. It contains:
-
--   Environment Tab: Shows all current variables, datasets, and objects in your session, including their structure and values.
--   History Tab: Provides a record of past commands. You can re-run or move commands to the console or script.
-
-**Files / Plots / Packages / Help Panel (Bottom-Right)**
-
-This multifunctional panel is for file navigation, plotting, managing packages, viewing help, and managing jobs. It contains:
-
--   Files Tab: Navigate, open, and manage files and directories within your project.
--   Plots Tab: Displays plots generated in your session. You can export or navigate through multiple plots here.
--   Packages Tab: Lists installed packages and allows you to install, load, and update packages.
--   Help Tab: Displays help documentation for R functions, packages, and other resources. You can search for documentation by typing a function or package name.
-
-**Important: Unless you are working with a script, you will be likely writing code on the console.**
-
-At the start of a session, it's good practice clearing your R environment (console):
-
-```{r, warning=FALSE, message=FALSE}
-rm(list = ls())
-```
-
-In R, we are going to workin with **relative paths**. With the command `getwd()`, you can see where your working directory is currently set.
-
-```{r results='hide'}
-getwd() 
-```
-
-For ENVS225, download the [material](https://github.com/GDSL-UL/stats/archive/refs/heads/main.zip) of the module an unzip it whever you like.
-
-The folder structure should look like:
-
-```         
-stats/
-├── data/
-├── labs_img/
-└── labs/
-```
-
-You can delete other sub-folders (e.g. docs).
-
-[**This should be on your personal computer. On a local machine, I suggest using the directory M: to store the folder, it can then be accessed from every other computer on campus.**]{style="color: red;"}
-
-Then, in R Studio - on Windows by clicking *RStudio\>Tools\>Global Options\>General.*. - on Mac OS by clicking *RStudio\>Preferences\>Appearance* or Pane Layout\>browse and set the folder you just created as your working directory.
-
-Restart Rstudio and check if that has been applied.
-
-```{r results='hide'}
-getwd() 
-```
-
-File paths in R work like this:
-
-| File Path             | Description                                                                                                 |
-|------------------------------------|------------------------------------|
-| `MyFile.csv`          | Look in the working directory for `MyFile.csv`.                                                             |
-| `MyFolder/MyFile.csv` | In the working directory, there is a subdirectory called `MyFolder` and inside that folder is `MyFile.csv`. |
-
-You do not need to set your working directory if you are using an R-markdown or Quarto document and you have it saved in the right location. The pathway will start from where your document is saved.
-
-### Using the console
-
-Try to use the console to perform a few operations. For example type in:
-
-```{r class.source = "fold-show"}
-1+1
-```
-
-Slightly more complicated:
-
-```{r, warning=FALSE, message=FALSE}
-print("hello world")
-```
-
-If you are unsure about what a command does, use the "Help" panel in your Files pane or type `?function` in the console. For example, to see how the `dplyr::rename()` function works, type in `?dplyr::rename`. When you see the double colon syntax like in the previous command, it's a call to a package without loading its library.
-
-### R as a simple calculator
-
-You can use R as a simple calculator. At the prompt, type 2+3 and hit enter. What you should see is the following
-
-```{r, warning=FALSE, message=FALSE}
-# Some simple addition
-2+3
-```
-
-In this fashion you can use R as a very capable calculator.
-
-```{r, warning=FALSE, message=FALSE}
-6*8
-4^3
-exp(1)   # exp() is the exponential function
-```
-
-R has most constants and common mathematical functions you could ever want. For example, the absolute value of a number is given by `abs()`, and `round()` will round a value to the nearest integer.
-
-```{r, warning=FALSE, message=FALSE}
-pi     # the constant 3.14159265...
-abs(1.77) 
-```
-
-Whenever you call a function, there will be some arguments that are mandatory, and some that are optional and the arguments are separated by a comma. In the above statements the function `abs()` requires at least one argument, and that is the number you want the absolute value of.
-
-When functions require more than one argument, arguments can be specified via the order in which they are passed or by naming the arguments. So for the `log()` function, for example, which calculates the logarithm of a number, one can specify the arguments using the named values; the order woudn't matter:
-
-```{r, warning=FALSE, message=FALSE}
-# Demonstrating order does not matter if you specify
-# which argument is which
-log(x=5, base=10)   
-log(base=10, x=5)
-```
-
-When we don't specify which argument is which, R will decide that `x` is the first argument, and `base` is the second.
-
-```{r, warning=FALSE, message=FALSE}
-# If not specified, R will assume the second value is the base...
-log(5, 10)
-log(10, 5)
-```
-
-When we want to specify the arguments, we can do so using the `name=value` notation.
-
-### Variables Assignment
-
-We need to be able to assign a value to a variable to be able to use it later. R does this by using an arrow `<-` or an equal sign `=`. While R supports either, for readability, I suggest people pick one assignment operator and stick with it.
-
-**Variable names cannot start with a number, include spaces, and they are case sensitive.**
-
-```{r, warning=FALSE, message=FALSE}
-var <- 2*7.5       # create two variables
-another_var = 5   # notice they show up in 'Environment' tab in RStudio!
-var 
-var * another_var 
-```
-
-As your analysis gets more complicated, you'll want to save the results to a variable so that you can access the results later. *If you don't assign the result to a variable, you have no way of accessing the result.*
-
-### Working with Scripts
-
-**This is what you are going to do for the practical sessions. Avoid using the Console, if not for quick calculations**
-
-**R Scripts (.R files)**
-
-Traditional script files look like this:
-
-```{r, eval=FALSE}
-# Problem 1 
-# Calculate the log of a couple of values and make a plot
-# of the log function from 0 to 3
-log(0)
-log(1)
-log(2)
-x <- seq(.1,3, length=1000)
-plot(x, log(x))
-
-# Problem 2
-# Calculate the exponential function of a couple of values
-# and make a plot of the function from -2 to 2
-exp(-2)
-exp(0)
-exp(2)
-x <- seq(-2, 2, length=1000)
-plot(x, exp(x))
-```
-
-In RStudio you can create a new script by going to `File -> New File -> R Script`. This opens a new window in RStudio where you can type commands and functions as a common text editor.
-
-This looks perfectly acceptable as a way of documenting what one does, but this script file doesn't contain the actual results of commands you ran, nor does it show you the plots. Also anytime you want to comment on some output, it needs to be offset with the commenting character `#`. It would be nice to have both the commands and the results merged into one document. This is what the R Markdown file does for us.
-
-**R Markdown (`.Rmd` and `.qmd` files)**
-
-The R Markdown is an implementation of the Markdown syntax that makes it extremely easy to write webpages or scientific documents that include conde. This syntax was extended to allow users to embed R code directly into more complex documents. Perhaps the easiest way to understand the syntax is to look at an at the [RMarkdown website](http://rmarkdown.rstudio.com).
-
-The R code in a R Markdown document (`.rmd` file extension) can be nicely separated from regular text using the three backticks (3 times \`, see below) and an instruction that it is R code that needs to be evaluated. A code chunk will look like:
-
-```{r, warning=FALSE, message=FALSE}
-    for (i in 1:5) {print(i)}
-```
-
-::: {style="red"}
-**In this module we will be using `.qmd` a more flexible development of `.rmd` files.**
-:::
-
-Markdown files present several advantages compared to writing your code in the console or just using scripts. You'll save yourself a huge amount of work by embracing Markdown files from the beginning; you will keep track of your code and your steps, be able to document and present how you did your analysis (helpful when writing the methods section of a paper), and it will make it easier to re-run an analysis after a change in the data (such as additional data values, transformed data, or removal of outliers) or once you spot an error. Finally, it makes the script more readable.
-
-### R Packages
-
-One of the greatest strengths about R is that so many people have developed add-on packages to do some additional function. To download and install the package from the Comprehensive R Archive Network (CRAN), you just need to ask RStudio it to install it via the menu `Tools` -\> `Install Packages...`. Once there, you just need to give the name of the package and RStudio will download and install the package on your computer.
-
-Once a package is downloaded and installed on your computer, it is available, but it is not loaded into your current R session by default. To improve overall performance only a few packages are loaded by default and the you must explicitly load packages whenever you want to use them. You only need to load them once per session/script.
-
-```{r, warning=FALSE, message=FALSE}
-library(dplyr)   # load the dplyr library, will be useful later
-```
-
-::: {style="red"}
-**Stop here for 5 min and wait for instructions**
-:::
-
-## Practice: Dataset and Dataframes
-
-> First of all, create a new Markdown document. We use the `File -> New File -> Quarto Document..` dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML, but you will need your assignment to be submitted in PDF; more on that later.
->
-> Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents
->
-> Remember, when you want to write code in a markdown document you have to enclose it like this:
+Remember, when you want to write code in a markdown document you have to enclose it like this:
 
 ```{r class.source = "fold-show", echo = F}
 knitr::include_graphics("../img/codeChunk.png")
@@ -292,7 +37,9 @@ knitr::include_graphics("../img/codeChunk.png")
 knitr::include_graphics("../img/codeChunk_visual.png")
 ```
 
-Within this module we will be working with data stored in so-called datasets. A dataset is a structured collection of data points that represent various measurements or observations, often organized in a tabular format with rows and columns. A dataset might contain information about different locations, such as neighborhoods or cities, with each row representing a place and each column detailing characteristics like population density, average income, or number of green parks. For example, a dataset could be compiled to study patterns in urban mobility, where the data includes the number of daily commuters, the distance they travel, and the mode of transport they use. Datasets provide the essential building blocks for statistical analysis; they enable exploring relationships, identifying patterns, and drawing conclusions about certatin phenomena.
+## Practice: Dataset and Dataframes
+
+Within this module we will be working with data stored in so-called datasets. A dataset is a structured collection of data points that represent various measurements or observations, often organized in a tabular format with rows and columns. A dataset might contain information about different locations, such as neighborhoods or cities, with each row representing a place and each column detailing characteristics like population density, average income, or number of green parks. For example, a dataset could be compiled to study patterns in urban mobility, where the data includes the number of daily commuters, the distance they travel, and the mode of transport they use. Datasets provide the essential building blocks for statistical analysis; they enable exploring relationships, identifying patterns, and drawing conclusions about certain phenomena.
 
 Examples of everyday datasets:
 
@@ -316,6 +63,7 @@ In R, we want a way of storing data where it feels just as if we had an Excel Sp
 :::
 
 ```{r, warning=FALSE, message=FALSE}
+library(dplyr)
 
 Grades <- data.frame(
   Name  = c('Bob','Jeff','Mary','Valerie'), 	
@@ -355,13 +103,11 @@ Grades$Name       # The $-sign means to reference a column by its label
 
 ### Importing Data in R
 
-From: https://raw.githubusercontent.com/dereksonderegger/570L/master/07_DataImport.Rmd
-
 Usually we won't type the data in by hand, but rather load the data from some package. Reading data from external sources is a necessary skill.
 
 ***Comma Separated Values*** **Data**
 
-To consider how data might be stored, we first consider the simplest file format: the comma separated values file (`.csv`). In this file time, each of the “cells” of data are separated by a comma. For example, the data file storing scores for three students might be as follows:
+To consider how data might be stored, we first consider the simplest file format: the comma separated values file (`.csv`). In this file type, each of the “cells” of data are separated by a comma. For example, the data file storing scores for three students might be as follows:
 
 ```         
 Able, Dave, 98, 92, 94
@@ -393,7 +139,7 @@ To make R read in the data arranged in this format, we need to tell R three thin
 The primary function that we'll use to read data from a file and into R is the function `read.csv()`. This function has many optional arguments but the most commonly used ones are outlined in the table below.
 
 | Argument           | Default     | Description                                                                                                     |
-|------------------------|------------------------|------------------------|
+|----------------|----------------|----------------------------------------|
 | `file`             | Required    | A character string denoting the file location.                                                                  |
 | `header`           | `TRUE`      | Specifies whether the first line contains column headers.                                                       |
 | `sep`              | `","`       | Specifies the character that separates columns. For `read.csv()`, this is usually a comma.                      |
