@@ -1,9 +1,9 @@
 # Assessment Template {.unnumbered}
 
 ---
-title: "Data Analysis Report"
-author: "Your Name"
-date: "2025-09-25"
+title: "ENVS225 Assignment 1"
+author: "Anonymous"
+date: "`r Sys.Date()`"
 format:
   html:
     toc: true
@@ -20,7 +20,7 @@ execute:
   message: false
 ---
 
-**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis.
+**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from here and work on it with your own Rstudio.
 
 ## Setup
 
