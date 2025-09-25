@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Gabriele Filomena">
+<meta name="dcterms.date" content="2025-09-25">
 
-<title>Assessment: How to submit – Exploring the Social World - Quantitative Block: Statistics</title>
+<title>2&nbsp; Working Directories and Paths – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +66,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../general/reportTemplate.html" rel="next">
-<link href="../general/assessment.html" rel="prev">
+<link href="../labs/00.introR.html" rel="next">
+<link href="../general/reportTemplate.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -116,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../general/howSubmit.html">Assessment: How to submit</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../general/wdPaths.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Working Directories and Paths</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,7 +167,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../general/howSubmit.html" class="sidebar-item-text sidebar-link active">
+  <a href="../general/howSubmit.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assessment: How to submit</span></a>
   </div>
 </li>
@@ -177,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../general/wdPaths.html" class="sidebar-item-text sidebar-link">
+  <a href="../general/wdPaths.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Working Directories and Paths</span></span></a>
   </div>
 </li>
@@ -198,22 +200,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#start-clean-optional-but-handy" id="toc-start-clean-optional-but-handy" class="nav-link active" data-scroll-target="#start-clean-optional-but-handy"><span class="header-section-number">2.1</span> Start clean (optional but handy)</a></li>
+  <li><a href="#know-where-you-are-working-directory" id="toc-know-where-you-are-working-directory" class="nav-link" data-scroll-target="#know-where-you-are-working-directory"><span class="header-section-number">2.2</span> Know where you are (working directory)</a></li>
+  <li><a href="#recommended-folder-layout-envs225" id="toc-recommended-folder-layout-envs225" class="nav-link" data-scroll-target="#recommended-folder-layout-envs225"><span class="header-section-number">2.3</span> Recommended folder layout (ENVS225)</a></li>
+  <li><a href="#set-the-working-directory-in-rstudio-every-time-you-use-a-new-pc" id="toc-set-the-working-directory-in-rstudio-every-time-you-use-a-new-pc" class="nav-link" data-scroll-target="#set-the-working-directory-in-rstudio-every-time-you-use-a-new-pc"><span class="header-section-number">2.4</span> Set the working directory in RStudio (every time you use a new PC)</a></li>
+  <li><a href="#loading-data-csv-excel-with-relative-paths" id="toc-loading-data-csv-excel-with-relative-paths" class="nav-link" data-scroll-target="#loading-data-csv-excel-with-relative-paths"><span class="header-section-number">2.5</span> Loading data (CSV, Excel) with relative paths</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/wdPaths.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assessment: How to submit</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Working Directories and Paths</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gabriele Filomena </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 25, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -223,35 +247,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>You must submit a <code>.pdf</code> file, that is a rendered version of a Quarto Markdown file (<code>qmd</code> file). This will allow you to write a research paper that also includes your working code, without the need of including the data (rendered <code>.qmd</code> files are executed before being converted to R).</p>
-<p>How to get a PDF?</p>
-<ol type="1">
-<li><strong>Install Quarto</strong>: Make sure you have Quarto installed. You can download it from quarto.org.</li>
-<li><strong>LaTeX Installation</strong>: For PDF output, you’ll need a LaTeX distribution like <strong>TinyTeX</strong> from R, by executing this in the R console:</li>
-</ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tinytex"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="3" type="1">
-<li><strong>Open the Quarto File</strong>: Open your <code>.qmd</code> file in RStudio.</li>
-<li><strong>Set Output Format</strong>: In the YAML header at the top of your Quarto file, specify <code>pdf</code> under <code>format</code>:</li>
-</ol>
+<section id="start-clean-optional-but-handy" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="start-clean-optional-but-handy"><span class="header-section-number">2.1</span> Start clean (optional but handy)</h2>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="../img/quartoHeader.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear the environment (objects in memory)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="know-where-you-are-working-directory" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="know-where-you-are-working-directory"><span class="header-section-number">2.2</span> Know where you are (working directory)</h2>
+<p>Your working directory (WD) is the folder R uses as the starting point for relative paths.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show current working directory</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/gfilo/OneDrive - The University of Liverpool/Teaching/stats/general"</code></pre>
 </div>
 </div>
+<p>A relative path is specified from the working directory (e.g., <code>data/myfile.csv</code>).</p>
+<p>An absolute path starts at the drive root (e.g., <code>C:/Users/you/Documents/stats/data/myfile.csv</code>).</p>
+</section>
+<section id="recommended-folder-layout-envs225" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="recommended-folder-layout-envs225"><span class="header-section-number">2.3</span> Recommended folder layout (ENVS225)</h2>
+<p>Download the module materials, unzip them them wherever you prefer. Then un-nest the folder with the material (you will have one folder called <code>stats-main</code> containing another folder inside, with the same name. Aim for:</p>
+<pre><code>stats-main/
+├── data/
+├── labs_img/
+└── labs/</code></pre>
+<p>You can delete other sub-folders (e.g., docs) if you don’t need them. It is strongly advised to move this folder into your M: drive on university machines, so it’s accessible from every other PC on campus. Go to <code>This PC</code> and access <code>M:\(UoL userName)</code></p>
+</section>
+<section id="set-the-working-directory-in-rstudio-every-time-you-use-a-new-pc" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="set-the-working-directory-in-rstudio-every-time-you-use-a-new-pc"><span class="header-section-number">2.4</span> Set the working directory in RStudio (every time you use a new PC)</h2>
+<p>Windows: <code>RStudio &gt; Tools &gt; Global Options &gt; General &gt; Default working directory &gt;</code> Browse to your <code>stats-main</code> folder.</p>
+<p>macOS: <code>RStudio &gt; Preferences &gt; General</code>(older versions: under <code>Appearance/Pane Layout)</code> set Default working directory to <code>stats-main/</code>, this is the folder with all the materials inside.</p>
+<p>Then restart RStudio and verify:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/gfilo/OneDrive - The University of Liverpool/Teaching/stats/general"</code></pre>
 </div>
-<pre><code>    title: "Your Document Title"
-    author: "Anonymous" # do not change
-    format: pdf</code></pre>
-<ol start="5" type="1">
-<li>Click the <strong>Render</strong> button in the RStudio toolbar (next to the Knit button).</li>
-</ol>
+</div>
+<p><strong>Tip</strong>: In addition always save your projects inside the folder <code>stats-main</code>. This keeps paths stable and prevents issues.</p>
+</section>
+<section id="loading-data-csv-excel-with-relative-paths" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="loading-data-csv-excel-with-relative-paths"><span class="header-section-number">2.5</span> Loading data (CSV, Excel) with relative paths</h2>
+<p><strong>Option a) Your <code>.qmd</code> project is in <code>stats-main</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/survey.csv"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>xls <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/survey.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Option b) Your <code>.qmd</code> project is in <code>stats-main\subfolder</code></strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/survey.csv"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>xls <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"../data/survey.xlsx"</span>, <span class="at">sheet =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In summary:</p>
+<ul>
+<li><p><code>read_csv(MyFile.csv)</code> RStudio looks in the working directory for the file <code>MyFile.csv</code>.</p></li>
+<li><p><code>read_csv(MyFolder/MyFile.csv)</code> RStudio looks inside the Working Directory (WD), for the folder <code>MyFolder</code>, then the file <code>MyFile.csv</code>.</p></li>
+<li><p><code>read_csv(data/survey.csv)</code> RStudio looks inside the WD, looks inside <code>data</code>, then <code>survey.csv</code>.</p></li>
+<li><p><code>read_csv(``../data/survey.csv</code> RStudio goes up one folder from the WD, then looks for the folder <code>data</code>and the file <code>surve.csv</code>.</p></li>
+</ul>
+<p>You can always inspect where you are by</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/gfilo/OneDrive - The University of Liverpool/Teaching/stats/general"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>()        <span class="co"># What’s in the working directory?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "about.qmd"           "assessment.html"     "assessment.qmd"     
+ [4] "howSubmit.html"      "howSubmit.qmd"       "overview.html"      
+ [7] "overview.qmd"        "reportTemplate.html" "reportTemplate.qmd" 
+[10] "setup.qmd"           "wdPaths.qmd"         "wdPaths.rmarkdown"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data"</span>)  <span class="co"># Do we see the data folder?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>character(0)</code></pre>
+</div>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -676,13 +755,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../general/assessment.html" class="pagination-link" aria-label="Assessment">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Assessment</span>
+      <a href="../general/reportTemplate.html" class="pagination-link" aria-label="Data Analysis Report">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Analysis Report</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../general/reportTemplate.html" class="pagination-link" aria-label="Data Analysis Report">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Analysis Report</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../labs/00.introR.html" class="pagination-link" aria-label="Lab: Introduction to R">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Introduction to R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -694,7 +773,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/howSubmit.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/wdPaths.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
