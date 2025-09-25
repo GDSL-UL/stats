@@ -9,7 +9,7 @@
 <meta name="author" content="Gabriele Filomena">
 <meta name="dcterms.date" content="2025-09-25">
 
-<title>4&nbsp; Lab: Introduction to Exploring a Dataset – Exploring the Social World - Quantitative Block: Statistics</title>
+<title>2&nbsp; Lab: Introduction to Exploring a Dataset – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,7 +117,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/01.DataExploration.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: Introduction to Exploring a Dataset</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/01.DataExploration.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Introduction to Exploring a Dataset</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -173,25 +173,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../general/reportTemplate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Data Analysis Report</span></span></a>
+ <span class="menu-text">Assessment Template</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../general/wdPaths.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Working Directories and Paths</span></span></a>
+ <span class="menu-text">Working Directories and Paths</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/00.introR.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Introduction to R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab: Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../labs/01.DataExploration.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: Introduction to Exploring a Dataset</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Introduction to Exploring a Dataset</span></span></a>
   </div>
 </li>
     </ul>
@@ -204,16 +204,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#practice-dataset-and-dataframes" id="toc-practice-dataset-and-dataframes" class="nav-link active" data-scroll-target="#practice-dataset-and-dataframes"><span class="header-section-number">4.1</span> Practice: Dataset and Dataframes</a>
+  <li><a href="#practice-dataset-and-dataframes" id="toc-practice-dataset-and-dataframes" class="nav-link active" data-scroll-target="#practice-dataset-and-dataframes"><span class="header-section-number">2.1</span> Practice: Dataset and Dataframes</a>
   <ul class="collapse">
-  <li><a href="#datasets-in-r" id="toc-datasets-in-r" class="nav-link" data-scroll-target="#datasets-in-r"><span class="header-section-number">4.1.1</span> Datasets in R</a></li>
-  <li><a href="#importing-data-in-r" id="toc-importing-data-in-r" class="nav-link" data-scroll-target="#importing-data-in-r"><span class="header-section-number">4.1.2</span> Importing Data in R</a></li>
+  <li><a href="#datasets-in-r" id="toc-datasets-in-r" class="nav-link" data-scroll-target="#datasets-in-r"><span class="header-section-number">2.1.1</span> Datasets in R</a></li>
+  <li><a href="#importing-data-in-r" id="toc-importing-data-in-r" class="nav-link" data-scroll-target="#importing-data-in-r"><span class="header-section-number">2.1.2</span> Importing Data in R</a></li>
   </ul></li>
-  <li><a href="#practice-descriptive-statistics" id="toc-practice-descriptive-statistics" class="nav-link" data-scroll-target="#practice-descriptive-statistics"><span class="header-section-number">4.2</span> Practice: Descriptive Statistics</a>
+  <li><a href="#practice-descriptive-statistics" id="toc-practice-descriptive-statistics" class="nav-link" data-scroll-target="#practice-descriptive-statistics"><span class="header-section-number">2.2</span> Practice: Descriptive Statistics</a>
   <ul class="collapse">
-  <li><a href="#summarizing-data" id="toc-summarizing-data" class="nav-link" data-scroll-target="#summarizing-data"><span class="header-section-number">4.2.1</span> Summarizing Data</a></li>
-  <li><a href="#understanding-the-structure-of-the-frs-datafile" id="toc-understanding-the-structure-of-the-frs-datafile" class="nav-link" data-scroll-target="#understanding-the-structure-of-the-frs-datafile"><span class="header-section-number">4.2.2</span> Understanding the Structure of the FRS Datafile</a></li>
-  <li><a href="#explore-the-distribution-of-your-outcome-variable" id="toc-explore-the-distribution-of-your-outcome-variable" class="nav-link" data-scroll-target="#explore-the-distribution-of-your-outcome-variable"><span class="header-section-number">4.2.3</span> Explore the Distribution of Your Outcome Variable</a></li>
+  <li><a href="#summarizing-data" id="toc-summarizing-data" class="nav-link" data-scroll-target="#summarizing-data"><span class="header-section-number">2.2.1</span> Summarizing Data</a></li>
+  <li><a href="#understanding-the-structure-of-the-frs-datafile" id="toc-understanding-the-structure-of-the-frs-datafile" class="nav-link" data-scroll-target="#understanding-the-structure-of-the-frs-datafile"><span class="header-section-number">2.2.2</span> Understanding the Structure of the FRS Datafile</a></li>
+  <li><a href="#explore-the-distribution-of-your-outcome-variable" id="toc-explore-the-distribution-of-your-outcome-variable" class="nav-link" data-scroll-target="#explore-the-distribution-of-your-outcome-variable"><span class="header-section-number">2.2.3</span> Explore the Distribution of Your Outcome Variable</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/labs/01.DataExploration.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -223,7 +223,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: Introduction to Exploring a Dataset</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Introduction to Exploring a Dataset</span></h1>
 </div>
 
 
@@ -289,8 +289,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="practice-dataset-and-dataframes" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="practice-dataset-and-dataframes"><span class="header-section-number">4.1</span> Practice: Dataset and Dataframes</h2>
+<section id="practice-dataset-and-dataframes" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="practice-dataset-and-dataframes"><span class="header-section-number">2.1</span> Practice: Dataset and Dataframes</h2>
 <p>Within this module we will be working with data stored in so-called datasets. A dataset is a structured collection of data points that represent various measurements or observations, often organized in a tabular format with rows and columns. A dataset might contain information about different locations, such as neighborhoods or cities, with each row representing a place and each column detailing characteristics like population density, average income, or number of green parks. For example, a dataset could be compiled to study patterns in urban mobility, where the data includes the number of daily commuters, the distance they travel, and the mode of transport they use. Datasets provide the essential building blocks for statistical analysis; they enable exploring relationships, identifying patterns, and drawing conclusions about certain phenomena.</p>
 <p>Examples of everyday datasets:</p>
 <ul>
@@ -304,8 +304,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><strong>Rows</strong> represent a single object on which the column traits are measured.</li>
 </ul>
 <p>For example, in a grade book for recording students scores throughout the semester, their is one row for every student and columns for each assignment. A greenhouse experiment dataset will have a row for every plant and columns for treatment type and biomass.</p>
-<section id="datasets-in-r" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="datasets-in-r"><span class="header-section-number">4.1.1</span> Datasets in R</h3>
+<section id="datasets-in-r" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="datasets-in-r"><span class="header-section-number">2.1.1</span> Datasets in R</h3>
 <p>In R, we want a way of storing data where it feels just as if we had an Excel Spreadsheet where each row represents an observation and each column represents some information about that observation. We will call this object a <code>data.frame</code>, an R represention of a data set. The easiest way to understand data frames is to create one.</p>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Task</strong>: Copy the code below in your markdown. Create a <code>data.frame</code> that represents an instructor’s grade book, where each row is a student, and each column represents some sort of assessment.</p>
@@ -377,8 +377,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="importing-data-in-r" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="importing-data-in-r"><span class="header-section-number">4.1.2</span> Importing Data in R</h3>
+<section id="importing-data-in-r" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="importing-data-in-r"><span class="header-section-number">2.1.2</span> Importing Data in R</h3>
 <p>Usually we won’t type the data in by hand, but rather load the data from some package. Reading data from external sources is a necessary skill.</p>
 <p><strong><em>Comma Separated Values</em></strong> <strong>Data</strong></p>
 <p>To consider how data might be stored, we first consider the simplest file format: the comma separated values file (<code>.csv</code>). In this file type, each of the “cells” of data are separated by a comma. For example, the data file storing scores for three students might be as follows:</p>
@@ -475,10 +475,10 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 </div>
 </section>
 </section>
-<section id="practice-descriptive-statistics" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="practice-descriptive-statistics"><span class="header-section-number">4.2</span> Practice: Descriptive Statistics</h2>
-<section id="summarizing-data" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="summarizing-data"><span class="header-section-number">4.2.1</span> Summarizing Data</h3>
+<section id="practice-descriptive-statistics" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="practice-descriptive-statistics"><span class="header-section-number">2.2</span> Practice: Descriptive Statistics</h2>
+<section id="summarizing-data" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="summarizing-data"><span class="header-section-number">2.2.1</span> Summarizing Data</h3>
 <p>It is very important to be able to take a data set and produce summary statistics such as the mean and standard deviation of a column. For this sort of manipulation, we use the package <code>dplyr</code>. This package allows chaining together many common actions to form a particular task.</p>
 <p>The fundamental operations to perform on a data set are:</p>
 <ul>
@@ -756,8 +756,8 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 </div>
 </div>
 </section>
-<section id="understanding-the-structure-of-the-frs-datafile" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="understanding-the-structure-of-the-frs-datafile"><span class="header-section-number">4.2.2</span> Understanding the Structure of the FRS Datafile</h3>
+<section id="understanding-the-structure-of-the-frs-datafile" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="understanding-the-structure-of-the-frs-datafile"><span class="header-section-number">2.2.2</span> Understanding the Structure of the FRS Datafile</h3>
 <p>In the FRS data structure, each row represents a person, but:</p>
 <ul>
 <li>Each person is nested within a family.</li>
@@ -926,8 +926,8 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <p>The inclusion of all persons in a household allows us more flexibility in the types of research question we can answer. For example, we could explore how the likelihood of a woman being in paid employment <code>WorkStatus</code> is influenced by the age of the youngest child still living in her family (if any) <code>fam_youngest</code>.</p>
 <p>In the FRS (and Census), a “family” is defined as a couple and any “dependent” children. Dependent children are defined as those aged 0–15, or aged 16–19 if unmarried and in full-time education.</p>
 </section>
-<section id="explore-the-distribution-of-your-outcome-variable" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="explore-the-distribution-of-your-outcome-variable"><span class="header-section-number">4.2.3</span> Explore the Distribution of Your Outcome Variable</h3>
+<section id="explore-the-distribution-of-your-outcome-variable" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="explore-the-distribution-of-your-outcome-variable"><span class="header-section-number">2.2.3</span> Explore the Distribution of Your Outcome Variable</h3>
 <p>Before starting your analysis, it is critical to know the type of scale used to measure your outcome variable: is it categorical or continuous? Here we will start off by exploring a continuous variable which can then turn into a categorical variable (e.g.&nbsp;top earners: yes or no). We explore the income distribution in the UK by first looking at the low and high end of the distribution ie. What sorts of people have high (or low) incomes?</p>
 <p>In the FRS each person’s annual income is recorded, both gross (pre-tax) and net (post-tax). This income includes all income sources, including earnings, profits, investment returns, state benefits, occupational pensions etc. As it is possible to make a loss on some of these activities, it is also possible (although unusual) for someone’s gross or net annual income in a given year to be negative (representing an overall loss).</p>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
@@ -1542,7 +1542,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../labs/00.introR.html" class="pagination-link" aria-label="Lab: Introduction to R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Introduction to R</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab: Introduction to R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
