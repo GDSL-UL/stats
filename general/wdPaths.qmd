@@ -1,9 +1,4 @@
----
-title: "Working Directories and Paths"
-author: "Gabriele Filomena"
-date: "`r Sys.Date()`"
-output: html_document
----
+# Working Directories and Paths {.unnumbered}
 
 ## Start clean (optional but handy)
 
