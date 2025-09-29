@@ -17,6 +17,8 @@ Before getting into it, have a look at this [resource](https://mlu-explain.githu
 
 The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture08.pdf).
 
+Before completing the practical, please take this [quiz](https://canvas.liverpool.ac.uk/courses/84668/quizzes/169285?module_item_id=2435564).
+
 **Learning Objectives:**
 
 -   Visualise the association between two continuous variables using a scatterplot.
