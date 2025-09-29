@@ -114,7 +114,27 @@
     "href": "general/reportTemplate.html",
     "title": "Assessment Template",
     "section": "",
-    "text": "Setup\nLoad commonly used libraries for statistical analysis and data manipulation.\nCode\n# Core tidyverse\nlibrary(tidyverse)    # includes ggplot2, dplyr, tidyr, readr, purrr, tibble, stringr, forcats\n\n# Tables & reporting\nlibrary(knitr)\nlibrary(kableExtra)\n\n# Stats helpers\nlibrary(broom)\n\n## These need to be installed on your PC.",
+    "text": "Setup\nSuggested Report Structure — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from hereand work on it with your own Rstudio.\nLoad commonly used libraries for statistical analysis and data manipulation.\nCode\n# Core tidyverse\nlibrary(tidyverse)    # includes ggplot2, dplyr, tidyr, readr, purrr, tibble, stringr, forcats\n\n# Tables & reporting\nlibrary(knitr)\nlibrary(kableExtra)\n\n# Stats helpers\nlibrary(broom)\n\n## These need to be installed on your PC.",
+    "crumbs": [
+      "ENVS225 Assignment 1"
+    ]
+  },
+  {
+    "objectID": "general/reportTemplate.html#setup",
+    "href": "general/reportTemplate.html#setup",
+    "title": "Assessment Template",
+    "section": "",
+    "text": "Once all the chunks execute correctly (no errors when running all the code, Ctrl +Alt + R ) you can render the qmd file. Follow the instructions here to render the document to a PDF. Remove this message and any irrelevant text from the final submission.",
+    "crumbs": [
+      "ENVS225 Assignment 1"
+    ]
+  },
+  {
+    "objectID": "general/reportTemplate.html#introduction",
+    "href": "general/reportTemplate.html#introduction",
+    "title": "Assessment Template",
+    "section": "Introduction",
+    "text": "Introduction\nAim. State clearly what you want to investigate (e.g., association between X and Y).\nRelevance. Explain why the topic matters (theory, policy, practice).\nGap & Research Question (RQ). Identify what is missing in the current knowledge and pose 1 RQ (avoid yes/no questions; ask how, to what extent, which factors).\nStructure. Briefly preview how the rest of the article is organized.",
     "crumbs": [
       "ENVS225 Assignment 1"
     ]
@@ -234,7 +254,7 @@
     "href": "labs/01.DataExploration.html",
     "title": "2  Lab: Exploring a Dataset",
     "section": "",
-    "text": "2.1 Practice: Dataset and Dataframes\nWithin this module we will be working with data stored in so-called datasets. A dataset is a structured collection of data points that represent various measurements or observations, often organized in a tabular format with rows and columns. A dataset might contain information about different locations, such as neighborhoods or cities, with each row representing a place and each column detailing characteristics like population density, average income, or number of green parks. For example, a dataset could be compiled to study patterns in urban mobility, where the data includes the number of daily commuters, the distance they travel, and the mode of transport they use. Datasets provide the essential building blocks for statistical analysis; they enable exploring relationships, identifying patterns, and drawing conclusions about certain phenomena.\nExamples of everyday datasets:\nUsually, data is organized in\nFor example, in a grade book for recording students scores throughout the semester, their is one row for every student and columns for each assignment. A greenhouse experiment dataset will have a row for every plant and columns for treatment type and biomass.",
+    "text": "2.1 Practice: Dataset and Dataframes\nThe following material has been readapted from:\nThe lecture’s slides can be found here.\nBefore completing the practical, please take this quiz.\nFor the lab sessions and your assignment, you will need the following software:\nIMPORTANT: Before starting: verify that you have set the directory correctly and familiarise yourself with working with directories and loading files. These are the instructions.\nNow create a .qmd project. We use the File -&gt; New File -&gt; Quarto Document.. dropdown option; a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it “week1” and save it in your main folder.\nFollow the practical below. You can describe what you are doing in normal text. See here for how to format normal text in Markdown documents\nRemember, when you want to write code in a markdown document you have to enclose it like this:\nWithin this module we will be working with data stored in so-called datasets. A dataset is a structured collection of data points that represent various measurements or observations, often organized in a tabular format with rows and columns. A dataset might contain information about different locations, such as neighborhoods or cities, with each row representing a place and each column detailing characteristics like population density, average income, or number of green parks. For example, a dataset could be compiled to study patterns in urban mobility, where the data includes the number of daily commuters, the distance they travel, and the mode of transport they use. Datasets provide the essential building blocks for statistical analysis; they enable exploring relationships, identifying patterns, and drawing conclusions about certain phenomena.\nExamples of everyday datasets:\nUsually, data is organized in\nFor example, in a grade book for recording students scores throughout the semester, their is one row for every student and columns for each assignment. A greenhouse experiment dataset will have a row for every plant and columns for treatment type and biomass.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Lab: Exploring a Dataset</span>"
     ]
@@ -260,31 +280,11 @@
     ]
   },
   {
-    "objectID": "general/reportTemplate.html#setup",
-    "href": "general/reportTemplate.html#setup",
-    "title": "Assessment Template",
-    "section": "",
-    "text": "Once all the chunks execute correctly (no errors when running all the code, Ctrl +Alt + R ) you can render the qmd file. Follow the instructions here to render the document to a PDF. Remove this message and any irrelevant text from the final submission.",
-    "crumbs": [
-      "ENVS225 Assignment 1"
-    ]
-  },
-  {
-    "objectID": "general/reportTemplate.html#introduction",
-    "href": "general/reportTemplate.html#introduction",
-    "title": "Assessment Template",
-    "section": "Introduction",
-    "text": "Introduction\nAim. State clearly what you want to investigate (e.g., association between X and Y).\nRelevance. Explain why the topic matters (theory, policy, practice).\nGap & Research Question (RQ). Identify what is missing in the current knowledge and pose 1 RQ (avoid yes/no questions; ask how, to what extent, which factors).\nStructure. Briefly preview how the rest of the article is organized.",
-    "crumbs": [
-      "ENVS225 Assignment 1"
-    ]
-  },
-  {
     "objectID": "labs/02.MultipleLinear.html",
     "href": "labs/02.MultipleLinear.html",
     "title": "3  Lab: Correlation, Single, and Multiple Linear Regression",
     "section": "",
-    "text": "3.1 Part I. Correlation",
+    "text": "3.1 Part I. Correlation\nIMPORTANT: Before starting: verify that you have set the directory correctly and familiarise yourself with working with directories and loading files. These are the instructions.\nNow create a .qmd project. We use the File -&gt; New File -&gt; Quarto Document.. dropdown option; a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it “week2” and save it in your main folder.\nFollow the practical below. You can describe what you are doing in normal text. See here for how to format normal text in Markdown documents\nIn this week’s practical, we will review how to calculate and visualise correlation coefficients between variables. This practical is split into two parts. The first part focuses on measuring and visualising the relationship between between continuous variables. The second part goes through the implementation of a Linear Regression Model, again between continuous variables.\nBefore getting into it, have a look at this resource, it really helps understand how regression models work.\nThe lecture’s slides can be found here.\nBefore completing the practical, please take this quiz.\nLearning Objectives:\nNote on file paths: When calling the read.csv function, the path will vary depending on the location of the script it is being executed or your working directory (WD):",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Lab: Correlation, Single, and Multiple Linear Regression</span>"
     ]
