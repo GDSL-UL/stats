@@ -5,9 +5,9 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-**IMPORTANT: Before starting: check that you set the directory correctly and familiarise yourself with working with directories and loading files. These are the [instructions](https://gdsl-ul.github.io/stats/general/wdPaths.html)**.
+**IMPORTANT: Before starting: verify that you have set the directory correctly and familiarise yourself with working with directories and loading files. These are the [instructions](https://gdsl-ul.github.io/stats/general/wdPaths.html)**.
 
-**Now create a .qmd project. We use the `File -> New File -> Quarto Document..` dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it "*week2*" and save it in your main folder.**
+**Now create a .qmd project. We use the `File -> New File -> Quarto Document..` dropdown option; a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it "*week2*" and save it in your main folder.**
 
 Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents
 
@@ -44,11 +44,11 @@ library(dplyr)
 
 options(scipen = 999, digits = 4)  # Avoid scientific notation and round to 4 decimals globally
 
-# load data
+# load data - you main need to remove "../"
 census <- read.csv("../data/Census2021/EW_DistrictPercentages.csv") # District level
 ```
 
-We’re using a (district/ward/etc.)-level census dataset that includes:
+We’re using a (district/ward/etc.) level census dataset that includes:
 
 -   \% of population with poor health (variable name: `pct_Very_bad_health`).
 -   \% of population with no qualifications (`pct_No_qualifications`).
@@ -80,23 +80,37 @@ You can visualise the relationship between two continuous variables using a scat
 
 -   the % of population with no qualifications (`pct_No_qualifications`);
 -   the % of population aged 65 to 84 (`pct_Age_65_to_84`);
--   the % of population in a married couple (`pct_Married_couple`);
+-   the % of population in a married couple (`pct_Married_opposite_sex_couple`);
 -   the % of population in a Higher Managerial or Professional occupation (`pct_Higher_manager_prof`).
 
 ```{r}
-# Scatterplot for each variable variables 
-variables <- c("pct_No_qualifications", "pct_Age_65_to_84", "pct_Married_couple", "pct_Higher_manager_prof")
-
-# Loop to create scatterplots and calculate correlations 
-# x and y variables for each scatter plot,
-for (var in variables) { 
-  # Scatterplot 
-  ggplot(census, aes_string(x = var, y = "pct_Very_bad_health")) +
+# 1
+ggplot(census, aes(x = pct_No_qualifications, y = pct_Very_bad_health)) +
     geom_point() + 
-    labs(title = paste("Scatterplot of pct_Very_bad_health vs", var), 
-         x = var, y = "pct_Very_bad_health") +
+    labs(title = paste("Scatterplot of % people in Very bad health vs & % people", "No Qualifications"), 
+         x = "% no qualifications", y = "% Very bad_health") +
     theme_minimal()
-}
+
+# 2
+ggplot(census, aes(x = pct_Age_65_to_84, y = pct_Very_bad_health)) +
+    geom_point() + 
+    labs(title = paste("Scatterplot of % people in Very bad health vs & % people", "aged between 65 and 84"),
+         x = "% aged 65-84", y = "% Very bad_health") +
+    theme_minimal()
+
+# 3
+ggplot(census, aes(x = pct_Married_opposite_sex_couple, y = pct_Very_bad_health)) +
+    geom_point() + 
+    labs(title = paste("Scatterplot of % people in Very bad health vs & % people", "in married couples."), 
+         x = "% married couples", y = "% Very bad_health") +
+    theme_minimal()
+
+# 4
+ggplot(census, aes(x = pct_Higher_manager_prof, y = pct_Very_bad_health)) +
+    geom_point() + 
+    labs(title = paste("Scatterplot of % people in Very bad health vs & % people", "in higher managerial professions."), 
+         x = "% higher managerial professions", y = "% Very bad_health") +
+    theme_minimal()
 
 ```
 
@@ -121,10 +135,8 @@ Rather than relying upon an impressionistic view of the strength of the associat
 
 When calculating correlation for a single pair of variables, select the method that best fits their data distribution:
 
-```         
 -   Use **Pearson’s** if both variables are symmetrically distributed.
 -   Use **Spearman’s** if one or both variables are skewed.
-```
 
 ```{r class.source = "fold-show", echo = F}
 knitr::include_graphics("../img/distributions.png")
@@ -168,12 +180,12 @@ spearman_correlation <- cor(census$pct_Very_bad_health,
 cat("Spearman Correlation:", spearman_correlation, "\n")
 ```
 
-| Covariates                                    | Pearson | Spearman |
-|-----------------------------------------------|---------|----------|
-| pct_Very_bad_health - pct_No_qualifications   |         |          |
-| pct_Very_bad_health - pct_Age_65_to_84        |         |          |
-| pct_Very_bad_health - pct_Married_couple      |         |          |
-| pct_Very_bad_health - pct_Higher_manager_prof |         |          |
+| Covariates                                            | Pearson | Spearman |
+|-------------------------------------------------------|---------|----------|
+| pct_Very_bad_health - pct_No_qualifications           |         |          |
+| pct_Very_bad_health - pct_Age_65_to_84                |         |          |
+| pct_Very_bad_health - pct_Married_opposite_sex_couple |         |          |
+| pct_Very_bad_health - pct_Higher_manager_prof         |         |          |
 
 **What can you make of this numbers?**
 
