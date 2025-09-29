@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gabriele Filomena">
-<meta name="dcterms.date" content="2025-09-25">
+<meta name="dcterms.date" content="2025-09-29">
 
 <title>Exploring the Social World - Quantitative Block: Statistics - 3&nbsp; Lab: Correlation, Single, and Multiple Linear Regression</title>
 <style>
@@ -275,7 +275,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 25, 2025</p>
+      <p class="date">September 29, 2025</p>
     </div>
   </div>
   
@@ -287,8 +287,8 @@ window.Quarto = {
 </header>
 
 
-<p><strong>IMPORTANT: Before starting: check that you set the directory correctly and familiarise yourself with working with directories and loading files. These are the <a href="https://gdsl-ul.github.io/stats/general/wdPaths.html">instructions</a></strong>.</p>
-<p><strong>Now create a .qmd project. We use the <code>File -&gt; New File -&gt; Quarto Document..</code> dropdown option, and a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it “<em>week2</em>” and save it in your main folder.</strong></p>
+<p><strong>IMPORTANT: Before starting: verify that you have set the directory correctly and familiarise yourself with working with directories and loading files. These are the <a href="https://gdsl-ul.github.io/stats/general/wdPaths.html">instructions</a></strong>.</p>
+<p><strong>Now create a .qmd project. We use the <code>File -&gt; New File -&gt; Quarto Document..</code> dropdown option; a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it “<em>week2</em>” and save it in your main folder.</strong></p>
 <p>Follow the practical below. You can describe what you are doing in normal text. See <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a> for how to format normal text in Markdown documents</p>
 <p>In this week’s practical, we will review how to calculate and visualise correlation coefficients between variables. This practical is split into two parts. The first part focuses on measuring and visualising the relationship between between <strong>continuous variables</strong>. The second part goes through the implementation of a Linear Regression Model, again between continuous variables.</p>
 <p>Before getting into it, have a look at this <a href="https://mlu-explain.github.io/linear-regression/">resource</a>, it really helps understand how regression models work.</p>
@@ -313,8 +313,11 @@ window.Quarto = {
 <p>see also: https://canvas.liverpool.ac.uk/courses/77895/pages/census-data-2021</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -329,12 +332,12 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>, <span class="at">digits =</span> <span class="dv">4</span>)  <span class="co"># Avoid scientific notation and round to 4 decimals globally</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>census <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/Census2021/EW_DistrictPercentages.csv"</span>) <span class="co"># District level</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>, <span class="at">digits =</span> <span class="dv">4</span>)  <span class="co"># Avoid scientific notation and round to 4 decimals globally</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load data - you main need to remove "../"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>census <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/Census2021/EW_DistrictPercentages.csv"</span>) <span class="co"># District level</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We’re using a (district/ward/etc.)-level census dataset that includes:</p>
+<p>We’re using a (district/ward/etc.) level census dataset that includes:</p>
 <ul>
 <li>% of population with poor health (variable name: <code>pct_Very_bad_health</code>).</li>
 <li>% of population with no qualifications (<code>pct_No_qualifications</code>).</li>
@@ -343,11 +346,11 @@ Attaching package: 'dplyr'</code></pre>
 </ul>
 <p>First, let’s get some descriptive statistics that help identify general trends and distributions in the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pct_Very_bad_health, pct_No_qualifications, pct_Males, pct_Higher_manager_prof) <span class="sc">%&gt;%</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>summary_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pct_Very_bad_health, pct_No_qualifications, pct_Males, pct_Higher_manager_prof) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>summary_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  pct_Very_bad_health_mean pct_No_qualifications_mean pct_Males_mean
 1                    1.173                       17.9          48.97
@@ -407,27 +410,61 @@ Attaching package: 'dplyr'</code></pre>
 <ul>
 <li>the % of population with no qualifications (<code>pct_No_qualifications</code>);</li>
 <li>the % of population aged 65 to 84 (<code>pct_Age_65_to_84</code>);</li>
-<li>the % of population in a married couple (<code>pct_Married_couple</code>);</li>
+<li>the % of population in a married couple (<code>pct_Married_opposite_sex_couple</code>);</li>
 <li>the % of population in a Higher Managerial or Professional occupation (<code>pct_Higher_manager_prof</code>).</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot for each variable variables </span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>variables <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"pct_No_qualifications"</span>, <span class="st">"pct_Age_65_to_84"</span>, <span class="st">"pct_Married_couple"</span>, <span class="st">"pct_Higher_manager_prof"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop to create scatterplots and calculate correlations </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># x and y variables for each scatter plot,</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (var <span class="cf">in</span> variables) { </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Scatterplot </span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(census, <span class="fu">aes_string</span>(<span class="at">x =</span> var, <span class="at">y =</span> <span class="st">"pct_Very_bad_health"</span>)) <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Scatterplot of pct_Very_bad_health vs"</span>, var), </span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> var, <span class="at">y =</span> <span class="st">"pct_Very_bad_health"</span>) <span class="sc">+</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `aes_string()` was deprecated in ggplot2 3.0.0.
-ℹ Please use tidy evaluation idioms with `aes()`.
-ℹ See also `vignette("ggplot2-in-packages")` for more information.</code></pre>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_No_qualifications, <span class="at">y =</span> pct_Very_bad_health)) <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Scatterplot of % people in Very bad health vs &amp; % people"</span>, <span class="st">"No Qualifications"</span>), </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"% no qualifications"</span>, <span class="at">y =</span> <span class="st">"% Very bad_health"</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02.MultipleLinear_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_Age_65_to_84, <span class="at">y =</span> pct_Very_bad_health)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Scatterplot of % people in Very bad health vs &amp; % people"</span>, <span class="st">"aged between 65 and 84"</span>),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"% aged 65-84"</span>, <span class="at">y =</span> <span class="st">"% Very bad_health"</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02.MultipleLinear_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_Married_opposite_sex_couple, <span class="at">y =</span> pct_Very_bad_health)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Scatterplot of % people in Very bad health vs &amp; % people"</span>, <span class="st">"in married couples."</span>), </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"% married couples"</span>, <span class="at">y =</span> <span class="st">"% Very bad_health"</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02.MultipleLinear_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_Higher_manager_prof, <span class="at">y =</span> pct_Very_bad_health)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Scatterplot of % people in Very bad health vs &amp; % people"</span>, <span class="st">"in higher managerial professions."</span>), </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"% higher managerial professions"</span>, <span class="at">y =</span> <span class="st">"% Very bad_health"</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02.MultipleLinear_files/figure-html/unnamed-chunk-3-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>Q2. Which of the associations do you think is strongest, which one is the weakest?</strong></p>
@@ -467,8 +504,10 @@ Attaching package: 'dplyr'</code></pre>
 </table>
 <p><strong>Different Calculation Methods</strong>: Pearson’s correlation assumes linear relationships and is suitable for symmetrically distributed (normally distributed) variables, measuring the strength of the linear relationship. Spearman’s rank correlation, however, works on ranked data, so it’s more suitable for skewed data or variables with non-linear relationships, measuring the strength and direction of a monotonic relationship.</p>
 <p>When calculating correlation for a single pair of variables, select the method that best fits their data distribution:</p>
-<pre><code>-   Use **Pearson’s** if both variables are symmetrically distributed.
--   Use **Spearman’s** if one or both variables are skewed.</code></pre>
+<ul>
+<li>Use <strong>Pearson’s</strong> if both variables are symmetrically distributed.</li>
+<li>Use <strong>Spearman’s</strong> if one or both variables are skewed.</li>
+</ul>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -480,12 +519,12 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <p>You can check the distribution of a variable (e.g.&nbsp;<code>pct_No_qualifications</code> like this):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot histogram with density overlay for a chosen variable (e.g., 'pct_No_qualifications')</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_No_qualifications)) <span class="sc">+</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of pct_No_qualifications"</span>, <span class="at">x =</span> <span class="st">"Value"</span>, <span class="at">y =</span>  <span class="st">"Density"</span>) <span class="sc">+</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot histogram with density overlay for a chosen variable (e.g., 'pct_No_qualifications')</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_No_qualifications)) <span class="sc">+</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of pct_No_qualifications"</span>, <span class="at">x =</span> <span class="st">"Value"</span>, <span class="at">y =</span>  <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -501,26 +540,31 @@ Attaching package: 'dplyr'</code></pre>
 <p>To answer this question, complete the Table below by editing/running this code:.</p>
 <p>Pearson correlations</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pearson_correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(census<span class="sc">$</span>pct_Very_bad_health,</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    census<span class="sc">$</span>pct_No_qualifications,<span class="at">use =</span> <span class="st">"complete.obs"</span>, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the results</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Pearson Correlation:"</span>, pearson_correlation, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>pearson_correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(census<span class="sc">$</span>pct_Very_bad_health,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    census<span class="sc">$</span>pct_No_qualifications,<span class="at">use =</span> <span class="st">"complete.obs"</span>, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the results</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Pearson Correlation:"</span>, pearson_correlation, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Pearson Correlation: 0.7619 </code></pre>
 </div>
 </div>
 <p>Spearman correlations:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>spearman_correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(census<span class="sc">$</span>pct_Very_bad_health,</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    census<span class="sc">$</span>pct_No_qualifications, <span class="at">use =</span> <span class="st">"complete.obs"</span>, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Spearman Correlation:"</span>, spearman_correlation, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>spearman_correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(census<span class="sc">$</span>pct_Very_bad_health,</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    census<span class="sc">$</span>pct_No_qualifications, <span class="at">use =</span> <span class="st">"complete.obs"</span>, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Spearman Correlation:"</span>, spearman_correlation, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Spearman Correlation: 0.7781 </code></pre>
 </div>
 </div>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 74%">
+<col style="width: 12%">
+<col style="width: 13%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Covariates</th>
@@ -540,7 +584,7 @@ Attaching package: 'dplyr'</code></pre>
 <td></td>
 </tr>
 <tr class="odd">
-<td>pct_Very_bad_health - pct_Married_couple</td>
+<td>pct_Very_bad_health - pct_Married_opposite_sex_couple</td>
 <td></td>
 <td></td>
 </tr>
@@ -555,10 +599,10 @@ Attaching package: 'dplyr'</code></pre>
 <p>If you think you have found a correlation between two variables in our dataset, this doesn’t mean that an association exists between these two variables in the population at large. The uncertainty arises because, by chance, the random sample included in our dataset might not be fully representative of the wider population.</p>
 <p>For this reason, we need to verify whether the correlation is statistically significant,</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># significance test for pearson, for example</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>pearson_test <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(census<span class="sc">$</span>pct_Very_bad_health,</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    census<span class="sc">$</span>pct_No_qualifications, <span class="at">method =</span> <span class="st">"pearson"</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>pearson_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># significance test for pearson, for example</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>pearson_test <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(census<span class="sc">$</span>pct_Very_bad_health,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    census<span class="sc">$</span>pct_No_qualifications, <span class="at">method =</span> <span class="st">"pearson"</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>pearson_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Pearson's product-moment correlation
@@ -597,7 +641,7 @@ sample estimates:
 </ul>
 <p>Load some other Libraries</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
@@ -609,12 +653,12 @@ sample estimates:
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and the data (if not loaded):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>census <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/Census2021/EW_DistrictPercentages.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>census <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/Census2021/EW_DistrictPercentages.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Regression models are the standard method for constructing predictive and explanatory models. They tell us how changes in one variable (the target variable or independent variable, <span class="math inline">\(Y\)</span>) are <em>associated with</em> changes in explanatory variables, or dependent variables, <span class="math inline">\(X_1, X_2, X_3\)</span> (<span class="math inline">\(X_n\)</span>), etc. Classic linear regression is referred to <em>Ordinary least squares</em> (OLS) regression because they estimate the relationship between one or more independent variables and a dependent variable <span class="math inline">\(Y\)</span> using a hyperplane (i.e.&nbsp;a multi-dimensional line) that minimises the sum of the squared difference between the observed values of <span class="math inline">\(Y\)</span> and the values predicted by the model (denoted as <span class="math inline">\(\hat{Y}\)</span>, <span class="math inline">\(Y\)</span>-hat).</p>
 <p>Having seen <strong>Single Linear Regression</strong> in class - where the relationship between one independent variable and a dependent variable is modeled - we can extend this concept to situations where more than one explanatory variable might influence the outcome. While single linear regression helps us understand the effect of <strong>ONE</strong> variable in isolation, real-world phenomena are often influenced by multiple factors simultaneously. Multiple linear regression addresses this complexity by allowing us to model the relationship between a dependent variable and multiple independent variables, providing a more comprehensive view of how various explanatory variables contribute to changes in the outcome.</p>
@@ -629,9 +673,9 @@ sample estimates:
 <section id="model-fit" class="level3" data-number="3.1.4">
 <h3 data-number="3.1.4" class="anchored" data-anchor-id="model-fit"><span class="header-section-number">3.1.4</span> Model fit</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression model</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(pct_Very_bad_health <span class="sc">~</span> pct_No_qualifications <span class="sc">+</span> pct_Males <span class="sc">+</span> pct_Higher_manager_prof, <span class="at">data =</span> census)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression model</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(pct_Very_bad_health <span class="sc">~</span> pct_No_qualifications <span class="sc">+</span> pct_Males <span class="sc">+</span> pct_Higher_manager_prof, <span class="at">data =</span> census)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -678,9 +722,9 @@ F-statistic:  171 on 3 and 327 DF,  p-value: &lt;0.0000000000000002</code></pre>
 </ul>
 <p><strong>We can focus only on certain output metrics:</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression coefficients</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>coefficients <span class="ot">&lt;-</span> <span class="fu">tidy</span>(model)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression coefficients</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>coefficients <span class="ot">&lt;-</span> <span class="fu">tidy</span>(model)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   term                    estimate std.error statistic  p.value
@@ -745,7 +789,7 @@ F-statistic:  171 on 3 and 327 DF,  p-value: &lt;0.0000000000000002</code></pre>
 <section id="interpreting-the-results" class="level3" data-number="3.1.6">
 <h3 data-number="3.1.6" class="anchored" data-anchor-id="interpreting-the-results"><span class="header-section-number">3.1.6</span> Interpreting the Results</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
   term                    estimate std.error statistic  p.value
