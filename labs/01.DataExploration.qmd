@@ -138,18 +138,18 @@ To make R read in the data arranged in this format, we need to tell R three thin
 
 The primary function that we'll use to read data from a file and into R is the function `read.csv()`. This function has many optional arguments but the most commonly used ones are outlined in the table below.
 
-| Argument           | Default     | Description                                                                                                     |
-|------------------|------------------|-------------------------------------|
-| `file`             | Required    | A character string denoting the file location.                                                                  |
-| `header`           | `TRUE`      | Specifies whether the first line contains column headers.                                                       |
-| `sep`              | `","`       | Specifies the character that separates columns. For `read.csv()`, this is usually a comma.                      |
-| `skip`             | `0`         | The number of lines to skip before reading data; useful for files with descriptive text before the actual data. |
-| `na.strings`       | `"NA"`      | Values that represent missing data; multiple values can be specified, e.g., `c("NA", "-9999")`.                 |
-| `quote`            | `"`         | Specifies the character used to quote character strings, typically `"` or `'`.                                  |
-| `stringsAsFactors` | `FALSE`     | Controls whether character strings are converted to factors; `FALSE` means they remain as character data.       |
-| `row.names`        | `NULL`      | Allows specifying a column as row names, or assigning `NULL` to use default indexing for rows.                  |
-| `colClasses`       | `NULL`      | Specifies the data type for each column to speed up reading for large files, e.g., `c("character", "numeric")`. |
-| `encoding`         | `"unknown"` | Sets the text encoding of the file, which can be useful for files with special or international characters.     |
+| Argument | Default | Description |
+|----|----|----|
+| `file` | Required | A character string denoting the file location. |
+| `header` | `TRUE` | Specifies whether the first line contains column headers. |
+| `sep` | `","` | Specifies the character that separates columns. For `read.csv()`, this is usually a comma. |
+| `skip` | `0` | The number of lines to skip before reading data; useful for files with descriptive text before the actual data. |
+| `na.strings` | `"NA"` | Values that represent missing data; multiple values can be specified, e.g., `c("NA", "-9999")`. |
+| `quote` | `"` | Specifies the character used to quote character strings, typically `"` or `'`. |
+| `stringsAsFactors` | `FALSE` | Controls whether character strings are converted to factors; `FALSE` means they remain as character data. |
+| `row.names` | `NULL` | Allows specifying a column as row names, or assigning `NULL` to use default indexing for rows. |
+| `colClasses` | `NULL` | Specifies the data type for each column to speed up reading for large files, e.g., `c("character", "numeric")`. |
+| `encoding` | `"unknown"` | Sets the text encoding of the file, which can be useful for files with special or international characters. |
 
 Most of the time you just need to specify the file. \|
 
@@ -279,21 +279,21 @@ In the FRS data structure, each row represents a person, but:
 
 Below is an example dataset structure:
 
-| household | family | person | region               | age_group | sex    | marital_status            | rel_to_hrp                   |
-|---------|---------|---------|---------|---------|---------|---------|---------|
-| 1         | 1      | 1      | London               | 40-44     | Female | Married/Civil partnership | Spouse                       |
-| 1         | 1      | 2      | London               | 40-44     | Male   | Married/Civil partnership | Household Representative     |
-| 1         | 1      | 3      | London               | 5-10      | Male   | Single                    | Son/daughter (incl. adopted) |
-| 1         | 1      | 4      | London               | 5-10      | Female | Single                    | Son/daughter (incl. adopted) |
-| 1         | 1      | 5      | London               | 16-19     | Male   | Single                    | Step-son/daughter            |
-| 2         | 1      | 1      | Scotland             | 35-39     | Male   | Single                    | Household Representative     |
-| 3         | 1      | 1      | Yorks and the Humber | 35-39     | Female | Married/Civil partnership | Household Representative     |
-| 3         | 1      | 2      | Yorks and the Humber | 35-39     | Male   | Married/Civil partnership | Spouse                       |
-| 3         | 1      | 3      | Yorks and the Humber | 5-10      | Male   | Single                    | Step-son/daughter            |
-| 4         | 1      | 1      | Wales                | 0-4       | Male   | Single                    | Son/daughter (incl. adopted) |
-| 4         | 1      | 2      | Wales                | 60-64     | Male   | Married/Civil partnership | Household Representative     |
-| 4         | 1      | 3      | Wales                | 55-59     | Female | Married/Civil partnership | Spouse                       |
-| 4         | 2      | 3      | Wales                | 30-34     | Female | Single                    | Son/daughter (incl. adopted) |
+| household | family | person | region | age_group | sex | marital_status | rel_to_hrp |
+|----|----|----|----|----|----|----|----|
+| 1 | 1 | 1 | London | 40-44 | Female | Married/Civil partnership | Spouse |
+| 1 | 1 | 2 | London | 40-44 | Male | Married/Civil partnership | Household Representative |
+| 1 | 1 | 3 | London | 5-10 | Male | Single | Son/daughter (incl. adopted) |
+| 1 | 1 | 4 | London | 5-10 | Female | Single | Son/daughter (incl. adopted) |
+| 1 | 1 | 5 | London | 16-19 | Male | Single | Step-son/daughter |
+| 2 | 1 | 1 | Scotland | 35-39 | Male | Single | Household Representative |
+| 3 | 1 | 1 | Yorks and the Humber | 35-39 | Female | Married/Civil partnership | Household Representative |
+| 3 | 1 | 2 | Yorks and the Humber | 35-39 | Male | Married/Civil partnership | Spouse |
+| 3 | 1 | 3 | Yorks and the Humber | 5-10 | Male | Single | Step-son/daughter |
+| 4 | 1 | 1 | Wales | 0-4 | Male | Single | Son/daughter (incl. adopted) |
+| 4 | 1 | 2 | Wales | 60-64 | Male | Married/Civil partnership | Household Representative |
+| 4 | 1 | 3 | Wales | 55-59 | Female | Married/Civil partnership | Spouse |
+| 4 | 2 | 3 | Wales | 30-34 | Female | Single | Son/daughter (incl. adopted) |
 
 The first five people in the FRS all belong to the same household (household 1); they also all belong to the same family. This family comprises a married middle-aged couple plus their three children, one of whom is a stepson.
 
