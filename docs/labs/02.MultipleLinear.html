@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Gabriele Filomena">
+<meta name="dcterms.date" content="2025-10-09">
+
+<title>3&nbsp; Lab: Correlation, Single, and Multiple Linear Regression – Exploring the Social World - Quantitative Block: Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../labs/03.QualitativeVariable.html" rel="next">
+<link href="../labs/01.DataExploration.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-2a7818e10ffe1156910bef59d6201c79.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../labs/02.MultipleLinear.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation, Single, and Multiple Linear Regression</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Exploring the Social World - Quantitative Block: Statistics</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/GDSL-UL/stats" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../Exploring-the-Social-World---Quantitative-Block--Statistics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/assessment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assessment</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/howSubmit.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Assessment: How to submit</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/reportTemplate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ENVS225 Assignment 1</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../general/wdPaths.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working Directories and Paths</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/00.introR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab: Introduction to R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/01.DataExploration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Exploring a Dataset</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/02.MultipleLinear.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation, Single, and Multiple Linear Regression</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/03.QualitativeVariable.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: Correlation and Multiple Linear Regression with Qualitative Variables</span></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#part-i.-correlation" id="toc-part-i.-correlation" class="nav-link active" data-scroll-target="#part-i.-correlation"><span class="header-section-number">3.1</span> Part I. Correlation</a>
+  <ul class="collapse">
+  <li><a href="#data-overview-descriptive-statistics" id="toc-data-overview-descriptive-statistics" class="nav-link" data-scroll-target="#data-overview-descriptive-statistics"><span class="header-section-number">3.1.1</span> Data Overview: Descriptive Statistics:</a></li>
+  <li><a href="#simple-visualisation-for-continuous-data" id="toc-simple-visualisation-for-continuous-data" class="nav-link" data-scroll-target="#simple-visualisation-for-continuous-data"><span class="header-section-number">3.1.2</span> Simple visualisation for continuous data</a></li>
+  <li><a href="#part.-2-implementing-a-linear-regression-model" id="toc-part.-2-implementing-a-linear-regression-model" class="nav-link" data-scroll-target="#part.-2-implementing-a-linear-regression-model"><span class="header-section-number">3.1.3</span> Part. 2: Implementing a Linear Regression Model</a></li>
+  <li><a href="#model-fit" id="toc-model-fit" class="nav-link" data-scroll-target="#model-fit"><span class="header-section-number">3.1.4</span> Model fit</a></li>
+  <li><a href="#how-to-interpret-the-output-metrics" id="toc-how-to-interpret-the-output-metrics" class="nav-link" data-scroll-target="#how-to-interpret-the-output-metrics"><span class="header-section-number">3.1.5</span> How to interpret the output metrics</a></li>
+  <li><a href="#interpreting-the-results" id="toc-interpreting-the-results" class="nav-link" data-scroll-target="#interpreting-the-results"><span class="header-section-number">3.1.6</span> Interpreting the Results</a></li>
+  <li><a href="#identify-factors-of-bad-health" id="toc-identify-factors-of-bad-health" class="nav-link" data-scroll-target="#identify-factors-of-bad-health"><span class="header-section-number">3.1.7</span> Identify factors of % bad health</a></li>
+  </ul></li>
+  <li><a href="#part-c-practice-and-extension" id="toc-part-c-practice-and-extension" class="nav-link" data-scroll-target="#part-c-practice-and-extension"><span class="header-section-number">3.2</span> Part C: Practice and Extension</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/labs/02.MultipleLinear.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation, Single, and Multiple Linear Regression</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Gabriele Filomena </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 9, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>IMPORTANT: Before starting: verify that you have set the directory correctly and familiarise yourself with working with directories and loading files. These are the <a href="https://gdsl-ul.github.io/stats/general/wdPaths.html">instructions</a></strong>.</p>
+<p><strong>Now create a .qmd project. We use the <code>File -&gt; New File -&gt; Quarto Document..</code> dropdown option; a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it “<em>week2</em>” and save it in your main folder.</strong></p>
+<p>Follow the practical below. You can describe what you are doing in normal text. See <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a> for how to format normal text in Markdown documents</p>
+<p>In this week’s practical, we will review how to calculate and visualise correlation coefficients between variables. This practical is split into two parts. The first part focuses on measuring and visualising the relationship between between <strong>continuous variables</strong>. The second part goes through the implementation of a Linear Regression Model, again between continuous variables.</p>
+<p>Before getting into it, have a look at this <a href="https://mlu-explain.github.io/linear-regression/">resource</a>, it really helps understand how regression models work.</p>
+<p>The lecture’s slides can be found <a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture08.pdf">here</a>.</p>
+<p>Before completing the practical, please take this <a href="https://canvas.liverpool.ac.uk/courses/84668/quizzes/169285?module_item_id=2435564">quiz</a>.</p>
+<p><strong>Learning Objectives:</strong></p>
+<ul>
+<li>Visualise the association between two continuous variables using a scatterplot.</li>
+<li>Measure the strength of the association between two variables by calculating their correlation coefficient.</li>
+<li>Build a formal regression model.</li>
+<li>Understand how to estimate and interpret a multiple linear regression model.</li>
+</ul>
+<p><em>Note on file paths</em>: When calling the <code>read.csv</code> function, the path will vary depending on the location of the script it is being executed or your working directory (WD):</p>
+<ol type="1">
+<li><strong>If the script or your WD is in a sub-folder</strong> (e.g., <code>labs</code>), use <code>"../data/Census2021/EW_DistrictPercentages.csv"</code>. The <code>..</code> tells R to go one level up to the main directory (<code>stats/</code>) and then access the <code>data/</code> folder. <strong>Example</strong>: <code>read.csv("../data/Census2021/EW_DistrictPercentages.csv")</code>.</li>
+<li><strong>If the script is in the main directory</strong> (e.g.&nbsp;inside <code>stats/</code>), you can access the data directly using <code>"data/Census2021/EW_DistrictPercentages.csv"</code>. Here, no <code>..</code> is necessary as the <code>data/</code> folder is directly accessible from the working directory. <strong>Example</strong>: <code>read.csv("data/Census2021/EW_DistrictPercentages.csv")</code></li>
+</ol>
+<section id="part-i.-correlation" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="part-i.-correlation"><span class="header-section-number">3.1</span> Part I. Correlation</h2>
+<section id="data-overview-descriptive-statistics" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="data-overview-descriptive-statistics"><span class="header-section-number">3.1.1</span> Data Overview: Descriptive Statistics:</h3>
+<p>Let’s start by picking <strong>one dataset derived from the English-Wales 2021 Census data</strong>. You can choose one dataset that aggregates data either at a) county, b) district, or c) ward-level. Lower Tier Local Authority-, Region-, and Country-level data is also available in the data folder.</p>
+<p>see also: https://canvas.liverpool.ac.uk/courses/77895/pages/census-data-2021</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.5.1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>, <span class="at">digits =</span> <span class="dv">4</span>)  <span class="co"># Avoid scientific notation and round to 4 decimals globally</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load data - you main need to remove "../"</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>census <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/Census2021/EW_DistrictPercentages.csv"</span>) <span class="co"># District level</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We’re using a (district/ward/etc.) level census dataset that includes:</p>
+<ul>
+<li>% of population with poor health (variable name: <code>pct_Very_bad_health</code>).</li>
+<li>% of population with no qualifications (<code>pct_No_qualifications</code>).</li>
+<li>% of male population (<code>pct_Males</code>).</li>
+<li>% of population in a higher managerial/professional occupation (<code>pct_Higher_manager_prof</code>).</li>
+</ul>
+<p>First, let’s get some descriptive statistics that help identify general trends and distributions in the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> census <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pct_Very_bad_health, pct_No_qualifications, pct_Males, pct_Higher_manager_prof) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>summary_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  pct_Very_bad_health_mean pct_No_qualifications_mean pct_Males_mean
+1                    1.173                       17.9          48.97
+  pct_Higher_manager_prof_mean pct_Very_bad_health_sd pct_No_qualifications_sd
+1                        13.22                 0.3401                    3.959
+  pct_Males_sd pct_Higher_manager_prof_sd
+1       0.6605                       4.73</code></pre>
+</div>
+</div>
+<p><strong>Q1</strong>. Complete the table below by specifying each variable type (continuous or categorical) and reporting its mean and standard deviation.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th>Type (Continuous or Categorical)</th>
+<th>Mean</th>
+<th>Standard Deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pct_Very_bad_health</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>pct_No_qualifications</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>pct_Males</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>pct_Higher_manager_prof</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="simple-visualisation-for-continuous-data" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="simple-visualisation-for-continuous-data"><span class="header-section-number">3.1.2</span> Simple visualisation for continuous data</h3>
+<p>You can visualise the relationship between two continuous variables using a scatter plot. Using the chosen census datasets, visualise the association between the % of population with bad health (<code>pct_Very_bad_health</code>) and each of the following:</p>
+<ul>
+<li>the % of population with no qualifications (<code>pct_No_qualifications</code>);</li>
+<li>the % of population aged 65 to 84 (<code>pct_Age_65_to_84</code>);</li>
+<li>the % of population in a married couple (<code>pct_Married_opposite_sex_couple</code>);</li>
+<li>the % of population in a Higher Managerial or Professional occupation (<code>pct_Higher_manager_prof</code>).</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_No_qualifications, <span class="at">y =</span> pct_Very_bad_health)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Scatterplot of % people in Very bad health vs &amp; % people"</span>, <span class="st">"No Qualifications"</span>), </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"% no qualifications"</span>, <span class="at">y =</span> <span class="st">"% Very bad_health"</span>) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02.MultipleLinear_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_Age_65_to_84, <span class="at">y =</span> pct_Very_bad_health)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Scatterplot of % people in Very bad health vs &amp; % people"</span>, <span class="st">"aged between 65 and 84"</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"% aged 65-84"</span>, <span class="at">y =</span> <span class="st">"% Very bad_health"</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02.MultipleLinear_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_Married_opposite_sex_couple, <span class="at">y =</span> pct_Very_bad_health)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Scatterplot of % people in Very bad health vs &amp; % people"</span>, <span class="st">"in married couples."</span>), </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"% married couples"</span>, <span class="at">y =</span> <span class="st">"% Very bad_health"</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02.MultipleLinear_files/figure-html/unnamed-chunk-3-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_Higher_manager_prof, <span class="at">y =</span> pct_Very_bad_health)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">paste</span>(<span class="st">"Scatterplot of % people in Very bad health vs &amp; % people"</span>, <span class="st">"in higher managerial professions."</span>), </span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"% higher managerial professions"</span>, <span class="at">y =</span> <span class="st">"% Very bad_health"</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02.MultipleLinear_files/figure-html/unnamed-chunk-3-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Q2. Which of the associations do you think is strongest, which one is the weakest?</strong></p>
+<p>As noted, before, an observed association between two variables is no guarantee of causation. It could be that the observed association is:</p>
+<ul>
+<li>simply a chance one due to sampling uncertainty;</li>
+<li>caused by some third underlying variable which explains the spatial variation of both of the variables in the scatterplot;</li>
+<li>due to the inherent arbitrariness of the boundaries used to define the areas being analysed (the ‘Modifiable Area Unit Problem’).</li>
+</ul>
+<p><strong>Q3. Setting these caveats to one side, are the associations observed in the scatter-plots suggestive of any causative mechanisms of bad health?</strong></p>
+<p>Rather than relying upon an impressionistic view of the strength of the association between two variables, we can measure that association by calculating the relevant correlation coefficient. The Table below identifies the statistically appropriate measure of correlation to use between two continuous variables.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 54%">
+<col style="width: 32%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Data Type</th>
+<th>Measure of Correlation</th>
+<th>Range</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Both symmetrically distributed</td>
+<td>Pearson’s</td>
+<td>-1 to +1</td>
+</tr>
+<tr class="even">
+<td>One or both with a skewed distribution</td>
+<td>Spearman’s Rank</td>
+<td>-1 to +1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Different Calculation Methods</strong>: Pearson’s correlation assumes linear relationships and is suitable for symmetrically distributed (normally distributed) variables, measuring the strength of the linear relationship. Spearman’s rank correlation, however, works on ranked data, so it’s more suitable for skewed data or variables with non-linear relationships, measuring the strength and direction of a monotonic relationship.</p>
+<p>When calculating correlation for a single pair of variables, select the method that best fits their data distribution:</p>
+<ul>
+<li>Use <strong>Pearson’s</strong> if both variables are symmetrically distributed.</li>
+<li>Use <strong>Spearman’s</strong> if one or both variables are skewed.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="../img/distributions.png" class="img-fluid figure-img" width="1190"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You can check the distribution of a variable (e.g.&nbsp;<code>pct_No_qualifications</code> like this):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot histogram with density overlay for a chosen variable (e.g., 'pct_No_qualifications')</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(census, <span class="fu">aes</span>(<span class="at">x =</span> pct_No_qualifications)) <span class="sc">+</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(density)), <span class="at">bins =</span> <span class="dv">30</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"darkblue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of pct_No_qualifications"</span>, <span class="at">x =</span> <span class="st">"Value"</span>, <span class="at">y =</span>  <span class="st">"Density"</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="02.MultipleLinear_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>When analyzing multiple pairs of variables, using different measures (Pearson for some pairs, Spearman for others) creates inconsistencies since Pearson and Spearman values aren’t directly comparable in size due to their different calculation methods. To maintain consistency across comparisons, calculate <strong>both Pearson’s and Spearman’s correlations</strong> for each pair, e.g.&nbsp;do the trends align (both showing strong, weak, or moderate correlation in the same direction)? This consistency check can give confidence that the relationships observed are not dependent on the correlation method chosen. While in a report you’d typically include only one set of correlations (usually Pearson’s if the relationships appear linear), calculating both can validate that your observations aren’t an artifact of the correlation method.</p>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Research Question 1: Which of our selected variables are most strongly correlated with % of population with bad health?</strong></p>
+</div>
+<p>To answer this question, complete the Table below by editing/running this code:.</p>
+<p>Pearson correlations</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pearson_correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(census<span class="sc">$</span>pct_Very_bad_health,</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    census<span class="sc">$</span>pct_No_qualifications,<span class="at">use =</span> <span class="st">"complete.obs"</span>, <span class="at">method =</span> <span class="st">"pearson"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the results</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Pearson Correlation:"</span>, pearson_correlation, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Pearson Correlation: 0.7619 </code></pre>
+</div>
+</div>
+<p>Spearman correlations:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>spearman_correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(census<span class="sc">$</span>pct_Very_bad_health,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    census<span class="sc">$</span>pct_No_qualifications, <span class="at">use =</span> <span class="st">"complete.obs"</span>, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Spearman Correlation:"</span>, spearman_correlation, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Spearman Correlation: 0.7781 </code></pre>
+</div>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 74%">
+<col style="width: 12%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Covariates</th>
+<th>Pearson</th>
+<th>Spearman</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pct_Very_bad_health - pct_No_qualifications</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>pct_Very_bad_health - pct_Age_65_to_84</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>pct_Very_bad_health - pct_Married_opposite_sex_couple</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>pct_Very_bad_health - pct_Higher_manager_prof</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>What can you make of this numbers?</strong></p>
+<p>If you think you have found a correlation between two variables in our dataset, this doesn’t mean that an association exists between these two variables in the population at large. The uncertainty arises because, by chance, the random sample included in our dataset might not be fully representative of the wider population.</p>
+<p>For this reason, we need to verify whether the correlation is statistically significant,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># significance test for pearson, for example</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>pearson_test <span class="ot">&lt;-</span> <span class="fu">cor.test</span>(census<span class="sc">$</span>pct_Very_bad_health,</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    census<span class="sc">$</span>pct_No_qualifications, <span class="at">method =</span> <span class="st">"pearson"</span>, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>pearson_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  census$pct_Very_bad_health and census$pct_No_qualifications
+t = 21, df = 329, p-value &lt;0.0000000000000002
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.7127 0.8037
+sample estimates:
+   cor 
+0.7619 </code></pre>
+</div>
+</div>
+<p>Look at https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/cor.test for details about the function. But in general, when calculating the correlation between two variables, a <strong>p-value</strong> accompanies the correlation coefficient to indicate the statistical significance of the observed association. This p-value tests the null hypothesis that there is no association between the two variables (i.e., that the correlation is zero).</p>
+<p>When interpreting p-values, certain thresholds denote different levels of confidence. A p-value less than 0.05 is generally considered statistically significant at the 95% confidence level, suggesting that we can be 95% confident there is an association between the variables in the broader population. When the p-value is below 0.01, the result is significant at the 99% confidence level, meaning we have even greater confidence (99%) that an association exists. Sometimes, on research papers or tables significance levels are denoted with asterisks: one asterisk (<code>*</code>) typically indicates significance at the 95% level (p &lt; 0.05), two asterisks (<code>**</code>) significance at the 99% level (p &lt; 0.01), three asterisks (<code>***</code>) significance at the 99.99% level (p &lt; 0.01).</p>
+<p>Typically, p-values are reported under labels such as “Sig (2-tailed),” where “2-tailed” refers to the fact that the test considers both directions (positive and negative correlations). Reporting the exact p-value (e.g., p = 0.002) is more informative than using thresholds alone, as it gives a clearer picture of how strongly the data contradicts the null hypothesis of no association.</p>
+<p><strong>In a nutshell, lower p-values suggest a stronger statistical basis for believing that an observed correlation is not due to random chance. A statistically significant p-value reinforces confidence that an association is likely to exist in the wider population, though it does not imply causation.</strong></p>
+</section>
+<section id="part.-2-implementing-a-linear-regression-model" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="part.-2-implementing-a-linear-regression-model"><span class="header-section-number">3.1.3</span> Part. 2: Implementing a Linear Regression Model</h3>
+<p>A key goal of data analysis is to explore the potential factors of health at the local district level. So far, we have used cross-tabulations and various bivariate correlation analysis methods to explore the relationships between variables. One key limitation of standard correlation analysis is that it remains hard to look at the associations of an outcome/dependent variable to multiple independent/explanatory variables at the same time. Regression analysis provides a very useful and flexible methodological framework for such a purpose. Therefore, we will investigate how various local factors impact residents’ health by building a multiple linear regression model in R.</p>
+<p>We use <code>pct_Very_bad_health</code> as a proxy for residents’ health.</p>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Research Question 2: How do local factors affect residents’ health?</strong></p>
+</div>
+<p><strong>Dependent (or Response) Variable</strong>:</p>
+<ul>
+<li>% of population with bad health (<code>pct_Very_bad_health</code>).</li>
+</ul>
+<p><strong>Independent (or Explanatory) Variables</strong>:</p>
+<ul>
+<li>% of population with no qualifications (<code>pct_No_qualifications</code>).</li>
+<li>% of male population (<code>pct_Males</code>).</li>
+<li>% of population in a higher managerial/professional occupation (<code>pct_Higher_manager_prof</code>).</li>
+</ul>
+<p>Load some other Libraries</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.5.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ stringr   1.5.2
+✔ lubridate 1.9.4     ✔ tibble    3.3.0
+✔ purrr     1.1.0     ✔ tidyr     1.3.1
+✔ readr     2.1.5     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'broom' was built under R version 4.5.1</code></pre>
+</div>
+</div>
+<p>and the data (if not loaded):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>census <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/Census2021/EW_DistrictPercentages.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Regression models are the standard method for constructing predictive and explanatory models. They tell us how changes in one variable (the target variable or independent variable, <span class="math inline">\(Y\)</span>) are <em>associated with</em> changes in explanatory variables, or dependent variables, <span class="math inline">\(X_1, X_2, X_3\)</span> (<span class="math inline">\(X_n\)</span>), etc. Classic linear regression is referred to <em>Ordinary least squares</em> (OLS) regression because they estimate the relationship between one or more independent variables and a dependent variable <span class="math inline">\(Y\)</span> using a hyperplane (i.e.&nbsp;a multi-dimensional line) that minimises the sum of the squared difference between the observed values of <span class="math inline">\(Y\)</span> and the values predicted by the model (denoted as <span class="math inline">\(\hat{Y}\)</span>, <span class="math inline">\(Y\)</span>-hat).</p>
+<p>Having seen <strong>Single Linear Regression</strong> in class - where the relationship between one independent variable and a dependent variable is modeled - we can extend this concept to situations where more than one explanatory variable might influence the outcome. While single linear regression helps us understand the effect of <strong>ONE</strong> variable in isolation, real-world phenomena are often influenced by multiple factors simultaneously. Multiple linear regression addresses this complexity by allowing us to model the relationship between a dependent variable and multiple independent variables, providing a more comprehensive view of how various explanatory variables contribute to changes in the outcome.</p>
+<p>Here, regression allows us to examine the relationship between people’s health rates and multiple dependent variables.</p>
+<p>Before starting, we define two hypotheses:</p>
+<ul>
+<li><strong>Null hypothesis</strong> (<span class="math inline">\(H_0\)</span>): For each variable <span class="math inline">\(X_n\)</span>, there is no effect of <span class="math inline">\(X_n\)</span> on <span class="math inline">\(Y\)</span>.</li>
+<li><strong>Alternative hypothesis</strong> (<span class="math inline">\(H_1\)</span>): There is an effect of<span class="math inline">\(X_n\)</span> on <span class="math inline">\(Y\)</span>.</li>
+</ul>
+<p>We will test if we can reject the null hypothesis.</p>
+</section>
+<section id="model-fit" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="model-fit"><span class="header-section-number">3.1.4</span> Model fit</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear regression model</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(pct_Very_bad_health <span class="sc">~</span> pct_No_qualifications <span class="sc">+</span> pct_Males <span class="sc">+</span> pct_Higher_manager_prof, <span class="at">data =</span> census)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = pct_Very_bad_health ~ pct_No_qualifications + pct_Males + 
+    pct_Higher_manager_prof, data = census)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.4911 -0.1357 -0.0368  0.0985  0.7669 
+
+Coefficients:
+                        Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept)              4.00293    0.87981    4.55            0.0000076 ***
+pct_No_qualifications    0.05283    0.00591    8.94 &lt; 0.0000000000000002 ***
+pct_Males               -0.07353    0.01785   -4.12            0.0000479 ***
+pct_Higher_manager_prof -0.01318    0.00494   -2.67                0.008 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.213 on 327 degrees of freedom
+Multiple R-squared:  0.61,  Adjusted R-squared:  0.607 
+F-statistic:  171 on 3 and 327 DF,  p-value: &lt;0.0000000000000002</code></pre>
+</div>
+</div>
+<p><strong>Code explanation</strong></p>
+<p><strong><code>lm()</code> Function</strong>:</p>
+<ul>
+<li><code>lm()</code> stands for “linear model” and is used to fit a linear regression model in R.</li>
+<li>The formula syntax <code>pct_Very_bad_health ~ pct_No_qualifications + pct_Males + pct_Higher_manager_prof</code> specifies a relationship between:
+<ul>
+<li><strong>Dependent Variable</strong>: <code>pct_Very_bad_health</code>.</li>
+<li><strong>Independent Variables</strong>: <code>pct_No_qualifications</code>, <code>pct_Males</code>, and <code>pct_Higher_manager_prof</code>. The model is trained on the <code>data</code> dataset.</li>
+</ul></li>
+</ul>
+<p><strong>Storing the Model</strong>: The <code>model &lt;-</code> syntax stores the fitted model in an object called <code>model</code>.</p>
+<p><code>summary(model)</code> provides a detailed output of the model’s results, including:</p>
+<ul>
+<li><strong>Coefficients</strong>: Estimates of the regression slopes (i.e., how each independent variableaffects <code>pct_Very_bad_health</code>).</li>
+<li><strong>Standard Errors</strong>: The variability of each coefficient estimate.</li>
+<li><strong>t-values</strong> and <strong>p-values</strong>: Indicate the statistical significance of the effect of each independent (explanatory) variable.<br>
+</li>
+<li><strong>R-squared</strong> and <strong>Adjusted R-squared</strong>: Show how well the independent variables explain the variance in the dependent variable.</li>
+<li><strong>F-statistic</strong>: Tests the overall significance of the model.</li>
+</ul>
+<p><strong>We can focus only on certain output metrics:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression coefficients</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>coefficients <span class="ot">&lt;-</span> <span class="fu">tidy</span>(model)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  term                    estimate std.error statistic  p.value
+  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)               4.00     0.880        4.55 7.58e- 6
+2 pct_No_qualifications     0.0528   0.00591      8.94 2.99e-17
+3 pct_Males                -0.0735   0.0178      -4.12 4.79e- 5
+4 pct_Higher_manager_prof  -0.0132   0.00494     -2.67 7.97e- 3</code></pre>
+</div>
+</div>
+<p>These are:</p>
+<ul>
+<li><strong>Regression Coefficient Estimates.</strong></li>
+<li><strong>P-values.</strong></li>
+<li><strong>Adjusted R-squared</strong>.</li>
+</ul>
+</section>
+<section id="how-to-interpret-the-output-metrics" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="how-to-interpret-the-output-metrics"><span class="header-section-number">3.1.5</span> How to interpret the output metrics</h3>
+<section id="regression-coefficient-estimates" class="level4" data-number="3.1.5.1">
+<h4 data-number="3.1.5.1" class="anchored" data-anchor-id="regression-coefficient-estimates"><span class="header-section-number">3.1.5.1</span> <strong>Regression</strong> Coefficient Estimates</h4>
+<p>The <code>Estimate</code> column in the output table tells us the rate of change between each dependent variable <span class="math inline">\(X_n\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p><strong>Intercept</strong>: In the regression equation, this is <span class="math inline">\(β_0\)</span> and it indicates the value of <span class="math inline">\(Y\)</span> when <span class="math inline">\(X_n\)</span> are equal to zero.</p>
+<p><strong>Slopes</strong>: These are the other regression coefficients of an independent variable, e.g.&nbsp;<span class="math inline">\(β_1\)</span>, i.e.&nbsp;estimated average changes in <span class="math inline">\(Y\)</span> for a one unit change in an independent variable, e.g.&nbsp;<span class="math inline">\(X_1\)</span>, when all other dependent or explanatory variables are held constant.</p>
+<p><em>There are two key points worth mentioning:</em></p>
+<ul>
+<li><strong>The unit of</strong> <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>: you need to know what the units are of the independent and dependent variables. For instance, one unit could be one year if you have an age variable, or a one percentage point if the variable is measured in percentages (all the variables in this week’s practical).</li>
+<li><strong>All the other explanatory variables are held constant</strong>. It means that the coefficient of an explanatory variable <span class="math inline">\(X_1\)</span> (e.g.&nbsp;<span class="math inline">\(β_1\)</span>) should be interpreted as: a one unit change in <span class="math inline">\(X_1\)</span> is associated with <span class="math inline">\(β_1\)</span> units change in <span class="math inline">\(Y\)</span>, keeping other values of explanatory variables (e.g.&nbsp;<span class="math inline">\(X_2\)</span>, <span class="math inline">\(X_3\)</span>) constant – for instance, <span class="math inline">\(X_2\)</span>= 0.1 or <span class="math inline">\(X_3\)</span>= 0.4.</li>
+</ul>
+<p>For the independent variable <span class="math inline">\(X\)</span>, we can derive how changes of 1 unit for the independent are associated with the changes in <code>pct_Very_bad_health</code>, for example:</p>
+<ul>
+<li>The association of <code>pct_No_qualifications</code> is positive and strong: each increase in 1% of <code>pct_No_qualifications</code> is associated with an increase of 0.05% of very bad health rate.</li>
+<li>The association of <code>pct_Males</code> is negative and strong: each decrease in 1% of <code>pct_Males</code> is associated with an increase of 0.07% of <code>pct_Very_bad_health</code> in the population in England and Wales.</li>
+<li>The association of <code>pct_Higher_manager_prof</code> is negative but weak: each decrease in 1% of <code>pct_Higher_manager_prof</code> is associated with an increase of 0.013% of <code>pct_Very_bad_health</code>.</li>
+</ul>
+</section>
+<section id="p-values-and-significance" class="level4" data-number="3.1.5.2">
+<h4 data-number="3.1.5.2" class="anchored" data-anchor-id="p-values-and-significance"><span class="header-section-number">3.1.5.2</span> P-values and Significance</h4>
+<p>The <strong><em>t tests</em></strong> of regression coefficients are used to judge the statistical inferences on regression coefficients, i.e.&nbsp;associations between independent variables and the outcome variable. For a t-statistic of a dependent variable, there is a corresponding <strong><em>p-value</em></strong> that indicates different levels of significance in the column <code>Pr(&gt;|t|)</code> and the asterisks <code>∗</code>.</p>
+<ul>
+<li><code>***</code> indicates “changes in <span class="math inline">\(X_n\)</span> are significantly associated with changes in <span class="math inline">\(Y\)</span> at the &lt;0.001 level”.</li>
+<li><code>**</code> suggests that “changes in <span class="math inline">\(X_n\)</span> are significantly associated with changes in <span class="math inline">\(Y\)</span> between the 0.001 and (&lt;) 0.01 levels”.</li>
+<li>Now you should know what <code>*</code> means: The significance is between the 0.01 and 0.05 levels, which means that we observe a less significant (but still significant) relationship between the variables.</li>
+</ul>
+<p>P-value provide a measure of how significant the relationship is; it is an indication of whether the relationship between <span class="math inline">\(X_n\)</span> and <span class="math inline">\(Y\)</span> found in this data could have been found by chance. Very small p-values suggest that the level of association found here might <strong>not</strong> have come from a random sample of data.</p>
+<p>In this case, we can say:</p>
+<ul>
+<li>Given that the p-value is indicated by <code>***</code>, changes in <code>pct_No_qualifications</code> and <code>pct_Males</code> are significantly associated with changes in <code>pct_Very_bad_health</code> at the &lt;0.001 level; the association is highly statistically significant; we can be confident that the observed relationship between these variables and <code>pct_Very_bad_health</code> is not due to chance.</li>
+<li>Given that the p-value is indicated by <code>**</code>, changes in <code>pct_Higher_manager_prof</code> are significantly associated with changes in <code>pct_Very_bad_health</code> at the 0.001 level. This means that the association between the independent and dependent variable is not one that would be found by chance in a series of random sample 99.999% of the time.</li>
+</ul>
+<p>In both cases we can then confidently reject the <strong>Null</strong> hypothesis (<span class="math inline">\(H_0\)</span>: no association between dependent and independent variables exist).</p>
+<p><strong>Remember</strong>, If the <em>p-value</em> of a coefficient is smaller than 0.05, that coefficient is statistically significant. In this case, you can say that the relationship between this independent variable and the outcome variable is <em>statistically</em> significant. Contrarily, if the <em>p-value</em> of a coefficient is larger than 0.05 you can conclude that there is no evidence of an association or relationship between the independent variable and the outcome variable.</p>
+</section>
+<section id="r-squared-and-adjusted-r-squared" class="level4" data-number="3.1.5.3">
+<h4 data-number="3.1.5.3" class="anchored" data-anchor-id="r-squared-and-adjusted-r-squared"><span class="header-section-number">3.1.5.3</span> R-squared and Adjusted R-squared</h4>
+<p>These provide a measure of model fit. They are calculated as the difference between the actual value of <span class="math inline">\(Y\)</span> and the value predicted by the model. The <strong>R-squared</strong> and <strong>Adjusted R-squared</strong> values are statistical measures that indicate how well the independent variables in your model explain the variability of the dependent variable. Both R-squared and Adjusted R-squared help us understand how closely the model’s predictions align with the actual data. An R-squared of 0.6, for example, indicates that 60% of the variability in <span class="math inline">\(Y\)</span> is explained by the independent variables in the model. The remaining 40% is due to other factors not captured by the model.</p>
+<p>Adjusted R-squared also measures the goodness of fit, but it adjusts for the number of independent variables in the model, accounting for the fact that adding more variables can artificially inflate R-squared without genuinely improving the model. This is especially useful when comparing models with different numbers of independent variables. If Adjusted R-squared is close to or above 0.6, as in your example, it implies that the model has a <strong>strong explanatory power</strong> while not being overfit with unnecessary explanatory variables.</p>
+<p>A high R-squared and Adjusted R-squared indicate that the model captures much of the variation in the data, making it more reliable for predictions or for understanding the relationship between <span class="math inline">\(Y\)</span> and the explanatory variables. However Low R-squared values suggest (e.g.&nbsp;0.15) that the model might be missing important explanatory variables or that the relationship between <span class="math inline">\(Y\)</span> and the selected explanatory variables is not well-captured by a linear approach.</p>
+<p>An R-squared and Adjusted R-squared over 0.6 are generally seen as signs of a <strong>well-fitting model</strong> in many fields, though the ideal values can depend on the context and the complexity of the data.</p>
+</section>
+</section>
+<section id="interpreting-the-results" class="level3" data-number="3.1.6">
+<h3 data-number="3.1.6" class="anchored" data-anchor-id="interpreting-the-results"><span class="header-section-number">3.1.6</span> Interpreting the Results</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>coefficients</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  term                    estimate std.error statistic  p.value
+  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 (Intercept)               4.00     0.880        4.55 7.58e- 6
+2 pct_No_qualifications     0.0528   0.00591      8.94 2.99e-17
+3 pct_Males                -0.0735   0.0178      -4.12 4.79e- 5
+4 pct_Higher_manager_prof  -0.0132   0.00494     -2.67 7.97e- 3</code></pre>
+</div>
+</div>
+<p><strong>Q4</strong>. Complete the table above by filling in the coefficients, t-values, p-values, and indicating if each variable is statistically significant.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 19%">
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th>Coefficients</th>
+<th>t-values</th>
+<th>p-values</th>
+<th>Significant?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pct_No_qualifications</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>pct_Males</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>pct_Higher_manager_prof</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>From the lecture notes, you know that the Intercept or Constant represents the estimated average value of the outcome variable when the values of all independent variables are equal to zero.</p>
+<p><strong>Q5</strong>. When values of <code>pct_Males</code>, <code>pct_No_qualifications</code> and <code>pct_Higher_manager_prof</code> are all <span class="math inline">\(zero\)</span>, what is the % of population with very bad health? Is the intercept term meaningful? Are there any districts (or zones, depending on the dataset you chose) with zero percentages of persons with no qualification in your data set?</p>
+<p><strong>Q6</strong>. Interpret the regression coefficients of <code>pct_Males</code>, <code>pct_No_qualifications</code> and <code>pct_Higher_manager_prof</code>. Do they make sense?</p>
+</section>
+<section id="identify-factors-of-bad-health" class="level3" data-number="3.1.7">
+<h3 data-number="3.1.7" class="anchored" data-anchor-id="identify-factors-of-bad-health"><span class="header-section-number">3.1.7</span> Identify factors of % bad health</h3>
+<p>Now combine the above two sections and identify factors affecting the percentage of population with very bad health. Fill in each row for the direction (positive or negative) and significance level of each variable.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 34%">
+<col style="width: 30%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variable Name</th>
+<th>Positive or Negative</th>
+<th>Statistical Significance</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pct_No_qualifications</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>pct_Higher_manager_prof</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>pct_Males</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q7</strong>. Think about the potential conclusions that can be drawn from the above analyses. Try to answer the research question of this practical: How do local factors affect residents’ health? Think about causation <em>vs</em> association and consider potential confounders when interpreting the results. How could these findings influence local health policies?</p>
+</section>
+</section>
+<section id="part-c-practice-and-extension" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="part-c-practice-and-extension"><span class="header-section-number">3.2</span> Part C: Practice and Extension</h2>
+<p><strong>If you haven’t understood something, if you have doubts, even if they seem silly, ask.</strong></p>
+<ol type="1">
+<li>Finish working through the practical.</li>
+<li>Revise the material.</li>
+<li>Extension activities (optional): Think about other potential factors of very bad health and test your ideas with new linear regression models.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/gdsl-ul\.github\.io\/stats");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../labs/01.DataExploration.html" class="pagination-link" aria-label="Lab: Exploring a Dataset">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Exploring a Dataset</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../labs/03.QualitativeVariable.html" class="pagination-link" aria-label="Lab: Correlation and Multiple Linear Regression with Qualitative Variables">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: Correlation and Multiple Linear Regression with Qualitative Variables</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Exploring the Social World - Quantitative Block: Statistics by Gabriele Filomena and Zi Ye.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/labs/02.MultipleLinear.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

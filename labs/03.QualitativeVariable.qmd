@@ -37,7 +37,7 @@ In this week's practical we are going to
 
 ## Analysis categorical variables
 
-Recall in Week 2, you get familiar to R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your local drive folder under the path of 'data/Census2021/'; for the FRS datasets, please click the links to download the datasets from [Canvas](https://canvas.liverpool.ac.uk/courses/84668/pages/family-resource-survey-2016-17?module_item_id=2396198). Please download both the datasets of 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv'. You may create a new folder named 'FamilyResourceSurvey' under the '/data/' along with the Census2021 folder, and put both newly downloaded .csv files at the 'data/FamilyResourceSurvey/' folder for later use.
+Recall in Week 2, you get familiar to R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your local drive folder under the path of 'data/Census2021/'; for the FRS datasets, please click the links to download the datasets from [Canvas](https://canvas.liverpool.ac.uk/courses/84668/pages/family-resource-survey-2016-17?module_item_id=2396198). Please download both the datasets of 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv'. You may create a new folder named 'FRS' under the '/data/' along with the Census2021 folder, and put both newly downloaded .csv files at the 'data/FRS/' folder for later use.
 
 Now, you '/data' folder should look like, and within the FamilyResourceSurvey folder, you have two .csv file: 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv'.
 
@@ -114,7 +114,7 @@ library(forcats)
 Exactly as you did in previous weeks, we first load in the dataset:
 
 ```{r}
-frs_data <- read.csv("../data/FamilyResourceSurvey/FRS16-17_labels.csv")
+frs_data <- read.csv("../data/FRS/FRS16-17_labels.csv")
 ```
 
 Recall in previous weeks, we used the following code to overview the dataset. Familiar yourself again by using them:
@@ -296,7 +296,7 @@ Same of what you have learnt in Week 2, the code explanation:
 **`lm()` Function**:
 
 -   `lm()` stands for "linear model" and is used to fit a linear regression model in R.
--   The formula syntax `Net_inc_pp``~ Sex + health` specifies a relationship between:
+-   The formula syntax ``` Net_inc_pp``~ Sex + health ``` specifies a relationship between:
     -   **Dependent Variable**: `Net_inc_pp`.
     -   **Independent Variables**: `Sex`, and `health`. The model is trained on the `data = frs_df` dataset.
 
@@ -638,7 +638,7 @@ The extension activities are designed to get yourself prepared for the Assignmen
 
 **Answer of the written down model and Q5**
 
-The model of the new region label is: *pct_Longterm_sick_or_disabled* (%) *= 9.98+ (-0.1842)\* pct_Males* (%) *+ 0.2014 \* pct_No_qualifications* (%) *+ (-0.0341) \* pct_Higher_manager_prof*  + *(0.4742) \* North + (-0.5063)* \* South + (-0.4103) \* Midlands + *1.2518 \* Wales.* But should be aware that the relation between *pct_Higher_manager_prof* and *pct_Longterm_sick_or_disabled* is not statistically significant.
+The model of the new region label is: *pct_Longterm_sick_or_disabled* (%) *= 9.98+ (-0.1842)\* pct_Males* (%) *+ 0.2014 \* pct_No_qualifications* (%) *+ (-0.0341) \* pct_Higher_manager_prof* + *(0.4742) \* North + (-0.5063)* \* South + (-0.4103) \* Midlands + *1.2518 \* Wales.* But should be aware that the relation between *pct_Higher_manager_prof* and *pct_Longterm_sick_or_disabled* is not statistically significant.
 
 So if the values of variables *pct_Males, pct_No_qualifications, and pct_Higher_manager_prof* are 49, 23 and 11,
 
