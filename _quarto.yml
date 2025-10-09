@@ -34,7 +34,7 @@ book:
     # - labs/04.LogisticRegression.qmd
     # - labs/05.Visualisation.qmd
     # - labs/06.Summary.qmd
-
+ number-depth: 1
 bibliography: references.bib
 
 format:
