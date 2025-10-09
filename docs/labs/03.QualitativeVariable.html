@@ -228,10 +228,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#change-the-baseline-category" id="toc-change-the-baseline-category" class="nav-link" data-scroll-target="#change-the-baseline-category"><span class="header-section-number">4.3.2</span> <strong>Change the baseline category</strong></a></li>
   <li><a href="#recode-the-region-variable-and-explore-regional-inequality-in-health" id="toc-recode-the-region-variable-and-explore-regional-inequality-in-health" class="nav-link" data-scroll-target="#recode-the-region-variable-and-explore-regional-inequality-in-health"><span class="header-section-number">4.3.3</span> Recode the Region variable and explore regional inequality in health</a></li>
   </ul></li>
-  <li><a href="#predictions-using-fitted-regression-model" id="toc-predictions-using-fitted-regression-model" class="nav-link" data-scroll-target="#predictions-using-fitted-regression-model"><span class="header-section-number">4.4</span> Predictions using fitted regression model</a>
-  <ul class="collapse">
-  <li><a href="#write-down-the-long-term-sick-or-disabled-regression-model-with-the-new-region-label-categorical-variables" id="toc-write-down-the-long-term-sick-or-disabled-regression-model-with-the-new-region-label-categorical-variables" class="nav-link" data-scroll-target="#write-down-the-long-term-sick-or-disabled-regression-model-with-the-new-region-label-categorical-variables"><span class="header-section-number">4.4.1</span> <strong>Write down the % long term sick or disabled regression model with the new region label categorical variables</strong></a></li>
-  </ul></li>
+  <li><a href="#predictions-using-fitted-regression-model" id="toc-predictions-using-fitted-regression-model" class="nav-link" data-scroll-target="#predictions-using-fitted-regression-model"><span class="header-section-number">4.4</span> Predictions using fitted regression model</a></li>
   <li><a href="#extension-activities" id="toc-extension-activities" class="nav-link" data-scroll-target="#extension-activities"><span class="header-section-number">4.5</span> <strong>Extension activities</strong></a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/labs/03.QualitativeVariable.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -647,7 +644,7 @@ Cramer's V        : 0.329 </code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(frs_df, <span class="fu">aes</span>(<span class="at">x =</span> Net_inc_pp)) <span class="sc">+</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">1000</span>,</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">bins =</span> <span class="dv">250</span>, <span class="co">#A higher bins value means more, narrower bars, covers smaller range of value</span></span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span>,</span>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"skyblue"</span>,</span>
 <span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.7</span></span>
@@ -1196,15 +1193,13 @@ F-statistic:   118 on 7 and 323 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="predictions-using-fitted-regression-model" class="level2" data-number="4.4">
 <h2 data-number="4.4" class="anchored" data-anchor-id="predictions-using-fitted-regression-model"><span class="header-section-number">4.4</span> Predictions using fitted regression model</h2>
-<section id="write-down-the-long-term-sick-or-disabled-regression-model-with-the-new-region-label-categorical-variables" class="level3" data-number="4.4.1">
-<h3 data-number="4.4.1" class="anchored" data-anchor-id="write-down-the-long-term-sick-or-disabled-regression-model-with-the-new-region-label-categorical-variables"><span class="header-section-number">4.4.1</span> <strong>Write down the % long term sick or disabled regression model with the new region label categorical variables</strong></h3>
+<p><strong>Write down the % long term sick or disabled regression model with the new region label categorical variables.</strong></p>
 <p>Relating to this week’s lecture, the % <code>pct_Longterm_sick_or_disabled</code> is equal to:</p>
 <p><strong>[write down the model]</strong></p>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Q6. Now imagine that the values of variables <em>pct_Males, pct_No_qualifications, and pct_Higher_manager_prof</em> are 49, 23 and 11, respectively, what would the percentage of persons with long-term sick/disable in Wales and London be?</strong></p>
 </div>
 <p>Check the answer at the end of this practical page.</p>
-</section>
 </section>
 <section id="extension-activities" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="extension-activities"><span class="header-section-number">4.5</span> <strong>Extension activities</strong></h2>
@@ -1216,7 +1211,7 @@ F-statistic:   118 on 7 and 323 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>Think about other potential factors of long-term illness and income, and then test your ideas with linear regression models</p></li>
 <li><p>Summaries your model outputs and interpret the results.</p></li>
 </ul>
-<p><strong>Answer of the written down model and Q5</strong></p>
+<p><strong>Answer of the written down model and Q6</strong></p>
 <p>The model of the new region label is: <em>pct_Longterm_sick_or_disabled</em> (%) <em>= 9.98+ (-0.1842)* pct_Males</em> (%) <em>+ 0.2014 * pct_No_qualifications</em> (%) <em>+ (-0.0341) * pct_Higher_manager_prof</em> + <em>(0.4742) * North + (-0.5063)</em> * South + (-0.4103) * Midlands + <em>1.2518 * Wales.</em> But should be aware that the relation between <em>pct_Higher_manager_prof</em> and <em>pct_Longterm_sick_or_disabled</em> is not statistically significant.</p>
 <p>So if the values of variables <em>pct_Males, pct_No_qualifications, and pct_Higher_manager_prof</em> are 49, 23 and 11,</p>
 <p>the model of Wales will be: <em>pct_Longterm_sick_or_disabled</em> (%) <em>= 9.98+ (-0.1842)* 49</em> <em>+ 0.2014 * 23</em> <em>+ (-0.0341) * 11 + (0.4742) * 0+ (-0.5063)</em> * 0+ (-0.4103) * 0+ <em>1.2518 * 1</em>(you can direct paste the number sentence into your R studio Console and the result will be returned)</p>

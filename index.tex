@@ -4438,7 +4438,7 @@ visualised by using \texttt{ggplot()}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(frs\_df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Net\_inc\_pp)) }\SpecialCharTok{+}
   \FunctionTok{geom\_histogram}\NormalTok{(}
-    \AttributeTok{bins =} \DecValTok{1000}\NormalTok{,}
+    \AttributeTok{bins =} \DecValTok{250}\NormalTok{, }\CommentTok{\#A higher bins value means more, narrower bars, covers smaller range of value}
     \AttributeTok{color =} \StringTok{"black"}\NormalTok{,}
     \AttributeTok{fill =} \StringTok{"skyblue"}\NormalTok{,}
     \AttributeTok{alpha =} \FloatTok{0.7}
@@ -5303,9 +5303,8 @@ health outcome?}
 \section{Predictions using fitted regression
 model}\label{predictions-using-fitted-regression-model}
 
-\subsection{\texorpdfstring{\textbf{Write down the \% long term sick or
-disabled regression model with the new region label categorical
-variables}}{Write down the \% long term sick or disabled regression model with the new region label categorical variables}}\label{write-down-the-long-term-sick-or-disabled-regression-model-with-the-new-region-label-categorical-variables}
+\textbf{Write down the \% long term sick or disabled regression model
+with the new region label categorical variables.}
 
 Relating to this week's lecture, the \%
 \texttt{pct\_Longterm\_sick\_or\_disabled} is equal to:
@@ -5342,7 +5341,7 @@ Assignment 1 in progress. For this week, try whether you can:
   Summaries your model outputs and interpret the results.
 \end{itemize}
 
-\textbf{Answer of the written down model and Q5}
+\textbf{Answer of the written down model and Q6}
 
 The model of the new region label is:
 \emph{pct\_Longterm\_sick\_or\_disabled} (\%) \emph{= 9.98+ (-0.1842)*

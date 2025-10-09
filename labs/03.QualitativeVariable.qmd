@@ -258,7 +258,7 @@ The distribution of the net household income per capita can be visualised by usi
 ```{r}
 ggplot(frs_df, aes(x = Net_inc_pp)) +
   geom_histogram(
-    bins = 1000,
+    bins = 250, #A higher bins value means more, narrower bars, covers smaller range of value
     color = "black",
     fill = "skyblue",
     alpha = 0.7
@@ -606,7 +606,7 @@ summary(model2)
 
 ## Predictions using fitted regression model
 
-### **Write down the % long term sick or disabled regression model with the new region label categorical variables**
+**Write down the % long term sick or disabled regression model with the new region label categorical variables.**
 
 Relating to this week’s lecture, the % `pct_Longterm_sick_or_disabled` is equal to:
 
@@ -632,7 +632,7 @@ The extension activities are designed to get yourself prepared for the Assignmen
 
 -   Summaries your model outputs and interpret the results.
 
-**Answer of the written down model and Q5**
+**Answer of the written down model and Q6**
 
 The model of the new region label is: *pct_Longterm_sick_or_disabled* (%) *= 9.98+ (-0.1842)\* pct_Males* (%) *+ 0.2014 \* pct_No_qualifications* (%) *+ (-0.0341) \* pct_Higher_manager_prof* + *(0.4742) \* North + (-0.5063)* \* South + (-0.4103) \* Midlands + *1.2518 \* Wales.* But should be aware that the relation between *pct_Higher_manager_prof* and *pct_Longterm_sick_or_disabled* is not statistically significant.
 
