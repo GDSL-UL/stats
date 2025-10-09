@@ -41,7 +41,7 @@ Recall in Week 2, you get familiar to R by using the Census data. Today we will 
 
 <!--Now, there should be two .csv file: 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv' in your '/data/FRS' folder. Double click to open both .csv files you may find they have exactly same column names - yes, they are in fact the same spreadsheet but 'FRS16-17_labels.csv' is more readable for the cell contents as they are in text format but cells 'FRS16-17_codes.csv' is in coding format. This is quite normal as when we doing surveys, we use text as the options of multiple choice questions for respondents to choose from, and therefore the collected survey results are in the 'FRS16-17_labels.csv' format. For example, for the multiple choice question - which region you are from? The options include 'London', 'North West', 'Wales', etc. However, while analysing the survey results, these text content (the options of multiple choice questions) are in fact different categories of the categorical/qualitative variable. So for some survey results, you may find they are formatted in coding way as 'FRS16-17_codes.csv', and along with a coding dictionary for you to learn the meaning of each coding. -->
 
-To start today's practical session, we first will use 'FRS16-17_labels.csv'. <!--In the Region example, there are 12 categories for the categorical/qualitative variable Region-->. You can open the csv file in Excel and find that different from the Census dataset, the FRS dataset contains many qualitative/categorical variables, such as hh_tenure (Housing Tenure), happy (How happy did you feel yesterday?), health (How is your health in general) and etc.. To know the meaning of all the column names and the values in cell, you may need to reference to the 'FRS_dictionary.xlsx' to help your understanding. Recall our lecture, these categorical variable will need to be treated as Dummy variable in the regression model. In R, the variable type of qualitative/categorical variables is called '**factor**'.
+To start today's practical session, we first will use 'FRS16-17_labels.csv'. <!--In the Region example, there are 12 categories for the categorical/qualitative variable Region--> You can open the .csv file in Excel and find itsdifferent from the Census dataset, the FRS dataset contains many qualitative/categorical variables, such as hh_tenure (Housing Tenure), happy (How happy did you feel yesterday?), health (How is your health in general) and etc.. To know the meaning of all the column names and the values in cell, you may need to reference to the 'FRS_dictionary.xlsx' to help your understanding. Recall our lecture, these categorical variable will need to be treated as Dummy variable in the regression model. In R, the variable type of qualitative/categorical variables is called '**factor**'.
 
 As usual we first load the necessary libraries.
 
@@ -117,7 +117,6 @@ Recall in previous weeks, we used the following code to overview the dataset. Fa
 
 ```{r,results='hide'}
 View(frs_data)
-glimpse(frs_data)
 ```
 
 and also `summary()` to produce summaries of each variable
