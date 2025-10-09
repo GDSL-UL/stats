@@ -747,6 +747,9 @@ F-statistic: 56.29 on 5 and 16821 DF,  p-value: &lt; 2.2e-16</code></pre>
 6 healthVery Good    4932.      788.     6.26  3.95e-10</code></pre>
 </div>
 </div>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Q2.</strong> <strong>What conclusions could be drawn in terms of income inequalities with respect to gender and health status? Also think about the statistical significance of these differences.</strong></p>
+</div>
 <p>The interpretation of this table is again similar to what you have learnt in Week2, but you may find that R has automatically treat your categorical/qualitative variable Sex and Health as dummy variables, so in the output, you see sexMale, the reason there is no sexFemale is because I requested R to use sex=Female as the reference category. You also wee healthBad, healthFair, healthGood, and healthVery Good, but you didn’t see health Very Bad because agaion I request <code>frs_df$health &lt;- fct_relevel(as.factor(frs_df$health), "Very Bad")</code> .</p>
 <p>For the independent variable, the coefficient estimates of them need to be interpreted by comparing to the reference category: Male and Very Bad health. We can derive how the differences between different independent variable categories are associated with the changes in <code>Net_inc_pp</code>, for example:</p>
 <ul>
@@ -755,9 +758,6 @@ F-statistic: 56.29 on 5 and 16821 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li>Then, the association of <code>healthGood</code> and <code>healthVeryGood</code> are both positive and strong: <code>healthGood</code> is associated with an increase of £2,766 net income per capita compared to <code>healthVeryBad</code>, and <code>healthVeryGood</code> is associated with an increase of £4,931 net income per capita compared to <code>healthVeryBad</code> . Here you may draw some useful conclusion on who the health condition impact the inequality of income.</li>
 </ul>
 <p>We then read R-squared and Adjusted R-squared to evaluate the model fit. We see both values are only around 0.016, which means in the model <code>Net_inc_pp~ Sex + health</code> , the independent variable <code>Sex + health</code> can only explain 1.6% of the variation of our dependent variable <code>Net_inc_pp</code> . This is a relatively poor performance, and the model cannot be used to do any prediction of <code>Net_inc_pp</code> by using just sex and health. This also suggests us that to fully explain the <code>Net_inc_pp</code> , we may need to add in more variables, such as education level, occupation, age, etc. Although the model is not solid for any prediction, the coefficients and significant conclusion from the model are still very useful.</p>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q2.</strong> <strong>What conclusions could be drawn in terms of income inequalities with respect to gender and health status? Also think about the statistical significance of these differences.</strong></p>
-</div>
 </section>
 <section id="implementing-a-linear-regression-model-with-a-qualitative-independent-variable" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="implementing-a-linear-regression-model-with-a-qualitative-independent-variable"><span class="header-section-number">4.3</span> <strong>Implementing a linear regression model with a qualitative independent variable</strong></h2>

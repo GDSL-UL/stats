@@ -317,6 +317,10 @@ library(broom)
 tidy(model_frs)
 ```
 
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**Q2.** **What conclusions could be drawn in terms of income inequalities with respect to gender and health status? Also think about the statistical significance of these differences.**
+:::
+
 The interpretation of this table is again similar to what you have learnt in Week2, but you may find that R has automatically treat your categorical/qualitative variable Sex and Health as dummy variables, so in the output, you see sexMale, the reason there is no sexFemale is because I requested R to use sex=Female as the reference category. You also wee healthBad, healthFair, healthGood, and healthVery Good, but you didn't see health Very Bad because agaion I request `frs_df$health <- fct_relevel(as.factor(frs_df$health), "Very Bad")` .
 
 For the independent variable, the coefficient estimates of them need to be interpreted by comparing to the reference category: Male and Very Bad health. We can derive how the differences between different independent variable categories are associated with the changes in `Net_inc_pp`, for example:
@@ -326,10 +330,6 @@ For the independent variable, the coefficient estimates of them need to be inter
 -   Then, the association of `healthGood` and `healthVeryGood` are both positive and strong: `healthGood` is associated with an increase of £2,766 net income per capita compared to `healthVeryBad`, and `healthVeryGood` is associated with an increase of £4,931 net income per capita compared to `healthVeryBad` . Here you may draw some useful conclusion on who the health condition impact the inequality of income.
 
 We then read R-squared and Adjusted R-squared to evaluate the model fit. We see both values are only around 0.016, which means in the model `Net_inc_pp~ Sex + health` , the independent variable `Sex + health` can only explain 1.6% of the variation of our dependent variable `Net_inc_pp` . This is a relatively poor performance, and the model cannot be used to do any prediction of `Net_inc_pp` by using just sex and health. This also suggests us that to fully explain the `Net_inc_pp` , we may need to add in more variables, such as education level, occupation, age, etc. Although the model is not solid for any prediction, the coefficients and significant conclusion from the model are still very useful.
-
-::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q2.** **What conclusions could be drawn in terms of income inequalities with respect to gender and health status? Also think about the statistical significance of these differences.**
-:::
 
 ## **Implementing a linear regression model with a qualitative independent variable**
 
