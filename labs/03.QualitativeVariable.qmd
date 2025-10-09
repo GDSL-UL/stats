@@ -37,11 +37,11 @@ In this week's practical we are going to
 
 ## Analysis categorical variables
 
-Recall in Week 2, you get familiar to R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your local drive folder under the path of 'data/Census2021/'; for the FRS datasets, please click the links to download the datasets from [Canvas](https://canvas.liverpool.ac.uk/courses/84668/pages/family-resource-survey-2016-17?module_item_id=2396198). Please download both the datasets of 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv'. You may create a new folder named 'FRS' under the '/data/' along with the Census2021 folder, and put both newly downloaded .csv files at the 'data/FRS/' folder for later use.
+Recall in Week 2, you get familiar to R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your local drive folder under the path of '/data/Census2021/'; for the FRS datasets, please click the links to download the datasets from [Canvas](https://canvas.liverpool.ac.uk/courses/84668/pages/family-resource-survey-2016-17?module_item_id=2396198). Please download both the datasets of 'FRS16-17_labels.csv' and 'FRS_dictionary.xlxs'<!--and 'FRS16-17_codes.csv'--> for today's practical. You may create a new folder named 'FRS' under the '/data/' along with the Census2021 folder, and put the newly downloaded .csv files at the '/data/FRS/' folder for later use.
 
-Now, there should be two .csv file: 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv' in your '/data/FRS' folder. Double click to open .csv files you may find they have exactly same column names - yes, they are in fact the same spreadsheet but 'FRS16-17_labels.csv' is more readable for the cell contents as they are in text format but cells 'FRS16-17_codes.csv' is in coding format. This is quite normal as when we doing surveys, we use text as the options of multiple choice questions for respondents to choose from, and therefore the collected survey results are in the 'FRS16-17_labels.csv' format. For example, for the multiple choice question - which region you are from? The options include 'London', 'North West', 'Wales', etc. However, while analysing the survey results, these text content (the options of multiple choice questions) are in fact different categories of the categorical/qualitative variable. So for some survey results, you may find they are formatted in coding way as 'FRS16-17_codes.csv', and along with a coding dictionary for you to learn the meaning of each coding.
+<!--Now, there should be two .csv file: 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv' in your '/data/FRS' folder. Double click to open both .csv files you may find they have exactly same column names - yes, they are in fact the same spreadsheet but 'FRS16-17_labels.csv' is more readable for the cell contents as they are in text format but cells 'FRS16-17_codes.csv' is in coding format. This is quite normal as when we doing surveys, we use text as the options of multiple choice questions for respondents to choose from, and therefore the collected survey results are in the 'FRS16-17_labels.csv' format. For example, for the multiple choice question - which region you are from? The options include 'London', 'North West', 'Wales', etc. However, while analysing the survey results, these text content (the options of multiple choice questions) are in fact different categories of the categorical/qualitative variable. So for some survey results, you may find they are formatted in coding way as 'FRS16-17_codes.csv', and along with a coding dictionary for you to learn the meaning of each coding. -->
 
-For today's practical session, we will use 'FRS16-17_labels.csv'. In the Region example, there are 12 categories for the categorical/qualitative variable Region. Recall our lecture, the Region variable need to be treated as Dummy variable in the regression model. In R, the variable type of dummy variables is called 'factor'.
+To start today's practical session, we first will use 'FRS16-17_labels.csv'. <!--In the Region example, there are 12 categories for the categorical/qualitative variable Region-->. You can open the csv file in Excel and find that different from the Census dataset, the FRS dataset contains many qualitative/categorical variables, such as hh_tenure (Housing Tenure), happy (How happy did you feel yesterday?), health (How is your health in general) and etc.. To know the meaning of all the column names and the values in cell, you may need to reference to the 'FRS_dictionary.xlsx' to help your understanding. Recall our lecture, these categorical variable will need to be treated as Dummy variable in the regression model. In R, the variable type of qualitative/categorical variables is called '**factor**'.
 
 As usual we first load the necessary libraries.
 
@@ -292,7 +292,7 @@ Same of what you have learnt in Week 2, the code explanation:
 **`lm()` Function**:
 
 -   `lm()` stands for "linear model" and is used to fit a linear regression model in R.
--   The formula syntax ``` Net_inc_pp``~ Sex + health ``` specifies a relationship between:
+-   The formula syntax `Net_inc_pp ~ Sex + health` specifies a relationship between:
     -   **Dependent Variable**: `Net_inc_pp`.
     -   **Independent Variables**: `Sex`, and `health`. The model is trained on the `data = frs_df` dataset.
 
@@ -325,7 +325,7 @@ For the independent variable, the coefficient estimates of them need to be inter
 -   The association of `healthBad` and `healthFair` arenot statistically significant, which means we cannot draw any conclusion of the relationships between `healthBad` and `Net_inc_pp` or `healthFair` and `Net_inc_pp` from the model ;
 -   Then, the association of `healthGood` and `healthVeryGood` are both positive and strong: `healthGood` is associated with an increase of £2,766 net income per capita compared to `healthVeryBad`, and `healthVeryGood` is associated with an increase of £4,931 net income per capita compared to `healthVeryBad` . Here you may draw some useful conclusion on who the health condition impact the inequality of income.
 
-We then read R-squared and Adjusted R-squared to evaluate the model fit. We see both values are only around 0.016, which means in the model `Net_inc_pp~ Sex + health` , the independent variable `Sex + health` can only explain 1.6% of the variation of our dependent variable `Net_inc_pp` . This is a relatively poor performance, and the model cannot be used to do any prediction of `Net_inc_pp` by using just sex and health. This also suggests us that to fully explain the `Net_inc_pp` , we may need to add in more variables, such as education level, occupation, age, etc. Although the model is not solid for any prediction, the coefficients and significant conclusion from the model are still very useful.
+We then read R-squared and Adjusted R-squared to evaluate the model fit. We see both values are only around 0.016, which means in the model `Net_inc_pp ~ Sex + health` , the independent variable `Sex + health` can only explain 1.6% of the variation of our dependent variable `Net_inc_pp`. This is a relatively poor performance, and the model cannot be used to do any prediction of `Net_inc_pp` by using just sex and health. This also suggests us that to fully explain the `Net_inc_pp` , we may need to add in more variables, such as education level, occupation, age, etc. Although the model is not solid for any prediction, the coefficients and significant conclusion from the model are still very useful.
 
 ## **Implementing a linear regression model with a qualitative independent variable**
 
@@ -396,7 +396,7 @@ table(df$Region)
 
 The `table()` function tells us that this data frame contains 10 regions, and the number of LAs belongs to each region.
 
-\*\*R can only include the categorical variables in the **factor** type, so we set the new column *Region_label* in `factor()`
+\*\*R can only include the categorical variables in the **factor** type, so we set the column *Region* in `factor()`
 
 ```{r}
 df$Region<- factor(df$Region) 
@@ -408,7 +408,7 @@ We will continue with a very similar regression model fitted in last week that r
 
 Decide which region to be set as the baseline category. The principle is that if you want to compare the (average) long term illness outcome of Region A to those of other regions, Region A should be chosen as the baseline category. For example, if you want to compare the (average) long term illness outcome of London to rest of regions in the England and Wales, London should be selected as the baseline category.
 
-Implement the regression model with the newly created categorical variables - *Region_label* in our case. R will automatically handle the qualitative variable as dummy variables so you don't need to concern any of that. But you need to let R knows which category of your qualitative variable is your reference category or the baseline. Here we will use London as our first go. **Note:** We choose London as the baseline category so the London region will be [**excluded**]{.underline} in the independent variable list.
+Implement the regression model with the categorical variables - *Region* in our case. R will automatically handle the qualitative variable as dummy variables so you don't need to concern any of that. But you need to let R knows which category of your qualitative variable is your reference category or the baseline. Here we will use London as our first go. **Note:** We choose London as the baseline category so the London region will be [**excluded**]{.underline} in the independent variable list.
 
 Therefore, first, we set London as the reference:
 
@@ -416,7 +416,7 @@ Therefore, first, we set London as the reference:
 df$Region <- fct_relevel(df$Region,  "London")
 ```
 
-Similar to last week, we build our linear regression model, but also include the *Region_label* variable into the model.
+Similar to last week, we build our linear regression model, but also include the *Region* variable into the model.
 
 ```{r}
 model <- lm(pct_Longterm_sick_or_disabled ~ pct_Males + pct_No_qualifications + pct_Higher_manager_prof + Region, data = df)
