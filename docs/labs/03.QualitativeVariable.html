@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zi Ye">
-<meta name="dcterms.date" content="2025-10-09">
+<meta name="dcterms.date" content="2025-10-10">
 
 <title>4&nbsp; Lab: Correlation and Multiple Linear Regression with Qualitative Variables – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
@@ -255,7 +255,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 9, 2025</p>
+      <p class="date">October 10, 2025</p>
     </div>
   </div>
   
@@ -837,7 +837,7 @@ Yorkshire and The Humber
 </div>
 <section id="include-the-categorical-variables-into-a-regression-model" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="include-the-categorical-variables-into-a-regression-model"><span class="header-section-number">4.3.1</span> <strong>Include the categorical variables into a regression model</strong></h3>
-<p>We will continue with a very similar regression model fitted in last week that relates Percentages long-term illness (<em>pct_Long_term_ill</em>) to Percentages no-qualification (<em>pct_No_qualifications</em>), Percentage Males (<em>pct_Males</em>) and Percentages Higher Managerial or Professional occupation (<em>pct_Higher_manager_prof</em>).</p>
+<p>We will continue with a very similar regression model fitted in last week that relates Percentages long-term illness (<em>pct_Long_term_sick_or_disabled</em>) to Percentages no-qualification (<em>pct_No_qualifications</em>), Percentage Males (<em>pct_Males</em>) and Percentages Higher Managerial or Professional occupation (<em>pct_Higher_manager_prof</em>).</p>
 <p>Decide which region to be set as the baseline category. The principle is that if you want to compare the (average) long term illness outcome of Region A to those of other regions, Region A should be chosen as the baseline category. For example, if you want to compare the (average) long term illness outcome of London to rest of regions in the England and Wales, London should be selected as the baseline category.</p>
 <p>Implement the regression model with the categorical variables - <em>Region</em> in our case. R will automatically handle the qualitative variable as dummy variables so you don’t need to concern any of that. But you need to let R knows which category of your qualitative variable is your reference category or the baseline. Here we will use London as our first go. <strong>Note:</strong> We choose London as the baseline category so the London region will be <u><strong>excluded</strong></u> in the independent variable list.</p>
 <p>Therefore, first, we set London as the reference:</p>
@@ -886,7 +886,7 @@ F-statistic:  83.6 on 12 and 318 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Q4. Relating back to this week’s lecture notes, indicate what regions have statistically significant differences in the percentage of long-term illness, compared to London?</strong></p>
 </div>
-<p>First, the <strong>Significance</strong> and the <strong>Coefficient Estimates</strong>. By examining the P-value, which is the last column in the output table, we can see that most of the independent variables are significant predictor of <code>pct_Long_term_ill</code>.</p>
+<p>First, the <strong>Significance</strong> and the <strong>Coefficient Estimates</strong>. By examining the P-value, which is the last column in the output table, we can see that most of the independent variables are significant predictor of <code>pct_Longterm_sick_or_disabled</code>.</p>
 <ul>
 <li><p>Similarly to last week, we learn that the changes in <code>pct_No_qualifications</code> are significantly associated with changes in <code>pct_Longterm_sick_or_disabled</code> at the &lt;0.001 level (with the three asterisks *** ), which is actually an indicator of highly statistically significant, while we are less confident that the observed relationship between <code>pct_No_qualifications</code> and <code>pct_Longterm_sick_or_disabled</code> are statistically significant (with the two asterisks **). Through their coefficient estimates, we learn that:</p>
 <ul>

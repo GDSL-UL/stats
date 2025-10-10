@@ -403,7 +403,7 @@ df$Region<- factor(df$Region)
 
 ### **Include the categorical variables into a regression model**
 
-We will continue with a very similar regression model fitted in last week that relates Percentages long-term illness (*pct_Long_term_ill*) to Percentages no-qualification (*pct_No_qualifications*), Percentage Males (*pct_Males*) and Percentages Higher Managerial or Professional occupation (*pct_Higher_manager_prof*).
+We will continue with a very similar regression model fitted in last week that relates Percentages long-term illness (*pct_Long_term_sick_or_disabled*) to Percentages no-qualification (*pct_No_qualifications*), Percentage Males (*pct_Males*) and Percentages Higher Managerial or Professional occupation (*pct_Higher_manager_prof*).
 
 Decide which region to be set as the baseline category. The principle is that if you want to compare the (average) long term illness outcome of Region A to those of other regions, Region A should be chosen as the baseline category. For example, if you want to compare the (average) long term illness outcome of London to rest of regions in the England and Wales, London should be selected as the baseline category.
 
@@ -429,7 +429,7 @@ You have already learnt how to interpret the output of regression model last wee
 **Q4. Relating back to this week's lecture notes, indicate what regions have statistically significant differences in the percentage of long-term illness, compared to London?**
 :::
 
-First, the **Significance** and the **Coefficient Estimates**. By examining the P-value, which is the last column in the output table, we can see that most of the independent variables are significant predictor of `pct_Long_term_ill`.
+First, the **Significance** and the **Coefficient Estimates**. By examining the P-value, which is the last column in the output table, we can see that most of the independent variables are significant predictor of `pct_Longterm_sick_or_disabled`.
 
 -   Similarly to last week, we learn that the changes in `pct_No_qualifications` are significantly associated with changes in `pct_Longterm_sick_or_disabled` at the \<0.001 level (with the three asterisks \*\*\* ), which is actually an indicator of highly statistically significant, while we are less confident that the observed relationship between `pct_No_qualifications` and `pct_Longterm_sick_or_disabled` are statistically significant (with the two asterisks \*\*). Through their coefficient estimates, we learn that:
 
