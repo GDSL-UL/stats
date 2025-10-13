@@ -224,7 +224,7 @@ exp(coef(m.glm))
 exp(confint(m.glm, level = 0.95)) 
 ```
 
-## **Interpreting estimated regression coefficients**
+### **Interpreting estimated regression coefficients**
 
 Compare to the statistical inference in a multiple linear regression model context (you have done in Week 2 and 3), the interpretation of coefficients (B) and odds ratios (Exp(B)) for the logistic regression model have some similarity and differences:
 

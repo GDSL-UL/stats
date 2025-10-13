@@ -224,15 +224,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#knowing-the-dataset-and-descriptive-analysis" id="toc-knowing-the-dataset-and-descriptive-analysis" class="nav-link active" data-scroll-target="#knowing-the-dataset-and-descriptive-analysis"><span class="header-section-number">5.1</span> Knowing the dataset and descriptive analysis</a></li>
   <li><a href="#preparing-the-input-variables" id="toc-preparing-the-input-variables" class="nav-link" data-scroll-target="#preparing-the-input-variables"><span class="header-section-number">5.2</span> Preparing the input variables</a></li>
-  <li><a href="#implementing-a-logistic-regression-model" id="toc-implementing-a-logistic-regression-model" class="nav-link" data-scroll-target="#implementing-a-logistic-regression-model"><span class="header-section-number">5.3</span> <strong>Implementing a logistic regression model</strong></a></li>
-  <li><a href="#interpreting-estimated-regression-coefficients" id="toc-interpreting-estimated-regression-coefficients" class="nav-link" data-scroll-target="#interpreting-estimated-regression-coefficients"><span class="header-section-number">5.4</span> <strong>Interpreting estimated regression coefficients</strong></a>
+  <li><a href="#implementing-a-logistic-regression-model" id="toc-implementing-a-logistic-regression-model" class="nav-link" data-scroll-target="#implementing-a-logistic-regression-model"><span class="header-section-number">5.3</span> <strong>Implementing a logistic regression model</strong></a>
   <ul class="collapse">
-  <li><a href="#model-fit" id="toc-model-fit" class="nav-link" data-scroll-target="#model-fit"><span class="header-section-number">5.4.1</span> <strong>Model fit</strong></a></li>
-  <li><a href="#recode-socio-economic-status-variable-and-explore-commuting-differences" id="toc-recode-socio-economic-status-variable-and-explore-commuting-differences" class="nav-link" data-scroll-target="#recode-socio-economic-status-variable-and-explore-commuting-differences"><span class="header-section-number">5.4.2</span> Recode Socio-economic status variable and explore commuting differences</a></li>
-  <li><a href="#prediction-using-fitted-regression-model" id="toc-prediction-using-fitted-regression-model" class="nav-link" data-scroll-target="#prediction-using-fitted-regression-model"><span class="header-section-number">5.4.3</span> Prediction using fitted regression model</a></li>
+  <li><a href="#interpreting-estimated-regression-coefficients" id="toc-interpreting-estimated-regression-coefficients" class="nav-link" data-scroll-target="#interpreting-estimated-regression-coefficients"><span class="header-section-number">5.3.1</span> <strong>Interpreting estimated regression coefficients</strong></a></li>
+  <li><a href="#model-fit" id="toc-model-fit" class="nav-link" data-scroll-target="#model-fit"><span class="header-section-number">5.3.2</span> <strong>Model fit</strong></a></li>
+  <li><a href="#recode-socio-economic-status-variable-and-explore-commuting-differences" id="toc-recode-socio-economic-status-variable-and-explore-commuting-differences" class="nav-link" data-scroll-target="#recode-socio-economic-status-variable-and-explore-commuting-differences"><span class="header-section-number">5.3.3</span> Recode Socio-economic status variable and explore commuting differences</a></li>
+  <li><a href="#prediction-using-fitted-regression-model" id="toc-prediction-using-fitted-regression-model" class="nav-link" data-scroll-target="#prediction-using-fitted-regression-model"><span class="header-section-number">5.3.4</span> Prediction using fitted regression model</a></li>
   </ul></li>
-  <li><a href="#extension-activities" id="toc-extension-activities" class="nav-link" data-scroll-target="#extension-activities"><span class="header-section-number">5.5</span> <strong>Extension activities</strong></a></li>
-  <li><a href="#answers-for-qs" id="toc-answers-for-qs" class="nav-link" data-scroll-target="#answers-for-qs"><span class="header-section-number">5.6</span> <strong>Answers for Qs</strong></a></li>
+  <li><a href="#extension-activities" id="toc-extension-activities" class="nav-link" data-scroll-target="#extension-activities"><span class="header-section-number">5.4</span> <strong>Extension activities</strong></a></li>
+  <li><a href="#answers-for-qs" id="toc-answers-for-qs" class="nav-link" data-scroll-target="#answers-for-qs"><span class="header-section-number">5.5</span> <strong>Answers for Qs</strong></a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/labs/04.LogisticRegression.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -614,7 +614,7 @@ Lower managerial and professional occupations
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>sar_df <span class="ot">&lt;-</span> sar_code <span class="sc">%&gt;%</span> <span class="fu">filter</span>(work_distance<span class="sc">&lt;=</span><span class="dv">8</span> <span class="sc">&amp;</span> nssec <span class="sc">&lt;=</span><span class="dv">8</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q1.</strong> Create descriptive analysis for the two variables “work_distance”, “nssec” and “sex” with the new data, including (1) summarise the frequencies and (2) create histogram charts for the three variables.</p>
+<p><strong>Q1. Create descriptive analysis for the two variables “work_distance”, “nssec” and “sex” with the new data, including (1) summarise the frequencies and (2) create histogram charts for the three variables.</strong></p>
 </div>
 </section>
 <section id="preparing-the-input-variables" class="level2" data-number="5.2">
@@ -705,9 +705,8 @@ nssec7      0.1984396 0.2824629
 nssec8      0.1869397 0.2729172</code></pre>
 </div>
 </div>
-</section>
-<section id="interpreting-estimated-regression-coefficients" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="interpreting-estimated-regression-coefficients"><span class="header-section-number">5.4</span> <strong>Interpreting estimated regression coefficients</strong></h2>
+<section id="interpreting-estimated-regression-coefficients" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="interpreting-estimated-regression-coefficients"><span class="header-section-number">5.3.1</span> <strong>Interpreting estimated regression coefficients</strong></h3>
 <p>Compare to the statistical inference in a multiple linear regression model context (you have done in Week 2 and 3), the interpretation of coefficients (B) and odds ratios (Exp(B)) for the logistic regression model have some similarity and differences:</p>
 <p><strong>It is the same that we read p-values of regression coefficients to assess significances of coefficients</strong>; for instance, by comparing p-values to the conventional level of significance of 0.05:</p>
 <p>·&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If the p-value of a coefficient is smaller than 0.05, the coefficient is statistically significant. In this case, you can say that the relationship between an independent variable and the outcome variable is <em>statistically</em> significant.</p>
@@ -724,8 +723,9 @@ nssec8      0.1869397 0.2729172</code></pre>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Q3</strong>. <strong>Can you write down the findings you learnt from the model outcomes to other occupation groups (nssec = 4, nssec = 6 and nssec =7)?</strong></p>
 </div>
-<section id="model-fit" class="level3" data-number="5.4.1">
-<h3 data-number="5.4.1" class="anchored" data-anchor-id="model-fit"><span class="header-section-number">5.4.1</span> <strong>Model fit</strong></h3>
+</section>
+<section id="model-fit" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="model-fit"><span class="header-section-number">5.3.2</span> <strong>Model fit</strong></h3>
 <p>We include the R library <code>pscl</code> for calculate the measures of fit.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pscl"</span>))</span>
@@ -786,8 +786,8 @@ hurdle and zeroinfl functions by Achim Zeileis.</code></pre>
 </ul>
 <p>Different from the multiple linear regression, whose R-squared indicates % of the variance in the dependent variables that is explained by the independent variable. In logistic regression model, R-squared is not directly applicable. Instead, we use pseudo R-squared measures, such as McFadden’s pseudo R-squared, or Cox &amp; Snell pseudo R-squared to provide an indication of model fit. For the individual level dataset like SAR, value around 0.3 is considered good for well-fitting. Therefore, our model is not that robust for prediction but still explain the association between variables and the categories. To improve the model, we may need more variables as the independent variables, you may identify some based on the related literature or debates on this topic.</p>
 </section>
-<section id="recode-socio-economic-status-variable-and-explore-commuting-differences" class="level3" data-number="5.4.2">
-<h3 data-number="5.4.2" class="anchored" data-anchor-id="recode-socio-economic-status-variable-and-explore-commuting-differences"><span class="header-section-number">5.4.2</span> Recode Socio-economic status variable and explore commuting differences</h3>
+<section id="recode-socio-economic-status-variable-and-explore-commuting-differences" class="level3" data-number="5.3.3">
+<h3 data-number="5.3.3" class="anchored" data-anchor-id="recode-socio-economic-status-variable-and-explore-commuting-differences"><span class="header-section-number">5.3.3</span> Recode Socio-economic status variable and explore commuting differences</h3>
 <p>This time, we want to know whether “Lower supervisory and technical occupations”, “Semi-routine occupations” and “Routine occupations” are associated with higher probability of commuting over long distance when comparing to people in other occupation.</p>
 <p>We can use mutate() to create a new column, set the value of “Lower supervisory and technical occupations”, “Semi-routine occupations” and “Routine occupations” as original, while the rest as “Other occupations”. Here by using the SAR in code format, we can make this more easier by using:</p>
 <div class="cell">
@@ -802,8 +802,8 @@ hurdle and zeroinfl functions by Achim Zeileis.</code></pre>
 <p><strong>Q4</strong>. <strong>If we want to explore whether people work as independent employers show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?</strong></p>
 </div>
 </section>
-<section id="prediction-using-fitted-regression-model" class="level3" data-number="5.4.3">
-<h3 data-number="5.4.3" class="anchored" data-anchor-id="prediction-using-fitted-regression-model"><span class="header-section-number">5.4.3</span> Prediction using fitted regression model</h3>
+<section id="prediction-using-fitted-regression-model" class="level3" data-number="5.3.4">
+<h3 data-number="5.3.4" class="anchored" data-anchor-id="prediction-using-fitted-regression-model"><span class="header-section-number">5.3.4</span> Prediction using fitted regression model</h3>
 <p>Relating to this week’s lecture, the log odds of the person who is will to long-distance commuting is equal to:</p>
 <p>Log odds of long-distance commuting = 0.188 + 0.693 * sexFemale + 0.679 * nssec3 + 0.357*nssec4 + 3.409*nssec5 + 0.249*nssec6 + 0.237*nssec7 + 0.226*nssec8. We don’t include nssec1 as the previous result shows that it is not statistically significant, so we won’t use the model to predict individuals that as nssec=1 occupation.</p>
 <p>By using R, you can create the object you would like to predict. Here we created three person, see whether you can interpret their gender and socio-economic classification?</p>
@@ -821,16 +821,16 @@ hurdle and zeroinfl functions by Achim Zeileis.</code></pre>
 <p>So let us look at these three people. The first one, for a male who classified as Semi-routine occupation in NSSEC, the probability of he travel over 60km to work is only 4.26%. For the second one, a female who is in Lower managerial and professional occupation, the probability of long-distance commuting is 8.11%. Now you know the prediction outcomes for our last person. Remind: the model fitting result shows the model is not very robust, therefore the prediction may not very solid as well.</p>
 </section>
 </section>
-<section id="extension-activities" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="extension-activities"><span class="header-section-number">5.5</span> <strong>Extension activities</strong></h2>
+<section id="extension-activities" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="extension-activities"><span class="header-section-number">5.4</span> <strong>Extension activities</strong></h2>
 <p>The extension activities are designed to get yourself prepared for the Assignment 2 in progress. For this week, try whether you can:</p>
 <ul>
 <li><p>Select a regression strategy and explain why a linear or logistic model is appropriate</p></li>
 <li><p>Perform one or a series of regression models, including different combinations of your chosen independent variables to explain and/or predict your dependent variable</p></li>
 </ul>
 </section>
-<section id="answers-for-qs" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="answers-for-qs"><span class="header-section-number">5.6</span> <strong>Answers for Qs</strong></h2>
+<section id="answers-for-qs" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="answers-for-qs"><span class="header-section-number">5.5</span> <strong>Answers for Qs</strong></h2>
 <p><strong>Answer for Q1</strong></p>
 <p>For Q1, we have already had the codes for <code>work_distance</code> and <code>nssec</code>, so the only missing variable is <code>sex</code>:</p>
 <p>To summaries the frequency of each category, we use code:</p>
