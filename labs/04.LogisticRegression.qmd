@@ -1,5 +1,5 @@
 ---
-title: "Lab: LogisticRegression"
+title: "Lab: Logistic Regression"
 author: "Zi Ye"
 date: "`r Sys.Date()`"
 output: html_document
@@ -64,6 +64,16 @@ View(sar_label)
 #View the sar_code dataset
 View(sar_code)
 ```
+
+To know the dataset better, we can run dim() to know who many individuals (rows) in this sample data and how many variables (columns) have been recorded.
+
+```{r}
+dim(sar_label)
+#or
+dim(sar_code)
+```
+
+So there are 50,000 respondents in the sample dataset and 39 variables are included.
 
 After browsing both data sheets and also the data dictionary (sometimes we call it meta data), you may notice that all the columns in the SAR dataset is categorical/qualitative type. Therefore, if we run the `summary()` function for the dataframes, as we did in previous weeks for the Census data or the FRS dataset, the outputs of the `summary()` may not be very useful. Again, please notice that the figures in the sar_code.csv is not mean actual numbers, but the codes of different categories of the qualitative variables. Therefore, the `summary()` results at there is not useful. Please reflect what we've learnt in last week's, when the variables if categorical/qualitative type, how we do the descriptive analysis for them?
 
@@ -176,7 +186,7 @@ sar_df <- sar_df %>% mutate(
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q2.** Do descripitve analysis to the new `sar_df` dataframe with new column named `New_work_distance` by using the codes you have learnt.
+**Q2.** **Do descripitve analysis to the new `sar_df` dataframe with new column named `New_work_distance` by using the codes you have learnt.**
 :::
 
 The independent variables are gender and socio-economic status. The gender variable `sex` is a categorical variable. Therefore, as we've learnt last week, before adding the categorical variables into the regression model, we need first make it a factor and then identify the reference category. For gender, we use male as the basline. Prepare your "sex" variable before the regression model:
@@ -239,7 +249,7 @@ o   For variable **`nssec`**, a positive significant and the odds ratio estima
 -   Compare to the higher professional occupations (nssec=2), the worker in Routine occupations (nssec=8) are 0.226 times (or 22.6%) likely to travel more than 60km to work, with the CI between 0.19 to 0.27. when other variable constant. Or, we can see being routine occupations decreases the probability of long-distance commuting by 77.4% (1-0.226).
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q2**. **Can you write down the findings you learnt from the model outcomes to other occupation groups (nssec = 4, nssec = 6 and nssec =7)?**
+**Q3**. **Can you write down the findings you learnt from the model outcomes to other occupation groups (nssec = 4, nssec = 6 and nssec =7)?**
 :::
 
 ### **Model fit**
@@ -295,7 +305,7 @@ sar_df <- sar_df %>% mutate(New_nssec = if_else(!nssec %in% c(6,7,8), "0" ,nssec
 Use "Other occupations" (code: 0) as the reference category by `relevel(as.factor())` and then create the regression model: `glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")`. Can you now run the model by yourself? Find the answer at the end of the practical.
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q3**. If we want to explore whether people work as independent employers show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?
+**Q4**. If we want to explore whether people work as independent employers show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?
 :::
 
 ### Prediction using fitted regression model
@@ -347,7 +357,26 @@ ggplot(sar_label, aes(x = sex)) +
   theme_classic()#choose theme type, try theme_bw(), theme_minimal() see differences
 ```
 
-**Answer for the model in Q3**
+**Answer for Q2**
+
+Similarly, the descriptive analysis for the newly created variable `New_work_distance` in `sar_df` should include:
+
+```{r}
+table(sar_df$New_work_distance)
+```
+
+Here we see the categories of `New_work_distance` are in numeric type 0 or 1 (as we used code `sar_df <- sar_df %>% mutate( New_work_distance = if_else(work_distance >6, 1,0))` to do so), therefore in the histogram code, we use as.factor() to convert it as factor type.
+
+```{r}
+ggplot(sar_df, aes(x = as.factor(New_work_distance))) +
+  geom_bar(fill="forestgreen",width=0.5) +
+  labs(title = "Histogram of New_work_distance in SAR sample", x = "gender", y = "Count")+#set text info
+  theme_classic()#choose theme type, try theme_bw(), theme_minimal() see differences
+```
+
+Now we can use the frequency and the bar chart to report that according to our definition of long-distance travelling to work (over 60 km), there are 3072 individual are long-distance commuters in the SAR sample, which makes up 6.14% (3072/50000) of the sample.
+
+**Answer for the model in Q4**
 
 In Q3, we we want to explore whether people with occupation being "Large employers and higher managers", "Higher professional occupations" and "Routine occupations" are associated with higher probability of commuting over long distance when comparing to people in other occupation. So we create the variable `New_nssec` with 0 "Other occupations", but still keep "1", "2" and "8" still as original categories.
 
@@ -396,5 +425,5 @@ pR2(model_new) %>% round(4) %>% tidy()
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q4.** **Now what conclusion you can draw when comparing the lower NSSEC groups to the higher groups?**
+**Q5.** **Now what conclusion you can draw when comparing the lower NSSEC groups to the higher groups?**
 :::

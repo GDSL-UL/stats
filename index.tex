@@ -5401,7 +5401,7 @@ make prediction.}
 
 \bookmarksetup{startatroot}
 
-\chapter{Lab: LogisticRegression}\label{lab-logisticregression}
+\chapter{Lab: Logistic Regression}\label{lab-logistic-regression}
 
 Last week, we learnt how to use qualitative variables in multiple linear
 regression model to understand the relationship between independent
@@ -5568,6 +5568,34 @@ Run the following codes to view both dataframes:
 \end{Highlighting}
 \end{Shaded}
 
+To know the dataset better, we can run dim() to know who many
+individuals (rows) in this sample data and how many variables (columns)
+have been recorded.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(sar\_label)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 50000    39
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#or}
+\FunctionTok{dim}\NormalTok{(sar\_code)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 50000    39
+\end{verbatim}
+
+So there are 50,000 respondents in the sample dataset and 39 variables
+are included.
+
 After browsing both data sheets and also the data dictionary (sometimes
 we call it meta data), you may notice that all the columns in the SAR
 dataset is categorical/qualitative type. Therefore, if we run the
@@ -5659,7 +5687,7 @@ we did in Week 3, we use the library ggplots and the codes:
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{labs/04.LogisticRegression_files/figure-pdf/unnamed-chunk-7-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{labs/04.LogisticRegression_files/figure-pdf/unnamed-chunk-8-1.pdf}}
 
 We have learnt that for the categorical/qualitative variables, we need R
 to treat them as \texttt{factor} type. Therefore, if we want to create
@@ -5679,7 +5707,7 @@ in codes rather than labels.
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{labs/04.LogisticRegression_files/figure-pdf/unnamed-chunk-8-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{labs/04.LogisticRegression_files/figure-pdf/unnamed-chunk-9-1.pdf}}
 
 Based on `SAR\_dictionary.xlsx', we learn how the codes map to the
 categories for the variable work\_distance in both csv.
@@ -5776,7 +5804,7 @@ Lower managerial and professional occupations
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{labs/04.LogisticRegression_files/figure-pdf/unnamed-chunk-10-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{labs/04.LogisticRegression_files/figure-pdf/unnamed-chunk-11-1.pdf}}
 
 From `SAR\_dictionary.xlsx', we learn what each code indicate
 corresponding category for variable \texttt{nssec}. For the following
@@ -5842,9 +5870,9 @@ distance above 60km (the category of ``60km or more'').
 \end{Highlighting}
 \end{Shaded}
 
-\textbf{Q2.} Do descripitve analysis to the new \texttt{sar\_df}
+\textbf{Q2.} \textbf{Do descripitve analysis to the new \texttt{sar\_df}
 dataframe with new column named \texttt{New\_work\_distance} by using
-the codes you have learnt.
+the codes you have learnt.}
 
 The independent variables are gender and socio-economic status. The
 gender variable \texttt{sex} is a categorical variable. Therefore, as
@@ -6023,7 +6051,7 @@ commuting for those whose socio-economic classification as:
   (1-0.226).
 \end{itemize}
 
-\textbf{Q2}. \textbf{Can you write down the findings you learnt from the
+\textbf{Q3}. \textbf{Can you write down the findings you learnt from the
 model outcomes to other occupation groups (nssec = 4, nssec = 6 and
 nssec =7)?}
 
@@ -6175,7 +6203,7 @@ Use ``Other occupations'' (code: 0) as the reference category by
 Can you now run the model by yourself? Find the answer at the end of the
 practical.
 
-\textbf{Q3}. If we want to explore whether people work as independent
+\textbf{Q4}. If we want to explore whether people work as independent
 employers show lower probability of commuting longer than 60km compared
 with other occupations, how will we prepare the input independent
 variables and what will be the specified regression model?
@@ -6274,9 +6302,48 @@ variable in the SAR sample, we can run:
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{labs/04.LogisticRegression_files/figure-pdf/unnamed-chunk-25-1.pdf}}
+\pandocbounded{\includegraphics[keepaspectratio]{labs/04.LogisticRegression_files/figure-pdf/unnamed-chunk-26-1.pdf}}
 
-\textbf{Answer for the model in Q3}
+\textbf{Answer for Q2}
+
+Similarly, the descriptive analysis for the newly created variable
+\texttt{New\_work\_distance}~in \texttt{sar\_df} should include:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(sar\_df}\SpecialCharTok{$}\NormalTok{New\_work\_distance)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+    0     1 
+29954  3072 
+\end{verbatim}
+
+Here we see the categories of \texttt{New\_work\_distance} are in
+numeric type 0 or 1 (as we used code
+\texttt{sar\_df\ \textless{}-\ sar\_df\ \%\textgreater{}\%\ mutate(\ New\_work\_distance\ =\ if\_else(work\_distance\ \textgreater{}6,\ 1,0))}
+to do so), therefore in the histogram code, we use as.factor() to
+convert it as factor type.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(sar\_df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{as.factor}\NormalTok{(New\_work\_distance))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{fill=}\StringTok{"forestgreen"}\NormalTok{,}\AttributeTok{width=}\FloatTok{0.5}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{title =} \StringTok{"Histogram of New\_work\_distance in SAR sample"}\NormalTok{, }\AttributeTok{x =} \StringTok{"gender"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Count"}\NormalTok{)}\SpecialCharTok{+}\CommentTok{\#set text info}
+  \FunctionTok{theme\_classic}\NormalTok{()}\CommentTok{\#choose theme type, try theme\_bw(), theme\_minimal() see differences}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{labs/04.LogisticRegression_files/figure-pdf/unnamed-chunk-28-1.pdf}}
+
+Now we can use the frequency and the bar chart to report that according
+to our definition of long-distance travelling to work (over 60 km),
+there are 3072 individual are long-distance commuters in the SAR sample,
+which makes up 6.14\% (3072/50000) of the sample.
+
+\textbf{Answer for the model in Q4}
 
 In Q3, we we want to explore whether people with occupation being
 ``Large employers and higher managers'', ``Higher professional
@@ -6409,7 +6476,7 @@ See help("Deprecated")
 6 r2CU          0.0786
 \end{verbatim}
 
-\textbf{Q4.} \textbf{Now what conclusion you can draw when comparing the
+\textbf{Q5.} \textbf{Now what conclusion you can draw when comparing the
 lower NSSEC groups to the higher groups?}
 
 
