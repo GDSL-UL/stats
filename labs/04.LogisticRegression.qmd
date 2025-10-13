@@ -286,7 +286,7 @@ pR2(m.glm) %>% round(4) %>% tidy()
 
 Different from the multiple linear regression, whose R-squared indicates % of the variance in the dependent variables that is explained by the independent variable. In logistic regression model, R-squared is not directly applicable. Instead, we use pseudo R-squared measures, such as McFadden’s pseudo R-squared, or Cox & Snell pseudo R-squared to provide an indication of model fit. For the individual level dataset like SAR, value around 0.3 is considered good for well-fitting. Therefore, our model is not that robust for prediction but still explain the association between variables and the categories. To improve the model, we may need more variables as the independent variables, you may identify some based on the related literature or debates on this topic.
 
-### Recode Socio-economic status variable and explore
+### Recode Socio-economic status variable and explore commuting differences
 
 This time, we want to know whether "Lower supervisory and technical occupations", "Semi-routine occupations" and "Routine occupations" are associated with higher probability of commuting over long distance when comparing to people in other occupation.
 
