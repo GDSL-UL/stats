@@ -31,7 +31,7 @@ book:
     - labs/01.DataExploration.qmd
     - labs/02.MultipleLinear.qmd
     - labs/03.QualitativeVariable.qmd
-    # - labs/04.LogisticRegression.qmd
+    - labs/04.LogisticRegression.qmd
     # - labs/05.Visualisation.qmd
     # - labs/06.Summary.qmd
  

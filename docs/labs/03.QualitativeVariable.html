@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zi Ye">
-<meta name="dcterms.date" content="2025-10-10">
+<meta name="dcterms.date" content="2025-10-13">
 
 <title>4&nbsp; Lab: Correlation and Multiple Linear Regression with Qualitative Variables – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../labs/04.LogisticRegression.html" rel="next">
 <link href="../labs/02.MultipleLinear.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -206,6 +207,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: Correlation and Multiple Linear Regression with Qualitative Variables</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/04.LogisticRegression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lab: LogisticRegression</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -230,6 +237,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#predictions-using-fitted-regression-model" id="toc-predictions-using-fitted-regression-model" class="nav-link" data-scroll-target="#predictions-using-fitted-regression-model"><span class="header-section-number">4.4</span> Predictions using fitted regression model</a></li>
   <li><a href="#extension-activities" id="toc-extension-activities" class="nav-link" data-scroll-target="#extension-activities"><span class="header-section-number">4.5</span> <strong>Extension activities</strong></a></li>
+  <li><a href="#answer-of-the-written-down-model-and-q6" id="toc-answer-of-the-written-down-model-and-q6" class="nav-link" data-scroll-target="#answer-of-the-written-down-model-and-q6"><span class="header-section-number">4.6</span> <strong>Answer of the written down model and Q6</strong></a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/labs/03.QualitativeVariable.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -255,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 10, 2025</p>
+      <p class="date">October 13, 2025</p>
     </div>
   </div>
   
@@ -1210,7 +1218,9 @@ F-statistic:   118 on 7 and 323 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>Think about other potential factors of long-term illness and income, and then test your ideas with linear regression models</p></li>
 <li><p>Summaries your model outputs and interpret the results.</p></li>
 </ul>
-<p><strong>Answer of the written down model and Q6</strong></p>
+</section>
+<section id="answer-of-the-written-down-model-and-q6" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="answer-of-the-written-down-model-and-q6"><span class="header-section-number">4.6</span> <strong>Answer of the written down model and Q6</strong></h2>
 <p>The model of the new region label is: <em>pct_Longterm_sick_or_disabled</em> (%) <em>= 9.98+ (-0.1842)* pct_Males</em> (%) <em>+ 0.2014 * pct_No_qualifications</em> (%) <em>+ (-0.0341) * pct_Higher_manager_prof</em> + <em>(0.4742) * North + (-0.5063)</em> * South + (-0.4103) * Midlands + <em>1.2518 * Wales.</em> But should be aware that the relation between <em>pct_Higher_manager_prof</em> and <em>pct_Longterm_sick_or_disabled</em> is not statistically significant.</p>
 <p>So if the values of variables <em>pct_Males, pct_No_qualifications, and pct_Higher_manager_prof</em> are 49, 23 and 11,</p>
 <p>the model of Wales will be: <em>pct_Longterm_sick_or_disabled</em> (%) <em>= 9.98+ (-0.1842)* 49</em> <em>+ 0.2014 * 23</em> <em>+ (-0.0341) * 11 + (0.4742) * 0+ (-0.5063)</em> * 0+ (-0.4103) * 0+ <em>1.2518 * 1</em>(you can direct paste the number sentence into your R studio Console and the result will be returned)</p>
@@ -1672,6 +1682,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../labs/04.LogisticRegression.html" class="pagination-link" aria-label="Lab: LogisticRegression">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lab: LogisticRegression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

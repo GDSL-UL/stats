@@ -631,7 +631,7 @@ The extension activities are designed to get yourself prepared for the Assignmen
 
 -   Summaries your model outputs and interpret the results.
 
-**Answer of the written down model and Q6**
+## **Answer of the written down model and Q6**
 
 The model of the new region label is: *pct_Longterm_sick_or_disabled* (%) *= 9.98+ (-0.1842)\* pct_Males* (%) *+ 0.2014 \* pct_No_qualifications* (%) *+ (-0.0341) \* pct_Higher_manager_prof* + *(0.4742) \* North + (-0.5063)* \* South + (-0.4103) \* Midlands + *1.2518 \* Wales.* But should be aware that the relation between *pct_Higher_manager_prof* and *pct_Longterm_sick_or_disabled* is not statistically significant.
 
