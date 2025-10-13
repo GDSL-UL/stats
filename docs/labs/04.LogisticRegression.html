@@ -417,7 +417,7 @@ Work outside England and Wales but within UK
 </div>
 </div>
 </div>
-<p>We have learnt that for the categorical/qualitative variables, we need R to treat them as <code>factor</code> type. Therefore, if we want to create descriptive analysis charts by using <code>sar_code</code> , we need first convert the code numbers from numeric to factor type. But it may not that readable as a result chart put in the report as the Y-axis are all in codes rather than labels.</p>
+<p>We have learnt that for the categorical/qualitative variables, we need R to treat them as <code>factor</code> type. Therefore, if we want to create descriptive analysis charts by using <code>sar_code</code> , we need first convert the code numbers from numeric to factor type.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sar_code, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(work_distance))) <span class="sc">+</span> </span>
@@ -433,7 +433,7 @@ Work outside England and Wales but within UK
 </div>
 </div>
 </div>
-<p>Based on ‘SAR_dictionary.xlsx’, we learn how the codes map to the categories for the variable work_distance in both csv.</p>
+<p>You may also realise that this chart is not that readable to be used as a descriptive analysis chart to put in the report as the Y-axis are all in codes, therefore the first chart created by labels is a better choice. Based on ‘SAR_dictionary.xlsx’, we learn how the codes map to the categories for the variable work_distance in both csv.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 34%">
@@ -799,7 +799,7 @@ hurdle and zeroinfl functions by Achim Zeileis.</code></pre>
 </div>
 <p>Use “Other occupations” (code: 0) as the reference category by <code>relevel(as.factor())</code> and then create the regression model: <code>glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")</code>. Can you now run the model by yourself? Find the answer at the end of the practical.</p>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q4</strong>. If we want to explore whether people work as independent employers show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?</p>
+<p><strong>Q4</strong>. <strong>If we want to explore whether people work as independent employers show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?</strong></p>
 </div>
 </section>
 <section id="prediction-using-fitted-regression-model" class="level3" data-number="5.4.3">
