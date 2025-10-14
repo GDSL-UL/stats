@@ -305,7 +305,7 @@ sar_df <- sar_df %>% mutate(New_nssec = if_else(!nssec %in% c(6,7,8), "0" ,nssec
 Use "Other occupations" (code: 0) as the reference category by `relevel(as.factor())` and then create the regression model: `glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")`. Can you now run the model by yourself? Find the answer at the end of the practical.
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q4**. **If we want to explore whether people from lower NSSEC groups show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?**
+**Q4**. **If we want to explore whether people as independent employers show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?**
 :::
 
 ### Prediction using fitted regression model
@@ -378,25 +378,23 @@ Now we can use the frequency and the bar chart to report that according to our d
 
 **Answer for the model in Q4**
 
-In Q3, we we want to explore whether people with occupation being "Large employers and higher managers", "Higher professional occupations" and "Routine occupations" are associated with higher probability of commuting over long distance when comparing to people in other occupation. So we create the variable `New_nssec` with 0 "Other occupations", but still keep "1", "2" and "8" still as original categories.
-
-So we can first have a check of our new variable `New_nssec`:
+In Q4, we we want to explore whether people with occupation being independent employers are associated with higher probability of commuting over long distance when comparing to people in other occupation. So we set the nssec= 5 (Small employers and own account workers) as the baseline category.
 
 ```{r}
 table(sar_df$New_nssec)
 ```
 
-Then we set the reference categories: `sex` as `1` (male) and `New_nssec` as `0`, which is "Other occupations":
+Then we set the reference categories: `sex` as `1` (male) and `New_nssec` as 5, which is 'Small employers and own account workers':
 
 ```{r}
 sar_df$sex <- relevel(as.factor(sar_df$sex),ref="1")
-sar_df$New_nssec <- relevel(as.factor(sar_df$New_nssec),ref="0")
+sar_df$nssec <- relevel(as.factor(sar_df$nssec),ref="5")
 ```
 
 Now, we build the logistic regression model and check out the outcomes:
 
 ```{r}
-model_new = glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")
+model_new = glm(New_work_distance~sex + nssec, data = sar_df, family= "binomial")
 
 summary(model_new)
 ```
@@ -425,5 +423,5 @@ pR2(model_new) %>% round(4) %>% tidy()
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q5.** **Now what conclusion you can draw when comparing the lower NSSEC groups to the higher groups?**
+**Q5.** **Now what conclusion you can draw when comparing the median NSSEC groups to the higher groups?**
 :::

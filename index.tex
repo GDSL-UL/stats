@@ -563,9 +563,11 @@ module. The report needs to include the following sections (in brackets,
   \begin{itemize}
   \tightlist
   \item
-    Descriptive statistics and summary of the variables employed.
+    Descriptive statistics and summary of the variables employed,
+    supported by tables or/and charts.
   \item
-    Correct interpretation of correlation coefficients.
+    Correct interpretation of correlation coefficients, statistical
+    significance, and model fit.
   \item
     Usage and results of an appropriate multivariate regression model.
   \item
@@ -6204,10 +6206,10 @@ Use ``Other occupations'' (code: 0) as the reference category by
 Can you now run the model by yourself? Find the answer at the end of the
 practical.
 
-\textbf{Q4}. \textbf{If we want to explore whether people from lower
-NSSEC groups show lower probability of commuting longer than 60km
-compared with other occupations, how will we prepare the input
-independent variables and what will be the specified regression model?}
+\textbf{Q4}. \textbf{If we want to explore whether people as independent
+employers show lower probability of commuting longer than 60km compared
+with other occupations, how will we prepare the input independent
+variables and what will be the specified regression model?}
 
 \subsection{Prediction using fitted regression
 model}\label{prediction-using-fitted-regression-model}
@@ -6346,15 +6348,11 @@ which makes up 6.14\% (3072/50000) of the sample.
 
 \textbf{Answer for the model in Q4}
 
-In Q3, we we want to explore whether people with occupation being
-``Large employers and higher managers'', ``Higher professional
-occupations'' and ``Routine occupations'' are associated with higher
-probability of commuting over long distance when comparing to people in
-other occupation. So we create the variable \texttt{New\_nssec} with 0
-``Other occupations'', but still keep ``1'', ``2'' and ``8'' still as
-original categories.
-
-So we can first have a check of our new variable \texttt{New\_nssec}:
+In Q4, we we want to explore whether people with occupation being
+independent employers are associated with higher probability of
+commuting over long distance when comparing to people in other
+occupation. So we set the nssec= 5 (Small employers and own account
+workers) as the baseline category.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6369,12 +6367,13 @@ So we can first have a check of our new variable \texttt{New\_nssec}:
 \end{verbatim}
 
 Then we set the reference categories: \texttt{sex} as \texttt{1} (male)
-and \texttt{New\_nssec} as \texttt{0}, which is ``Other occupations'':
+and \texttt{New\_nssec} as 5, which is `Small employers and own account
+workers':
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{sar\_df}\SpecialCharTok{$}\NormalTok{sex }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(}\FunctionTok{as.factor}\NormalTok{(sar\_df}\SpecialCharTok{$}\NormalTok{sex),}\AttributeTok{ref=}\StringTok{"1"}\NormalTok{)}
-\NormalTok{sar\_df}\SpecialCharTok{$}\NormalTok{New\_nssec }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(}\FunctionTok{as.factor}\NormalTok{(sar\_df}\SpecialCharTok{$}\NormalTok{New\_nssec),}\AttributeTok{ref=}\StringTok{"0"}\NormalTok{)}
+\NormalTok{sar\_df}\SpecialCharTok{$}\NormalTok{nssec }\OtherTok{\textless{}{-}} \FunctionTok{relevel}\NormalTok{(}\FunctionTok{as.factor}\NormalTok{(sar\_df}\SpecialCharTok{$}\NormalTok{nssec),}\AttributeTok{ref=}\StringTok{"5"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -6382,7 +6381,7 @@ Now, we build the logistic regression model and check out the outcomes:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{model\_new }\OtherTok{=} \FunctionTok{glm}\NormalTok{(New\_work\_distance}\SpecialCharTok{\textasciitilde{}}\NormalTok{sex }\SpecialCharTok{+}\NormalTok{ New\_nssec, }\AttributeTok{data =}\NormalTok{ sar\_df, }\AttributeTok{family=} \StringTok{"binomial"}\NormalTok{)}
+\NormalTok{model\_new }\OtherTok{=} \FunctionTok{glm}\NormalTok{(New\_work\_distance}\SpecialCharTok{\textasciitilde{}}\NormalTok{sex }\SpecialCharTok{+}\NormalTok{ nssec, }\AttributeTok{data =}\NormalTok{ sar\_df, }\AttributeTok{family=} \StringTok{"binomial"}\NormalTok{)}
 
 \FunctionTok{summary}\NormalTok{(model\_new)}
 \end{Highlighting}
@@ -6391,24 +6390,28 @@ Now, we build the logistic regression model and check out the outcomes:
 \begin{verbatim}
 
 Call:
-glm(formula = New_work_distance ~ sex + New_nssec, family = "binomial", 
+glm(formula = New_work_distance ~ sex + nssec, family = "binomial", 
     data = sar_df)
 
 Coefficients:
             Estimate Std. Error z value Pr(>|z|)    
-(Intercept) -1.58754    0.02675  -59.35   <2e-16 ***
-sex2        -0.66077    0.03950  -16.73   <2e-16 ***
-New_nssec6  -1.41102    0.09884  -14.28   <2e-16 ***
-New_nssec7  -1.36779    0.07590  -18.02   <2e-16 ***
-New_nssec8  -1.46895    0.08417  -17.45   <2e-16 ***
+(Intercept) -0.44698    0.04138 -10.801   <2e-16 ***
+sex2        -0.36678    0.04196  -8.742   <2e-16 ***
+nssec2      -1.22639    0.06489 -18.898   <2e-16 ***
+nssec1      -1.35519    0.10782 -12.569   <2e-16 ***
+nssec3      -1.61400    0.05482 -29.442   <2e-16 ***
+nssec4      -2.25717    0.07696 -29.329   <2e-16 ***
+nssec6      -2.61631    0.10377 -25.212   <2e-16 ***
+nssec7      -2.66548    0.08317 -32.047   <2e-16 ***
+nssec8      -2.71172    0.09021 -30.059   <2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
     Null deviance: 20441  on 33025  degrees of freedom
-Residual deviance: 19221  on 33021  degrees of freedom
-AIC: 19231
+Residual deviance: 17968  on 33017  degrees of freedom
+AIC: 17986
 
 Number of Fisher Scoring iterations: 6
 \end{verbatim}
@@ -6423,8 +6426,10 @@ For the model interpretation, we need:
 \end{Shaded}
 
 \begin{verbatim}
-(Intercept)        sex2  New_nssec6  New_nssec7  New_nssec8 
-  0.2044273   0.5164510   0.2438949   0.2546704   0.2301681 
+(Intercept)        sex2      nssec2      nssec1      nssec3      nssec4 
+ 0.63955383  0.69296493  0.29335107  0.25789714  0.19909052  0.10464615 
+     nssec6      nssec7      nssec8 
+ 0.07307217  0.06956621  0.06642224 
 \end{verbatim}
 
 \begin{Shaded}
@@ -6439,12 +6444,16 @@ Waiting for profiling to be done...
 \end{verbatim}
 
 \begin{verbatim}
-                2.5 %    97.5 %
-(Intercept) 0.1939319 0.2153705
-sex2        0.4778881 0.5579331
-New_nssec6  0.1998776 0.2945683
-New_nssec7  0.2188198 0.2946949
-New_nssec8  0.1944294 0.2704893
+                 2.5 %     97.5 %
+(Intercept) 0.58959085 0.69343772
+sex2        0.63818099 0.75227729
+nssec2      0.25813190 0.33291942
+nssec1      0.20787318 0.31733101
+nssec3      0.17876868 0.22162844
+nssec4      0.08984430 0.12149367
+nssec6      0.05933796 0.08915692
+nssec7      0.05895858 0.08169756
+nssec8      0.05547661 0.07902917
 \end{verbatim}
 
 And don't forget measure the model fit:
@@ -6469,16 +6478,16 @@ See help("Deprecated")
 # A tibble: 6 x 2
   names              x
   <chr>          <dbl>
-1 llh       -9611.    
+1 llh       -8984.    
 2 llhNull  -10220.    
-3 G2         1220.    
-4 McFadden      0.0597
-5 r2ML          0.0363
-6 r2CU          0.0786
+3 G2         2473.    
+4 McFadden      0.121 
+5 r2ML          0.0721
+6 r2CU          0.156 
 \end{verbatim}
 
 \textbf{Q5.} \textbf{Now what conclusion you can draw when comparing the
-lower NSSEC groups to the higher groups?}
+median NSSEC groups to the higher groups?}
 
 
 

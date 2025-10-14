@@ -799,7 +799,7 @@ hurdle and zeroinfl functions by Achim Zeileis.</code></pre>
 </div>
 <p>Use “Other occupations” (code: 0) as the reference category by <code>relevel(as.factor())</code> and then create the regression model: <code>glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")</code>. Can you now run the model by yourself? Find the answer at the end of the practical.</p>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q4</strong>. <strong>If we want to explore whether people from lower NSSEC groups show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?</strong></p>
+<p><strong>Q4</strong>. <strong>If we want to explore whether people as independent employers show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?</strong></p>
 </div>
 </section>
 <section id="prediction-using-fitted-regression-model" class="level3" data-number="5.3.4">
@@ -882,8 +882,7 @@ Female   Male
 </div>
 <p>Now we can use the frequency and the bar chart to report that according to our definition of long-distance travelling to work (over 60 km), there are 3072 individual are long-distance commuters in the SAR sample, which makes up 6.14% (3072/50000) of the sample.</p>
 <p><strong>Answer for the model in Q4</strong></p>
-<p>In Q3, we we want to explore whether people with occupation being “Large employers and higher managers”, “Higher professional occupations” and “Routine occupations” are associated with higher probability of commuting over long distance when comparing to people in other occupation. So we create the variable <code>New_nssec</code> with 0 “Other occupations”, but still keep “1”, “2” and “8” still as original categories.</p>
-<p>So we can first have a check of our new variable <code>New_nssec</code>:</p>
+<p>In Q4, we we want to explore whether people with occupation being independent employers are associated with higher probability of commuting over long distance when comparing to people in other occupation. So we set the nssec= 5 (Small employers and own account workers) as the baseline category.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(sar_df<span class="sc">$</span>New_nssec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -892,37 +891,41 @@ Female   Male
 20063  2790  5704  4469 </code></pre>
 </div>
 </div>
-<p>Then we set the reference categories: <code>sex</code> as <code>1</code> (male) and <code>New_nssec</code> as <code>0</code>, which is “Other occupations”:</p>
+<p>Then we set the reference categories: <code>sex</code> as <code>1</code> (male) and <code>New_nssec</code> as 5, which is ‘Small employers and own account workers’:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>sar_df<span class="sc">$</span>sex <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(sar_df<span class="sc">$</span>sex),<span class="at">ref=</span><span class="st">"1"</span>)</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>sar_df<span class="sc">$</span>New_nssec <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(sar_df<span class="sc">$</span>New_nssec),<span class="at">ref=</span><span class="st">"0"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>sar_df<span class="sc">$</span>nssec <span class="ot">&lt;-</span> <span class="fu">relevel</span>(<span class="fu">as.factor</span>(sar_df<span class="sc">$</span>nssec),<span class="at">ref=</span><span class="st">"5"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now, we build the logistic regression model and check out the outcomes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>model_new <span class="ot">=</span> <span class="fu">glm</span>(New_work_distance<span class="sc">~</span>sex <span class="sc">+</span> New_nssec, <span class="at">data =</span> sar_df, <span class="at">family=</span> <span class="st">"binomial"</span>)</span>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>model_new <span class="ot">=</span> <span class="fu">glm</span>(New_work_distance<span class="sc">~</span>sex <span class="sc">+</span> nssec, <span class="at">data =</span> sar_df, <span class="at">family=</span> <span class="st">"binomial"</span>)</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_new)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-glm(formula = New_work_distance ~ sex + New_nssec, family = "binomial", 
+glm(formula = New_work_distance ~ sex + nssec, family = "binomial", 
     data = sar_df)
 
 Coefficients:
             Estimate Std. Error z value Pr(&gt;|z|)    
-(Intercept) -1.58754    0.02675  -59.35   &lt;2e-16 ***
-sex2        -0.66077    0.03950  -16.73   &lt;2e-16 ***
-New_nssec6  -1.41102    0.09884  -14.28   &lt;2e-16 ***
-New_nssec7  -1.36779    0.07590  -18.02   &lt;2e-16 ***
-New_nssec8  -1.46895    0.08417  -17.45   &lt;2e-16 ***
+(Intercept) -0.44698    0.04138 -10.801   &lt;2e-16 ***
+sex2        -0.36678    0.04196  -8.742   &lt;2e-16 ***
+nssec2      -1.22639    0.06489 -18.898   &lt;2e-16 ***
+nssec1      -1.35519    0.10782 -12.569   &lt;2e-16 ***
+nssec3      -1.61400    0.05482 -29.442   &lt;2e-16 ***
+nssec4      -2.25717    0.07696 -29.329   &lt;2e-16 ***
+nssec6      -2.61631    0.10377 -25.212   &lt;2e-16 ***
+nssec7      -2.66548    0.08317 -32.047   &lt;2e-16 ***
+nssec8      -2.71172    0.09021 -30.059   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
     Null deviance: 20441  on 33025  degrees of freedom
-Residual deviance: 19221  on 33021  degrees of freedom
-AIC: 19231
+Residual deviance: 17968  on 33017  degrees of freedom
+AIC: 17986
 
 Number of Fisher Scoring iterations: 6</code></pre>
 </div>
@@ -932,8 +935,10 @@ Number of Fisher Scoring iterations: 6</code></pre>
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># odds ratios</span></span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(model_new)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(Intercept)        sex2  New_nssec6  New_nssec7  New_nssec8 
-  0.2044273   0.5164510   0.2438949   0.2546704   0.2301681 </code></pre>
+<pre><code>(Intercept)        sex2      nssec2      nssec1      nssec3      nssec4 
+ 0.63955383  0.69296493  0.29335107  0.25789714  0.19909052  0.10464615 
+     nssec6      nssec7      nssec8 
+ 0.07307217  0.06956621  0.06642224 </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -943,12 +948,16 @@ Number of Fisher Scoring iterations: 6</code></pre>
 <pre><code>Waiting for profiling to be done...</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>                2.5 %    97.5 %
-(Intercept) 0.1939319 0.2153705
-sex2        0.4778881 0.5579331
-New_nssec6  0.1998776 0.2945683
-New_nssec7  0.2188198 0.2946949
-New_nssec8  0.1944294 0.2704893</code></pre>
+<pre><code>                 2.5 %     97.5 %
+(Intercept) 0.58959085 0.69343772
+sex2        0.63818099 0.75227729
+nssec2      0.25813190 0.33291942
+nssec1      0.20787318 0.31733101
+nssec3      0.17876868 0.22162844
+nssec4      0.08984430 0.12149367
+nssec6      0.05933796 0.08915692
+nssec7      0.05895858 0.08169756
+nssec8      0.05547661 0.07902917</code></pre>
 </div>
 </div>
 <p>And don’t forget measure the model fit:</p>
@@ -966,16 +975,16 @@ See help("Deprecated")</code></pre>
 <pre><code># A tibble: 6 × 2
   names              x
   &lt;chr&gt;          &lt;dbl&gt;
-1 llh       -9611.    
+1 llh       -8984.    
 2 llhNull  -10220.    
-3 G2         1220.    
-4 McFadden      0.0597
-5 r2ML          0.0363
-6 r2CU          0.0786</code></pre>
+3 G2         2473.    
+4 McFadden      0.121 
+5 r2ML          0.0721
+6 r2CU          0.156 </code></pre>
 </div>
 </div>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q5.</strong> <strong>Now what conclusion you can draw when comparing the lower NSSEC groups to the higher groups?</strong></p>
+<p><strong>Q5.</strong> <strong>Now what conclusion you can draw when comparing the median NSSEC groups to the higher groups?</strong></p>
 </div>
 
 
