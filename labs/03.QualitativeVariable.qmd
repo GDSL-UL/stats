@@ -176,7 +176,7 @@ ggplot(frs_data, aes(x = fct_rev(fct_infreq(nssec)))) +
 
 ```
 
-You can change the variables in ggplot() to make your own histogram chart for the variables you are interested in. You will learn more of visualisation methods in Week11's practical.
+You can change the variables in ggplot() to make your own histogram chart for the variables you are interested in. You will learn more of visualisation methods in Week 5's practical.
 
 ### Correlation
 

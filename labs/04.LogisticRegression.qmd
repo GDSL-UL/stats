@@ -305,7 +305,7 @@ sar_df <- sar_df %>% mutate(New_nssec = if_else(!nssec %in% c(6,7,8), "0" ,nssec
 Use "Other occupations" (code: 0) as the reference category by `relevel(as.factor())` and then create the regression model: `glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")`. Can you now run the model by yourself? Find the answer at the end of the practical.
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q4**. **If we want to explore whether people work as independent employers show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?**
+**Q4**. **If we want to explore whether people from lower NSSEC groups show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?**
 :::
 
 ### Prediction using fitted regression model

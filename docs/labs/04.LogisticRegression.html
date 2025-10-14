@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Zi Ye">
-<meta name="dcterms.date" content="2025-10-13">
+<meta name="dcterms.date" content="2025-10-14">
 
 <title>5&nbsp; Lab: Logistic Regression – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
@@ -258,7 +258,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 13, 2025</p>
+      <p class="date">October 14, 2025</p>
     </div>
   </div>
   
@@ -799,7 +799,7 @@ hurdle and zeroinfl functions by Achim Zeileis.</code></pre>
 </div>
 <p>Use “Other occupations” (code: 0) as the reference category by <code>relevel(as.factor())</code> and then create the regression model: <code>glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")</code>. Can you now run the model by yourself? Find the answer at the end of the practical.</p>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q4</strong>. <strong>If we want to explore whether people work as independent employers show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?</strong></p>
+<p><strong>Q4</strong>. <strong>If we want to explore whether people from lower NSSEC groups show lower probability of commuting longer than 60km compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?</strong></p>
 </div>
 </section>
 <section id="prediction-using-fitted-regression-model" class="level3" data-number="5.3.4">
