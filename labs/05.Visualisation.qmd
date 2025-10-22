@@ -221,31 +221,31 @@ ggplot(census_data, aes(x = Residents, y = mean_age, color = factor(Region))) +
 
 Consider in general, that there's several functions associated to scales
 
-| **Category** | **Function** | **Description** | **Example Usage** |
-|----|----|----|----|
-| **Discrete Color Scales** | `scale_color_brewer()` | Use pre-defined discrete palettes from RColorBrewer. | `scale_color_brewer(palette = "Set1")` |
-|  | `scale_fill_brewer()` | Fill colors for discrete variables from RColorBrewer. | `scale_fill_brewer(palette = "Pastel2")` |
-|  | `scale_color_manual()` | Manually assign colors for discrete variables. | `scale_color_manual(values = c("red", "blue", "green"))` |
-|  | `scale_fill_manual()` | Manually assign fill colors for discrete variables. | `scale_fill_manual(values = c("purple", "orange", "yellow"))` |
-|  | `scale_color_viridis_d()` | Use discrete palettes from the viridis package (colorblind-friendly). | `scale_color_viridis_d(option = "plasma")` |
-|  | `scale_fill_viridis_d()` | Fill discrete variables with viridis palettes. | `scale_fill_viridis_d(option = "cividis")` |
-| **Continuous Color Scales** | `scale_color_gradient()` | Two-color gradient for continuous variables. | `scale_color_gradient(low = "blue", high = "red")` |
-|  | `scale_fill_gradient()` | Two-color gradient for continuous fill variables. | `scale_fill_gradient(low = "green", high = "yellow")` |
-|  | `scale_color_gradient2()` | Diverging gradient with a midpoint for continuous variables. | `scale_color_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0)` |
-|  | `scale_fill_gradient2()` | Diverging gradient with a midpoint for continuous fill variables. | `scale_fill_gradient2(low = "purple", mid = "gray", high = "orange", midpoint = 50)` |
-|  | `scale_color_gradientn()` | Multi-color gradient for continuous variables. | `scale_color_gradientn(colors = c("blue", "green", "yellow", "red"))` |
-|  | `scale_fill_gradientn()` | Multi-color gradient for continuous fill variables. | `scale_fill_gradientn(colors = c("lightblue", "white", "pink"))` |
-|  | `scale_color_viridis_c()` | Continuous color scales from viridis. | `scale_color_viridis_c(option = "magma")` |
-|  | `scale_fill_viridis_c()` | Continuous fill scales from viridis. | `scale_fill_viridis_c(option = "inferno")` |
-| **Axis Scales** | `scale_x_continuous()` | Customize numeric X-axis with limits and breaks. | `scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, 10))` |
-|  | `scale_y_continuous()` | Customize numeric Y-axis with limits and labels. | `scale_y_continuous(labels = scales::percent_format())` |
-|  | `scale_x_log10()` | Logarithmic transformation for X-axis. | `scale_x_log10()` |
-|  | `scale_y_log10()` | Logarithmic transformation for Y-axis. | `scale_y_log10()` |
-|  | `scale_x_reverse()` | Reverse the X-axis direction. | `scale_x_reverse()` |
-|  | `scale_y_reverse()` | Reverse the Y-axis direction. | `scale_y_reverse()` |
-| **Shape and Size Scales** | `scale_shape_manual()` | Manually assign shapes to categories for points. | `scale_shape_manual(values = c(19, 17, 15))` |
-|  | `scale_size_continuous()` | Scale the size of points based on a continuous variable. | `scale_size_continuous(range = c(1, 10))` |
-|  | `scale_size_manual()` | Manually specify point sizes for categorical variables. | `scale_size_manual(values = c(2, 4, 6))` |
+| **Category**                | **Function**              | **Description**                                                       | **Example Usage**                                                                    |
+|------------------|------------------|------------------|------------------|
+| **Discrete Color Scales**   | `scale_color_brewer()`    | Use pre-defined discrete palettes from RColorBrewer.                  | `scale_color_brewer(palette = "Set1")`                                               |
+|                             | `scale_fill_brewer()`     | Fill colors for discrete variables from RColorBrewer.                 | `scale_fill_brewer(palette = "Pastel2")`                                             |
+|                             | `scale_color_manual()`    | Manually assign colors for discrete variables.                        | `scale_color_manual(values = c("red", "blue", "green"))`                             |
+|                             | `scale_fill_manual()`     | Manually assign fill colors for discrete variables.                   | `scale_fill_manual(values = c("purple", "orange", "yellow"))`                        |
+|                             | `scale_color_viridis_d()` | Use discrete palettes from the viridis package (colorblind-friendly). | `scale_color_viridis_d(option = "plasma")`                                           |
+|                             | `scale_fill_viridis_d()`  | Fill discrete variables with viridis palettes.                        | `scale_fill_viridis_d(option = "cividis")`                                           |
+| **Continuous Color Scales** | `scale_color_gradient()`  | Two-color gradient for continuous variables.                          | `scale_color_gradient(low = "blue", high = "red")`                                   |
+|                             | `scale_fill_gradient()`   | Two-color gradient for continuous fill variables.                     | `scale_fill_gradient(low = "green", high = "yellow")`                                |
+|                             | `scale_color_gradient2()` | Diverging gradient with a midpoint for continuous variables.          | `scale_color_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0)`     |
+|                             | `scale_fill_gradient2()`  | Diverging gradient with a midpoint for continuous fill variables.     | `scale_fill_gradient2(low = "purple", mid = "gray", high = "orange", midpoint = 50)` |
+|                             | `scale_color_gradientn()` | Multi-color gradient for continuous variables.                        | `scale_color_gradientn(colors = c("blue", "green", "yellow", "red"))`                |
+|                             | `scale_fill_gradientn()`  | Multi-color gradient for continuous fill variables.                   | `scale_fill_gradientn(colors = c("lightblue", "white", "pink"))`                     |
+|                             | `scale_color_viridis_c()` | Continuous color scales from viridis.                                 | `scale_color_viridis_c(option = "magma")`                                            |
+|                             | `scale_fill_viridis_c()`  | Continuous fill scales from viridis.                                  | `scale_fill_viridis_c(option = "inferno")`                                           |
+| **Axis Scales**             | `scale_x_continuous()`    | Customize numeric X-axis with limits and breaks.                      | `scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, 10))`                   |
+|                             | `scale_y_continuous()`    | Customize numeric Y-axis with limits and labels.                      | `scale_y_continuous(labels = scales::percent_format())`                              |
+|                             | `scale_x_log10()`         | Logarithmic transformation for X-axis.                                | `scale_x_log10()`                                                                    |
+|                             | `scale_y_log10()`         | Logarithmic transformation for Y-axis.                                | `scale_y_log10()`                                                                    |
+|                             | `scale_x_reverse()`       | Reverse the X-axis direction.                                         | `scale_x_reverse()`                                                                  |
+|                             | `scale_y_reverse()`       | Reverse the Y-axis direction.                                         | `scale_y_reverse()`                                                                  |
+| **Shape and Size Scales**   | `scale_shape_manual()`    | Manually assign shapes to categories for points.                      | `scale_shape_manual(values = c(19, 17, 15))`                                         |
+|                             | `scale_size_continuous()` | Scale the size of points based on a continuous variable.              | `scale_size_continuous(range = c(1, 10))`                                            |
+|                             | `scale_size_manual()`     | Manually specify point sizes for categorical variables.               | `scale_size_manual(values = c(2, 4, 6))`                                             |
 
 ### Additional Functions for Customization
 
@@ -290,7 +290,7 @@ This section demonstrates how to create **publication-quality visualisations** i
 **Let's load the datasets first** Check the paths, you may need to remove the ".."
 
 ```{r}
-frs_data <- read.csv("../data/FamilyResourceSurvey/FRS16-17_labels.csv")
+frs_data <- read.csv("../data/FRS/FRS16-17_labels.csv")
 census_data <- read.csv("../data/Census2021/EW_DistrictPercentages.csv")
 ```
 
