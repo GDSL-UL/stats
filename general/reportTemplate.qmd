@@ -20,7 +20,7 @@ execute:
   message: false
 ---
 
-**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here ](https://raw.githubusercontent.com/GDSL-UL/stats/main/general/reportTemplate.qmd)and work on it with your own Rstudio.
+**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://raw.githubusercontent.com/GDSL-UL/stats/main/general/reportTemplate.qmd) and work on it with your own Rstudio.
 
 ## Setup
 
