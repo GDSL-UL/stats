@@ -104,7 +104,27 @@
     "href": "general/howSubmit.html",
     "title": "Assessment: How to submit",
     "section": "",
-    "text": "You must submit a .pdf file, that is a rendered version of a Quarto Markdown file (qmd file). This will allow you to write a research paper that also includes your working code, without the need of including the data (rendered .qmd files are executed before being converted to R).\nHow to get a PDF?\n\nInstall Quarto: Make sure you have Quarto installed. You can download it from quarto.org.\nLaTeX Installation: For PDF output, you’ll need a LaTeX distribution like TinyTeX from R, by executing this in the R console:\n\ninstall.packages(\"tinytex\")\ntinytex::install_tinytex()\n\nOpen the Quarto File: Open your .qmd file in RStudio.\nSet Output Format: In the YAML header at the top of your Quarto file, specify pdf under format:\n\n\n\n\n\n\n\n\n\n\n    title: \"Your Document Title\"\n    author: \"Anonymous\" # do not change\n    format: pdf\n\nClick the Render button in the RStudio toolbar (next to the Knit button).",
+    "text": ".html file\nYou can submit a .html file, that is a rendered version of a Quarto Markdown file (qmd file). This will allow you to write a research paper that also includes your working code, without the need of including the data (rendered .qmd files are executed before being converted to R).\nTo do so, at the top of your document, include something like this in a YAML cell (see Template, in RStudio, “visual view”, Insert, YAML block)\nOnce your document is ready with your text and code, render the Quarto document: Click the Render button in the RStudio toolbar (blue arrow). This, if everything works (code, existing data, etc), will create an .html file in the same location as your .qmd file",
+    "crumbs": [
+      "Assessment: How to submit"
+    ]
+  },
+  {
+    "objectID": "general/howSubmit.html#html-file",
+    "href": "general/howSubmit.html#html-file",
+    "title": "Assessment: How to submit",
+    "section": "",
+    "text": "title: \"Assignment 1\"\nauthor: \"Anonymous\" # do not change\nformat: html",
+    "crumbs": [
+      "Assessment: How to submit"
+    ]
+  },
+  {
+    "objectID": "general/howSubmit.html#pdf-file-more-complicated",
+    "href": "general/howSubmit.html#pdf-file-more-complicated",
+    "title": "Assessment: How to submit",
+    "section": ".pdf file: More complicated",
+    "text": ".pdf file: More complicated\nIf you really want to render your .qmd file into a .pdf file, you need to follow a more complicated path.\nLaTeX Installation: you’ll need a LaTeX distribution like TinyTeX from R.\n\nExecute this in the RStudio console (bottom):\n\ninstall.packages(\"tinytex\")\ntinytex::install_tinytex()\n\nOpen the Quarto File: Open your .qmd file in RStudio.\nSet Output Format: In the YAML header at the top of your Quarto file, specify pdf under format:\n\n\n\n\n\n\n\n\n\n\ntitle: \"Assignment 1\"\nauthor: \"Anonymous\" # do not change\nformat: pdf\n\nClick the Render button in the RStudio toolbar (blue arrow).",
     "crumbs": [
       "Assessment: How to submit"
     ]
@@ -114,7 +134,7 @@
     "href": "general/reportTemplate.html",
     "title": "Assessment Template",
     "section": "",
-    "text": "Setup\nLoad commonly used libraries for statistical analysis and data manipulation.\nCode\n# Core tidyverse\nlibrary(tidyverse)    # includes ggplot2, dplyr, tidyr, readr, purrr, tibble, stringr, forcats\n\n# Tables & reporting\nlibrary(knitr)\nlibrary(kableExtra)\n\n# Stats helpers\nlibrary(broom)\n\n## These need to be installed on your PC.",
+    "text": "Setup\nLoad commonly used libraries for statistical analysis and data manipulation.\nCode\n# Core tidyverse\nlibrary(tidyverse)    # includes ggplot2, dplyr, tidyr, readr, purrr, tibble, stringr, forcats\n\n# Tables & reporting\nlibrary(kableExtra)\n\n# Stats helpers\nlibrary(broom)\n\n## These need to be installed on your PC.",
     "crumbs": [
       "ENVS225 Assignment 1"
     ]
