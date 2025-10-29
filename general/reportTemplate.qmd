@@ -6,21 +6,16 @@ author: "Anonymous"
 date: "`r Sys.Date()`"
 format:
   html:
+    self-contained: true,
     toc: true
-    toc-depth: 3
-    number-sections: true
+    toc-depth: 2
     code-fold: show
-    df-print: paged
-  pdf:
-    toc: true
-    number-sections: true
 execute:
-  echo: true
   warning: false
   message: false
 ---
 
-**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://raw.githubusercontent.com/GDSL-UL/stats/main/general/reportTemplate.qmd) and work on it with your own Rstudio.
+**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://theuniversityofliverpool-my.sharepoint.com/:u:/r/personal/gfilo_liverpool_ac_uk/Documents/Teaching/stats/general/reportTemplate.qmd?e=4%3afa11dea848764c88a3fb6cd78426ff79&web=1&sharingv2=true&fromShare=true&at=9) (you need to be logged in with the UoL account) and work on it with your own Rstudio.
 
 ## Setup
 
@@ -31,7 +26,6 @@ Load commonly used libraries for statistical analysis and data manipulation.
 library(tidyverse)    # includes ggplot2, dplyr, tidyr, readr, purrr, tibble, stringr, forcats
 
 # Tables & reporting
-library(knitr)
 library(kableExtra)
 
 # Stats helpers
