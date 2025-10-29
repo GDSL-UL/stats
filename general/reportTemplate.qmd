@@ -6,7 +6,7 @@ author: "Anonymous"
 date: "`r Sys.Date()`"
 format:
   html:
-    self-contained: true,
+    self-contained: true
     toc: true
     toc-depth: 2
     code-fold: show
