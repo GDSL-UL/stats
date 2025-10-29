@@ -11,8 +11,10 @@ To do so, at the top of your document, include something like this in a YAML cel
 ```         
 title: "Assignment 1"
 author: "Anonymous" # do not change
-format: html
-```
+format:
+  html:
+	self-contained: true
+---
 
 Once your document is ready with your text and code, render the Quarto document: Click the **Render** button in the RStudio toolbar (blue arrow). This, if everything works (code, existing data, etc), will create an `.html` file in the same location as your `.qmd` file
 
