@@ -15,7 +15,7 @@ execute:
   message: false
 ---
 
-**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://theuniversityofliverpool-my.sharepoint.com/:u:/g/personal/gfilo_liverpool_ac_uk/EXgnQW7AoaFFjo7iOknuNbQBjsOuZtU-RcwtK5tUZB-97Q) (you need to be logged in with the UoL account) and work on it with your own Rstudio.
+**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://canvas.liverpool.ac.uk/courses/84668/files/13173146?module_item_id=2459687) and work on it with your own Rstudio.
 
 ## Setup
 
