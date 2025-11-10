@@ -6,7 +6,7 @@ Normally you don't need to do so, but if something does not work, you may have t
 
 You can submit a `.html` file, that is a rendered version of a Quarto Markdown file (`qmd` file). This will allow you to write a research paper that also includes your working code, without the need of including the data (rendered `.qmd` files are executed before being converted to R).
 
-To do so, at the top of your document, include something like this in a YAML cell (see [Template](https://theuniversityofliverpool-my.sharepoint.com/:u:/r/personal/gfilo_liverpool_ac_uk/Documents/Teaching/stats/general/reportTemplate.qmd?csf=1&web=1&e=iPjZoT), in RStudio, "visual view", `Insert`, `YAML block`)
+To do so, at the top of your document, include something like this in a YAML cell (see [Template](https://canvas.liverpool.ac.uk/courses/84668/files/13173146?module_item_id=2459687), in RStudio, "visual view", `Insert`, `YAML block`)
 
 ```         
 title: "Assignment 1"
