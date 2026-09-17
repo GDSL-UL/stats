@@ -1,10 +1,10 @@
 # Assessment: How to submit {.unnumbered}
 
-Normally you don't need to do so, but if something does not work, you may have to install [Quarto](quarto.org). Recent versions of RStudio do not require you to do so. installed.
+Normally you don't need to do so, but if something does not work, you may have to install [Quarto](https://quarto.org). Recent versions of RStudio do not require you to do so.
 
 ## .html file
 
-You can submit a `.html` file, that is a rendered version of a Quarto Markdown file (`qmd` file). This will allow you to write a research paper that also includes your working code, without the need of including the data (rendered `.qmd` files are executed before being converted to R).
+You can submit a `.html` file, that is a rendered version of a Quarto Markdown file (`qmd` file). This will allow you to write a research paper that also includes your working code, without the need of including the data (the code in a `.qmd` file is executed before the document is converted to HTML).
 
 To do so, at the top of your document, include something like this in a YAML cell (see [Template](https://canvas.liverpool.ac.uk/courses/84668/files/13173146?module_item_id=2459687), in RStudio, "visual view", `Insert`, `YAML block`)
 

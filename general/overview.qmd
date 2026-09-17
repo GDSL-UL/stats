@@ -73,7 +73,7 @@ To install and update:
 Example datasets could be accessed through Canvas or (some) on [GitHub](https://github.com/GDSL-UL/stats) Repository of the module. These include:
 
 - 2021 UK Census Data.
-- 2021 Annulation Population Survey (APS) - only on Canvas.
+- 2021 Annual Population Survey (APS) - only on Canvas.
 - 2016 Family Resource Survey (FRS) - only on Canvas.
 - 2011 Sample of Anonymised Records (SAR).
 

@@ -22,12 +22,12 @@ An absolute path starts at the drive root (e.g., `C:/Users/you/Documents/stats/d
 
 ## Recommended folder layout (ENVS225)
 
-Download the module materials, unzip them them wherever you prefer. Then un-nest the folder with the material (you will have one folder called `stats-main` containing another folder inside, with the same name. Aim for:
+Download the module materials and unzip them wherever you prefer. Then un-nest the folder with the material (you will have one folder called `stats-main` containing another folder inside it, with the same name). Aim for:
 
 ```         
 stats-main/
 ├── data/
-├── labs_img/
+├── img/
 └── labs/
 ```
 
@@ -37,7 +37,7 @@ You can delete other sub-folders (e.g., docs) if you don’t need them. It is st
 
 Windows: `RStudio > Tools > Global Options > General > Default working directory >` Browse to your `stats-main` folder.
 
-macOS: `RStudio > Preferences > General`(older versions: under `Appearance/Pane Layout)` set Default working directory to `stats-main/`, this is the folder with all the materials inside.
+macOS: `RStudio > Preferences > General` (older versions: under `Appearance/Pane Layout`). Set the default working directory to `stats-main/`, the folder with all the materials inside.
 
 Then restart RStudio and verify:
 
@@ -69,13 +69,13 @@ xls <- read_excel("../data/survey.xlsx", sheet = 1)
 
 In summary:
 
--   `read_csv(MyFile.csv)` RStudio looks in the working directory for the file `MyFile.csv`.
+-   `read_csv("MyFile.csv")` RStudio looks in the working directory for the file `MyFile.csv`.
 
--   `read_csv(MyFolder/MyFile.csv)` RStudio looks inside the Working Directory (WD), for the folder `MyFolder`, then the file `MyFile.csv`.
+-   `read_csv("MyFolder/MyFile.csv")` RStudio looks inside the Working Directory (WD) for the folder `MyFolder`, then the file `MyFile.csv`.
 
--   `read_csv(data/survey.csv)` RStudio looks inside the WD, looks inside `data`, then `survey.csv`.
+-   `read_csv("data/survey.csv")` RStudio looks inside the WD, looks inside `data`, then `survey.csv`.
 
--   ``` read_csv(``../data/survey.csv ``` RStudio goes up one folder from the WD, then looks for the folder `data`and the file `surve.csv`.
+-   `read_csv("../data/survey.csv")` RStudio goes up one folder from the WD, then looks for the folder `data` and the file `survey.csv`.
 
 You can always inspect where you are by
 
