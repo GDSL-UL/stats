@@ -234,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#analysis-categorical-variables" id="toc-analysis-categorical-variables" class="nav-link active" data-scroll-target="#analysis-categorical-variables"><span class="header-section-number">4.1</span> Analysis categorical variables</a>
+  <li><a href="#analysing-categorical-variables" id="toc-analysing-categorical-variables" class="nav-link active" data-scroll-target="#analysing-categorical-variables"><span class="header-section-number">4.1</span> Analysing categorical variables</a>
   <ul class="collapse">
   <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview"><span class="header-section-number">4.1.1</span> Data overview</a></li>
   <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">4.1.2</span> Correlation</a></li>
@@ -297,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>By blending continuous and categorical predictors, MLR with categorical variables enhances the model’s ability to reflect real-world complexities and improves interpretability, as it allows analysts to assess how each category or group within an independent variable influences the dependent variable.</p>
 <p>For most categorical (especially the <em>nominal</em>) variables, they cannot be included in the regression model directly as a continuous independent variable. Instead, these qualitative independent variables should be included in regression models by using the <strong>dummy variable</strong> approach, transforming categorical information into a numerical format suitable for regression analysis.</p>
-<p>However, R provides a powerful way, by automatively handling with such process when the categorical variable is designated as a factor and to be included in the regression model. This makes it much easier for you to use categorical variables in the regression model to assess the effects of categorical groupings on the dependent variable alongside continuous predictors.</p>
+<p>However, R provides a powerful way, by automatively handling this process when the categorical variable is designated as a factor and to be included in the regression model. This makes it much easier for you to use categorical variables in the regression model to assess the effects of categorical groupings on the dependent variable alongside continuous predictors.</p>
 <p>Learning Objectives:</p>
 <p>In this week’s practical we are going to</p>
 <ul>
@@ -305,11 +305,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Estimate and interpret a multiple linear regression model with categorical variables</p></li>
 <li><p>Make predictions using a regression model</p></li>
 </ul>
-<section id="analysis-categorical-variables" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="analysis-categorical-variables"><span class="header-section-number">4.1</span> Analysis categorical variables</h2>
-<p>Recall in Week 2, you get familiar to R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your local drive folder under the path of ‘/data/Census2021/’; for the FRS datasets, please click the links to download the datasets from <a href="https://canvas.liverpool.ac.uk/courses/84668/pages/family-resource-survey-2016-17?module_item_id=2396198">Canvas</a>. Please download both the datasets of ‘FRS16-17_labels.csv’ and ‘FRS_dictionary.xlxs’<!--and 'FRS16-17_codes.csv'--> for today’s practical. You may create a new folder named ‘FRS’ under the ‘/data/’ along with the Census2021 folder, and put the newly downloaded .csv files at the ‘/data/FRS/’ folder for later use.</p>
+<section id="analysing-categorical-variables" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="analysing-categorical-variables"><span class="header-section-number">4.1</span> Analysing categorical variables</h2>
+<p>Recall in Week 2, you got familiar with R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your local drive folder under the path of ‘/data/Census2021/’; for the FRS datasets, please click the links to download the datasets from <a href="https://canvas.liverpool.ac.uk/courses/84668/pages/family-resource-survey-2016-17?module_item_id=2396198">Canvas</a>. Please download both the datasets of ‘FRS16-17_labels.csv’ and ‘FRS_dictionary.xlxs’<!--and 'FRS16-17_codes.csv'--> for today’s practical. You may create a new folder named ‘FRS’ under the ‘/data/’ along with the Census2021 folder, and put the newly downloaded .csv files at the ‘/data/FRS/’ folder for later use.</p>
 <!--Now, there should be two .csv file: 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv' in your '/data/FRS' folder. Double click to open both .csv files you may find they have exactly same column names - yes, they are in fact the same spreadsheet but 'FRS16-17_labels.csv' is more readable for the cell contents as they are in text format but cells 'FRS16-17_codes.csv' is in coding format. This is quite normal as when we doing surveys, we use text as the options of multiple choice questions for respondents to choose from, and therefore the collected survey results are in the 'FRS16-17_labels.csv' format. For example, for the multiple choice question - which region you are from? The options include 'London', 'North West', 'Wales', etc. However, while analysing the survey results, these text content (the options of multiple choice questions) are in fact different categories of the categorical/qualitative variable. So for some survey results, you may find they are formatted in coding way as 'FRS16-17_codes.csv', and along with a coding dictionary for you to learn the meaning of each coding. -->
-<p>To start today’s practical session, we first will use ‘FRS16-17_labels.csv’. <!--In the Region example, there are 12 categories for the categorical/qualitative variable Region--> You can open the .csv file in Excel and find itsdifferent from the Census dataset, the FRS dataset contains many qualitative/categorical variables, such as hh_tenure (Housing Tenure), happy (How happy did you feel yesterday?), health (How is your health in general) and etc.. To know the meaning of all the column names and the values in cell, you may need to reference to the ‘FRS_dictionary.xlsx’ to help your understanding. Recall our lecture, these categorical variable will need to be treated as Dummy variable in the regression model. In R, the variable type of qualitative/categorical variables is called ‘<strong>factor</strong>’.</p>
+<p>To start today’s practical session, we first will use ‘FRS16-17_labels.csv’. <!--In the Region example, there are 12 categories for the categorical/qualitative variable Region--> You can open the .csv file in Excel and find its different from the Census dataset, the FRS dataset contains many qualitative/categorical variables, such as hh_tenure (Housing Tenure), happy (How happy did you feel yesterday?), health (How is your health in general) and etc. To know the meaning of all the column names and the values in cell, you may need to reference to the ‘FRS_dictionary.xlsx’ to help your understanding. Recall our lecture, these categorical variable will need to be treated as Dummy variable in the regression model. In R, the variable type of qualitative/categorical variables is called ‘<strong>factor</strong>’.</p>
 <p>As usual we first load the necessary libraries.</p>
 <p><strong>Some tips to avoid R returning can’t find data errors:</strong></p>
 <p>Check your working directory by</p>
@@ -317,11 +317,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Check the relative path of your data folder on your PC/laptop, make sure you know the relative path of your data from your working directory, returned by <code>getwd()</code>.</p>
-<p><strong>Library knowledge used in today:</strong></p>
+<p><strong>Library knowledge used today:</strong></p>
 <ul>
 <li><p><strong><code>dplyr</code></strong>: a basic library provides a suite of functions for data manipulation</p></li>
 <li><p><strong><code>ggplot2</code></strong>: a widely-used data visualisation library to help you create nice plots through layered plotting.</p></li>
-<li><p><strong><code>tidyverse</code></strong>: a collection of R packages designed for data science, offering a cohesive framework for data manipulation, visualization, and analysis. Containing dyplyr, ggplot2 and other basic libraries.</p></li>
+<li><p><strong><code>tidyverse</code></strong>: a collection of R packages designed for data science, offering a cohesive framework for data manipulation, visualization, and analysis. Containing dplyr, ggplot2 and other basic libraries.</p></li>
 <li><p><strong><code>broom</code></strong>: a part of the tidyverse and is designed to convert statistical analysis results into tidy data frames.</p></li>
 <li><p><strong><code>forcats</code></strong>: designed to work with factors, which are used to represent categorical data. It simplifies the process of creating, modifying, and ordering factors.</p></li>
 <li><p><strong><code>vcd</code></strong>: visualise and analyse categorical data.</p></li>
@@ -364,7 +364,7 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Or we can use library <code>tidyverse</code> which includes <code>ggplot2</code>, <code>dplyr,broom</code> and other foundamental libraries together already, remember you need first install the package if you haven’t by using <code>install.packages("tidyverse")</code>.</p>
+<p>Or we can use library <code>tidyverse</code> which includes <code>ggplot2</code>, <code>dplyr,broom</code> and other fundamental libraries together already, remember you need first install the package if you haven’t by using <code>install.packages("tidyverse")</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>))</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>,<span class="at">dependencies =</span> T)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -384,7 +384,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>We will also use forcat library, so</p>
+<p>We will also use ‘forcats’ library, so</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"forcats"</span>))</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"forcats"</span>)</span>
@@ -395,7 +395,7 @@ Attaching package: 'dplyr'</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>frs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/FRS/FRS16-17_labels.csv"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Recall in previous weeks, we used the following code to overview the dataset. Familiar yourself again by using them:</p>
+<p>Recall in previous weeks, we used the following code to overview the dataset. Familiarise yourself again by using them:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(frs_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -403,7 +403,7 @@ Attaching package: 'dplyr'</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(frs_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>You may notice that for the numeric variables such as <em>hh_income_gross</em> (household gross income) and <em>work_hours</em>(worked hours per week), the <code>summary()</code> offers useful descriptive statistics. While for the qualitative information, such as <em>age_group</em> (age group), <em>highest_qual (</em>Highest educational qualification), <em>marital_status (</em>Marital status) and <em>nssec (</em>Socio-economic status), the <code>summary()</code> function is not that useful by providing mean or median values.</p>
+<p>You may notice that for the numeric variables such as <em>hh_income_gross</em> (household gross income) and <em>work_hours</em>(worked hours per week), the <code>summary()</code> offers useful descriptive statistics. While for the qualitative information, such as <em>age_group</em> (age group), <em>highest_qual</em> (Highest educational qualification), <em>marital_status</em> (Marital status) and <em>nssec</em> (Socio-economic status), the <code>summary()</code> function is not that useful by providing mean or median values.</p>
 <p>Performing descriptive analysis for categorical variables or qualitative variables, we focus on summarising the frequency and distribution of categories within the variable. This analysis helps understand the composition and diversity of categories in the data, which is especially useful for identifying patterns, common categories, or potential data imbalances.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequency count</span></span>
@@ -462,7 +462,7 @@ Lower managerial and professional occupations
                                          2899 </code></pre>
 </div>
 </div>
-<p>By using ggplot2, it is easy to create some nice descriptive charts for the categorical variables, such like what you did for the continuous variables last week.</p>
+<p>By using ggplot2, it is easy to create some nice descriptive charts for the categorical variables, just like what you did for the continuous variables last week.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(frs_data, <span class="fu">aes</span>(<span class="at">x =</span> highest_qual)) <span class="sc">+</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill=</span><span class="st">"brown"</span>,<span class="at">width=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
@@ -526,7 +526,7 @@ Lower managerial and professional occupations
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Q1. Which of the associations do you think is strongest? Which is the weakest?</strong></p>
 </div>
-<p>As before, rather than relying upon an impressionistic view of the strength of the association between two variables, we can measure that association by calculating the relevant correlation coefficient.</p>
+<p>As before, rather than relying upon an impressionistic view of the strength of the association between two variables, we can measure that association by calculating the relevant correlation coefficients.</p>
 <p>To calculate the correlation between categorical data, we first use Chi-squared test to assess the independence between pairs of categorical variables, then we use Cramer’s V to measures the strength of association - the correlation coefficents in R.</p>
 <p><strong>Pearson’s chi-squared test</strong> (χ2) is a statistical test applied to sets of categorical data to evaluate how likely it is that any observed difference between the sets arose by chance. If the p-value is low (typically &lt; 0.05), it suggests a significant association between the two variables.</p>
 <div class="cell">
@@ -543,8 +543,8 @@ data:  frs_data$health and frs_data$happy
 X-squared = 45594, df = 60, p-value &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>If you see a warning message of Chi-squared approximation may be incorrect. This is because some expected frequencies in one or more cells of the cross-tabular (health * happy) are too low. The df means degrees of freedom and it related to the size of the table and the number of categories in each variable. The most important message from the output is the estimated p-value, which shows as p-value &lt; 2.2e-16 (2.2 with 16 decimals move to the left, it is a very small number so written in scientific notation). P-value of the chi-squared test is far smaller than 0.05, so we can say the correlation is statistically significant.</p>
-<p><strong>Cramér’s V</strong> is a measure of association for categorical (nominal or ordinal) data. It ranges from 0 (no association) to 1 (strong association). The main downside of using Cramer’s V is that no information is provided on whether the correlation is positive or negative. This is not a problem if the variable pair includes a nominal variable but represents an information loss if the both variables being correlated are ordinal.</p>
+<p>If you see a warning message of Chi-squared approximation may be incorrect. This is because some expected frequencies in one or more cells of the cross-tabulation (health * happy) are too low. The df means degrees of freedom and it relates to the size of the table and the number of categories in each variable. The most important message from the output is the estimated p-value, which shows as p-value &lt; 2.2e-16 (2.2 with 16 decimals move to the left, it is a very small number so written in scientific notation). P-value of the chi-squared test is far smaller than 0.05, so we can say the correlation is statistically significant.</p>
+<p><strong>Cramér’s V</strong> is a measure of association for categorical (nominal or ordinal) data. It ranges from 0 (no association) to 1 (strong association). The main downside of using Cramer’s V is that no information is provided on whether the correlation is positive or negative. This is not a problem if the variable pair includes a nominal variable but represents an information loss if both variables being correlated are ordinal.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the 'vcd' package if not installed </span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"vcd"</span>))   </span>
@@ -560,7 +560,7 @@ X-squared = 45594, df = 60, p-value &lt; 2.2e-16</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)  </span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># creat the crosstable </span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co"># create the crosstable </span></span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>crosstab <span class="ot">&lt;-</span> <span class="fu">table</span>(frs_data<span class="sc">$</span>health, frs_data<span class="sc">$</span>happy)</span>
 <span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Cramér's V </span></span>
@@ -574,7 +574,7 @@ Phi-Coefficient   : NA
 Contingency Coeff.: 0.713 
 Cramer's V        : 0.454 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#you can also directly calculate the assoication between variables</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co">#you can also directly calculate the association between variables</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">assocstats</span>(<span class="fu">table</span>(frs_data<span class="sc">$</span>health, frs_data<span class="sc">$</span>age_group))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                   X^2 df P(&gt; X^2)
@@ -589,7 +589,7 @@ Cramer's V        : 0.329 </code></pre>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Research Question 1. Which of our selected person-level variables is most strongly correlated with an individual’s health status?</strong></p>
 </div>
-<p>Use the codes of Chi-test and Cramer’s V to answer this question by completing Table 1.</p>
+<p>Use the codes of Chi-square test and Cramer’s V to answer this question by completing Table 1.</p>
 <p><strong>Table 1 Person-level correlations with health status</strong></p>
 <table class="caption-top table">
 <colgroup>
@@ -618,7 +618,7 @@ Cramer's V        : 0.329 </code></pre>
 <td></td>
 </tr>
 <tr class="even">
-<td><em>Health</em></td>
+<td><em>health</em></td>
 <td><em>highest_qual</em></td>
 <td></td>
 <td></td>
@@ -630,7 +630,7 @@ Cramer's V        : 0.329 </code></pre>
 <td></td>
 </tr>
 <tr class="even">
-<td><em>Health</em></td>
+<td><em>health</em></td>
 <td><em>nssec</em></td>
 <td></td>
 <td></td>
@@ -641,7 +641,7 @@ Cramer's V        : 0.329 </code></pre>
 </section>
 <section id="income-inequality-with-respect-to-gender-and-health-status" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="income-inequality-with-respect-to-gender-and-health-status"><span class="header-section-number">4.2</span> Income inequality with respect to gender and health status</h2>
-<p>In this section, we will work with individual-level data (“FRS 2016-17_label.csv”) to explore income inequality with respect to gender and health status.</p>
+<p>In this section, we will work with individual-level data (“FRS16-17_label.csv”) to explore income inequality with respect to gender and health status.</p>
 <p>To explore income inequality, we need to work with a data set excluding dependent children. In addition, we look at individuals who are the representative persons of households. Therefore, we will select cases (or samples) that meet both conditions.</p>
 <p>We want R to select persons only if they are the representative persons of households and they are not dependent children. The involved variables are <code>hrp</code> and <code>Dependent</code> for the categories “Household Reference Person” and “independent”, you can select the appropriate cases. We also want to exclude the health variable reported as “Not known”.</p>
 <div class="cell">
@@ -725,7 +725,7 @@ Multiple R-squared:  0.01646,   Adjusted R-squared:  0.01616
 F-statistic: 56.29 on 5 and 16821 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p>Same of what you have learnt in Week 2, the code explanation:</p>
+<p>Same as what you have learnt in Week 2, the code explanation:</p>
 <p><strong><code>lm()</code> Function</strong>:</p>
 <ul>
 <li><code>lm()</code> stands for “linear model” and is used to fit a linear regression model in R.</li>
@@ -738,7 +738,7 @@ F-statistic: 56.29 on 5 and 16821 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><strong>Storing the Model</strong>: The <code>model &lt;-</code> syntax stores the fitted model in an object called <code>model</code>.</p>
 <p><code>summary(model)</code> provides a detailed output of the model’s results, including:</p>
 <ul>
-<li><strong>Coefficients</strong>: Estimates of the regression slopes (i.e., how each independent variableaffects <code>Net_inc_pp</code>).</li>
+<li><strong>Coefficients</strong>: Estimates of the regression slopes (i.e., how each independent variable affects <code>Net_inc_pp</code>).</li>
 <li><strong>Standard Errors</strong>: The variability of each coefficient estimate.</li>
 <li><strong>t-values</strong> and <strong>p-values</strong>: Indicate the statistical significance of the effect of each independent (explanatory) variable.</li>
 <li><strong>R-squared</strong> and <strong>Adjusted R-squared</strong>: Show how well the independent variables explain the variance in the dependent variable.</li>
@@ -763,29 +763,29 @@ F-statistic: 56.29 on 5 and 16821 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Q2.</strong> <strong>What conclusions could be drawn in terms of income inequalities with respect to gender and health status? Also think about the statistical significance of these differences.</strong></p>
 </div>
-<p>The interpretation of this table is again similar to what you have learnt in Week2, but you may find that R has automatically treat your categorical/qualitative variable Sex and Health as dummy variables, so in the output, you see sexMale, the reason there is no sexFemale is because I requested R to use sex=Female as the reference category. You also wee healthBad, healthFair, healthGood, and healthVery Good, but you didn’t see health Very Bad because agaion I request <code>frs_df$health &lt;- fct_relevel(as.factor(frs_df$health), "Very Bad")</code> .</p>
+<p>The interpretation of this table is again similar to what you have learnt in Week2, but you may find that R has automatically treat your categorical/qualitative variable Sex and Health as dummy variables, so in the output, you see sexMale, the reason there is no sexFemale is because I requested R to use sex=Female as the reference category. You also see healthBad, healthFair, healthGood, and healthVery Good, but you didn’t see health Very Bad because again I request <code>frs_df$health &lt;- fct_relevel(as.factor(frs_df$health), "Very Bad")</code> .</p>
 <p>For the independent variable, the coefficient estimates of them need to be interpreted by comparing to the reference category: Male and Very Bad health. We can derive how the differences between different independent variable categories are associated with the changes in <code>Net_inc_pp</code>, for example:</p>
 <ul>
 <li>The association of <code>sexMale</code>is positive and strong: compare to sex=Female, <code>sexMale</code> is associated with an increase of £2,091 net income per capita, here we see some gender inequality;</li>
-<li>The association of <code>healthBad</code> and <code>healthFair</code> arenot statistically significant, which means we cannot draw any conclusion of the relationships between <code>healthBad</code> and <code>Net_inc_pp</code> or <code>healthFair</code> and <code>Net_inc_pp</code> from the model ;</li>
+<li>The association of <code>healthBad</code> and <code>healthFair</code> are not statistically significant, which means we cannot draw any conclusion of the relationships between <code>healthBad</code> and <code>Net_inc_pp</code> or <code>healthFair</code> and <code>Net_inc_pp</code> from the model ;</li>
 <li>Then, the association of <code>healthGood</code> and <code>healthVeryGood</code> are both positive and strong: <code>healthGood</code> is associated with an increase of £2,766 net income per capita compared to <code>healthVeryBad</code>, and <code>healthVeryGood</code> is associated with an increase of £4,931 net income per capita compared to <code>healthVeryBad</code> . Here you may draw some useful conclusion on who the health condition impact the inequality of income.</li>
 </ul>
 <p>We then read R-squared and Adjusted R-squared to evaluate the model fit. We see both values are only around 0.016, which means in the model <code>Net_inc_pp ~ Sex + health</code> , the independent variable <code>Sex + health</code> can only explain 1.6% of the variation of our dependent variable <code>Net_inc_pp</code>. This is a relatively poor performance, and the model cannot be used to do any prediction of <code>Net_inc_pp</code> by using just sex and health. This also suggests us that to fully explain the <code>Net_inc_pp</code> , we may need to add in more variables, such as education level, occupation, age, etc. Although the model is not solid for any prediction, the coefficients and significant conclusion from the model are still very useful.</p>
 </section>
 <section id="implementing-a-linear-regression-model-with-a-qualitative-independent-variable" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="implementing-a-linear-regression-model-with-a-qualitative-independent-variable"><span class="header-section-number">4.3</span> <strong>Implementing a linear regression model with a qualitative independent variable</strong></h2>
-<p>To gain further practice on using linear regression model with qualitative variables as independent variables, we follow the model you created last week, to add in the qualitative/categorical variable Region from the Census 2021 dataset. You should already have the dataset <strong>EW_DistrictPercentages.csv</strong>, if not, you can download them from <a href="https://canvas.liverpool.ac.uk/courses/84668/pages/census-data?module_item_id=2396199">Canvas</a>. Please put the .csv file in you ‘/data/Census2021’ folder.</p>
+<p>To gain further practice on using linear regression model with qualitative variables as independent variables, we follow the model you created last week, to add in the qualitative/categorical variable Region from the Census 2021 dataset. You should already have the dataset <strong>EW_DistrictPercentages.csv</strong>, if not, you can download them from <a href="https://canvas.liverpool.ac.uk/courses/84668/pages/census-data?module_item_id=2396199">Canvas</a>. Please put the .csv file in your ‘/data/Census2021’ folder.</p>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
 <p><strong>Research Question 2: How does health vary across regions in the UK?</strong></p>
 </div>
-<p>The practical is split into two main parts. The first focuses on implementing a linear regression model with a qualitative independent variable. <strong>Note that</strong> you need first to set the reference category (baseline) as the outcomes of the model reflects the <strong>differences</strong> between categories with the baseline. The second part focuses prediction based the estimated linear regression model.</p>
+<p>The practical is split into two main parts. The first focuses on implementing a linear regression model with a qualitative independent variable. <strong>Note that</strong> you need first to set the reference category (baseline) as the outcomes of the model reflects the <strong>differences</strong> between categories with the baseline. The second part focuses on prediction based the estimated linear regression model.</p>
 <p>First we load the UK district-level census dataset.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>LAcensus <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/Census2021/EW_DistrictPercentages.csv"</span>) <span class="co"># Local authority level</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Using the district-level census dataset “<strong>EW__DistrictPercentages.csv</strong>”. the variable “Region” (labelled as Government Office Region) is used to explore regional inequality in health.</p>
-<p>Familiar yourself with the dataset by using the same codes as last week:</p>
+<p>Familiarise yourself with the dataset by using the same codes as last week:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#view the data </span></span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(LAcensus)  </span>
@@ -795,14 +795,14 @@ F-statistic: 56.29 on 5 and 16821 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(LAcensus)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>The dim() function can merely returns the number of rows and number of columns.</p>
+<p>The dim() function simply returns the number of rows and number of columns.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(LAcensus) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 331 161</code></pre>
 </div>
 </div>
-<p>There are 331 rows and 151 columns in the dataset. It would be very hard to scan throught the data if we use so many variables altogether. Therefore, we can select several columns to tailor for this practical. You can of course include other variables you are interested in also by their names:</p>
+<p>There are 331 rows and 151 columns in the dataset. It would be very hard to scan through the data if we use so many variables altogether. Therefore, we can select several columns to tailor for this practical. You can of course include other variables you are interested in also by their names:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> LAcensus <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">c</span>(<span class="st">"pct_Longterm_sick_or_disabled"</span>,</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"pct_No_qualifications"</span>,</span>

@@ -24,15 +24,15 @@ To these ends, this block will help you develop your quantitative (statistical) 
 
 **Week 1-6 Tuesday \@ Central Teaching Hub PCTC**
 
-- Lecture (10 – 11 am).
-- Practical PC session (11 am – 1 pm).
+- Lecture (9 – 10 am).
+- Practical PC session (10 am – 12 pm).
 
 Lectures will introduce and explain the fundamentals of quantitative methods, with the opportunity to apply the method introduced in the labs later in the week.
 
 The computer practical sessions, will give you the chance to use and apply quantitative methods to real-world data. These are primarily self-directed sessions, but with support on hand if you get stuck. Support and training in R will be provided through these sessions. Weekly sessions will be driven by empirical research questions.
 
 | Week | Topic | Format | Staff |
-|------------|-----------------------------|--------------------|------------|
+|---------------|-------------------------|-----------------|---------------|
 | 1 | Introduction & Review | Lecture and Computer Lab Practical | GF |
 | 2 | Single & Multiple Linear Regression | Lecture and Computer Lab Practical | GF |
 | 3 | Multiple Linear Regression with Categorical Variables | Lecture and Computer Lab Practical | ZY |
