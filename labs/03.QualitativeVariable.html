@@ -286,8 +286,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The lecture’s slides can be found&nbsp;<a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture09.pdf">h</a><a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf">e</a><a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture09.pdf">re</a>.</p>
-<p>In last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R, we create and interpret the model:</p>
+<p>The lecture’s slides can be found&nbsp;<a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf">h</a><a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf">e</a><a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf">re</a>.</p>
+<p>Last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R code, we create and interpret the model:</p>
 <p><code>model &lt;- lm(pct_Very_bad_health ~ pct_No_qualifications + pct_Males + pct_Higher_manager_prof, data = census)</code></p>
 <p><code>summary(model)</code></p>
 <p>In a regression model, independent/predictor variables could be continuous or categorical (or qualitative). While continuous variables capture quantitative effects, <strong>categorical variables provide insights into differences across groups</strong>. When we say categorical variables, we normally mean:</p>
@@ -295,7 +295,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Nominal Data: categorical data without natural order. E.g. Gender, Colour, Country…</p></li>
 <li><p>Ordinal Data: categorical data with a meaningful order. E.g. Education level, Customer satisfaction, Grade…</p></li>
 </ul>
-<p>By blending continuous and categorical predictors, MLR with categorical variables enhances the model’s ability to reflect real-world complexities and improves interpretability, as it allows analysts to assess how each category or group within a independent variable influences the dependent variable.</p>
+<p>By blending continuous and categorical predictors, MLR with categorical variables enhances the model’s ability to reflect real-world complexities and improves interpretability, as it allows analysts to assess how each category or group within an independent variable influences the dependent variable.</p>
 <p>For most categorical (especially the <em>nominal</em>) variables, they cannot be included in the regression model directly as a continuous independent variable. Instead, these qualitative independent variables should be included in regression models by using the <strong>dummy variable</strong> approach, transforming categorical information into a numerical format suitable for regression analysis.</p>
 <p>However, R provides a powerful way, by automatively handling with such process when the categorical variable is designated as a factor and to be included in the regression model. This makes it much easier for you to use categorical variables in the regression model to assess the effects of categorical groupings on the dependent variable alongside continuous predictors.</p>
 <p>Learning Objectives:</p>

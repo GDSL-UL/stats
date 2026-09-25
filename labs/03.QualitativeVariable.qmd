@@ -1,14 +1,12 @@
 ---
-for c---
 title: "Lab: Correlation and Multiple Linear Regression with Qualitative Variables"
 author: "Zi Ye"
 date: "`r Sys.Date()`"
-output: html_document
 ---
 
-The lecture’s slides can be found [h](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture09.pdf)[e](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf)[re](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture09.pdf).
+The lecture’s slides can be found [h](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf)[e](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf)[re](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf).
 
-In last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R, we create and interpret the model:
+Last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R code, we create and interpret the model:
 
 `model <- lm(pct_Very_bad_health ~ pct_No_qualifications + pct_Males + pct_Higher_manager_prof, data = census)`
 
@@ -20,11 +18,11 @@ In a regression model, independent/predictor variables could be continuous or ca
 
 - Ordinal Data: categorical data with a meaningful order. E.g. Education level, Customer satisfaction, Grade...
 
-By blending continuous and categorical predictors, MLR with categorical variables enhances the model's ability to reflect real-world complexities and improves interpretability, as it allows analysts to assess how each category or group within a independent variable influences the dependent variable.
+By blending continuous and categorical predictors, MLR with categorical variables enhances the model's ability to reflect real-world complexities and improves interpretability, as it allows analysts to assess how each category or group within an independent variable influences the dependent variable.
 
 For most categorical (especially the *nominal*) variables, they cannot be included in the regression model directly as a continuous independent variable. Instead, these qualitative independent variables should be included in regression models by using the **dummy variable** approach, transforming categorical information into a numerical format suitable for regression analysis.
 
-However, R provides a powerful way, by automatively handling with such process when the categorical variable is designated as a factor and to be included in the regression model. This makes it much easier for you to use categorical variables in the regression model to assess the effects of categorical groupings on the dependent variable alongside continuous predictors.
+However, R provides a powerful way, by automatively handling this process when the categorical variable is designated as a factor and to be included in the regression model. This makes it much easier for you to use categorical variables in the regression model to assess the effects of categorical groupings on the dependent variable alongside continuous predictors.
 
 Learning Objectives:
 
@@ -36,13 +34,13 @@ In this week's practical we are going to
 
 - Make predictions using a regression model
 
-## Analysis categorical variables
+## Analysing categorical variables
 
-Recall in Week 2, you get familiar to R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your local drive folder under the path of '/data/Census2021/'; for the FRS datasets, please click the links to download the datasets from [Canvas](https://canvas.liverpool.ac.uk/courses/84668/pages/family-resource-survey-2016-17?module_item_id=2396198). Please download both the datasets of 'FRS16-17_labels.csv' and 'FRS_dictionary.xlxs'<!--and 'FRS16-17_codes.csv'--> for today's practical. You may create a new folder named 'FRS' under the '/data/' along with the Census2021 folder, and put the newly downloaded .csv files at the '/data/FRS/' folder for later use.
+Recall in Week 2, you got familiar with R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your local drive folder under the path of '/data/Census2021/'; for the FRS datasets, please click the links to download the datasets from [Canvas](https://canvas.liverpool.ac.uk/courses/84668/pages/family-resource-survey-2016-17?module_item_id=2396198). Please download both the datasets of 'FRS16-17_labels.csv' and 'FRS_dictionary.xlxs'<!--and 'FRS16-17_codes.csv'--> for today's practical. You may create a new folder named 'FRS' under the '/data/' along with the Census2021 folder, and put the newly downloaded .csv files at the '/data/FRS/' folder for later use.
 
 <!--Now, there should be two .csv file: 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv' in your '/data/FRS' folder. Double click to open both .csv files you may find they have exactly same column names - yes, they are in fact the same spreadsheet but 'FRS16-17_labels.csv' is more readable for the cell contents as they are in text format but cells 'FRS16-17_codes.csv' is in coding format. This is quite normal as when we doing surveys, we use text as the options of multiple choice questions for respondents to choose from, and therefore the collected survey results are in the 'FRS16-17_labels.csv' format. For example, for the multiple choice question - which region you are from? The options include 'London', 'North West', 'Wales', etc. However, while analysing the survey results, these text content (the options of multiple choice questions) are in fact different categories of the categorical/qualitative variable. So for some survey results, you may find they are formatted in coding way as 'FRS16-17_codes.csv', and along with a coding dictionary for you to learn the meaning of each coding. -->
 
-To start today's practical session, we first will use 'FRS16-17_labels.csv'. <!--In the Region example, there are 12 categories for the categorical/qualitative variable Region--> You can open the .csv file in Excel and find itsdifferent from the Census dataset, the FRS dataset contains many qualitative/categorical variables, such as hh_tenure (Housing Tenure), happy (How happy did you feel yesterday?), health (How is your health in general) and etc.. To know the meaning of all the column names and the values in cell, you may need to reference to the 'FRS_dictionary.xlsx' to help your understanding. Recall our lecture, these categorical variable will need to be treated as Dummy variable in the regression model. In R, the variable type of qualitative/categorical variables is called '**factor**'.
+To start today's practical session, we first will use 'FRS16-17_labels.csv'. <!--In the Region example, there are 12 categories for the categorical/qualitative variable Region--> You can open the .csv file in Excel and find its different from the Census dataset, the FRS dataset contains many qualitative/categorical variables, such as hh_tenure (Housing Tenure), happy (How happy did you feel yesterday?), health (How is your health in general) and etc. To know the meaning of all the column names and the values in cell, you may need to reference to the 'FRS_dictionary.xlsx' to help your understanding. Recall our lecture, these categorical variable will need to be treated as Dummy variable in the regression model. In R, the variable type of qualitative/categorical variables is called '**factor**'.
 
 As usual we first load the necessary libraries.
 
@@ -56,13 +54,13 @@ getwd()
 
 Check the relative path of your data folder on your PC/laptop, make sure you know the relative path of your data from your working directory, returned by `getwd()`.
 
-**Library knowledge used in today:**
+**Library knowledge used today:**
 
 - **`dplyr`**: a basic library provides a suite of functions for data manipulation
 
 - **`ggplot2`**: a widely-used data visualisation library to help you create nice plots through layered plotting.
 
-- **`tidyverse`**: a collection of R packages designed for data science, offering a cohesive framework for data manipulation, visualization, and analysis. Containing dyplyr, ggplot2 and other basic libraries.
+- **`tidyverse`**: a collection of R packages designed for data science, offering a cohesive framework for data manipulation, visualization, and analysis. Containing dplyr, ggplot2 and other basic libraries.
 
 - **`broom`**: a part of the tidyverse and is designed to convert statistical analysis results into tidy data frames.
 
@@ -90,7 +88,7 @@ library(broom)
 
 ```
 
-Or we can use library `tidyverse` which includes `ggplot2`, `dplyr,broom` and other foundamental libraries together already, remember you need first install the package if you haven't by using `install.packages("tidyverse")`.
+Or we can use library `tidyverse` which includes `ggplot2`, `dplyr,broom` and other fundamental libraries together already, remember you need first install the package if you haven't by using `install.packages("tidyverse")`.
 
 ```{r,warning=FALSE}
 if(!require("tidyverse"))
@@ -99,7 +97,7 @@ if(!require("tidyverse"))
 library(tidyverse)
 ```
 
-We will also use forcat library, so
+We will also use 'forcats' library, so
 
 ```{r,warning=FALSE}
 if(!require("forcats"))
@@ -114,7 +112,7 @@ Exactly as you did in previous weeks, we first load in the dataset:
 frs_data <- read.csv("../data/FRS/FRS16-17_labels.csv")
 ```
 
-Recall in previous weeks, we used the following code to overview the dataset. Familiar yourself again by using them:
+Recall in previous weeks, we used the following code to overview the dataset. Familiarise yourself again by using them:
 
 ```{r,results='hide'}
 View(frs_data)
@@ -346,7 +344,7 @@ LAcensus <- read.csv("../data/Census2021/EW_DistrictPercentages.csv") # Local au
 
 Using the district-level census dataset "**EW\_\_DistrictPercentages.csv**". the variable "Region" (labelled as Government Office Region) is used to explore regional inequality in health.
 
-Familiar yourself with the dataset by using the same codes as last week:
+Familiarise yourself with the dataset by using the same codes as last week:
 
 ```{r,results='hide'}
 #view the data 
