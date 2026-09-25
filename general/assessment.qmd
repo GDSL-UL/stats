@@ -1,42 +1,42 @@
 # Assessment {.unnumbered}
 
-**Deadline**: Monday 3rd November 2025 - 2pm. **Word count**: 2000 words - including tables, excluding references.
+**Deadline**: Thursday 12th November 2026 - 2pm. **Word count**: 2000 words - including tables, excluding references.
 
 The assignment **Data Exploration and Analysis** consists of writing a research report using one of the regression techniques learned during the module. The basic idea is to put in practice the methods learned during the quantitative block of the module. You are required to apply a linear or logistic regression model to the data provided for the module. The report needs to include the following sections (in brackets, % of the whole lenght):
 
--   Introduction (5%).
--   Literature Review (20%).
--   Methods and data (30%).
--   Results and discussion (40%).
--   Conclusion (5%).
--   Reference List.
+- Introduction (5%).
+- Literature Review (20%).
+- Methods and data (30%).
+- Results and discussion (40%).
+- Conclusion (5%).
+- Reference List.
 
 ## Required Report Structure
 
 1.  **Introduction**
-    -   Context: Why is the topic relevant or worth being investigated?
-    -   Brief discussion of existing literature.
-    -   Knowledge gap and Aim.
-    -   1 Research question.
+    - Context: Why is the topic relevant or worth being investigated?
+    - Brief discussion of existing literature.
+    - Knowledge gap and Aim.
+    - 1 Research question.
 2.  **Literature review**
-    -   More detailed Literature review, i.e. what do we already know about this subject
-    -   Rationale for including certain predictor variables in the model.
-    -   What knowledge gap remains that this article will address? (includes "not studied before in this area"). *Note: there is no expectation on totally original research. The focus is on a clean, sensible, data analysis situated in existing ideas.*
+    - More detailed Literature review, i.e. what do we already know about this subject
+    - Rationale for including certain predictor variables in the model.
+    - What knowledge gap remains that this article will address? (includes "not studied before in this area"). *Note: there is no expectation on totally original research. The focus is on a clean, sensible, data analysis situated in existing ideas.*
 3.  **Methodology:**
-    -   A brief introduction to the dataset being analysed (who collected it? When? How many responses? etc.)
-    -   A description of the variables chosen to be analysed.
-    -   A description of any transformation made to the original data, i.e. turning a continuous variable of income into intervals, or reducing the number of age groups from 11 to 3.
-    -   A description and justification of the statistical techniques used in the subsequent analysis (i.e. the Multivariate regression model: Multiple or Logistic Linear Regression).
+    - A brief introduction to the dataset being analysed (who collected it? When? How many responses? etc.)
+    - A description of the variables chosen to be analysed.
+    - A description of any transformation made to the original data, i.e. turning a continuous variable of income into intervals, or reducing the number of age groups from 11 to 3.
+    - A description and justification of the statistical techniques used in the subsequent analysis (i.e. the Multivariate regression model: Multiple or Logistic Linear Regression).
 4.  **Results and Discussion**
-    -   Descriptive statistics and summary of the variables employed, supported by tables or/and charts.
-    -   Correct interpretation of correlation coefficients, statistical significance, and model fit.
-    -   Usage and results of an appropriate multivariate regression model.
-    -   Interpretation of the results, including links and contrasts to existing literature.
-    -   Selective illustrations (graphs and tables) to make your findings as clear as possible.
+    - Descriptive statistics and summary of the variables employed, supported by tables or/and charts.
+    - Correct interpretation of correlation coefficients, statistical significance, and model fit.
+    - Usage and results of an appropriate multivariate regression model.
+    - Interpretation of the results, including links and contrasts to existing literature.
+    - Selective illustrations (graphs and tables) to make your findings as clear as possible.
 5.  **Conclusion**
-    -   Summary of main findings.
-    -   Limitations of study (self-critique).
-    -   Highlight any implications derived from the study.
+    - Summary of main findings.
+    - Limitations of study (self-critique).
+    - Highlight any implications derived from the study.
 
 Follow this structure and include **ALL** these points, do not make your life harder.
 

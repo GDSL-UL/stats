@@ -11,13 +11,13 @@ The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/m
 
 1.  Identify a possible topic:
 
--   Load your dataset(s) in Rstudio.
--   Define your Research Question.
--   Identify the related variables to analyse.
+- Load your dataset(s) in Rstudio.
+- Define your Research Question.
+- Identify the related variables to analyse.
 
 2.  Discuss ideas:
 
--   Get feedback on feasibility and the clarity of research questions.
+- Get feedback on feasibility and the clarity of research questions.
 
 ## Part 2 - Visualisation: `ggplot2` Functions and Arguments
 
@@ -40,10 +40,10 @@ ggplot(data, aes(x = <X-axis variable>, y = <Y-axis variable>, <other aesthetics
 
 ### **`ggplot()`**
 
--   Initializes the plotting system.
--   Main arguments:
--   `data`: A data frame containing the variables to be plotted.
--   `aes()`: Aesthetic mappings to connect data variables to visual properties like `x`, `y`, `color`, `fill`, `size`, etc.
+- Initializes the plotting system.
+- Main arguments:
+- `data`: A data frame containing the variables to be plotted.
+- `aes()`: Aesthetic mappings to connect data variables to visual properties like `x`, `y`, `color`, `fill`, `size`, etc.
 
 ```{r}
 library(ggplot2)
@@ -87,13 +87,13 @@ ggplot(census_data, aes(x = Residents, y = mean_age, color = factor(Region))) +
 
 ### Aesthetics: `aes()`
 
--   Maps data variables to visual properties.
--   Common aesthetics:
--   `x`: X-axis variable.
--   `y`: Y-axis variable.
--   `color`: Changes point/line colors based on a variable.
--   `fill`: Fills bars/areas based on a variable.
--   `size`: Controls the size of points/lines.
+- Maps data variables to visual properties.
+- Common aesthetics:
+- `x`: X-axis variable.
+- `y`: Y-axis variable.
+- `color`: Changes point/line colors based on a variable.
+- `fill`: Fills bars/areas based on a variable.
+- `size`: Controls the size of points/lines.
 
 **Example: Adding color and size aesthetics**
 
@@ -221,36 +221,36 @@ ggplot(census_data, aes(x = Residents, y = mean_age, color = factor(Region))) +
 
 Consider in general, that there's several functions associated to scales
 
-| **Category**                | **Function**              | **Description**                                                       | **Example Usage**                                                                    |
+| **Category** | **Function** | **Description** | **Example Usage** |
 |------------------|------------------|------------------|------------------|
-| **Discrete Color Scales**   | `scale_color_brewer()`    | Use pre-defined discrete palettes from RColorBrewer.                  | `scale_color_brewer(palette = "Set1")`                                               |
-|                             | `scale_fill_brewer()`     | Fill colors for discrete variables from RColorBrewer.                 | `scale_fill_brewer(palette = "Pastel2")`                                             |
-|                             | `scale_color_manual()`    | Manually assign colors for discrete variables.                        | `scale_color_manual(values = c("red", "blue", "green"))`                             |
-|                             | `scale_fill_manual()`     | Manually assign fill colors for discrete variables.                   | `scale_fill_manual(values = c("purple", "orange", "yellow"))`                        |
-|                             | `scale_color_viridis_d()` | Use discrete palettes from the viridis package (colorblind-friendly). | `scale_color_viridis_d(option = "plasma")`                                           |
-|                             | `scale_fill_viridis_d()`  | Fill discrete variables with viridis palettes.                        | `scale_fill_viridis_d(option = "cividis")`                                           |
-| **Continuous Color Scales** | `scale_color_gradient()`  | Two-color gradient for continuous variables.                          | `scale_color_gradient(low = "blue", high = "red")`                                   |
-|                             | `scale_fill_gradient()`   | Two-color gradient for continuous fill variables.                     | `scale_fill_gradient(low = "green", high = "yellow")`                                |
-|                             | `scale_color_gradient2()` | Diverging gradient with a midpoint for continuous variables.          | `scale_color_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0)`     |
-|                             | `scale_fill_gradient2()`  | Diverging gradient with a midpoint for continuous fill variables.     | `scale_fill_gradient2(low = "purple", mid = "gray", high = "orange", midpoint = 50)` |
-|                             | `scale_color_gradientn()` | Multi-color gradient for continuous variables.                        | `scale_color_gradientn(colors = c("blue", "green", "yellow", "red"))`                |
-|                             | `scale_fill_gradientn()`  | Multi-color gradient for continuous fill variables.                   | `scale_fill_gradientn(colors = c("lightblue", "white", "pink"))`                     |
-|                             | `scale_color_viridis_c()` | Continuous color scales from viridis.                                 | `scale_color_viridis_c(option = "magma")`                                            |
-|                             | `scale_fill_viridis_c()`  | Continuous fill scales from viridis.                                  | `scale_fill_viridis_c(option = "inferno")`                                           |
-| **Axis Scales**             | `scale_x_continuous()`    | Customize numeric X-axis with limits and breaks.                      | `scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, 10))`                   |
-|                             | `scale_y_continuous()`    | Customize numeric Y-axis with limits and labels.                      | `scale_y_continuous(labels = scales::percent_format())`                              |
-|                             | `scale_x_log10()`         | Logarithmic transformation for X-axis.                                | `scale_x_log10()`                                                                    |
-|                             | `scale_y_log10()`         | Logarithmic transformation for Y-axis.                                | `scale_y_log10()`                                                                    |
-|                             | `scale_x_reverse()`       | Reverse the X-axis direction.                                         | `scale_x_reverse()`                                                                  |
-|                             | `scale_y_reverse()`       | Reverse the Y-axis direction.                                         | `scale_y_reverse()`                                                                  |
-| **Shape and Size Scales**   | `scale_shape_manual()`    | Manually assign shapes to categories for points.                      | `scale_shape_manual(values = c(19, 17, 15))`                                         |
-|                             | `scale_size_continuous()` | Scale the size of points based on a continuous variable.              | `scale_size_continuous(range = c(1, 10))`                                            |
-|                             | `scale_size_manual()`     | Manually specify point sizes for categorical variables.               | `scale_size_manual(values = c(2, 4, 6))`                                             |
+| **Discrete Color Scales** | `scale_color_brewer()` | Use pre-defined discrete palettes from RColorBrewer. | `scale_color_brewer(palette = "Set1")` |
+|  | `scale_fill_brewer()` | Fill colors for discrete variables from RColorBrewer. | `scale_fill_brewer(palette = "Pastel2")` |
+|  | `scale_color_manual()` | Manually assign colors for discrete variables. | `scale_color_manual(values = c("red", "blue", "green"))` |
+|  | `scale_fill_manual()` | Manually assign fill colors for discrete variables. | `scale_fill_manual(values = c("purple", "orange", "yellow"))` |
+|  | `scale_color_viridis_d()` | Use discrete palettes from the viridis package (colorblind-friendly). | `scale_color_viridis_d(option = "plasma")` |
+|  | `scale_fill_viridis_d()` | Fill discrete variables with viridis palettes. | `scale_fill_viridis_d(option = "cividis")` |
+| **Continuous Color Scales** | `scale_color_gradient()` | Two-color gradient for continuous variables. | `scale_color_gradient(low = "blue", high = "red")` |
+|  | `scale_fill_gradient()` | Two-color gradient for continuous fill variables. | `scale_fill_gradient(low = "green", high = "yellow")` |
+|  | `scale_color_gradient2()` | Diverging gradient with a midpoint for continuous variables. | `scale_color_gradient2(low = "blue", mid = "white", high = "red", midpoint = 0)` |
+|  | `scale_fill_gradient2()` | Diverging gradient with a midpoint for continuous fill variables. | `scale_fill_gradient2(low = "purple", mid = "gray", high = "orange", midpoint = 50)` |
+|  | `scale_color_gradientn()` | Multi-color gradient for continuous variables. | `scale_color_gradientn(colors = c("blue", "green", "yellow", "red"))` |
+|  | `scale_fill_gradientn()` | Multi-color gradient for continuous fill variables. | `scale_fill_gradientn(colors = c("lightblue", "white", "pink"))` |
+|  | `scale_color_viridis_c()` | Continuous color scales from viridis. | `scale_color_viridis_c(option = "magma")` |
+|  | `scale_fill_viridis_c()` | Continuous fill scales from viridis. | `scale_fill_viridis_c(option = "inferno")` |
+| **Axis Scales** | `scale_x_continuous()` | Customize numeric X-axis with limits and breaks. | `scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, 10))` |
+|  | `scale_y_continuous()` | Customize numeric Y-axis with limits and labels. | `scale_y_continuous(labels = scales::percent_format())` |
+|  | `scale_x_log10()` | Logarithmic transformation for X-axis. | `scale_x_log10()` |
+|  | `scale_y_log10()` | Logarithmic transformation for Y-axis. | `scale_y_log10()` |
+|  | `scale_x_reverse()` | Reverse the X-axis direction. | `scale_x_reverse()` |
+|  | `scale_y_reverse()` | Reverse the Y-axis direction. | `scale_y_reverse()` |
+| **Shape and Size Scales** | `scale_shape_manual()` | Manually assign shapes to categories for points. | `scale_shape_manual(values = c(19, 17, 15))` |
+|  | `scale_size_continuous()` | Scale the size of points based on a continuous variable. | `scale_size_continuous(range = c(1, 10))` |
+|  | `scale_size_manual()` | Manually specify point sizes for categorical variables. | `scale_size_manual(values = c(2, 4, 6))` |
 
 ### Additional Functions for Customization
 
--   **`labs()`**: Adds labels for axes, title, and legend.
--   **`coord_flip()`**: Flips X and Y axes for horizontal plots.
+- **`labs()`**: Adds labels for axes, title, and legend.
+- **`coord_flip()`**: Flips X and Y axes for horizontal plots.
 
 Labeling:
 
@@ -277,9 +277,9 @@ ggplot(census_data, aes(x = factor(Region), y = Residents)) +
 
 **Key Tips for `ggplot2`**:
 
--   Start with simple plots and incrementally add layers (`+`).
--   Use themes (`theme_minimal()`, `theme_classic()`) to clean up your plots.
--   Explore palettes with `RColorBrewer` or `viridis` for colorblind-friendly options.
+- Start with simple plots and incrementally add layers (`+`).
+- Use themes (`theme_minimal()`, `theme_classic()`) to clean up your plots.
+- Explore palettes with `RColorBrewer` or `viridis` for colorblind-friendly options.
 
 ## Part 3 - Visualisation: Making decent graphs (1h)
 
@@ -758,10 +758,10 @@ cross_tab_df %>%
  add_header_above(c(" " = 1, "Highest Educational Qualification" = 2))
 ```
 
--   **Rename Columns**: `colnames(cross_tab_df) <- c("Health", "Qualification", "Percentage")`. This assigns new column names to the data frame `cross_tab_df`.
--   **Generate a Table with `kable`**: `cross_tab_df %>% kbl(caption = "Health and Educational Qualification")`. This uses the `kbl` function from the `kableExtra` package to create a basic, well-formatted table. The `caption` argument adds a title to the table: "Health and Educational Qualification.
--   **Style the Table**: `%>% kable_styling(full_width = FALSE, position = "left")`. This enhances the appearance of the table with the `kable_styling` function. `full_width = FALSE` ensures the table is not stretched to the full width of the document or webpage; `position = "left"`: Aligns the table to the left side of the page.
--   **Add a Header Row**: `%>% add_header_above(c(" " = 1, "Highest Educational Qualification" = 2))` Adds an additional header row above the table; `" " = 1` the first column ("Health") has a blank header in this new row; `"Highest Educational Qualification" = 2`: The next two columns ("Qualification" and "Percentage") are grouped under the label "Highest Educational Qualification.
+- **Rename Columns**: `colnames(cross_tab_df) <- c("Health", "Qualification", "Percentage")`. This assigns new column names to the data frame `cross_tab_df`.
+- **Generate a Table with `kable`**: `cross_tab_df %>% kbl(caption = "Health and Educational Qualification")`. This uses the `kbl` function from the `kableExtra` package to create a basic, well-formatted table. The `caption` argument adds a title to the table: "Health and Educational Qualification.
+- **Style the Table**: `%>% kable_styling(full_width = FALSE, position = "left")`. This enhances the appearance of the table with the `kable_styling` function. `full_width = FALSE` ensures the table is not stretched to the full width of the document or webpage; `position = "left"`: Aligns the table to the left side of the page.
+- **Add a Header Row**: `%>% add_header_above(c(" " = 1, "Highest Educational Qualification" = 2))` Adds an additional header row above the table; `" " = 1` the first column ("Health") has a blank header in this new row; `"Highest Educational Qualification" = 2`: The next two columns ("Qualification" and "Percentage") are grouped under the label "Highest Educational Qualification.
 
 ### Creating a Well-Formatted Table from a Cross Tabulation
 
@@ -805,32 +805,32 @@ regression_table %>%
  add_header_above(c(" " = 1, "Coefficients" = 4)) # Add grouped header
 ```
 
--   `kable_styling()` This function customizes the appearance of a **`kable`** table. The arguments used are:
+- `kable_styling()` This function customizes the appearance of a **`kable`** table. The arguments used are:
 
-    -   `full_width = FALSE`: Ensures the table is not stretched to fill the entire width of the page.
+  - `full_width = FALSE`: Ensures the table is not stretched to fill the entire width of the page.
 
-    -   `bootstrap_options = c("striped", "hover", "condensed")`:
+  - `bootstrap_options = c("striped", "hover", "condensed")`:
 
-        -   `striped`: Adds alternating row colors for better readability.
+    - `striped`: Adds alternating row colors for better readability.
 
-        -   `hover`: Highlights rows when hovered over with the mouse (for HTML tables).
+    - `hover`: Highlights rows when hovered over with the mouse (for HTML tables).
 
-        -   `condensed`: Reduces the table's vertical spacing, making it more compact.
+    - `condensed`: Reduces the table's vertical spacing, making it more compact.
 
--   `column_spec(2:5, width = "3cm")`. This function customizes specific columns of the table.
+- `column_spec(2:5, width = "3cm")`. This function customizes specific columns of the table.
 
-    -   `2:5`: Targets columns 2 through 5 for styling.
+  - `2:5`: Targets columns 2 through 5 for styling.
 
-    -   `width = "3cm"`: Sets the width of these columns to 3 cm, ensuring uniform and readable column sizes.
+  - `width = "3cm"`: Sets the width of these columns to 3 cm, ensuring uniform and readable column sizes.
 
--   `add_header_above(c(" " = 1, "Coefficients" = 4))`. This function adds an additional header row above the table. This is used to customize the header of a table.
+- `add_header_above(c(" " = 1, "Coefficients" = 4))`. This function adds an additional header row above the table. This is used to customize the header of a table.
 
-    -   `" " = 1` Leaves the first column (e.g., the Term column) without a header, spanning 1 column.
-    -   `"Coefficients" = 4`: This part means that columns 2, 3, 4, and 5 will be grouped together under one header, which is labeled as "Coefficients" (4 here indicates the other 4 tables). Essentially, these columns will have the same header, which makes the table more readable and organized.
+  - `" " = 1` Leaves the first column (e.g., the Term column) without a header, spanning 1 column.
+  - `"Coefficients" = 4`: This part means that columns 2, 3, 4, and 5 will be grouped together under one header, which is labeled as "Coefficients" (4 here indicates the other 4 tables). Essentially, these columns will have the same header, which makes the table more readable and organized.
 
 Have a look here for some details on `kableExtra` <https://bookdown.org/yihui/rmarkdown-cookbook/kableextra.html>.
 
 ## Part 5: Play with the code
 
--   Experiment with different variables and aesthetics to deepen your understanding of ggplot2.
--   Test modifying labels, themes, and colour schemes to create tailored visualisations.
+- Experiment with different variables and aesthetics to deepen your understanding of ggplot2.
+- Test modifying labels, themes, and colour schemes to create tailored visualisations.

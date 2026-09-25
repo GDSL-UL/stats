@@ -1,4 +1,3 @@
-
 # Overview {.unnumbered}
 
 ## Aim and Learning Objectives
@@ -9,7 +8,7 @@ This sub-module aims to provide training and skills on a set of basic quantitati
 
 Data and research are key pillars of the global economy and society today. We need rigorous approaches to collecting and analysing both the statistics that can tell us ‘how much’ and if there are observable relationships between phenomena; and the information gives us a nuanced understanding of cultural contexts and human dynamics. Quantitative skills enable us to explore and measure socio-economic activities and processes at large scales, while qualitative skills enable understanding of social, cultural, and political contexts and diverse lived experiences. Rather than being in opposition, qualitative and quantitative research can complement one another in the investigation of today’s pressing research questions.
 
-To these ends, this block will help you develop your quantitative (statistical) skills, as critical tools. This course will help you understand what quantitative statistical researchers use and develop a set of research techniques that can be used in your field classes and dissertations. 
+To these ends, this block will help you develop your quantitative (statistical) skills, as critical tools. This course will help you understand what quantitative statistical researchers use and develop a set of research techniques that can be used in your field classes and dissertations.
 
 **Learning objectives:**
 
@@ -19,40 +18,27 @@ To these ends, this block will help you develop your quantitative (statistical) 
 
 ## Module Structure
 
-**Staff:**
-Dr Zi Ye and Dr Gabriele Filomena
+**Staff:** Dr Zi Ye and Dr Gabriele Filomena
 
 **Where and When**
 
-**Week 1, 2, 4, 6 Tuesday @ Central Teaching Hub PCTC**
+**Week 1-6 Tuesday \@ Central Teaching Hub PCTC**
 
- - Lecture (10 – 11 am). 
- - Practical PC session (11 am – 1 pm).
-
-**Week 3**
-
- - Lecture (3 – 4 pm) Thursday @ Central Teaching Hub – Lect. Theatre C.
- - Practical PC session (9 – 11 am) Friday @ Central Teaching Hub PCTC.
-
-**Week 5**
-
- - Lecture (3 – 4 pm) Thursday @ Central Teaching Hub – Lect. Theatre C.
- - Practical PC session (10 – 12 am) Friday @ Central Teaching Hub PCTC.
+- Lecture (10 – 11 am).
+- Practical PC session (11 am – 1 pm).
 
 Lectures will introduce and explain the fundamentals of quantitative methods, with the opportunity to apply the method introduced in the labs later in the week.
 
 The computer practical sessions, will give you the chance to use and apply quantitative methods to real-world data. These are primarily self-directed sessions, but with support on hand if you get stuck. Support and training in R will be provided through these sessions. Weekly sessions will be driven by empirical research questions.
 
-
-| Week | Topic                                       | Format                          | Staff |
-|------|---------------------------------------------|---------------------------------|-------|
-| 1    | Introduction & Review                       | Lecture and Computer Lab Practical | GF    |
-| 2    | Single & Multiple Linear Regression         | Lecture and Computer Lab Practical | GF    |
-| 3    | Multiple Linear Regression with Categorical Variables | Lecture and Computer Lab Practical | ZY    |
-| 4   | Logistic Regression                         | Lecture and Computer Lab Practical | ZY    |
-| 5   | Data Visualisation                          | Lecture and Computer Lab Practical | GF    |
-| 6   | Summary and Assessment Support              | Lecture and Computer Lab Practical | ZY    |
-
+| Week | Topic | Format | Staff |
+|------------|-----------------------------|--------------------|------------|
+| 1 | Introduction & Review | Lecture and Computer Lab Practical | GF |
+| 2 | Single & Multiple Linear Regression | Lecture and Computer Lab Practical | GF |
+| 3 | Multiple Linear Regression with Categorical Variables | Lecture and Computer Lab Practical | ZY |
+| 4 | Logistic Regression | Lecture and Computer Lab Practical | ZY |
+| 5 | Data Visualisation | Lecture and Computer Lab Practical | GF |
+| 6 | Summary and Assessment Support | Lecture and Computer Lab Practical | ZY |
 
 ## Software and Data
 
@@ -63,8 +49,8 @@ For quantitative training sessions, ensure you have installed and/or have access
 
 To install and update:
 
- - R, download the appropriate version from [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/).
- - RStudio, download the appropriate version from [here](https://posit.co/download/rstudio-desktop/).
+- R, download the appropriate version from [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/).
+- RStudio, download the appropriate version from [here](https://posit.co/download/rstudio-desktop/).
 
 **This software is already installed on University Machines. But you will need it to run the analysis on your personal devices.**
 

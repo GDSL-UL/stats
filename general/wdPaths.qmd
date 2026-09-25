@@ -69,13 +69,13 @@ xls <- read_excel("../data/survey.xlsx", sheet = 1)
 
 In summary:
 
--   `read_csv(MyFile.csv)` RStudio looks in the working directory for the file `MyFile.csv`.
+- `read_csv(MyFile.csv)` RStudio looks in the working directory for the file `MyFile.csv`.
 
--   `read_csv(MyFolder/MyFile.csv)` RStudio looks inside the Working Directory (WD), for the folder `MyFolder`, then the file `MyFile.csv`.
+- `read_csv(MyFolder/MyFile.csv)` RStudio looks inside the Working Directory (WD), for the folder `MyFolder`, then the file `MyFile.csv`.
 
--   `read_csv(data/survey.csv)` RStudio looks inside the WD, looks inside `data`, then `survey.csv`.
+- `read_csv(data/survey.csv)` RStudio looks inside the WD, looks inside `data`, then `survey.csv`.
 
--   ``` read_csv(``../data/survey.csv ``` RStudio goes up one folder from the WD, then looks for the folder `data`and the file `surve.csv`.
+- ``` read_csv(``../data/survey.csv ``` RStudio goes up one folder from the WD, then looks for the folder `data`and the file `surve.csv`.
 
 You can always inspect where you are by
 
