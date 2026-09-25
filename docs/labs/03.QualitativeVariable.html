@@ -235,20 +235,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#analysing-categorical-variables" id="toc-analysing-categorical-variables" class="nav-link active" data-scroll-target="#analysing-categorical-variables"><span class="header-section-number">4.1</span> Analysing categorical variables</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#data-overview" id="toc-data-overview" class="nav-link" data-scroll-target="#data-overview"><span class="header-section-number">4.1.1</span> Data overview</a></li>
-  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">4.1.2</span> Correlation</a></li>
-  </ul></li>
-  <li><a href="#income-inequality-with-respect-to-gender-and-health-status" id="toc-income-inequality-with-respect-to-gender-and-health-status" class="nav-link" data-scroll-target="#income-inequality-with-respect-to-gender-and-health-status"><span class="header-section-number">4.2</span> Income inequality with respect to gender and health status</a></li>
-  <li><a href="#implementing-a-linear-regression-model-with-a-qualitative-independent-variable" id="toc-implementing-a-linear-regression-model-with-a-qualitative-independent-variable" class="nav-link" data-scroll-target="#implementing-a-linear-regression-model-with-a-qualitative-independent-variable"><span class="header-section-number">4.3</span> <strong>Implementing a linear regression model with a qualitative independent variable</strong></a>
+  <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">4.1.2</span> Correlation</a>
   <ul class="collapse">
-  <li><a href="#include-the-categorical-variables-into-a-regression-model" id="toc-include-the-categorical-variables-into-a-regression-model" class="nav-link" data-scroll-target="#include-the-categorical-variables-into-a-regression-model"><span class="header-section-number">4.3.1</span> <strong>Include the categorical variables into a regression model</strong></a></li>
-  <li><a href="#change-the-baseline-category" id="toc-change-the-baseline-category" class="nav-link" data-scroll-target="#change-the-baseline-category"><span class="header-section-number">4.3.2</span> <strong>Change the baseline category</strong></a></li>
-  <li><a href="#recode-the-region-variable-and-explore-regional-inequality-in-health" id="toc-recode-the-region-variable-and-explore-regional-inequality-in-health" class="nav-link" data-scroll-target="#recode-the-region-variable-and-explore-regional-inequality-in-health"><span class="header-section-number">4.3.3</span> Recode the Region variable and explore regional inequality in health</a></li>
+  <li><a href="#q1-what-are-strongest-and-weakest-associations-health-status" id="toc-q1-what-are-strongest-and-weakest-associations-health-status" class="nav-link" data-scroll-target="#q1-what-are-strongest-and-weakest-associations-health-status">Q1: What are strongest and weakest associations health status?</a></li>
   </ul></li>
-  <li><a href="#predictions-using-fitted-regression-model" id="toc-predictions-using-fitted-regression-model" class="nav-link" data-scroll-target="#predictions-using-fitted-regression-model"><span class="header-section-number">4.4</span> Predictions using fitted regression model</a></li>
-  <li><a href="#extension-activities" id="toc-extension-activities" class="nav-link" data-scroll-target="#extension-activities"><span class="header-section-number">4.5</span> <strong>Extension activities</strong></a></li>
-  <li><a href="#answer-of-the-written-down-model-and-q6" id="toc-answer-of-the-written-down-model-and-q6" class="nav-link" data-scroll-target="#answer-of-the-written-down-model-and-q6"><span class="header-section-number">4.6</span> <strong>Answer of the written down model and Q6</strong></a></li>
+  </ul></li>
+  <li><a href="#income-inequality-with-respect-to-gender-and-health-status" id="toc-income-inequality-with-respect-to-gender-and-health-status" class="nav-link" data-scroll-target="#income-inequality-with-respect-to-gender-and-health-status"><span class="header-section-number">4.2</span> Income inequality with respect to gender and health status</a>
+  <ul>
+  <li><a href="#q2.-income-inequality-by-gender-and-health" id="toc-q2.-income-inequality-by-gender-and-health" class="nav-link" data-scroll-target="#q2.-income-inequality-by-gender-and-health">Q2. Income inequality by gender and health</a></li>
+  </ul></li>
+  <li><a href="#implementing-a-linear-regression-model-with-a-qualitative-independent-variable" id="toc-implementing-a-linear-regression-model-with-a-qualitative-independent-variable" class="nav-link" data-scroll-target="#implementing-a-linear-regression-model-with-a-qualitative-independent-variable"><span class="header-section-number">4.3</span> <strong>Implementing a linear regression model with a qualitative independent variable</strong></a>
+  <ul>
+  <li><a href="#q3.-categories-of-region" id="toc-q3.-categories-of-region" class="nav-link" data-scroll-target="#q3.-categories-of-region">Q3. Categories of Region</a></li>
+  <li><a href="#include-the-categorical-variables-into-a-regression-model" id="toc-include-the-categorical-variables-into-a-regression-model" class="nav-link" data-scroll-target="#include-the-categorical-variables-into-a-regression-model"><span class="header-section-number">4.3.1</span> <strong>Include the categorical variables into a regression model</strong></a>
+  <ul class="collapse">
+  <li><a href="#q4.-regional-differences-compared-with-london" id="toc-q4.-regional-differences-compared-with-london" class="nav-link" data-scroll-target="#q4.-regional-differences-compared-with-london">Q4. Regional differences compared with London</a></li>
+  </ul></li>
+  <li><a href="#change-the-baseline-category" id="toc-change-the-baseline-category" class="nav-link" data-scroll-target="#change-the-baseline-category"><span class="header-section-number">4.3.2</span> <strong>Change the baseline category</strong></a></li>
+  <li><a href="#recode-the-region-variable-and-explore-regional-inequality-in-health" id="toc-recode-the-region-variable-and-explore-regional-inequality-in-health" class="nav-link" data-scroll-target="#recode-the-region-variable-and-explore-regional-inequality-in-health"><span class="header-section-number">4.3.3</span> Recode the Region variable and explore regional inequality in health</a>
+  <ul class="collapse">
+  <li><a href="#q5.-london-vs-north-and-south-vs-wales" id="toc-q5.-london-vs-north-and-south-vs-wales" class="nav-link" data-scroll-target="#q5.-london-vs-north-and-south-vs-wales">Q5. London vs North, and South vs Wales</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#predictions-using-fitted-regression-model" id="toc-predictions-using-fitted-regression-model" class="nav-link" data-scroll-target="#predictions-using-fitted-regression-model"><span class="header-section-number">4.4</span> Predictions using fitted regression model</a>
+  <ul>
+  <li><a href="#q6.-predicting-long-term-illness-in-wales-and-london" id="toc-q6.-predicting-long-term-illness-in-wales-and-london" class="nav-link" data-scroll-target="#q6.-predicting-long-term-illness-in-wales-and-london">Q6. Predicting long-term illness in Wales and London</a></li>
+  </ul></li>
+  <li><a href="#answers-to-the-questions" id="toc-answers-to-the-questions" class="nav-link" data-scroll-target="#answers-to-the-questions"><span class="header-section-number">4.5</span> <strong>Answers to the Questions</strong></a>
+  <ul>
+  <li><a href="#q1-associations-with-health-status" id="toc-q1-associations-with-health-status" class="nav-link" data-scroll-target="#q1-associations-with-health-status"><span class="header-section-number">4.5.1</span> Q1 associations with health status</a></li>
+  <li><a href="#q2-income-inequality-by-gender-and-health-status" id="toc-q2-income-inequality-by-gender-and-health-status" class="nav-link" data-scroll-target="#q2-income-inequality-by-gender-and-health-status"><span class="header-section-number">4.5.2</span> Q2: income inequality by gender and health status</a></li>
+  <li><a href="#q3-categories-of-region" id="toc-q3-categories-of-region" class="nav-link" data-scroll-target="#q3-categories-of-region"><span class="header-section-number">4.5.3</span> Q3: categories of Region</a></li>
+  <li><a href="#q4-regions-that-differ-significantly-from-london" id="toc-q4-regions-that-differ-significantly-from-london" class="nav-link" data-scroll-target="#q4-regions-that-differ-significantly-from-london"><span class="header-section-number">4.5.4</span> Q4: regions that differ significantly from London</a></li>
+  <li><a href="#changing-the-baseline-to-north-west" id="toc-changing-the-baseline-to-north-west" class="nav-link" data-scroll-target="#changing-the-baseline-to-north-west"><span class="header-section-number">4.5.5</span> Changing the baseline to North West</a></li>
+  <li><a href="#q5-london-vs-north-and-south-vs-wales" id="toc-q5-london-vs-north-and-south-vs-wales" class="nav-link" data-scroll-target="#q5-london-vs-north-and-south-vs-wales"><span class="header-section-number">4.5.6</span> Q5: London vs North, and South vs Wales</a></li>
+  <li><a href="#the-written-down-model-and-q6" id="toc-the-written-down-model-and-q6" class="nav-link" data-scroll-target="#the-written-down-model-and-q6"><span class="header-section-number">4.5.7</span> The written-down model and Q6</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/labs/03.QualitativeVariable.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -286,7 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>The lecture’s slides can be found&nbsp;<a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf">h</a><a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf">e</a><a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf">re</a>.</p>
+<p>The lecture’s slides can be found&nbsp;<a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf">here</a>.</p>
 <p>Last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R code, we create and interpret the model:</p>
 <p><code>model &lt;- lm(pct_Very_bad_health ~ pct_No_qualifications + pct_Males + pct_Higher_manager_prof, data = census)</code></p>
 <p><code>summary(model)</code></p>
@@ -523,9 +547,6 @@ Lower managerial and professional occupations
 </section>
 <section id="correlation" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="correlation"><span class="header-section-number">4.1.2</span> Correlation</h3>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q1. Which of the associations do you think is strongest? Which is the weakest?</strong></p>
-</div>
 <p>As before, rather than relying upon an impressionistic view of the strength of the association between two variables, we can measure that association by calculating the relevant correlation coefficients.</p>
 <p>To calculate the correlation between categorical data, we first use Chi-squared test to assess the independence between pairs of categorical variables, then we use Cramer’s V to measures the strength of association - the correlation coefficents in R.</p>
 <p><strong>Pearson’s chi-squared test</strong> (χ2) is a statistical test applied to sets of categorical data to evaluate how likely it is that any observed difference between the sets arose by chance. If the p-value is low (typically &lt; 0.05), it suggests a significant association between the two variables.</p>
@@ -586,10 +607,10 @@ Contingency Coeff.: 0.592
 Cramer's V        : 0.329 </code></pre>
 </div>
 </div>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Research Question 1. Which of our selected person-level variables is most strongly correlated with an individual’s health status?</strong></p>
-</div>
-<p>Use the codes of Chi-square test and Cramer’s V to answer this question by completing Table 1.</p>
+<section id="q1-what-are-strongest-and-weakest-associations-health-status" class="level4 unnumbered" style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<h4 class="unnumbered anchored" data-anchor-id="q1-what-are-strongest-and-weakest-associations-health-status">Q1: What are strongest and weakest associations health status?</h4>
+<p><strong>Which of our selected person-level variables is most strongly/weakly correlated with an individual’s health status?</strong> Use the codes of Chi-square test and Cramer’s V to answer this question by completing Table 1.</p>
+</section>
 <p><strong>Table 1 Person-level correlations with health status</strong></p>
 <table class="caption-top table">
 <colgroup>
@@ -760,24 +781,23 @@ F-statistic: 56.29 on 5 and 16821 DF,  p-value: &lt; 2.2e-16</code></pre>
 6 healthVery Good    4932.      788.     6.26  3.95e-10</code></pre>
 </div>
 </div>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q2.</strong> <strong>What conclusions could be drawn in terms of income inequalities with respect to gender and health status? Also think about the statistical significance of these differences.</strong></p>
-</div>
-<p>The interpretation of this table is again similar to what you have learnt in Week2, but you may find that R has automatically treat your categorical/qualitative variable Sex and Health as dummy variables, so in the output, you see sexMale, the reason there is no sexFemale is because I requested R to use sex=Female as the reference category. You also see healthBad, healthFair, healthGood, and healthVery Good, but you didn’t see health Very Bad because again I request <code>frs_df$health &lt;- fct_relevel(as.factor(frs_df$health), "Very Bad")</code> .</p>
-<p>For the independent variable, the coefficient estimates of them need to be interpreted by comparing to the reference category: Male and Very Bad health. We can derive how the differences between different independent variable categories are associated with the changes in <code>Net_inc_pp</code>, for example:</p>
+<section id="q2.-income-inequality-by-gender-and-health" class="level3 unnumbered" style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<h3 class="unnumbered anchored" data-anchor-id="q2.-income-inequality-by-gender-and-health">Q2. Income inequality by gender and health</h3>
+<p><strong>What conclusions could be drawn in terms of income inequalities with respect to gender and health status? Also think about the statistical significance of these differences.</strong></p>
+</section>
+<p>The interpretation of this table is again similar to what you have learnt in Week 2, but you may find that R has automatically treated the categorical/qualitative variables <strong>sex</strong> and <strong>health</strong> as dummy variables. Each category gets a coefficient except the reference category set by <code>fct_relevel()</code>. That is why the output has <code>sexMale</code> but no <code>sexFemale</code>, and no <code>healthVery Bad</code>.</p>
+<p>Each coefficient is therefore interpreted as a difference from the reference category, <strong>Female</strong> with <strong>Very Bad</strong> health, holding the other variable constant:</p>
 <ul>
-<li>The association of <code>sexMale</code>is positive and strong: compare to sex=Female, <code>sexMale</code> is associated with an increase of £2,091 net income per capita, here we see some gender inequality;</li>
-<li>The association of <code>healthBad</code> and <code>healthFair</code> are not statistically significant, which means we cannot draw any conclusion of the relationships between <code>healthBad</code> and <code>Net_inc_pp</code> or <code>healthFair</code> and <code>Net_inc_pp</code> from the model ;</li>
-<li>Then, the association of <code>healthGood</code> and <code>healthVeryGood</code> are both positive and strong: <code>healthGood</code> is associated with an increase of £2,766 net income per capita compared to <code>healthVeryBad</code>, and <code>healthVeryGood</code> is associated with an increase of £4,931 net income per capita compared to <code>healthVeryBad</code> . Here you may draw some useful conclusion on who the health condition impact the inequality of income.</li>
+<li><p>The <strong>Intercept</strong> (<strong>£12,116</strong>) is the predicted net income per capita for the reference group: females with Very Bad health.</p></li>
+<li><p>The association of <strong><code>sexMale</code></strong> is positive and statistically significant (<strong>+£2,091, p &lt; 0.001</strong>): men have £2,091 more net income per capita than women with the same health status, indicating a gender gap in income.</p></li>
+<li><p>The associations of <strong><code>healthBad</code></strong> and <strong><code>healthFair</code></strong> are not statistically significant (<strong>p = 0.90</strong> and <strong>0.18</strong>): there is no evidence that their net income per capita differs from people in Very Bad health.</p></li>
+<li><p>The associations of <strong><code>healthGood</code></strong> and <strong><code>healthVery Good</code></strong> are positive and statistically significant (<strong>+£2,766</strong> and <strong>+£4,932</strong>, both <strong>p &lt; 0.001</strong>): compared with people in Very Bad health, people in Good and Very Good health have £2,766 and £4,932 more net income per capita respectively, suggesting that income rises with better health.</p></li>
 </ul>
-<p>We then read R-squared and Adjusted R-squared to evaluate the model fit. We see both values are only around 0.016, which means in the model <code>Net_inc_pp ~ Sex + health</code> , the independent variable <code>Sex + health</code> can only explain 1.6% of the variation of our dependent variable <code>Net_inc_pp</code>. This is a relatively poor performance, and the model cannot be used to do any prediction of <code>Net_inc_pp</code> by using just sex and health. This also suggests us that to fully explain the <code>Net_inc_pp</code> , we may need to add in more variables, such as education level, occupation, age, etc. Although the model is not solid for any prediction, the coefficients and significant conclusion from the model are still very useful.</p>
+<p>We then read R-squared and Adjusted R-squared to evaluate the model fit. Both are only around <strong>0.016</strong>, meaning <code>sex</code> and <code>health</code> together explain only 1.6% of the variation in <code>Net_inc_pp</code>. The model is therefore poor for prediction, and more variables (e.g.&nbsp;education level, occupation, age) would be needed to explain income better. Even so, the F-test is highly significant (<strong>p &lt; 2.2e-16</strong>), so the income gaps by gender and health identified above are real, even though they explain only a small part of why incomes differ.</p>
 </section>
 <section id="implementing-a-linear-regression-model-with-a-qualitative-independent-variable" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="implementing-a-linear-regression-model-with-a-qualitative-independent-variable"><span class="header-section-number">4.3</span> <strong>Implementing a linear regression model with a qualitative independent variable</strong></h2>
-<p>To gain further practice on using linear regression model with qualitative variables as independent variables, we follow the model you created last week, to add in the qualitative/categorical variable Region from the Census 2021 dataset. You should already have the dataset <strong>EW_DistrictPercentages.csv</strong>, if not, you can download them from <a href="https://canvas.liverpool.ac.uk/courses/84668/pages/census-data?module_item_id=2396199">Canvas</a>. Please put the .csv file in your ‘/data/Census2021’ folder.</p>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Research Question 2: How does health vary across regions in the UK?</strong></p>
-</div>
+<p>To gain further practice on using linear regression models with qualitative variables as independent variables, we extend the model you created last week by adding the qualitative/categorical variable Region from the Census 2021 dataset. This allows us to answer <strong>Research Question 2: How does health vary across regions in England and Wales?</strong> You should already have the dataset <strong>EW_DistrictPercentages.csv</strong>; if not, you can download it from <a href="https://canvas.liverpool.ac.uk/courses/93312/pages/census-data?module_item_id=2727713">Canvas</a>. Please put the .csv file in your ‘/data/Census2021’ folder.</p>
 <p>The practical is split into two main parts. The first focuses on implementing a linear regression model with a qualitative independent variable. <strong>Note that</strong> you need first to set the reference category (baseline) as the outcomes of the model reflects the <strong>differences</strong> between categories with the baseline. The second part focuses on prediction based the estimated linear regression model.</p>
 <p>First we load the UK district-level census dataset.</p>
 <div class="cell">
@@ -831,9 +851,10 @@ F-statistic: 56.29 on 5 and 16821 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>Now we can retrieve the “Region” column from the data frame by simply use <strong>df$Region</strong>. But what if we want to understand the data better, like the following questions?</p>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q3. How many categories do the variable “Region” entail? How many local authority districts does each region include?</strong></p>
-</div>
+<section id="q3.-categories-of-region" class="level3 unnumbered" style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<h3 class="unnumbered anchored" data-anchor-id="q3.-categories-of-region">Q3. Categories of Region</h3>
+<p><strong>How many categories does the variable “Region” entail? How many local authority districts does each region include?</strong></p>
+</section>
 <p>Simply use the function table() would return you the answer.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>Region) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -850,7 +871,7 @@ Yorkshire and The Humber
 </div>
 </div>
 <p>The <code>table()</code> function tells us that this data frame contains 10 regions, and the number of LAs belongs to each region.</p>
-<p>**R can only include the categorical variables in the <strong>factor</strong> type, so we set the column <em>Region</em> in <code>factor()</code></p>
+<p>R can only include the categorical variables in the <strong>factor</strong> type, so we set the column <em>Region</em> in <code>factor()</code></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>Region<span class="ot">&lt;-</span> <span class="fu">factor</span>(df<span class="sc">$</span>Region) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -902,23 +923,29 @@ F-statistic:  83.6 on 12 and 318 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <p>You have already learnt how to interpret the output of regression model last week: <strong>Significance</strong> (p-value), <strong>Coefficient Estimates, and Model fit</strong> (R squared and Adjusted R-squared).</p>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q4. Relating back to this week’s lecture notes, indicate what regions have statistically significant differences in the percentage of long-term illness, compared to London?</strong></p>
-</div>
-<p>First, the <strong>Significance</strong> and the <strong>Coefficient Estimates</strong>. By examining the P-value, which is the last column in the output table, we can see that most of the independent variables are significant predictor of <code>pct_Longterm_sick_or_disabled</code>.</p>
+<section id="q4.-regional-differences-compared-with-london" class="level4 unnumbered" style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<h4 class="unnumbered anchored" data-anchor-id="q4.-regional-differences-compared-with-london">Q4. Regional differences compared with London</h4>
+<p><strong>Relating back to this week’s lecture notes, indicate what regions have statistically significant differences in the percentage of long-term illness, compared to London?</strong></p>
+</section>
+<p>First, the <strong>Significance</strong> and the <strong>Coefficient Estimates</strong>. The p-values in the last column of the output table show that most of the independent variables are significant predictors of <code>pct_Longterm_sick_or_disabled</code>. All coefficients below are interpreted <strong>when the other predictors remain the same</strong>.</p>
 <ul>
-<li><p>Similarly to last week, we learn that the changes in <code>pct_No_qualifications</code> are significantly associated with changes in <code>pct_Longterm_sick_or_disabled</code> at the &lt;0.001 level (with the three asterisks *** ), which is actually an indicator of highly statistically significant, while we are less confident that the observed relationship between <code>pct_No_qualifications</code> and <code>pct_Longterm_sick_or_disabled</code> are statistically significant (with the two asterisks **). Through their coefficient estimates, we learn that:</p>
+<li><p>The <strong>Intercept</strong> (<strong>7.62</strong>) is the predicted long-term sick/disabled rate for a <strong>London</strong> district (the reference category) when <code>pct_Males</code>, <code>pct_No_qualifications</code> and <code>pct_Higher_manager_prof</code> are all 0%. Since no real district has 0% males, we do not interpret this value directly; it is the baseline value to which the other coefficients are added when making predictions.</p></li>
+<li><p><strong>Continuous variables.</strong> Similar to last week, <code>pct_No_qualifications</code> is significant at the &lt;0.001 level (three asterisks ***), indicating a highly statistically significant relationship. We are slightly less confident about <code>pct_Males</code>, which is significant at the &lt;0.01 level (two asterisks **). Their coefficient estimates tell us that:</p>
 <ul>
-<li><p>The association of <code>pct_Males</code> is negative and mild: each decrease in 1% of <code>pct_Males</code> is associated with an increase of 0.17% of long term sick/disable rate in the population of EW.</p></li>
-<li><p>The association of <code>pct_No_qualifications</code> is positive and strong: each increase in 1% of <code>pct_No_qualifications</code> is associated with an increase of 0.25% of long term sick/disable rate.</p></li>
-<li><p>The association of <code>pct_Higher_manager_prof</code> is not statistically significant.</p></li>
+<li><p>The association of <strong><code>pct_No_qualifications</code></strong> is positive and statistically significant (<strong>+0.25, p &lt; 0.001</strong>): each 1% increase in residents with no qualifications is associated with a 0.25% increase in the long-term sick/disabled rate, when the other predictors remain the same.</p></li>
+<li><p>The association of <strong><code>pct_Males</code></strong> is negative and statistically significant (<strong>−0.17, p &lt; 0.01</strong>): each 1% increase in males is associated with a 0.17% decrease in the long-term sick/disabled rate, when the other predictors remain the same.</p></li>
+<li><p>The association of <strong><code>pct_Higher_manager_prof</code></strong> is not statistically significant (<strong>p = 0.72</strong>).</p></li>
 </ul></li>
-<li><p>Now comes to the dummy variables (all the items starts with Region) created by R for our qualitative variable <em>Region</em>: <code>RegionEast</code>, <code>RegionNorth Eest</code>, <code>RegionNorth West</code> and <code>RegionWales</code> are also statistically significant at the &lt;0.001 level. The changes in <code>RegionSouth East</code> and <code>RegionWest Midlands</code> are significantly associated with changes in <code>pct_Longterm_sick_or_disabled</code> at the 0.05 level. The 0.05 level suggests that it is a mild likelihood that the relationship between these independent variables and the dependent variable is not due to random change. They are just mildly statistically significant.</p></li>
-<li><p>The coefficient estimates of them need to be interpreted by comparing to the reference category London. The Estimate column tells us: North East region is associated with a 1.16% higher rate of long term sick/disable than London when the other predictors remain the same. Similarly, Wales is 1.38% higher rate of long term illness than London when the other predictors remain the same. You can draw the conclusion for the other regions in this way by using their coefficient estimate values.</p>
-<p><strong>Reminder</strong>: You <strong>cannot</strong> draw conclusion between North East and Wales, nor comparison between any regions beyond London. It is because the regression model is built for the comparison between regions to your reference category London. If we want to compare between North East and Wales, we need to set either of them as the reference category by using <code>df$Region &lt;- fct_relevel(df$Region, "North East")</code> or <code>df$Region &lt;- fct_relevel(df$Region, "Wales")</code>.</p></li>
-<li><p><code>RegionEast Midland</code>, <code>RegionSouth West</code>, and <code>RegionlYorkshire and The Humber</code> were not found to be significantly associated with <code>pct_Longterm_sick_or_disabled</code>.</p></li>
+<li><p><strong>Region dummy variables.</strong> R has created a dummy variable (the items starting with <code>Region</code>) for every region except the reference category, <strong>London</strong>. Each coefficient therefore shows how much higher (positive) or lower (negative) a region’s long-term sick/disabled rate is <strong>compared with London</strong>, when the other predictors remain the same:</p>
+<ul>
+<li><p><strong>Significant at the &lt;0.001 level (***):</strong> <code>RegionEast</code>, <code>RegionNorth East</code>, <code>RegionNorth West</code> and <code>RegionWales</code>. For example, the North East has a <strong>1.16%</strong> higher rate than London, and Wales a <strong>1.38%</strong> higher rate, while the East has a <strong>0.76%</strong> lower rate.</p></li>
+<li><p><strong>Significant at the 0.05 level (*):</strong> <code>RegionSouth East</code> and <code>RegionWest Midlands</code>. This is weaker evidence than ***, so they are only mildly statistically significant.</p></li>
+<li><p><strong>Not significant:</strong> <code>RegionEast Midlands</code>, <code>RegionSouth West</code> and <code>RegionYorkshire and The Humber</code>, meaning their rates are not significantly different from London’s.</p></li>
 </ul>
-<p>Last but not least, the <strong>Measure of Model Fit</strong>. The model output suggests the R-squared and Adjusted R-squared are of greater than 0.75 indicate a reasonably well fitting model. The model explains 75.9 % of the variance in the dependent variable. After adjusting for the number of independent variable, the model explains 75.0% of the variance. They two suggest a strong fit of the model.</p>
+<p>You can interpret the other regions in the same way using their coefficient estimates.</p>
+<p><strong>Reminder</strong>: You <strong>cannot</strong> tell from this output whether North East and Wales, or any two regions other than London, are significantly different from each other, because each region’s coefficient only compares that region with London. To compare North East and Wales, set either of them as the reference category, using <code>df$Region &lt;- fct_relevel(df$Region, "North East")</code> or <code>df$Region &lt;- fct_relevel(df$Region, "Wales")</code>, and re-run the model.</p></li>
+</ul>
+<p>Last but not least, the <strong>Model Fit</strong>. R-squared (<strong>0.759</strong>) and Adjusted R-squared (<strong>0.750</strong>) are both around 0.75: the model explains 75.9% of the variation in the long-term sick/disabled rate across districts, or 75.0% after adjusting for the number of independent variables. Together, they suggest a strong fit of the model.</p>
 </section>
 <section id="change-the-baseline-category" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="change-the-baseline-category"><span class="header-section-number">4.3.2</span> <strong>Change the baseline category</strong></h3>
@@ -989,7 +1016,7 @@ F-statistic:  83.6 on 12 and 318 DF,  p-value: &lt; 2.2e-16</code></pre>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">East of England</td>
+<td style="text-align: center;">East</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
@@ -999,37 +1026,33 @@ F-statistic:  83.6 on 12 and 318 DF,  p-value: &lt; 2.2e-16</code></pre>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">North West</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-</tr>
-<tr class="odd">
 <td style="text-align: center;">South East</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">London</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">West Midlands</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: center;">Yorkshire and The Humber</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: center;">Wales</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
+<p>Check the answer at the end of this practical page.</p>
 <p>Now it is very easy to use your model to estimate the results Y (dependent variable - <code>pct_Longterm_sick_or_disabled</code> ) by setting all the input independent variable X (<code>pct_Males</code> <code>pct_No_qualifications</code> and <code>pct_Higher_manager_prof</code>).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>obj_London <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
@@ -1071,7 +1094,7 @@ F-statistic:  83.6 on 12 and 318 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="recode-the-region-variable-and-explore-regional-inequality-in-health" class="level3" data-number="4.3.3">
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="recode-the-region-variable-and-explore-regional-inequality-in-health"><span class="header-section-number">4.3.3</span> Recode the Region variable and explore regional inequality in health</h3>
-<p>In many real-word studies, we might not be interested in health inequality across all regions. For example, in this case study, we are interested in health inequality between <em>London</em>, <em>South, North, Midland and Wales</em>. We can achieve this by re-grouping regions in the UK based on the variable “Region”. That said, we need to have a new grouping of regions as follows:</p>
+<p>In many real-world studies, we might not be interested in health inequality across all regions. For example, in this case study, we are interested in health inequality between <em>London</em>, <em>South, North, Midland and Wales</em>. We can achieve this by re-grouping regions in England and Wales based on the variable “Region”. That said, we need to have a new grouping of regions as follows:</p>
 <table class="caption-top table">
 <tbody>
 <tr class="odd">
@@ -1134,7 +1157,7 @@ F-statistic:  83.6 on 12 and 318 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>This code may looks a bit complex. You can simply type ?mutate in your console. Now in your right hand Help window, the R studio offers your the explanation of the mutate function. This is a common way you can use R studio to help you learn what the function ca<code>ate()</code> creates new columns that are functions of existing variables. Therefore, the <code>df %&gt;% mutate()</code> means add a new column into the current dataframe <code>df</code>; the <code>New_region_label</code> in the <code>mutate()</code> function indicates the name of this new column is <code>New_region_label</code>. The right side of the <code>New_region_label =</code> indicates the value we want to assign to the <code>New_region_label</code> in each row.</p>
+<p>This code may look a bit complex. You can simply type ?mutate in your console. Now in your right hand Help window, the R studio offers you the explanation of the mutate function. This is a common way you can use R studio to help you learn what the function ca<code>ate()</code> creates new columns that are functions of existing variables. Therefore, the <code>df %&gt;% mutate()</code> means add a new column into the current dataframe <code>df</code>; the <code>New_region_label</code> in the <code>mutate()</code> function indicates the name of this new column is <code>New_region_label</code>. The right side of the <code>New_region_label =</code> indicates the value we want to assign to the <code>New_region_label</code> in each row.</p>
 <p>The right side of <code>New_region_label</code> is</p>
 <p><code>fct_collapse(Region, North = c("North East", "North West", "Yorkshire and The Humber"), Midlands = c("East Midlands", "West Midlands"), South = c("East", "South East", "South West"), London = "London", Wales = "Wales")</code></p>
 <p>By using the code, the <code>fct_collapse()</code> function recodes or group each value in the <code>Region</code> column into one of the broader categories: “London”, “South”, “North”,“Midlands” or “Wales”. Specifically, it takes the existing factor levels in <code>Region</code> and collapses multiple detailed regions into fewer, aggregated groups. For example, regions such as <em>“North East”</em>, <em>“North West”</em>, and <em>“Yorkshire and The Humber”</em> are all grouped under <strong>“North”</strong>, while <em>“East Midlands”</em> and <em>“West Midlands”</em> are combined into <strong>“Midlands”</strong>, and so on.</p>
@@ -1151,7 +1174,7 @@ F-statistic:  83.6 on 12 and 318 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>df[,<span class="fu">c</span>(<span class="st">"Region"</span>,<span class="st">"New_region_label"</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Now you will have a new qualitative variable named <code>New_region_label</code> in which the UK is divided into four regions: London, South, North and Midlands.</p>
+<p>Now you will have a new qualitative variable named <code>New_region_label</code> in which the UK is divided into five regions: London, South, North, Midlands and Wales.</p>
 <p><em>Based on the newly generated qualitative variable</em> <code>New_region_label</code>, we can now build our new linear regression model. Don’t forget:</p>
 <p>(1) R need to deal with the categorical variables in regression model in the factor type;</p>
 <div class="cell">
@@ -1164,7 +1187,7 @@ F-statistic:  83.6 on 12 and 318 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>New_region_label <span class="ot">=</span> <span class="fu">as.factor</span>(df<span class="sc">$</span>New_region_label)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>2) Let R know which region you want to use as the baseline category. Here I will use London again, but of course you can choose other regions.</p>
+<p>(1) Let R know which region you want to use as the baseline category. Here I will use London again, but of course you can choose other regions.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>New_region_label <span class="ot">&lt;-</span> <span class="fu">fct_relevel</span>(df<span class="sc">$</span>New_region_label, <span class="st">"London"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1204,9 +1227,10 @@ Multiple R-squared:  0.7188,    Adjusted R-squared:  0.7127
 F-statistic:   118 on 7 and 323 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q5. Are there statistically significant differences in the percentage of people with long-term sick/disable between London and North, and between South and Wales, controlling for other variables? What conclusions could be drawn in terms of regional differences in health outcome?</strong></p>
-</div>
+<section id="q5.-london-vs-north-and-south-vs-wales" class="level4 unnumbered" style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<h4 class="unnumbered anchored" data-anchor-id="q5.-london-vs-north-and-south-vs-wales">Q5. London vs North, and South vs Wales</h4>
+<p><strong>Are there statistically significant differences in the percentage of people with long-term sick/disable between London and North, and between South and Wales, controlling for other variables? What conclusions could be drawn in terms of regional differences in health outcome?</strong></p>
+</section>
 </section>
 </section>
 <section id="predictions-using-fitted-regression-model" class="level2" data-number="4.4">
@@ -1214,29 +1238,160 @@ F-statistic:   118 on 7 and 323 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><strong>Write down the % long term sick or disabled regression model with the new region label categorical variables.</strong></p>
 <p>Relating to this week’s lecture, the % <code>pct_Longterm_sick_or_disabled</code> is equal to:</p>
 <p><strong>[write down the model]</strong></p>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Q6. Now imagine that the values of variables <em>pct_Males, pct_No_qualifications, and pct_Higher_manager_prof</em> are 49, 23 and 11, respectively, what would the percentage of persons with long-term sick/disable in Wales and London be?</strong></p>
-</div>
+<section id="q6.-predicting-long-term-illness-in-wales-and-london" class="level3 unnumbered" style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<h3 class="unnumbered anchored" data-anchor-id="q6.-predicting-long-term-illness-in-wales-and-london">Q6. Predicting long-term illness in Wales and London</h3>
+<p><strong>Now imagine that the values of variables <em>pct_Males, pct_No_qualifications, and pct_Higher_manager_prof</em> are 49, 23 and 11, respectively, what would the percentage of persons with long-term sick/disable in Wales and London be?</strong></p>
+</section>
 <p>Check the answer at the end of this practical page.</p>
 </section>
-<section id="extension-activities" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="extension-activities"><span class="header-section-number">4.5</span> <strong>Extension activities</strong></h2>
-<p>The extension activities are designed to get yourself prepared for the Assignment 1 in progress. For this week, try whether you can:</p>
+<section id="answers-to-the-questions" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="answers-to-the-questions"><span class="header-section-number">4.5</span> <strong>Answers to the Questions</strong></h2>
+<section id="q1-associations-with-health-status" class="level3" data-number="4.5.1">
+<h3 data-number="4.5.1" class="anchored" data-anchor-id="q1-associations-with-health-status"><span class="header-section-number">4.5.1</span> Q1 associations with health status</h3>
+<p>Using the Chi-squared test and Cramér’s V, Table 1 can be completed as follows:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>Covariates</strong></th>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>Cramér’s V</strong></th>
+<th style="text-align: center;"><strong>p-value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><em>health</em></td>
+<td style="text-align: center;"><em>age_group</em></td>
+<td style="text-align: center;">0.329</td>
+<td style="text-align: center;">&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><em>health</em></td>
+<td style="text-align: center;"><em>highest_qual</em></td>
+<td style="text-align: center;">0.287</td>
+<td style="text-align: center;">&lt; 0.001</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><em>health</em></td>
+<td style="text-align: center;"><em>nssec</em></td>
+<td style="text-align: center;">0.280</td>
+<td style="text-align: center;">&lt; 0.001</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><em>health</em></td>
+<td style="text-align: center;"><em>marital_status</em></td>
+<td style="text-align: center;">0.229</td>
+<td style="text-align: center;">&lt; 0.001</td>
+</tr>
+</tbody>
+</table>
+<p>All four associations are statistically significant (p &lt; 0.001). <strong>Age group</strong> has the strongest association with health status (Cramér’s V = 0.329), and <strong>marital status</strong> the weakest (0.229). Remember that Cramér’s V tells us the strength of an association, but not its direction.</p>
+</section>
+<section id="q2-income-inequality-by-gender-and-health-status" class="level3" data-number="4.5.2">
+<h3 data-number="4.5.2" class="anchored" data-anchor-id="q2-income-inequality-by-gender-and-health-status"><span class="header-section-number">4.5.2</span> Q2: income inequality by gender and health status</h3>
 <ul>
-<li><p>Present descriptive statistics for independent variable and the dependent variable: counts, percentages, a centrality measure, a spread measure, histograms or any relevant statistic</p></li>
-<li><p>Report the observed association between the dependent and independent variables: correlation plus a graphic or tabular visualisation</p></li>
-<li><p>Briefly describe and critically discuss the results</p></li>
-<li><p>Think about other potential factors of long-term illness and income, and then test your ideas with linear regression models</p></li>
-<li><p>Summaries your model outputs and interpret the results.</p></li>
+<li><strong>Gender:</strong> men have £2,091 more net income per capita than women with the same health status (p &lt; 0.001), indicating a significant gender gap in income.</li>
+<li><strong>Health:</strong> compared with people in Very Bad health, people in Good and Very Good health have £2,766 and £4,932 more net income per capita respectively (both p &lt; 0.001). The differences for Bad and Fair health are not statistically significant.</li>
+<li><strong>Model fit:</strong> sex and health explain only 1.6% of the variation in income (R² = 0.016), so other factors matter much more. However, the income gaps by gender and health are statistically significant.</li>
 </ul>
 </section>
-<section id="answer-of-the-written-down-model-and-q6" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="answer-of-the-written-down-model-and-q6"><span class="header-section-number">4.6</span> <strong>Answer of the written down model and Q6</strong></h2>
-<p>The model of the new region label is: <em>pct_Longterm_sick_or_disabled</em> (%) <em>= 9.98+ (-0.1842)* pct_Males</em> (%) <em>+ 0.2014 * pct_No_qualifications</em> (%) <em>+ (-0.0341) * pct_Higher_manager_prof</em> + <em>(0.4742) * North + (-0.5063)</em> * South + (-0.4103) * Midlands + <em>1.2518 * Wales.</em> But should be aware that the relation between <em>pct_Higher_manager_prof</em> and <em>pct_Longterm_sick_or_disabled</em> is not statistically significant.</p>
-<p>So if the values of variables <em>pct_Males, pct_No_qualifications, and pct_Higher_manager_prof</em> are 49, 23 and 11,</p>
-<p>the model of Wales will be: <em>pct_Longterm_sick_or_disabled</em> (%) <em>= 9.98+ (-0.1842)* 49</em> <em>+ 0.2014 * 23</em> <em>+ (-0.0341) * 11 + (0.4742) * 0+ (-0.5063)</em> * 0+ (-0.4103) * 0+ <em>1.2518 * 1</em>(you can direct paste the number sentence into your R studio Console and the result will be returned)</p>
-<p>the model of London will be: <em>pct_Long_term_ill</em> (%) <em>= 9.98+ (-0.1842)* 49</em> <em>+ 0.2014 * 23</em> <em>+ (-0.0341) * 11 + (0.4742) * 0+ (-0.5063)</em> * 0+ (-0.4103) * 0+ <em>1.2518 * 0</em></p>
-<p>You can also make a new object like</p>
+<section id="q3-categories-of-region" class="level3" data-number="4.5.3">
+<h3 data-number="4.5.3" class="anchored" data-anchor-id="q3-categories-of-region"><span class="header-section-number">4.5.3</span> Q3: categories of Region</h3>
+<p><code>table(df$Region)</code> shows <strong>10 regions</strong> with 331 local authority districts in total: East (45), East Midlands (35), London (33), North East (12), North West (39), South East (64), South West (30), Wales (22), West Midlands (30) and Yorkshire and The Humber (21).</p>
+</section>
+<section id="q4-regions-that-differ-significantly-from-london" class="level3" data-number="4.5.4">
+<h3 data-number="4.5.4" class="anchored" data-anchor-id="q4-regions-that-differ-significantly-from-london"><span class="header-section-number">4.5.4</span> Q4: regions that differ significantly from London</h3>
+<p>Holding the other predictors constant, compared with London:</p>
+<ul>
+<li><strong>Significantly higher:</strong> Wales (+1.38%), North East (+1.16%) and North West (+0.78%), all p &lt; 0.001.</li>
+<li><strong>Significantly lower:</strong> East (−0.76%, p &lt; 0.001), West Midlands (−0.42%, p &lt; 0.05) and South East (−0.33%, p &lt; 0.05).</li>
+<li><strong>Not significantly different:</strong> East Midlands, South West, and Yorkshire and The Humber.</li>
+</ul>
+</section>
+<section id="changing-the-baseline-to-north-west" class="level3" data-number="4.5.5">
+<h3 data-number="4.5.5" class="anchored" data-anchor-id="changing-the-baseline-to-north-west"><span class="header-section-number">4.5.5</span> Changing the baseline to North West</h3>
+<p>R-squared (0.759) and Adjusted R-squared (0.750) are <strong>exactly the same</strong> as in the model with London as the baseline. Changing the reference category does not change the model fit; it only changes which comparisons the Region coefficients show.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Region names</th>
+<th style="text-align: center;">Higher or lower than North West</th>
+<th style="text-align: center;">Statistically significant?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">East Midlands</td>
+<td style="text-align: center;">Lower (−1.04%)</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">East</td>
+<td style="text-align: center;">Lower (−1.55%)</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">North East</td>
+<td style="text-align: center;">Higher (+0.38%)</td>
+<td style="text-align: center;">No (p = 0.11)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">South East</td>
+<td style="text-align: center;">Lower (−1.11%)</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">South West</td>
+<td style="text-align: center;">Lower (−0.69%)</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">London</td>
+<td style="text-align: center;">Lower (−0.78%)</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">West Midlands</td>
+<td style="text-align: center;">Lower (−1.20%)</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Yorkshire and The Humber</td>
+<td style="text-align: center;">Lower (−0.90%)</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Wales</td>
+<td style="text-align: center;">Higher (+0.60%)</td>
+<td style="text-align: center;">Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Note that London is 0.78% lower than North West, which is the same size as the North West coefficient in the London-baseline model (+0.78%), with the opposite sign.</p>
+</section>
+<section id="q5-london-vs-north-and-south-vs-wales" class="level3" data-number="4.5.6">
+<h3 data-number="4.5.6" class="anchored" data-anchor-id="q5-london-vs-north-and-south-vs-wales"><span class="header-section-number">4.5.6</span> Q5: London vs North, and South vs Wales</h3>
+<ul>
+<li><p><strong>London vs North:</strong> yes. With London as the baseline, the North has a 0.47% higher long-term sick/disabled rate than London (p = 0.012), when the other predictors remain the same.</p></li>
+<li><p><strong>South vs Wales:</strong> this <strong>cannot</strong> be answered from <code>model2</code>, because both South and Wales are compared only with London. To test it, set one of them as the reference category, e.g.&nbsp;<code>df$New_region_label &lt;- fct_relevel(df$New_region_label, "South")</code>, and re-run the model. Doing so shows that Wales has a 1.76% higher rate than the South (p &lt; 0.001).</p></li>
+<li><p><strong>Conclusion:</strong> after controlling for sex, qualifications and occupation, <code>model2</code> tells us how each region compares with <strong>London</strong>: Wales (+1.25%) and the North (+0.47%) have significantly higher long-term sick/disabled rates than London, while the South (−0.51%) and the Midlands (−0.41%) have significantly lower rates. This suggests clear regional inequalities in health across England and Wales.</p>
+<p><strong>Reminder</strong>: these conclusions are all <em>relative to London</em>. Although the coefficients suggest an ordering (e.g.&nbsp;Wales appears higher than the North, and the North higher than the South), <code>model2</code> <strong>cannot</strong> tell us whether the differences between two non-London regions are statistically significant. To test any such comparison, the model must be <strong>re-built</strong> with one of those regions as the reference category, as we did above for South vs Wales.</p></li>
+</ul>
+</section>
+<section id="the-written-down-model-and-q6" class="level3" data-number="4.5.7">
+<h3 data-number="4.5.7" class="anchored" data-anchor-id="the-written-down-model-and-q6"><span class="header-section-number">4.5.7</span> The written-down model and Q6</h3>
+<p>The model of the new region label is: pct_Longterm_sick_or_disabled (%) = 9.98+ (-0.1842)* pct_Males (%) + 0.2014 * pct_No_qualifications (%) + (-0.0341) * pct_Higher_manager_prof + (0.4742) * North + (-0.5063) * South + (-0.4103) * Midlands + 1.2518 * Wales, where North, South, Midlands and Wales are dummy variables (1 if the district is in that region, 0 otherwise). London is the reference category, so all four dummies are 0 for London. Note that <code>pct_Higher_manager_prof</code> is not statistically significant at the 0.05 level (p = 0.087).</p>
+<p>If <code>pct_Males</code>, <code>pct_No_qualifications</code> and <code>pct_Higher_manager_prof</code> are 49, 23 and 11:</p>
+<ul>
+<li><strong>Wales</strong> (Wales = 1, other dummies = 0): <code>9.98 + (-0.1842)*49 + 0.2014*23 + (-0.0341)*11 + 1.2518*1</code></li>
+<li><strong>London</strong> (all dummies = 0): <code>9.98 + (-0.1842)*49 + 0.2014*23 + (-0.0341)*11</code></li>
+</ul>
+<p>You can paste these directly into your RStudio Console to get the results. You can also make a new object and use <code>predict()</code>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb89"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>obj_Wales <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb89-2"><a href="#cb89-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">pct_Males =</span> <span class="dv">49</span>,</span>
@@ -1263,9 +1418,10 @@ F-statistic:   118 on 7 and 323 DF,  p-value: &lt; 2.2e-16</code></pre>
 5.216834 </code></pre>
 </div>
 </div>
-<p><strong>Therefore, the percentage of persons with long-term illness in Wales and London be 6.47% and 5.22 % and separately. If you got the right answers, then congratulations you can now use regression model to make prediction.</strong></p>
+<p><strong>Therefore, the predicted percentages of persons with long-term illness in Wales and London are 6.47% and 5.22% respectively.</strong> The difference (1.25%) is exactly the Wales coefficient, because the two districts have the same values for all the other predictors. If you got the right answers, congratulations: you can now use a regression model to make predictions!</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

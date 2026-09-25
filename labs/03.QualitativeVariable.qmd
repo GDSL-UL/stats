@@ -2,9 +2,12 @@
 title: "Lab: Correlation and Multiple Linear Regression with Qualitative Variables"
 author: "Zi Ye"
 date: "`r Sys.Date()`"
+format:
+  html:
+    toc-depth: 4
 ---
 
-The lecture’s slides can be found [h](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf)[e](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf)[re](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf).
+The lecture’s slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf).
 
 Last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R code, we create and interpret the model:
 
@@ -179,10 +182,6 @@ You can change the variables in ggplot() to make your own histogram chart for th
 
 ### Correlation
 
-::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q1. Which of the associations do you think is strongest? Which is the weakest?**
-:::
-
 As before, rather than relying upon an impressionistic view of the strength of the association between two variables, we can measure that association by calculating the relevant correlation coefficients.
 
 To calculate the correlation between categorical data, we first use Chi-squared test to assess the independence between pairs of categorical variables, then we use Cramer’s V to measures the strength of association - the correlation coefficents in R.
@@ -214,10 +213,10 @@ assocstats(table(frs_data$health, frs_data$age_group))
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Research Question 1. Which of our selected person-level variables is most strongly correlated with an individual’s health status?**
-:::
+#### Q1: What are strongest and weakest associations health status? {.unnumbered}
 
-Use the codes of Chi-square test and Cramer's V to answer this question by completing Table 1.
+**Which of our selected person-level variables is most strongly/weakly correlated with an individual’s health status?** Use the codes of Chi-square test and Cramer's V to answer this question by completing Table 1.
+:::
 
 **Table 1 Person-level correlations with health status**
 
@@ -264,6 +263,10 @@ ggplot(frs_df, aes(x = Net_inc_pp)) +
   theme_minimal()
 ```
 
+The histogram shows that `Net_inc_pp` is **highly right-skewed**. Most households are concentrated in a narrow band between roughly £0 and £40,000 per person, with the peak around £10,000–£15,000, while a long tail stretches to the right up to a maximum of £864,812. This skewness is also visible in the `summary()` output: the mean (£15,834) is noticeably higher than the median (£13,347), because a small number of very high incomes pull the mean upwards. For skewed data like this, the median is a better measure of a "typical" value. There are also a few **negative values** (down to −£238,160), which can occur when households report losses, for example from self-employment. These extreme values are rare, but they stretch the x-axis so much that the main body of the distribution looks very thin. Keep them in mind when interpreting the regression results, as outliers can influence the estimated coefficients.
+
+Now that we understand how net income per capita is distributed, we can ask **why** it varies so much between households. In this section, we explore whether income differs by **gender** and **health status**. If men and women, or people in better and worse health, have systematically different incomes, this would point to income inequality between these groups. Since both are categorical variables, we first need to check their categories before including them in a regression model.
+
 Our two qualitative independent variables “`sex`” and “`health`”. Let's first know what they look like:
 
 ```{r}
@@ -271,7 +274,12 @@ table(frs_df$sex)
 table(frs_df$health)
 ```
 
-Remember in the lecture, what we did in the Region long-term illness before we put the categorical variable Region into the regression model? Yes. First, make sure they are in factor type and Second, decide the reference category. Here, I will use Female and Very Bad health status as my base categories. You can decide what you wish to use. This time, I use the following codes to combine these two steps in one line.
+Remember from the lecture what we did with Region in the long-term illness example before adding it to the regression model? Two steps are needed before including a categorical variable in a regression model:
+
+1. **Convert it to a factor**, so that R treats it as categorical rather than as text or numbers.
+2. **Choose the reference category** (baseline), as the model's coefficients will show how each of the other categories differs from it.
+
+Here, we use **Female** and **Very Bad** health as the reference categories, but you can choose others if you wish. The code below combines both steps in one line: `as.factor()` converts the variable to a factor, and `fct_relevel()` sets the reference category.
 
 ```{r}
 frs_df$sex <- fct_relevel(as.factor(frs_df$sex), "Female") 
@@ -285,21 +293,21 @@ model_frs <- lm(Net_inc_pp ~ sex + health, data = frs_df)
 summary(model_frs)
 ```
 
-Same as what you have learnt in Week 2, the code explanation:
+As in Week 2, here is what the code does:
 
 **`lm()` Function**:
 
 - `lm()` stands for "linear model" and is used to fit a linear regression model in R.
-- The formula syntax `Net_inc_pp ~ Sex + health` specifies a relationship between:
+- The formula syntax `Net_inc_pp ~ sex + health` specifies a relationship between:
   - **Dependent Variable**: `Net_inc_pp`.
-  - **Independent Variables**: `Sex`, and `health`. The model is trained on the `data = frs_df` dataset.
+  - **Independent Variables**: `sex` and `health`. The model is fitted using the `frs_df` dataset (`data = frs_df`).
 
-**Storing the Model**: The `model <-` syntax stores the fitted model in an object called `model`.
+**Storing the Model**: The `model_frs <-` syntax stores the fitted model in an object called `model_frs`.
 
-`summary(model)` provides a detailed output of the model's results, including:
+`summary(model_frs)` provides a detailed output of the model's results, including:
 
-- **Coefficients**: Estimates of the regression slopes (i.e., how each independent variable affects `Net_inc_pp`).
-- **Standard Errors**: The variability of each coefficient estimate.
+- **Coefficients**: Estimates of how each category differs from its reference category in `Net_inc_pp` (i.e., how each independent variable is associated with `Net_inc_pp`).
+- **Standard Errors**: How precise each coefficient estimate is (smaller = more precise).
 - **t-values** and **p-values**: Indicate the statistical significance of the effect of each independent (explanatory) variable.
 - **R-squared** and **Adjusted R-squared**: Show how well the independent variables explain the variance in the dependent variable.
 - **F-statistic**: Tests the overall significance of the model.
@@ -312,26 +320,28 @@ tidy(model_frs)
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q2.** **What conclusions could be drawn in terms of income inequalities with respect to gender and health status? Also think about the statistical significance of these differences.**
+### Q2. Income inequality by gender and health {.unnumbered}
+
+**What conclusions could be drawn in terms of income inequalities with respect to gender and health status? Also think about the statistical significance of these differences.**
 :::
 
-The interpretation of this table is again similar to what you have learnt in Week2, but you may find that R has automatically treat your categorical/qualitative variable Sex and Health as dummy variables, so in the output, you see sexMale, the reason there is no sexFemale is because I requested R to use sex=Female as the reference category. You also see healthBad, healthFair, healthGood, and healthVery Good, but you didn't see health Very Bad because again I request `frs_df$health <- fct_relevel(as.factor(frs_df$health), "Very Bad")` .
+The interpretation of this table is again similar to what you have learnt in Week 2, but you may find that R has automatically treated the categorical/qualitative variables **sex** and **health** as dummy variables. Each category gets a coefficient except the reference category set by `fct_relevel()`. That is why the output has `sexMale` but no `sexFemale`, and no `healthVery Bad`.
 
-For the independent variable, the coefficient estimates of them need to be interpreted by comparing to the reference category: Male and Very Bad health. We can derive how the differences between different independent variable categories are associated with the changes in `Net_inc_pp`, for example:
+Each coefficient is therefore interpreted as a difference from the reference category, **Female** with **Very Bad** health, holding the other variable constant:
 
-- The association of `sexMale`is positive and strong: compare to sex=Female, `sexMale` is associated with an increase of £2,091 net income per capita, here we see some gender inequality;
-- The association of `healthBad` and `healthFair` are not statistically significant, which means we cannot draw any conclusion of the relationships between `healthBad` and `Net_inc_pp` or `healthFair` and `Net_inc_pp` from the model ;
-- Then, the association of `healthGood` and `healthVeryGood` are both positive and strong: `healthGood` is associated with an increase of £2,766 net income per capita compared to `healthVeryBad`, and `healthVeryGood` is associated with an increase of £4,931 net income per capita compared to `healthVeryBad` . Here you may draw some useful conclusion on who the health condition impact the inequality of income.
+- The **Intercept** (**£12,116**) is the predicted net income per capita for the reference group: females with Very Bad health.
 
-We then read R-squared and Adjusted R-squared to evaluate the model fit. We see both values are only around 0.016, which means in the model `Net_inc_pp ~ Sex + health` , the independent variable `Sex + health` can only explain 1.6% of the variation of our dependent variable `Net_inc_pp`. This is a relatively poor performance, and the model cannot be used to do any prediction of `Net_inc_pp` by using just sex and health. This also suggests us that to fully explain the `Net_inc_pp` , we may need to add in more variables, such as education level, occupation, age, etc. Although the model is not solid for any prediction, the coefficients and significant conclusion from the model are still very useful.
+- The association of **`sexMale`** is positive and statistically significant (**+£2,091, p \< 0.001**): men have £2,091 more net income per capita than women with the same health status, indicating a gender gap in income.
+
+- The associations of **`healthBad`** and **`healthFair`** are not statistically significant (**p = 0.90** and **0.18**): there is no evidence that their net income per capita differs from people in Very Bad health.
+
+- The associations of **`healthGood`** and **`healthVery Good`** are positive and statistically significant (**+£2,766** and **+£4,932**, both **p \< 0.001**): compared with people in Very Bad health, people in Good and Very Good health have £2,766 and £4,932 more net income per capita respectively, suggesting that income rises with better health.
+
+We then read R-squared and Adjusted R-squared to evaluate the model fit. Both are only around **0.016**, meaning `sex` and `health` together explain only 1.6% of the variation in `Net_inc_pp`. The model is therefore poor for prediction, and more variables (e.g. education level, occupation, age) would be needed to explain income better. Even so, the F-test is highly significant (**p \< 2.2e-16**), so the income gaps by gender and health identified above are real, even though they explain only a small part of why incomes differ.
 
 ## **Implementing a linear regression model with a qualitative independent variable**
 
-To gain further practice on using linear regression model with qualitative variables as independent variables, we follow the model you created last week, to add in the qualitative/categorical variable Region from the Census 2021 dataset. You should already have the dataset **EW_DistrictPercentages.csv**, if not, you can download them from [Canvas](https://canvas.liverpool.ac.uk/courses/84668/pages/census-data?module_item_id=2396199). Please put the .csv file in your '/data/Census2021' folder.
-
-::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Research Question 2: How does health vary across regions in the UK?**
-:::
+To gain further practice on using linear regression models with qualitative variables as independent variables, we extend the model you created last week by adding the qualitative/categorical variable Region from the Census 2021 dataset. This allows us to answer **Research Question 2: How does health vary across regions in England and Wales?** You should already have the dataset **EW_DistrictPercentages.csv**; if not, you can download it from [Canvas](https://canvas.liverpool.ac.uk/courses/93312/pages/census-data?module_item_id=2727713). Please put the .csv file in your '/data/Census2021' folder.
 
 The practical is split into two main parts. The first focuses on implementing a linear regression model with a qualitative independent variable. **Note that** you need first to set the reference category (baseline) as the outcomes of the model reflects the **differences** between categories with the baseline. The second part focuses on prediction based the estimated linear regression model.
 
@@ -383,7 +393,9 @@ summary(df)
 Now we can retrieve the "Region" column from the data frame by simply use **df\$Region**. But what if we want to understand the data better, like the following questions?
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q3. How many categories does the variable "Region" entail? How many local authority districts does each region include?**
+### Q3. Categories of Region {.unnumbered}
+
+**How many categories does the variable "Region" entail? How many local authority districts does each region include?**
 :::
 
 Simply use the function table() would return you the answer.
@@ -425,28 +437,36 @@ summary(model)
 You have already learnt how to interpret the output of regression model last week: **Significance** (p-value), **Coefficient Estimates, and Model fit** (R squared and Adjusted R-squared).
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q4. Relating back to this week's lecture notes, indicate what regions have statistically significant differences in the percentage of long-term illness, compared to London?**
+#### Q4. Regional differences compared with London {.unnumbered}
+
+**Relating back to this week's lecture notes, indicate what regions have statistically significant differences in the percentage of long-term illness, compared to London?**
 :::
 
-First, the **Significance** and the **Coefficient Estimates**. By examining the P-value, which is the last column in the output table, we can see that most of the independent variables are significant predictors of `pct_Longterm_sick_or_disabled`.
+First, the **Significance** and the **Coefficient Estimates**. The p-values in the last column of the output table show that most of the independent variables are significant predictors of `pct_Longterm_sick_or_disabled`. All coefficients below are interpreted **when the other predictors remain the same**.
 
-- Similarly to last week, we learn that the changes in `pct_No_qualifications` are significantly associated with changes in `pct_Longterm_sick_or_disabled` at the \<0.001 level (with the three asterisks \*\*\* ), which is actually an indicator of highly statistically significant, while we are less confident that the observed relationship between `pct_No_qualifications` and `pct_Longterm_sick_or_disabled` are statistically significant (with the two asterisks \*\*). Through their coefficient estimates, we learn that:
+- The **Intercept** (**7.62**) is the predicted long-term sick/disabled rate for a **London** district (the reference category) when `pct_Males`, `pct_No_qualifications` and `pct_Higher_manager_prof` are all 0%. Since no real district has 0% males, we do not interpret this value directly; it is the baseline value to which the other coefficients are added when making predictions.
 
-  - The association of `pct_Males` is negative and mild: each decrease in 1% of `pct_Males` is associated with an increase of 0.17% of long term sick/disable rate in the population of EW.
+- **Continuous variables.** Similar to last week, `pct_No_qualifications` is significant at the \<0.001 level (three asterisks \*\*\*), indicating a highly statistically significant relationship. We are slightly less confident about `pct_Males`, which is significant at the \<0.01 level (two asterisks \*\*). Their coefficient estimates tell us that:
 
-  - The association of `pct_No_qualifications` is positive and strong: each increase in 1% of `pct_No_qualifications` is associated with an increase of 0.25% of long term sick/disable rate.
+  - The association of **`pct_No_qualifications`** is positive and statistically significant (**+0.25, p \< 0.001**): each 1% increase in residents with no qualifications is associated with a 0.25% increase in the long-term sick/disabled rate, when the other predictors remain the same.
 
-  - The association of `pct_Higher_manager_prof` is not statistically significant.
+  - The association of **`pct_Males`** is negative and statistically significant (**−0.17, p \< 0.01**): each 1% increase in males is associated with a 0.17% decrease in the long-term sick/disabled rate, when the other predictors remain the same.
 
-- Now comes to the dummy variables (all the items starts with Region) created by R for our qualitative variable *Region*: `RegionEast`, `RegionNorth Eest`, `RegionNorth West` and `RegionWales` are also statistically significant at the \<0.001 level. The changes in `RegionSouth East` and `RegionWest Midlands` are significantly associated with changes in `pct_Longterm_sick_or_disabled` at the 0.05 level. The 0.05 level suggests that it is a mild likelihood that the relationship between these independent variables and the dependent variable is not due to random change. They are just mildly statistically significant.
+  - The association of **`pct_Higher_manager_prof`** is not statistically significant (**p = 0.72**).
 
-- The coefficient estimates of them need to be interpreted by comparing to the reference category London. The Estimate column tells us: North East region is associated with a 1.16% higher rate of long term sick/disable than London when the other predictors remain the same. Similarly, Wales is 1.38% higher rate of long term illness than London when the other predictors remain the same. You can draw the conclusion for the other regions in this way by using their coefficient estimate values.
+- **Region dummy variables.** R has created a dummy variable (the items starting with `Region`) for every region except the reference category, **London**. Each coefficient therefore shows how much higher (positive) or lower (negative) a region's long-term sick/disabled rate is **compared with London**, when the other predictors remain the same:
 
-  **Reminder**: You **cannot** draw conclusion between North East and Wales, nor comparison between any regions beyond London. It is because the regression model is built for the comparison between regions to your reference category London. If we want to compare between North East and Wales, we need to set either of them as the reference category by using `df$Region <- fct_relevel(df$Region, "North East")` or `df$Region <- fct_relevel(df$Region, "Wales")`.
+  - **Significant at the \<0.001 level (\*\*\*):** `RegionEast`, `RegionNorth East`, `RegionNorth West` and `RegionWales`. For example, the North East has a **1.16%** higher rate than London, and Wales a **1.38%** higher rate, while the East has a **0.76%** lower rate.
 
-- `RegionEast Midland`, `RegionSouth West`, and `RegionlYorkshire and The Humber` were not found to be significantly associated with `pct_Longterm_sick_or_disabled`.
+  - **Significant at the 0.05 level (\*):** `RegionSouth East` and `RegionWest Midlands`. This is weaker evidence than \*\*\*, so they are only mildly statistically significant.
 
-Last but not least, the **Measure of Model Fit**. The model output suggests the R-squared and Adjusted R-squared are greater than 0.75 indicate a reasonably well fitting model. The model explains 75.9 % of the variance in the dependent variable. After adjusting for the number of independent variable, the model explains 75.0% of the variance. The two suggest a strong fit of the model.
+  - **Not significant:** `RegionEast Midlands`, `RegionSouth West` and `RegionYorkshire and The Humber`, meaning their rates are not significantly different from London's.
+
+  You can interpret the other regions in the same way using their coefficient estimates.
+
+  **Reminder**: You **cannot** tell from this output whether North East and Wales, or any two regions other than London, are significantly different from each other, because each region's coefficient only compares that region with London. To compare North East and Wales, set either of them as the reference category, using `df$Region <- fct_relevel(df$Region, "North East")` or `df$Region <- fct_relevel(df$Region, "Wales")`, and re-run the model.
+
+Last but not least, the **Model Fit**. R-squared (**0.759**) and Adjusted R-squared (**0.750**) are both around 0.75: the model explains 75.9% of the variation in the long-term sick/disabled rate across districts, or 75.0% after adjusting for the number of independent variables. Together, they suggest a strong fit of the model.
 
 ### **Change the baseline category**
 
@@ -474,14 +494,15 @@ Now, complete the following table.
 | Region names | Higher or lower than North West | Whether the difference is statistically significant (Yes or No) |
 |:----------------------:|:----------------------:|:----------------------:|
 | East Midlands |  |  |
-| East of England |  |  |
+| East |  |  |
 | North East |  |  |
-| North West |  |  |
 | South East |  |  |
 | London |  |  |
 | West Midlands |  |  |
 | Yorkshire and The Humber |  |  |
 | Wales |  |  |
+
+Check the answer at the end of this practical page.
 
 Now it is very easy to use your model to estimate the results Y (dependent variable - `pct_Longterm_sick_or_disabled` ) by setting all the input independent variable X (`pct_Males` `pct_No_qualifications` and `pct_Higher_manager_prof`).
 
@@ -513,7 +534,7 @@ predict(model1, obj_NE)
 
 ### Recode the Region variable and explore regional inequality in health
 
-In many real-world studies, we might not be interested in health inequality across all regions. For example, in this case study, we are interested in health inequality between *London*, *South, North, Midland and Wales*. We can achieve this by re-grouping regions in the UK based on the variable “Region”. That said, we need to have a new grouping of regions as follows:
+In many real-world studies, we might not be interested in health inequality across all regions. For example, in this case study, we are interested in health inequality between *London*, *South, North, Midland and Wales*. We can achieve this by re-grouping regions in England and Wales based on the variable “Region”. That said, we need to have a new grouping of regions as follows:
 
 |                            |                       |
 |----------------------------|-----------------------|
@@ -565,7 +586,7 @@ Comparing with the `Region_label`, we now can see the mutate worked:
 df[,c("Region","New_region_label")]
 ```
 
-Now you will have a new qualitative variable named `New_region_label` in which the UK is divided into four regions: London, South, North and Midlands.
+Now you will have a new qualitative variable named `New_region_label` in which the UK is divided into five regions: London, South, North, Midlands and Wales.
 
 *Based on the newly generated qualitative variable* `New_region_label`, we can now build our new linear regression model. Don't forget:
 
@@ -599,7 +620,9 @@ summary(model2)
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q5. Are there statistically significant differences in the percentage of people with long-term sick/disable between London and North, and between South and Wales, controlling for other variables? What conclusions could be drawn in terms of regional differences in health outcome?**
+#### Q5. London vs North, and South vs Wales {.unnumbered}
+
+**Are there statistically significant differences in the percentage of people with long-term sick/disable between London and North, and between South and Wales, controlling for other variables? What conclusions could be drawn in terms of regional differences in health outcome?**
 :::
 
 ## Predictions using fitted regression model
@@ -611,36 +634,84 @@ Relating to this week’s lecture, the % `pct_Longterm_sick_or_disabled` is equa
 **\[write down the model\]**
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q6. Now imagine that the values of variables *pct_Males, pct_No_qualifications, and pct_Higher_manager_prof* are 49, 23 and 11, respectively, what would the percentage of persons with long-term sick/disable in Wales and London be?**
+### Q6. Predicting long-term illness in Wales and London {.unnumbered}
+
+**Now imagine that the values of variables *pct_Males, pct_No_qualifications, and pct_Higher_manager_prof* are 49, 23 and 11, respectively, what would the percentage of persons with long-term sick/disable in Wales and London be?**
 :::
 
 Check the answer at the end of this practical page.
 
-## **Extension activities**
+## **Answers to the Questions**
 
-The extension activities are designed to get yourself prepared for the Assignment 1 in progress. For this week, try whether you can:
+### Q1 associations with health status
 
-- Present descriptive statistics for independent variable and the dependent variable: counts, percentages, a centrality measure, a spread measure, histograms or any relevant statistic
+Using the Chi-squared test and Cramér's V, Table 1 can be completed as follows:
 
-- Report the observed association between the dependent and independent variables: correlation plus a graphic or tabular visualisation
+| **Covariates** |                  | **Cramér's V** | **p-value** |
+|:--------------:|:----------------:|:--------------:|:-----------:|
+|    *health*    |   *age_group*    |     0.329      |  \< 0.001   |
+|    *health*    |  *highest_qual*  |     0.287      |  \< 0.001   |
+|    *health*    |     *nssec*      |     0.280      |  \< 0.001   |
+|    *health*    | *marital_status* |     0.229      |  \< 0.001   |
 
-- Briefly describe and critically discuss the results
+All four associations are statistically significant (p \< 0.001). **Age group** has the strongest association with health status (Cramér's V = 0.329), and **marital status** the weakest (0.229). Remember that Cramér's V tells us the strength of an association, but not its direction.
 
-- Think about other potential factors of long-term illness and income, and then test your ideas with linear regression models
+### Q2: income inequality by gender and health status
 
-- Summarise your model outputs and interpret the results.
+- **Gender:** men have £2,091 more net income per capita than women with the same health status (p \< 0.001), indicating a significant gender gap in income.
+- **Health:** compared with people in Very Bad health, people in Good and Very Good health have £2,766 and £4,932 more net income per capita respectively (both p \< 0.001). The differences for Bad and Fair health are not statistically significant.
+- **Model fit:** sex and health explain only 1.6% of the variation in income (R² = 0.016), so other factors matter much more. However, the income gaps by gender and health are statistically significant.
 
-## **Answer of the written down model and Q6**
+### Q3: categories of Region
 
-The model of the new region label is: *pct_Longterm_sick_or_disabled* (%) *= 9.98+ (-0.1842)\* pct_Males* (%) *+ 0.2014 \* pct_No_qualifications* (%) *+ (-0.0341) \* pct_Higher_manager_prof* + *(0.4742) \* North + (-0.5063)* \* South + (-0.4103) \* Midlands + *1.2518 \* Wales.* But should be aware that the relation between *pct_Higher_manager_prof* and *pct_Longterm_sick_or_disabled* is not statistically significant.
+`table(df$Region)` shows **10 regions** with 331 local authority districts in total: East (45), East Midlands (35), London (33), North East (12), North West (39), South East (64), South West (30), Wales (22), West Midlands (30) and Yorkshire and The Humber (21).
 
-So if the values of variables *pct_Males, pct_No_qualifications, and pct_Higher_manager_prof* are 49, 23 and 11,
+### Q4: regions that differ significantly from London
 
-the model of Wales will be: *pct_Longterm_sick_or_disabled* (%) *= 9.98+ (-0.1842)\* 49* *+ 0.2014 \* 23* *+ (-0.0341) \* 11 + (0.4742) \* 0+ (-0.5063)* \* 0+ (-0.4103) \* 0+ *1.2518 \* 1*(you can directly paste the number sentence into your R studio Console and the result will be returned)
+Holding the other predictors constant, compared with London:
 
-the model of London will be: *pct_Long_term_ill* (%) *= 9.98+ (-0.1842)\* 49* *+ 0.2014 \* 23* *+ (-0.0341) \* 11 + (0.4742) \* 0+ (-0.5063)* \* 0+ (-0.4103) \* 0+ *1.2518 \* 0*
+- **Significantly higher:** Wales (+1.38%), North East (+1.16%) and North West (+0.78%), all p \< 0.001.
+- **Significantly lower:** East (−0.76%, p \< 0.001), West Midlands (−0.42%, p \< 0.05) and South East (−0.33%, p \< 0.05).
+- **Not significantly different:** East Midlands, South West, and Yorkshire and The Humber.
 
-You can also make a new object like
+### Changing the baseline to North West
+
+R-squared (0.759) and Adjusted R-squared (0.750) are **exactly the same** as in the model with London as the baseline. Changing the reference category does not change the model fit; it only changes which comparisons the Region coefficients show.
+
+| Region names | Higher or lower than North West | Statistically significant? |
+|:----------------------:|:----------------------:|:----------------------:|
+| East Midlands | Lower (−1.04%) | Yes |
+| East | Lower (−1.55%) | Yes |
+| North East | Higher (+0.38%) | No (p = 0.11) |
+| South East | Lower (−1.11%) | Yes |
+| South West | Lower (−0.69%) | Yes |
+| London | Lower (−0.78%) | Yes |
+| West Midlands | Lower (−1.20%) | Yes |
+| Yorkshire and The Humber | Lower (−0.90%) | Yes |
+| Wales | Higher (+0.60%) | Yes |
+
+Note that London is 0.78% lower than North West, which is the same size as the North West coefficient in the London-baseline model (+0.78%), with the opposite sign.
+
+### Q5: London vs North, and South vs Wales
+
+- **London vs North:** yes. With London as the baseline, the North has a 0.47% higher long-term sick/disabled rate than London (p = 0.012), when the other predictors remain the same.
+
+- **South vs Wales:** this **cannot** be answered from `model2`, because both South and Wales are compared only with London. To test it, set one of them as the reference category, e.g. `df$New_region_label <- fct_relevel(df$New_region_label, "South")`, and re-run the model. Doing so shows that Wales has a 1.76% higher rate than the South (p \< 0.001).
+
+- **Conclusion:** after controlling for sex, qualifications and occupation, `model2` tells us how each region compares with **London**: Wales (+1.25%) and the North (+0.47%) have significantly higher long-term sick/disabled rates than London, while the South (−0.51%) and the Midlands (−0.41%) have significantly lower rates. This suggests clear regional inequalities in health across England and Wales.
+
+  **Reminder**: these conclusions are all *relative to London*. Although the coefficients suggest an ordering (e.g. Wales appears higher than the North, and the North higher than the South), `model2` **cannot** tell us whether the differences between two non-London regions are statistically significant. To test any such comparison, the model must be **re-built** with one of those regions as the reference category, as we did above for South vs Wales.
+
+### The written-down model and Q6
+
+The model of the new region label is: pct_Longterm_sick_or_disabled (%) = 9.98+ (-0.1842)\* pct_Males (%) + 0.2014 \* pct_No_qualifications (%) + (-0.0341) \* pct_Higher_manager_prof + (0.4742) \* North + (-0.5063) \* South + (-0.4103) \* Midlands + 1.2518 \* Wales, where North, South, Midlands and Wales are dummy variables (1 if the district is in that region, 0 otherwise). London is the reference category, so all four dummies are 0 for London. Note that `pct_Higher_manager_prof` is not statistically significant at the 0.05 level (p = 0.087).
+
+If `pct_Males`, `pct_No_qualifications` and `pct_Higher_manager_prof` are 49, 23 and 11:
+
+- **Wales** (Wales = 1, other dummies = 0): `9.98 + (-0.1842)*49 + 0.2014*23 + (-0.0341)*11 + 1.2518*1`
+- **London** (all dummies = 0): `9.98 + (-0.1842)*49 + 0.2014*23 + (-0.0341)*11`
+
+You can paste these directly into your RStudio Console to get the results. You can also make a new object and use `predict()`:
 
 ```{r}
 obj_Wales <- data.frame(
@@ -661,4 +732,4 @@ predict(model2, obj_Wales)
 predict(model2, obj_London)
 ```
 
-**Therefore, the percentage of persons with long-term illness in Wales and London be 6.47% and 5.22 % respectively. If you got the right answers, then congratulations you can now use regression model to make prediction.**
+**Therefore, the predicted percentages of persons with long-term illness in Wales and London are 6.47% and 5.22% respectively.** The difference (1.25%) is exactly the Wales coefficient, because the two districts have the same values for all the other predictors. If you got the right answers, congratulations: you can now use a regression model to make predictions!
