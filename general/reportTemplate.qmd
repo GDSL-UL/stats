@@ -15,11 +15,7 @@ execute:
   message: false
 ---
 
-<<<<<<< Updated upstream
-**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://theuniversityofliverpool-my.sharepoint.com/:u:/g/personal/gfilo_liverpool_ac_uk/EXgnQW7AoaFFjo7iOknuNbQBjsOuZtU-RcwtK5tUZB-97Q) (you need to be logged in with the UoL account) and work on it with your own Rstudio.
-=======
-**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://raw.githubusercontent.com/GDSL-UL/stats/main/general/reportTemplate.qmd)and work on it with your own Rstudio.
->>>>>>> Stashed changes
+\<\<\<\<\<\<\< Updated upstream **Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://theuniversityofliverpool-my.sharepoint.com/:u:/g/personal/gfilo_liverpool_ac_uk/EXgnQW7AoaFFjo7iOknuNbQBjsOuZtU-RcwtK5tUZB-97Q) (you need to be logged in with the UoL account) and work on it with your own Rstudio. ======= **Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://raw.githubusercontent.com/GDSL-UL/stats/main/general/reportTemplate.qmd)and work on it with your own Rstudio. \>\>\>\>\>\>\> Stashed changes
 
 ## Setup
 
@@ -39,7 +35,7 @@ library(broom)
 ```
 
 ::: {style="red"}
-**Once all the chunks execute correctly (no errors when running all the code, `Ctrl +Alt + R` ) you can render the `qmd` file. Follow the instructions [here](https://gdsl-ul.github.io/stats/general/howSubmit.html) to render the document to a PDF. Remove this message and any irrelevant text from the final submission.**
+**Once all the chunks execute correctly (no errors when running all the code, `Ctrl + Alt + R` ) you can render the `qmd` file. Follow the instructions [here](https://gdsl-ul.github.io/stats/general/howSubmit.html) to render the document to a PDF. Remove this message and any irrelevant text from the final submission.**
 :::
 
 ------------------------------------------------------------------------
@@ -49,7 +45,7 @@ library(broom)
 **Aim.** State clearly what you want to investigate (e.g., association between X and Y).\
 **Relevance.** Explain why the topic matters (theory, policy, practice).\
 **Gap & Research Question (RQ).** Identify what is missing in the current knowledge and pose 1 RQ (avoid yes/no questions; ask *how*, *to what extent*, *which factors*).\
-**Structure.** Briefly preview how the rest of the article is organized.
+**Structure.** Briefly preview how the rest of the report is organized.
 
 ------------------------------------------------------------------------
 
@@ -82,11 +78,11 @@ Important: do not include statistics here, or graphs, or tables.
 # run the model, show tables summarising the Regression model.
 ```
 
-**Results + interpretation.** Present estimates and interpret them in plain language, tying back to the RQ. The Regression model should the core of this section!! **Link to literature.** Compare/contrast with prior findings. **Selective visuals.** Use clear charts/tables to highlight key results only (avoid clutter). ------------------------------------------------------------------------
+**Results + interpretation.** Present estimates and interpret them in plain language, tying back to the RQ. The Regression model should be the core of this section!! **Link to literature.** Compare/contrast with prior findings. **Selective visuals.** Use clear charts/tables to highlight key results only (avoid clutter). ------------------------------------------------------------------------
 
 ## Conclusion
 
-**Summary.** Recap the main findings vis‑à‑vis the RQs (do not introduce new results).\
+**Summary.** Recap the main findings vis‑à‑vis the RQ (do not introduce new results).\
 **Limitations.** Offer a brief, honest self‑critique (data, measurement, design, external validity).\
 **Implications.** Indicate what the findings suggest for practice, policy, or future research.
 

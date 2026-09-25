@@ -1,4 +1,5 @@
 ---
+for c---
 title: "Lab: Correlation and Multiple Linear Regression with Qualitative Variables"
 author: "Zi Ye"
 date: "`r Sys.Date()`"
@@ -15,9 +16,9 @@ In last week, we introduced Multiple Linear Regression (MLR) - a statistical met
 
 In a regression model, independent/predictor variables could be continuous or categorical (or qualitative). While continuous variables capture quantitative effects, **categorical variables provide insights into differences across groups**. When we say categorical variables, we normally mean:
 
--   Nominal Data: categorical data without natural order. E.g. Gender, Colour, Country...
+- Nominal Data: categorical data without natural order. E.g. Gender, Colour, Country...
 
--   Ordinal Data: categorical data with a meaningful order. E.g. Education level, Customer satisfaction, Grade...
+- Ordinal Data: categorical data with a meaningful order. E.g. Education level, Customer satisfaction, Grade...
 
 By blending continuous and categorical predictors, MLR with categorical variables enhances the model's ability to reflect real-world complexities and improves interpretability, as it allows analysts to assess how each category or group within a independent variable influences the dependent variable.
 
@@ -29,11 +30,11 @@ Learning Objectives:
 
 In this week's practical we are going to
 
--   Analysis of categorical/qualitative variables
+- Analysis of categorical/qualitative variables
 
--   Estimate and interpret a multiple linear regression model with categorical variables
+- Estimate and interpret a multiple linear regression model with categorical variables
 
--   Make predictions using a regression model
+- Make predictions using a regression model
 
 ## Analysis categorical variables
 
@@ -57,17 +58,17 @@ Check the relative path of your data folder on your PC/laptop, make sure you kno
 
 **Library knowledge used in today:**
 
--   **`dplyr`**: a basic library provides a suite of functions for data manipulation
+- **`dplyr`**: a basic library provides a suite of functions for data manipulation
 
--   **`ggplot2`**: a widely-used data visualisation library to help you create nice plots through layered plotting.
+- **`ggplot2`**: a widely-used data visualisation library to help you create nice plots through layered plotting.
 
--   **`tidyverse`**: a collection of R packages designed for data science, offering a cohesive framework for data manipulation, visualization, and analysis. Containing dyplyr, ggplot2 and other basic libraries.
+- **`tidyverse`**: a collection of R packages designed for data science, offering a cohesive framework for data manipulation, visualization, and analysis. Containing dyplyr, ggplot2 and other basic libraries.
 
--   **`broom`**: a part of the tidyverse and is designed to convert statistical analysis results into tidy data frames.
+- **`broom`**: a part of the tidyverse and is designed to convert statistical analysis results into tidy data frames.
 
--   **`forcats`**: designed to work with factors, which are used to represent categorical data. It simplifies the process of creating, modifying, and ordering factors.
+- **`forcats`**: designed to work with factors, which are used to represent categorical data. It simplifies the process of creating, modifying, and ordering factors.
 
--   **`vcd`**: visualise and analyse categorical data.
+- **`vcd`**: visualise and analyse categorical data.
 
 **A useful shortcut to format your code: select all your code lines, use Ctrl+Shift+A for automatically format them in a tidy way.**
 
@@ -223,7 +224,7 @@ Use the codes of Chi-test and Cramer's V to answer this question by completing T
 **Table 1 Person-level correlations with health status**
 
 |  |  |  |  |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | **Covariates** |  | **Correlation Coefficient** | **Statistical Significance** |
 |  |  | *Cramer’s V* | *p-value* |
 | *health* | *age_group* |  |  |
@@ -290,20 +291,20 @@ Same of what you have learnt in Week 2, the code explanation:
 
 **`lm()` Function**:
 
--   `lm()` stands for "linear model" and is used to fit a linear regression model in R.
--   The formula syntax `Net_inc_pp ~ Sex + health` specifies a relationship between:
-    -   **Dependent Variable**: `Net_inc_pp`.
-    -   **Independent Variables**: `Sex`, and `health`. The model is trained on the `data = frs_df` dataset.
+- `lm()` stands for "linear model" and is used to fit a linear regression model in R.
+- The formula syntax `Net_inc_pp ~ Sex + health` specifies a relationship between:
+  - **Dependent Variable**: `Net_inc_pp`.
+  - **Independent Variables**: `Sex`, and `health`. The model is trained on the `data = frs_df` dataset.
 
 **Storing the Model**: The `model <-` syntax stores the fitted model in an object called `model`.
 
 `summary(model)` provides a detailed output of the model's results, including:
 
--   **Coefficients**: Estimates of the regression slopes (i.e., how each independent variableaffects `Net_inc_pp`).
--   **Standard Errors**: The variability of each coefficient estimate.
--   **t-values** and **p-values**: Indicate the statistical significance of the effect of each independent (explanatory) variable.
--   **R-squared** and **Adjusted R-squared**: Show how well the independent variables explain the variance in the dependent variable.
--   **F-statistic**: Tests the overall significance of the model.
+- **Coefficients**: Estimates of the regression slopes (i.e., how each independent variableaffects `Net_inc_pp`).
+- **Standard Errors**: The variability of each coefficient estimate.
+- **t-values** and **p-values**: Indicate the statistical significance of the effect of each independent (explanatory) variable.
+- **R-squared** and **Adjusted R-squared**: Show how well the independent variables explain the variance in the dependent variable.
+- **F-statistic**: Tests the overall significance of the model.
 
 The result can be formatted by:
 
@@ -320,9 +321,9 @@ The interpretation of this table is again similar to what you have learnt in Wee
 
 For the independent variable, the coefficient estimates of them need to be interpreted by comparing to the reference category: Male and Very Bad health. We can derive how the differences between different independent variable categories are associated with the changes in `Net_inc_pp`, for example:
 
--   The association of `sexMale`is positive and strong: compare to sex=Female, `sexMale` is associated with an increase of £2,091 net income per capita, here we see some gender inequality;
--   The association of `healthBad` and `healthFair` arenot statistically significant, which means we cannot draw any conclusion of the relationships between `healthBad` and `Net_inc_pp` or `healthFair` and `Net_inc_pp` from the model ;
--   Then, the association of `healthGood` and `healthVeryGood` are both positive and strong: `healthGood` is associated with an increase of £2,766 net income per capita compared to `healthVeryBad`, and `healthVeryGood` is associated with an increase of £4,931 net income per capita compared to `healthVeryBad` . Here you may draw some useful conclusion on who the health condition impact the inequality of income.
+- The association of `sexMale`is positive and strong: compare to sex=Female, `sexMale` is associated with an increase of £2,091 net income per capita, here we see some gender inequality;
+- The association of `healthBad` and `healthFair` arenot statistically significant, which means we cannot draw any conclusion of the relationships between `healthBad` and `Net_inc_pp` or `healthFair` and `Net_inc_pp` from the model ;
+- Then, the association of `healthGood` and `healthVeryGood` are both positive and strong: `healthGood` is associated with an increase of £2,766 net income per capita compared to `healthVeryBad`, and `healthVeryGood` is associated with an increase of £4,931 net income per capita compared to `healthVeryBad` . Here you may draw some useful conclusion on who the health condition impact the inequality of income.
 
 We then read R-squared and Adjusted R-squared to evaluate the model fit. We see both values are only around 0.016, which means in the model `Net_inc_pp ~ Sex + health` , the independent variable `Sex + health` can only explain 1.6% of the variation of our dependent variable `Net_inc_pp`. This is a relatively poor performance, and the model cannot be used to do any prediction of `Net_inc_pp` by using just sex and health. This also suggests us that to fully explain the `Net_inc_pp` , we may need to add in more variables, such as education level, occupation, age, etc. Although the model is not solid for any prediction, the coefficients and significant conclusion from the model are still very useful.
 
@@ -431,21 +432,21 @@ You have already learnt how to interpret the output of regression model last wee
 
 First, the **Significance** and the **Coefficient Estimates**. By examining the P-value, which is the last column in the output table, we can see that most of the independent variables are significant predictor of `pct_Longterm_sick_or_disabled`.
 
--   Similarly to last week, we learn that the changes in `pct_No_qualifications` are significantly associated with changes in `pct_Longterm_sick_or_disabled` at the \<0.001 level (with the three asterisks \*\*\* ), which is actually an indicator of highly statistically significant, while we are less confident that the observed relationship between `pct_No_qualifications` and `pct_Longterm_sick_or_disabled` are statistically significant (with the two asterisks \*\*). Through their coefficient estimates, we learn that:
+- Similarly to last week, we learn that the changes in `pct_No_qualifications` are significantly associated with changes in `pct_Longterm_sick_or_disabled` at the \<0.001 level (with the three asterisks \*\*\* ), which is actually an indicator of highly statistically significant, while we are less confident that the observed relationship between `pct_No_qualifications` and `pct_Longterm_sick_or_disabled` are statistically significant (with the two asterisks \*\*). Through their coefficient estimates, we learn that:
 
-    -   The association of `pct_Males` is negative and mild: each decrease in 1% of `pct_Males` is associated with an increase of 0.17% of long term sick/disable rate in the population of EW.
+  - The association of `pct_Males` is negative and mild: each decrease in 1% of `pct_Males` is associated with an increase of 0.17% of long term sick/disable rate in the population of EW.
 
-    -   The association of `pct_No_qualifications` is positive and strong: each increase in 1% of `pct_No_qualifications` is associated with an increase of 0.25% of long term sick/disable rate.
+  - The association of `pct_No_qualifications` is positive and strong: each increase in 1% of `pct_No_qualifications` is associated with an increase of 0.25% of long term sick/disable rate.
 
-    -   The association of `pct_Higher_manager_prof` is not statistically significant.
+  - The association of `pct_Higher_manager_prof` is not statistically significant.
 
--   Now comes to the dummy variables (all the items starts with Region) created by R for our qualitative variable *Region*: `RegionEast`, `RegionNorth Eest`, `RegionNorth West` and `RegionWales` are also statistically significant at the \<0.001 level. The changes in `RegionSouth East` and `RegionWest Midlands` are significantly associated with changes in `pct_Longterm_sick_or_disabled` at the 0.05 level. The 0.05 level suggests that it is a mild likelihood that the relationship between these independent variables and the dependent variable is not due to random change. They are just mildly statistically significant.
+- Now comes to the dummy variables (all the items starts with Region) created by R for our qualitative variable *Region*: `RegionEast`, `RegionNorth Eest`, `RegionNorth West` and `RegionWales` are also statistically significant at the \<0.001 level. The changes in `RegionSouth East` and `RegionWest Midlands` are significantly associated with changes in `pct_Longterm_sick_or_disabled` at the 0.05 level. The 0.05 level suggests that it is a mild likelihood that the relationship between these independent variables and the dependent variable is not due to random change. They are just mildly statistically significant.
 
--   The coefficient estimates of them need to be interpreted by comparing to the reference category London. The Estimate column tells us: North East region is associated with a 1.16% higher rate of long term sick/disable than London when the other predictors remain the same. Similarly, Wales is 1.38% higher rate of long term illness than London when the other predictors remain the same. You can draw the conclusion for the other regions in this way by using their coefficient estimate values.
+- The coefficient estimates of them need to be interpreted by comparing to the reference category London. The Estimate column tells us: North East region is associated with a 1.16% higher rate of long term sick/disable than London when the other predictors remain the same. Similarly, Wales is 1.38% higher rate of long term illness than London when the other predictors remain the same. You can draw the conclusion for the other regions in this way by using their coefficient estimate values.
 
-    **Reminder**: You **cannot** draw conclusion between North East and Wales, nor comparison between any regions beyond London. It is because the regression model is built for the comparison between regions to your reference category London. If we want to compare between North East and Wales, we need to set either of them as the reference category by using `df$Region <- fct_relevel(df$Region, "North East")` or `df$Region <- fct_relevel(df$Region, "Wales")`.
+  **Reminder**: You **cannot** draw conclusion between North East and Wales, nor comparison between any regions beyond London. It is because the regression model is built for the comparison between regions to your reference category London. If we want to compare between North East and Wales, we need to set either of them as the reference category by using `df$Region <- fct_relevel(df$Region, "North East")` or `df$Region <- fct_relevel(df$Region, "Wales")`.
 
--   `RegionEast Midland`, `RegionSouth West`, and `RegionlYorkshire and The Humber` were not found to be significantly associated with `pct_Longterm_sick_or_disabled`.
+- `RegionEast Midland`, `RegionSouth West`, and `RegionlYorkshire and The Humber` were not found to be significantly associated with `pct_Longterm_sick_or_disabled`.
 
 Last but not least, the **Measure of Model Fit**. The model output suggests the R-squared and Adjusted R-squared are of greater than 0.75 indicate a reasonably well fitting model. The model explains 75.9 % of the variance in the dependent variable. After adjusting for the number of independent variable, the model explains 75.0% of the variance. They two suggest a strong fit of the model.
 
@@ -473,7 +474,7 @@ Examining R-squared to measure the model fit. How robust is the new model? What 
 Now, complete the following table.
 
 | Region names | Higher or lower than North West | Whether the difference is statistically significant (Yes or No) |
-|:--:|:--:|:--:|
+|:----------------------:|:----------------------:|:----------------------:|
 | East Midlands |  |  |
 | East of England |  |  |
 | North East |  |  |
@@ -621,15 +622,15 @@ Check the answer at the end of this practical page.
 
 The extension activities are designed to get yourself prepared for the Assignment 1 in progress. For this week, try whether you can:
 
--   Present descriptive statistics for independent variable and the dependent variable: counts, percentages, a centrality measure, a spread measure, histograms or any relevant statistic
+- Present descriptive statistics for independent variable and the dependent variable: counts, percentages, a centrality measure, a spread measure, histograms or any relevant statistic
 
--   Report the observed association between the dependent and independent variables: correlation plus a graphic or tabular visualisation
+- Report the observed association between the dependent and independent variables: correlation plus a graphic or tabular visualisation
 
--   Briefly describe and critically discuss the results
+- Briefly describe and critically discuss the results
 
--   Think about other potential factors of long-term illness and income, and then test your ideas with linear regression models
+- Think about other potential factors of long-term illness and income, and then test your ideas with linear regression models
 
--   Summaries your model outputs and interpret the results.
+- Summaries your model outputs and interpret the results.
 
 ## **Answer of the written down model and Q6**
 
