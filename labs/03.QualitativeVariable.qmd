@@ -124,7 +124,7 @@ and also `summary()` to produce summaries of each variable
 summary(frs_data)
 ```
 
-You may notice that for the numeric variables such as *hh_income_gross* (household gross income) and *work_hours*(worked hours per week), the `summary()` offers useful descriptive statistics. While for the qualitative information, such as *age_group* (age group), *highest_qual (*Highest educational qualification), *marital_status (*Marital status) and *nssec (*Socio-economic status), the `summary()` function is not that useful by providing mean or median values.
+You may notice that for the numeric variables such as *hh_income_gross* (household gross income) and *work_hours*(worked hours per week), the `summary()` offers useful descriptive statistics. While for the qualitative information, such as *age_group* (age group), *highest_qual* (Highest educational qualification), *marital_status* (Marital status) and *nssec* (Socio-economic status), the `summary()` function is not that useful by providing mean or median values.
 
 Performing descriptive analysis for categorical variables or qualitative variables, we focus on summarising the frequency and distribution of categories within the variable. This analysis helps understand the composition and diversity of categories in the data, which is especially useful for identifying patterns, common categories, or potential data imbalances.
 
@@ -136,7 +136,7 @@ table(frs_data$marital_status)
 table(frs_data$nssec)
 ```
 
-By using ggplot2, it is easy to create some nice descriptive charts for the categorical variables, such like what you did for the continuous variables last week.
+By using ggplot2, it is easy to create some nice descriptive charts for the categorical variables, just like what you did for the continuous variables last week.
 
 ```{r, warning=FALSE}
 ggplot(frs_data, aes(x = highest_qual)) +
@@ -183,7 +183,7 @@ You can change the variables in ggplot() to make your own histogram chart for th
 **Q1. Which of the associations do you think is strongest? Which is the weakest?**
 :::
 
-As before, rather than relying upon an impressionistic view of the strength of the association between two variables, we can measure that association by calculating the relevant correlation coefficient.
+As before, rather than relying upon an impressionistic view of the strength of the association between two variables, we can measure that association by calculating the relevant correlation coefficients.
 
 To calculate the correlation between categorical data, we first use Chi-squared test to assess the independence between pairs of categorical variables, then we use Cramer’s V to measures the strength of association - the correlation coefficents in R.
 
@@ -193,9 +193,9 @@ To calculate the correlation between categorical data, we first use Chi-squared 
 chisq.test(frs_data$health,frs_data$happy) 
 ```
 
-If you see a warning message of Chi-squared approximation may be incorrect. This is because some expected frequencies in one or more cells of the cross-tabular (health \* happy) are too low. The df means degrees of freedom and it related to the size of the table and the number of categories in each variable. The most important message from the output is the estimated p-value, which shows as p-value \< 2.2e-16 (2.2 with 16 decimals move to the left, it is a very small number so written in scientific notation). P-value of the chi-squared test is far smaller than 0.05, so we can say the correlation is statistically significant.
+If you see a warning message of Chi-squared approximation may be incorrect. This is because some expected frequencies in one or more cells of the cross-tabulation (health \* happy) are too low. The df means degrees of freedom and it relates to the size of the table and the number of categories in each variable. The most important message from the output is the estimated p-value, which shows as p-value \< 2.2e-16 (2.2 with 16 decimals move to the left, it is a very small number so written in scientific notation). P-value of the chi-squared test is far smaller than 0.05, so we can say the correlation is statistically significant.
 
-**Cramér’s V** is a measure of association for categorical (nominal or ordinal) data. It ranges from 0 (no association) to 1 (strong association). The main downside of using Cramer’s V is that no information is provided on whether the correlation is positive or negative. This is not a problem if the variable pair includes a nominal variable but represents an information loss if the both variables being correlated are ordinal.
+**Cramér’s V** is a measure of association for categorical (nominal or ordinal) data. It ranges from 0 (no association) to 1 (strong association). The main downside of using Cramer’s V is that no information is provided on whether the correlation is positive or negative. This is not a problem if the variable pair includes a nominal variable but represents an information loss if both variables being correlated are ordinal.
 
 ```{r}
 # Install the 'vcd' package if not installed 
@@ -203,13 +203,13 @@ if(!require("vcd"))
 install.packages("vcd", repos = "https://cran.r-project.org", dependencies = T)
 library(vcd)  
 
-# creat the crosstable 
+# create the crosstable 
 crosstab <- table(frs_data$health, frs_data$happy)
 
 # Calculate Cramér's V 
 assocstats(crosstab)
 
-#you can also directly calculate the assoication between variables
+#you can also directly calculate the association between variables
 assocstats(table(frs_data$health, frs_data$age_group))
 ```
 
@@ -217,7 +217,7 @@ assocstats(table(frs_data$health, frs_data$age_group))
 **Research Question 1. Which of our selected person-level variables is most strongly correlated with an individual’s health status?**
 :::
 
-Use the codes of Chi-test and Cramer's V to answer this question by completing Table 1.
+Use the codes of Chi-square test and Cramer's V to answer this question by completing Table 1.
 
 **Table 1 Person-level correlations with health status**
 
