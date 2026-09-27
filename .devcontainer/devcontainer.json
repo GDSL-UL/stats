@@ -3,6 +3,8 @@
 
   "image": "rocker/rstudio:4.4.1",
 
+  "workspaceFolder": "/workspaces/stats",
+
   "forwardPorts": [
     8787
   ],
