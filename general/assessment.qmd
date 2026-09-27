@@ -1,6 +1,6 @@
 # Assessment {.unnumbered}
 
-**Deadline**: Thursday 12th November 2026 - 2pm. **Word count**: 2000 words - including tables, excluding references.
+**Deadline**: Thursday 12th November 2026 - 2pm. **Word count**: 2000 words - including tables, excluding references. **Format**: a single `.html` file rendered from your `.qmd` (see [How to submit](howSubmit.qmd)).
 
 The assignment **Data Exploration and Analysis** consists of writing a research report using one of the regression techniques learned during the module. The basic idea is to put in practice the methods learned during the quantitative block of the module. You are required to apply a linear or logistic regression model to the data provided for the module. The report needs to include the following sections (in brackets, % of the whole length):
 
@@ -26,7 +26,7 @@ The assignment **Data Exploration and Analysis** consists of writing a research 
     - A brief introduction to the dataset being analysed (who collected it? When? How many responses? etc.)
     - A description of the variables chosen to be analysed.
     - A description of any transformation made to the original data, i.e. turning a continuous variable of income into intervals, or reducing the number of age groups from 11 to 3.
-    - A description and justification of the statistical techniques used in the subsequent analysis (i.e. the Multivariate regression model: Multiple or Logistic Linear Regression).
+    - A description and justification of the statistical techniques used in the subsequent analysis (i.e. the multivariate regression model: Multiple Linear or Logistic Regression).
 4.  **Results and Discussion**
     - Descriptive statistics and summary of the variables employed, supported by tables or/and charts.
     - Correct interpretation of correlation coefficients, statistical significance, and model fit.
@@ -39,6 +39,8 @@ The assignment **Data Exploration and Analysis** consists of writing a research 
     - Highlight any implications derived from the study.
 
 Follow this structure and include **ALL** these points, do not make your life harder.
+
+See [example assignments](https://canvas.liverpool.ac.uk/courses/93312/pages/example-assignments?module_item_id=2727709) from previous years on Canvas (you need to be logged in with your UoL account).
 
 ## How to get there?
 

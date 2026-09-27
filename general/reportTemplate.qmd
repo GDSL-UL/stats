@@ -39,7 +39,7 @@ library(broom)
 ```
 
 ::: {style="color: red;"}
-**Once all the chunks execute correctly (no errors when running all the code, `Ctrl + Alt + R` ) you can render the `qmd` file. Follow the instructions [here](https://gdsl-ul.github.io/stats/general/howSubmit.html) to render the document to an HTML (or PDF) file. Remove this message and any irrelevant text from the final submission.**
+**Once all the chunks execute correctly (no errors when running all the code, `Ctrl + Alt + R` ) you can render the `qmd` file. Follow the instructions [here](https://gdsl-ul.github.io/stats/general/howSubmit.html) to render the document to an HTML file. Remove this message and any irrelevant text from the final submission.**
 :::
 
 ------------------------------------------------------------------------
