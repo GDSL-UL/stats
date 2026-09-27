@@ -1,5 +1,5 @@
 ---
-title: "Lab: Correlation, Single, and Multiple Linear Regression"
+title: "Lab: Correlation, Simple, and Multiple Linear Regression"
 author: "Gabriele Filomena"
 date: "`r Sys.Date()`"
 output: html_document
@@ -251,7 +251,7 @@ census <- read.csv("../data/Census2021/EW_DistrictPercentages.csv")
 
 A regression model estimates how changes in the **dependent** variable $Y$ are associated with changes in the **independent** variables $X_1, X_2, X_3$. It does this by finding the line (or, with several predictors, the flat surface) that comes closest to all the observed points at once — "closest" meaning it makes the gaps between the observed values of $Y$ and the values the model predicts as small as possible. This is why it is called *Ordinary Least Squares* (OLS) regression.
 
-You met **Single Linear Regression** in class, where one independent variable explains an outcome. Real-world phenomena usually have several causes at once, and multiple linear regression simply extends the same idea to several independent variables together.
+You met **Simple Linear Regression** in class, where one independent variable explains an outcome. Real-world phenomena usually have several causes at once, and multiple linear regression simply extends the same idea to several independent variables together.
 
 Here, regression allows us to examine the relationship between people's health rates and multiple independent variables.
 

@@ -34,7 +34,7 @@ The computer practical sessions, will give you the chance to use and apply quant
 | Week | Topic | Format | Staff |
 |---------------|-------------------------|-----------------|---------------|
 | 1 | Introduction & Review | Lecture and Computer Lab Practical | GF |
-| 2 | Single & Multiple Linear Regression | Lecture and Computer Lab Practical | GF |
+| 2 | Simple & Multiple Linear Regression | Lecture and Computer Lab Practical | GF |
 | 3 | Multiple Linear Regression with Categorical Variables | Lecture and Computer Lab Practical | ZY |
 | 4 | Logistic Regression | Lecture and Computer Lab Practical | ZY |
 | 5 | Data Visualisation | Lecture and Computer Lab Practical | GF |

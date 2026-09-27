@@ -38,6 +38,12 @@ library(broom)
 ## These need to be installed on your PC.
 ```
 
+Load your data. If R cannot find the file, see [Working Directory and Paths](wdPaths.qmd).
+
+```{r}
+# df <- read.csv("data/your_file.csv")   # uncomment and change to your file
+```
+
 ::: {style="color: red;"}
 **Once all the chunks execute correctly (no errors when running all the code, `Ctrl + Alt + R` ) you can render the `qmd` file. Follow the instructions [here](https://gdsl-ul.github.io/stats/general/howSubmit.html) to render the document to an HTML file. Remove this message and any irrelevant text from the final submission.**
 :::
@@ -46,8 +52,8 @@ library(broom)
 
 ## Introduction
 
+**Context.** Explain why the topic matters (theory, policy, practice), briefly drawing on existing literature.\
 **Aim.** State clearly what you want to investigate (e.g., association between X and Y).\
-**Relevance.** Explain why the topic matters (theory, policy, practice).\
 **Gap & Research Question (RQ).** Identify what is missing in the current knowledge and pose 1 RQ (avoid yes/no questions; ask *how*, *to what extent*, *which factors*).\
 **Structure.** Briefly preview how the rest of the report is organised.
 
@@ -62,27 +68,70 @@ library(broom)
 
 ------------------------------------------------------------------------
 
-## Methodology
+## Methods and Data
 
-**Data.** Briefly describe the dataset (who collected it, when, sample size, key variables).\
-**Transformations.** Describe any recoding/aggregation (e.g., bin income into bands; reduce age groups from 11 to 3). Provide justification.\
-**Techniques.** Outline and justify the statistical methods used (e.g., GLM/LM, logistic regression, mixed models, matching).
+### Data
 
-Important: do not include statistics here, or graphs, or tables.
+Describe the dataset: who collected it, when, whether records are individuals (e.g. FRS, SAR) or geographical units (e.g. Census districts), how many records you use, and any filtering or sampling you applied.
+
+### Variables
+
+Name your dependent variable and your independent variables, with their type (numerical or categorical) and units. For categorical variables, state the reference category. A short table works well here (Variable, Description, Type, Units or categories): it describes the variables, it does not report results.
+
+### Transformations
+
+Describe any recoding or aggregation (e.g., bin income into bands; reduce age groups from 11 to 3) and justify it.
+
+### Analysis
+
+State which model you use and why, based on your dependent variable: **multiple linear regression** for a numerical dependent variable, **logistic regression** for a binary one.
+
+*Important:* do not report results here. Descriptive statistics, model output and charts of your data go in Results and Discussion.
+
+------------------------------------------------------------------------
 
 ## Results and Discussion
 
+### Descriptive statistics
+
+Summarise all the variables in your model in **one table**: mean, standard deviation, median and range for numerical variables; counts and percentages for categorical variables (e.g. `vtable::st()` or `kbl()`, see Lab 5).
+
+Then add a small number of charts, each chosen for the variables it shows:
+
+- **Distribution of the dependent variable:** histogram (numerical) or bar chart (categorical or binary).
+- **Dependent vs a key independent variable:** scatterplot (both numerical), boxplot (categorical vs numerical), or stacked percentage bar chart (both categorical).
+- **Associations between independent variables:** correlation matrix or correlogram for numerical variables; Chi-squared test and Cramér's V for categorical variables. This also flags variables that are too closely related to include together.
+
+Comment on what each table and chart shows. Do not overload the report with graphs, and do not show the same result in both a table and a chart.
+
 ```{r}
-# summary variables, distribution, plots, etc
+#| label: fig-dependent
+#| fig-cap: "Distribution of the dependent variable. Source: ..."
+
+# summary table and charts; refer to this chart in your text as @fig-dependent
 ```
 
-**Present the variables** Start with descriptive statistics for your variables and distribution. If relevant, briefly discuss one-to-one associations (e.g. correlation plots). You can provide correlation plots and/or boxplots, but do not overload the report with graphs.
+### Regression model
+
+Present the model in **one table**:
+
+- **Multiple linear regression:** coefficients, standard errors (or 95% confidence intervals), p-values, adjusted R², number of observations.
+- **Logistic regression:** odds ratios with 95% confidence intervals, p-values, number of observations.
+
+For each independent variable, report the direction and size of the association in the units of the dependent variable (e.g. percentage points, or odds for logistic regression), whether it is statistically significant, and that it holds with the other variables held constant. Interpret categorical variables against their reference category. Then report the model fit and, in a sentence or two, what the diagnostic checks showed (see Lab 2). The regression model should be the core of this section!
 
 ```{r}
-# run the model, show tables summarising the Regression model.
+#| label: tbl-model
+#| tbl-cap: "Regression model of ... Source: ..."
+
+# run the model and show a table summarising it (e.g. tidy() + kbl()); refer to it as @tbl-model
 ```
 
-**Results + interpretation.** Present estimates and interpret them in plain language, tying back to the RQ. The regression model should be the core of this section!! **Link to literature.** Compare/contrast with prior findings. **Selective visuals.** Use clear charts/tables to highlight key results only (avoid clutter).
+### Discussion
+
+Answer your research question. Compare and contrast your findings with the literature: where do they agree, where do they differ, and why might that be? Remember that regression shows associations, not causes.
+
+**Figures and tables:** give each one a number and a descriptive title (the `fig-cap` / `tbl-cap` options above do this), label axes with units, state the data source, and refer to each one in the text.
 
 ------------------------------------------------------------------------
 
@@ -93,3 +142,7 @@ Important: do not include statistics here, or graphs, or tables.
 **Implications.** Indicate what the findings suggest for practice, policy, or future research.
 
 ------------------------------------------------------------------------
+
+## References
+
+List every source you cite, in one consistent referencing style (e.g. Harvard). References are not included in the word count.
