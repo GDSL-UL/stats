@@ -1181,7 +1181,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="at">size =</span> <span class="dv">500</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 21675.47</code></pre>
+<pre><code>[1] 20242.46</code></pre>
 </div>
 </div>
 <p>Read that from the inside out: <code>sample(...)</code> picks 500 incomes at random, and <code>mean(...)</code> averages them.</p>
@@ -1221,7 +1221,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1205.215</code></pre>
+<pre><code>[1] 1237.573</code></pre>
 </div>
 </div>
 <p>About £1,200. In other words, a sample of 500 people typically misses the true mean income by around £1,200.</p>

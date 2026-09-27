@@ -915,18 +915,18 @@ lm(formula = y ~ x, data = made_up)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--1543.1  -620.5   -44.2   543.1  2032.2 
+-1807.4  -586.3   -96.1   554.6  2360.2 
 
 Coefficients:
             Estimate Std. Error t value            Pr(&gt;|t|)    
-(Intercept) -1837.00     172.07   -10.7 &lt;0.0000000000000002 ***
-x             102.60       2.96    34.7 &lt;0.0000000000000002 ***
+(Intercept) -1742.08     173.12   -10.1 &lt;0.0000000000000002 ***
+x             101.77       2.98    34.2 &lt;0.0000000000000002 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 854 on 98 degrees of freedom
-Multiple R-squared:  0.925, Adjusted R-squared:  0.924 
-F-statistic: 1.2e+03 on 1 and 98 DF,  p-value: &lt;0.0000000000000002</code></pre>
+Residual standard error: 859 on 98 degrees of freedom
+Multiple R-squared:  0.923, Adjusted R-squared:  0.922 
+F-statistic: 1.17e+03 on 1 and 98 DF,  p-value: &lt;0.0000000000000002</code></pre>
 </div>
 </div>
 <p>Look at the output: an R-squared of around 0.9, and a p-value on <code>x</code> too small for R to print. (Your figure will differ a little from the one on this page, and will change again each time you run the chunk, because the data is invented fresh each time.) On the numbers alone this is a triumph. But we built the data ourselves, so we know for a fact that the straight line is the wrong shape. Plot it and you can see the problem immediately:</p>
