@@ -38,7 +38,7 @@ Before completing the practical, please take this [quiz](https://canvas.liverpoo
 
 Let's start by picking **one dataset derived from the English-Wales 2021 Census data**. You can choose one dataset that aggregates data either at a) county, b) district, or c) ward-level. Lower Tier Local Authority-, Region-, and Country-level data is also available in the data folder.
 
-see also: https://canvas.liverpool.ac.uk/courses/77895/pages/census-data-2021
+see also: https://canvas.liverpool.ac.uk/courses/93312/pages/census-data?module_item_id=2727713
 
 ```{r}
 # Load necessary libraries 
