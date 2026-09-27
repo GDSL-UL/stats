@@ -1,5 +1,5 @@
 {
-  "name": "GDSL Statistics RStudio",
+  "name": "ENVS225 RStudio",
 
   "image": "rocker/rstudio:4.4.1",
 
@@ -20,8 +20,7 @@
     "vscode": {
       "extensions": [
         "REditorSupport.r",
-        "quarto.quarto",
-        "ms-toolsai.jupyter"
+        "quarto.quarto"
       ]
     }
   }
