@@ -5,6 +5,8 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+**Open this lab in RStudio: in the Files pane, click `labs` and then `05.Visualisation.qmd`. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.** (First time? See the [Setup](../general/setup.qmd) guide.)
+
 The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture05.pdf).
 
 ## Part 1: Towards the Assignment (30 min, or till when you feel you are good to go)
@@ -21,11 +23,7 @@ The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/m
 
 ## Part 2 - Visualisation: `ggplot2` Functions and Arguments
 
-For this session you need the following libraries:
-
-`install.packages(c("ggplot2", "dplyr", "tidyr", "kableExtra", "ggridges", "RColorBrewer", "broom", "scales", "corrplot", "vtable"))`
-
-If necessary install them by moving the line into a code chunk.
+For this session you need the following libraries: `ggplot2`, `dplyr`, `tidyr`, `kableExtra`, `ggridges`, `RColorBrewer`, `broom`, `scales`, `corrplot`, `vtable`. They are all already installed in your codespace; the code below loads each one when it is needed.
 
 The **`ggplot2`** package in R is one of the most powerful tools for creating publication-quality visualisations. It uses a layered approach to building plots, starting with data, then adding mappings, geometries, and other components.
 

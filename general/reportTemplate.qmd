@@ -1,6 +1,6 @@
 # Assessment Template {.unnumbered}
 
-**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://canvas.liverpool.ac.uk/courses/84668/files/13173146?module_item_id=2459687), then upload it to the `labs` folder in RStudio (see [Setup](setup.qmd), section 5) and work on it there.
+**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://canvas.liverpool.ac.uk/courses/93312/files/14479738?module_item_id=2727711), then upload it to the `labs` folder in RStudio (see [Setup](setup.qmd), section 5) and work on it there.
 
 Start your `.qmd` file with this YAML header:
 
@@ -44,6 +44,10 @@ Load your data. If R cannot find the file, see [Setup](setup.qmd).
 # df <- read.csv("../data/your_file.csv")   # uncomment and change to your file
 ```
 
+::: callout-important
+**Where figures and tables go.** Put each figure or table in the section that uses it, straight after the paragraph where you first discuss it. **Do not collect them at the end of the report or in an appendix.** Each section below says which figures and tables it needs, if any. Most reports need about **3 tables and 2–3 charts in total**. More charts do not earn more marks: choose each one because it shows something your text discusses (see [Lab: Data Visualisation](../labs/05.Visualisation.qmd), Parts 3 and 4). Remember that tables count towards the word count.
+:::
+
 ::: {style="color: red;"}
 **Once all the chunks execute correctly (no errors when running all the code, `Ctrl + Alt + R` ) you can render the `qmd` file. Follow the instructions [here](https://gdsl-ul.github.io/stats/general/howSubmit.html) to render the document to an HTML file. Remove this message and any irrelevant text from the final submission.**
 :::
@@ -57,6 +61,8 @@ Load your data. If R cannot find the file, see [Setup](setup.qmd).
 **Gap & Research Question (RQ).** Identify what is missing in the current knowledge and pose 1 RQ (avoid yes/no questions; ask *how*, *to what extent*, *which factors*).\
 **Structure.** Briefly preview how the rest of the report is organised.
 
+**Figures and tables:** none. This section is text only.
+
 ------------------------------------------------------------------------
 
 ## Literature Review
@@ -66,9 +72,13 @@ Load your data. If R cannot find the file, see [Setup](setup.qmd).
 **Remaining gap.** Specify precisely the gap this report addresses (e.g., population, geography, time period, variable, method).\
 *Note:* The goal is a clean, sensible analysis grounded in existing ideas—not necessarily novel theory.
 
+**Figures and tables:** none. This section is text only.
+
 ------------------------------------------------------------------------
 
 ## Methods and Data
+
+**Figures and tables in this section:** **one table** (the variables table below). No charts.
 
 ### Data
 
@@ -76,11 +86,18 @@ Describe the dataset: who collected it, when, whether records are individuals (e
 
 ### Variables
 
-Name your dependent variable and your independent variables, with their type (numerical or categorical) and units. For categorical variables, state the reference category. A short table works well here (Variable, Description, Type, Units or categories): it describes the variables, it does not report results.
+Name your dependent variable and your independent variables, with their type (numerical or categorical) and units. For categorical variables, state the reference category. Present them in **one short table** (Variable, Description, Type, Units or categories): it describes the variables, it does not report results.
+
+```{r}
+#| label: tbl-variables
+#| tbl-cap: "Variables used in the analysis. Source: ..."
+
+# a small table describing your variables (e.g. build a data.frame and show it with kbl()); refer to it as @tbl-variables
+```
 
 ### Transformations
 
-Describe any recoding or aggregation (e.g., bin income into bands; reduce age groups from 11 to 3) and justify it.
+Describe any recoding or aggregation (e.g., bin income into bands; reduce age groups from 11 to 3) and justify it. No table or chart needed: if you recode a variable, show its new categories in the variables table above.
 
 ### Analysis
 
@@ -92,23 +109,32 @@ State which model you use and why, based on your dependent variable: **multiple 
 
 ## Results and Discussion
 
+**Figures and tables in this section:** **one summary table and 2–3 charts** (descriptive statistics), then **one model table** (regression model). This is where almost all of your figures and tables belong.
+
 ### Descriptive statistics
 
 Summarise all the variables in your model in **one table**: mean, standard deviation, median and range for numerical variables; counts and percentages for categorical variables (e.g. `vtable::st()` or `kbl()`, see Lab 5).
 
-Then add a small number of charts, each chosen for the variables it shows:
+```{r}
+#| label: tbl-descriptives
+#| tbl-cap: "Descriptive statistics of the variables in the model. Source: ..."
+
+# one summary table of all model variables; refer to it as @tbl-descriptives
+```
+
+Then add **2–3 charts**, each chosen for the variables it shows. Pick from:
 
 - **Distribution of the dependent variable:** histogram (numerical) or bar chart (categorical or binary).
 - **Dependent vs a key independent variable:** scatterplot (both numerical), boxplot (categorical vs numerical), or stacked percentage bar chart (both categorical).
 - **Associations between independent variables:** correlation matrix or correlogram for numerical variables; Chi-squared test and Cramér's V for categorical variables. This also flags variables that are too closely related to include together.
 
-Comment on what each table and chart shows. Do not overload the report with graphs, and do not show the same result in both a table and a chart.
+Comment on what each table and chart shows. Do not overload the report with graphs, and do not show the same result in both a table and a chart. Put each chart in its own code chunk, straight after the paragraph that discusses it.
 
 ```{r}
 #| label: fig-dependent
 #| fig-cap: "Distribution of the dependent variable. Source: ..."
 
-# summary table and charts; refer to this chart in your text as @fig-dependent
+# one chart per chunk; refer to this chart in your text as @fig-dependent
 ```
 
 ### Regression model
@@ -118,7 +144,7 @@ Present the model in **one table**:
 - **Multiple linear regression:** coefficients, standard errors (or 95% confidence intervals), p-values, adjusted R², number of observations.
 - **Logistic regression:** odds ratios with 95% confidence intervals, p-values, number of observations.
 
-For each independent variable, report the direction and size of the association in the units of the dependent variable (e.g. percentage points, or odds for logistic regression), whether it is statistically significant, and that it holds with the other variables held constant. Interpret categorical variables against their reference category. Then report the model fit and, in a sentence or two, what the diagnostic checks showed (see Lab 2). The regression model should be the core of this section!
+For each independent variable, report the direction and size of the association in the units of the dependent variable (e.g. percentage points, or odds for logistic regression), whether it is statistically significant, and that it holds with the other variables held constant. Interpret categorical variables against their reference category. Then report the model fit and, in a sentence or two, what the diagnostic checks showed (see Lab 2): describe them in words, you do not need to include the diagnostic plots. The regression model should be the core of this section!
 
 ```{r}
 #| label: tbl-model
@@ -129,9 +155,9 @@ For each independent variable, report the direction and size of the association 
 
 ### Discussion
 
-Answer your research question. Compare and contrast your findings with the literature: where do they agree, where do they differ, and why might that be? Remember that regression shows associations, not causes.
+Answer your research question. Compare and contrast your findings with the literature: where do they agree, where do they differ, and why might that be? Remember that regression shows associations, not causes. No new figures or tables here: refer back to the ones above (e.g. "as `@tbl-model` shows...").
 
-**Figures and tables:** give each one a number and a descriptive title (the `fig-cap` / `tbl-cap` options above do this), label axes with units, state the data source, and refer to each one in the text.
+**Captions and labels (all figures and tables):** give each one a number and a descriptive title (the `fig-cap` / `tbl-cap` options above do this), label axes with units, state the data source, and refer to each one in the text.
 
 ------------------------------------------------------------------------
 
@@ -140,6 +166,8 @@ Answer your research question. Compare and contrast your findings with the liter
 **Summary.** Recap the main findings vis‑à‑vis the RQ (do not introduce new results).\
 **Limitations.** Offer a brief, honest self‑critique (data, measurement, design, external validity).\
 **Implications.** Indicate what the findings suggest for practice, policy, or future research.
+
+**Figures and tables:** none. This section is text only.
 
 ------------------------------------------------------------------------
 

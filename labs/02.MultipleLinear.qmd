@@ -15,7 +15,7 @@ Before getting into it, have a look at this [resource](https://mlu-explain.githu
 
 The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture02.pdf).
 
-Before completing the practical, please take this [quiz](https://canvas.liverpool.ac.uk/courses/84668/quizzes/169285?module_item_id=2435564).
+Before completing the practical, please take this [quiz](https://canvas.liverpool.ac.uk/courses/93312/quizzes/176546).
 
 **Learning Objectives:**
 
@@ -25,10 +25,7 @@ Before completing the practical, please take this [quiz](https://canvas.liverpoo
 -   Understand how to estimate and interpret a multiple linear regression model.
 -   Check whether a fitted model is trustworthy, using diagnostic plots.
 
-*Note on file paths*: When calling the `read.csv` function, the path will vary depending on the location of the script it is being executed or your working directory (WD):
-
-1.  **If the script or your WD is in a sub-folder** (e.g., `labs`), use `"../data/Census2021/EW_DistrictPercentages.csv"`. The `..` tells R to go one level up to the main directory (`stats/`) and then access the `data/` folder. **Example**: `read.csv("../data/Census2021/EW_DistrictPercentages.csv")`.
-2.  **If the script is in the main directory** (e.g. inside `stats/`), you can access the data directly using `"data/Census2021/EW_DistrictPercentages.csv"`. Here, no `..` is necessary as the `data/` folder is directly accessible from the working directory. **Example**: `read.csv("data/Census2021/EW_DistrictPercentages.csv")`
+*Note on file paths*: the Census data is already in your `data/Census2021` folder. As in the previous lab, the code reads it with `"../data/..."`: `..` tells R to go up from `labs` to the main folder (`stats/`) and then into `data/`.
 
 ## Part I. Correlation
 
@@ -45,7 +42,7 @@ library(dplyr)
 
 options(scipen = 999, digits = 4)  # Avoid scientific notation and round to 4 decimals globally
 
-# load data - you may need to remove "../"
+# load data
 census <- read.csv("../data/Census2021/EW_DistrictPercentages.csv") # District level
 ```
 

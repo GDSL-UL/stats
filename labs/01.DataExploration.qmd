@@ -12,25 +12,11 @@ output: html_document
 
 The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture01.pdf).
 
-Before completing the practical, please take this [quiz](https://canvas.liverpool.ac.uk/courses/84668/quizzes/168721).
+Before completing the practical, please take this [quiz](https://canvas.liverpool.ac.uk/courses/93312/quizzes/176545).
 
-**IMPORTANT: Before starting, follow the [Setup](../general/setup.qmd) guide to open RStudio in your browser.**
-
-**Then open this lab in RStudio: in the Files pane, click `labs` and then `01.DataExploration.qmd`. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.**
+**Open this lab in RStudio: in the Files pane, click `labs` and then `01.DataExploration.qmd`. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.** (First time? See the [Setup](../general/setup.qmd) guide, then do [Lab: Introduction to R](00.introR.qmd), which shows how to run code chunks.)
 
 Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents.
-
-Remember, when you want to write code in a markdown document you have to enclose it like this:
-
-```{r class.source = "fold-show", echo = F}
-knitr::include_graphics("../img/codeChunk.png")
-```
-
-> or you can insert it manually:
-
-```{r class.source = "fold-show", echo = F}
-knitr::include_graphics("../img/codeChunk_visual.png")
-```
 
 ## Practice: Dataset and Dataframes
 
@@ -54,7 +40,7 @@ For example, in a grade book for recording students scores throughout the semest
 In R, we want a way of storing data where it feels just as if we had an Excel Spreadsheet where each row represents an observation and each column represents some information about that observation. We will call this object a `data.frame`, an R representation of a data set. The easiest way to understand data frames is to create one.
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Task**: Copy the code below in your markdown. Create a `data.frame` that represents an instructor's grade book, where each row is a student, and each column represents some sort of assessment.
+**Task**: Run the chunk below. It creates a `data.frame` that represents an instructor's grade book, where each row is a student, and each column represents some sort of assessment.
 :::
 
 ```{r, warning=FALSE, message=FALSE}
@@ -71,12 +57,6 @@ Grades          # show the output in the console. This works when knitting
 
 ```
 
-**To execute just one chunk of code press the green arrow top-right of the chunk:**
-
-```{r class.source = "fold-show", echo = F}
-knitr::include_graphics("../img/runChunk.png")
-```
-
 R allows two different ways to access elements of the `data.frame`. First is a matrix-like notation for accessing particular values.
 
 | Format  | Result                            |
@@ -88,7 +68,7 @@ R allows two different ways to access elements of the `data.frame`. First is a m
 Because the columns have meaning and we have given them column names, it is desirable to want to access an element by the name of the column as opposed to the column number.
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Task**: Copy and Run:
+**Task**: Run:
 :::
 
 ```{r, warning=FALSE, message=FALSE}
@@ -204,7 +184,7 @@ Grades %>%
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Task:** Write the code above in your markdown file and run it. Do not copy it this time.
+**Task:** Insert a new chunk below and calculate the mean and standard deviation of `Exam.2`. Type the code yourself instead of copying it: it is the best way to learn it.
 :::
 
 The `%>%` operator works by translating the command `a %>% f(b)` to the expression `f(a,b)`. This operator works on any function `f`. This is useful when we want to start with `x`, and first apply a function `f()`, then `g()`, and then `h()`; the usual R command would be `h(g(f(x)))` which is hard to read. Using the pipe command `%>%`, this sequence of operations becomes `x %>% f() %>% g() %>% h()`.
@@ -233,7 +213,7 @@ attacks %>%
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Task:** Write the code above in your markdown file and run it. Try out another categorical variable instead of `group` (e.g. `year`) and `nrKilled` instead of `nrWound`.
+**Task:** Run the chunk above. Then insert a new chunk and try out another categorical variable instead of `group` (e.g. `year`) and `nrKilled` instead of `nrWound`.
 :::
 
 Let's now move to another dataset to address a research question.
@@ -248,7 +228,7 @@ Consider questions such as:
 -   What is the most detailed geography available in the FRS?
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Task**: To answer these questions, [download](https://canvas.liverpool.ac.uk/courses/84668/files/12887864?wrap=1) from Canvas, save in the data folder, load and inspect the dataset.
+**Task**: To answer these questions, download `FRS16-17_labels.csv` from the [FRS page on Canvas](https://canvas.liverpool.ac.uk/courses/93312/pages/family-resource-survey-2016-17?module_item_id=2727712) and upload it to a new folder `data/FRS` in RStudio (see [Setup](../general/setup.qmd), section 5). Then load and inspect the dataset.
 :::
 
 ```{r, warning=FALSE, message=FALSE}

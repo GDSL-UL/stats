@@ -9,185 +9,144 @@ output: html_document
 
 -   https://dereksonderegger.github.io/570L/1-introduction.html by Derek L. Sonderegger;
 
-**Before starting, follow the [Setup](../general/setup.qmd) guide to open RStudio in your browser. Nothing needs to be installed.**
+**Open this lab in RStudio: in the Files pane, click `labs` and then `00.introR.qmd`. Work through it from top to bottom, running each code chunk.** (First time? Follow the [Setup](../general/setup.qmd) guide first.)
 
-## R?
+This short lab shows you how to find your way around RStudio and how to run R code. It takes about 20 minutes. Then move on to [Lab: Exploring a Dataset](01.DataExploration.qmd), the main practical for Week 1.
 
-R is an open-source program that is commonly used in Statistics. It runs on almost every platform and is completely free and is available at [www.r-project.org](www.r-project.org). Most of the cutting-edge statistical research is first available on R.
+## R and RStudio
 
-R is a script based language, so there is no point and click interface. While the initial learning curve will be steeper, understanding how to write scripts will be valuable because it leaves a clear description of what steps you performed in your data analysis. Typically you will want to write a script in a separate file and then run individual lines. This saves you from having to retype a bunch of commands and speeds up the debugging process.
+**R** is a free program for statistics and data analysis. You use it by writing code, not by clicking menus. This takes a little getting used to, but it has a big advantage: your code is an exact record of every step of your analysis, so you (or anyone else) can run it again and get the same result.
 
-## R(Studio) Basics
+**RStudio** is the program you use to write and run R code. In this module it runs in your browser, and R and all the packages you need are already installed.
 
-We will be running R through the program RStudio which is located at [rstudio.com](http://www.rstudio.org). When you first open up RStudio the console window gives you some information about the version of R you are running and then it gives the prompt `>`. This prompt is waiting for you to input a command. The prompt + tells you that the current command is spanning multiple lines. In a script file you might have typed something like this:
+### The four panels
 
-```         
-for( i in 1:5 ){
-    print(i)
-}
-```
-
-Finding help about a certain function is very easy. At the prompt, just type `help(function.name)` or `?function.name`. If you don't know the name of the function, your best bet is to go the the web page www.rseek.org which will search various R resources for your keyword(s). Another great resource is the coding question and answer site [stackoverflow](http://stackoverflow.com).
-
-### Starting a session in RStudio
-
-Upon startup, RStudio will look something like this.
+RStudio looks something like this:
 
 ```{r class.source = "fold-show", echo = F}
 knitr::include_graphics("../img/environ_R_1.png")
 ```
 
-*Note*: the **Pane Layout** and **Appearance** settings can be altered:
+-   **Top left, Source:** the file you are working on, for example this lab.
+-   **Bottom left, Console:** where R runs code and prints the results. You can also type code here directly and press Enter. Ignore the **Terminal** tab next to it: you don't need it.
+-   **Top right, Environment:** the data and variables you have created so far.
+-   **Bottom right, Files / Plots / Packages / Help:** your course folder, your charts, and help pages.
 
--   on Windows by clicking RStudio\>Tools\>Global Options\>Appearance or Pane Layout
--   on Mac OS by clicking RStudio\>Preferences\>Appearance or Pane Layout.
+You can change the colours and font size in `Tools -> Global Options -> Appearance`.
 
-You will also have a standard white background; but you can choose specific [themes](https://quarto.org/docs/output-formats/html-themes.html).
+## Quarto documents and code chunks
 
-**Source Panel (Top-Left)**
+The labs are **Quarto documents** (`.qmd` files). A Quarto document mixes normal text, like this paragraph, with **code chunks**: the grey boxes that contain R code. You will write your assessment report in the same kind of file.
 
-This is where you write, edit, and view scripts, R Markdown/Quarto documents, or R scripts. It allows:
+A code chunk starts with ```` ```{r} ```` and ends with ```` ``` ````:
 
--   Editing Scripts: Write and edit R scripts or documents (`.R`, `.Rmd`, `.qmd`).
--   Executing the Code: Run lines, blocks, or the entire script directly from the editor.
-
-**Console Panel (Bottom-Left)**
-
-**The Console is the main place to run R commands interactively.** It allows:
-
--   Executing the Code: Type and run R commands directly.
--   Viewing outputs, warnings, and errors for immediate feedback.
--   Browsing and reusing past commands (History Tab).
--   Toggling between the R Console, and the Terminal (yuo don't really need the latter).
-
-**Environment Panel (Top-Right)**
-
-This panel helps track variables, functions, and the history of commands used. It contains:
-
--   Environment Tab: Shows all current variables, datasets, and objects in your session, including their structure and values.
--   History Tab: Provides a record of past commands. You can re-run or move commands to the console or script.
-
-**Files / Plots / Packages / Help Panel (Bottom-Right)**
-
-This multifunctional panel is for file navigation, plotting, managing packages, viewing help, and managing jobs. It contains:
-
--   Files Tab: Navigate, open, and manage files and directories within your project.
--   Plots Tab: Displays plots generated in your session. You can export or navigate through multiple plots here.
--   Packages Tab: Lists installed packages and allows you to install, load, and update packages.
--   Help Tab: Displays help documentation for R functions, packages, and other resources. You can search for documentation by typing a function or package name.
-
-At the start of a session, it's good practice clearing your R environment (console):
-
-```{r, warning=FALSE, message=FALSE}
-rm(list = ls())
+```{r class.source = "fold-show", echo = F}
+knitr::include_graphics("../img/codeChunk.png")
 ```
 
-In R, we are going to workin with **relative paths**. With the command `getwd()`, you can see where your working directory is currently set.
+The buttons **Source** and **Visual** at the top left of the file switch between two views of the same file. In the **Visual** view you can also insert a chunk from `Insert -> Executable Cell -> R`:
 
-```{r results='hide'}
-getwd() 
+```{r class.source = "fold-show", echo = F}
+knitr::include_graphics("../img/codeChunk_visual.png")
 ```
 
-### Using the console
+To run a chunk, click the green arrow in its top-right corner. The result appears under the chunk.
 
-We can use the console to perform few operations. For example type in:
-
-```{r class.source = "fold-show"}
-1+1
+```{r class.source = "fold-show", echo = F}
+knitr::include_graphics("../img/runChunk.png")
 ```
 
-Slightly more complicated:
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**Task**: Run the chunk below.
+:::
 
-```{r, warning=FALSE, message=FALSE}
+```{r}
 print("hello world")
 ```
 
-If you are unsure about what a command does, use the "Help" panel in your Files pane or type `?function` in the console. For example, to see how the `dplyr::rename()` function works, type in `?dplyr::rename`. When you see the double colon syntax like in the previous command, it's a call to a package without loading its library.
+Some useful shortcuts (use Cmd instead of Ctrl on a Mac):
 
-### R as a simple calculator
+| Shortcut | What it does |
+|------------------|------------------------------------------------|
+| Ctrl+Enter | Run the line where your cursor is |
+| Ctrl+Shift+Enter | Run the whole chunk |
+| Ctrl+Alt+I | Insert a new chunk (or use `Code -> Insert Chunk`) |
+| Ctrl+S | Save the file |
 
-You can use R as a simple calculator. At the prompt, type 2+3 and hit enter. What you should see is the following
+To add your own notes, just type in the white space between chunks. To try out your own code, insert a new chunk.
 
-```{r, warning=FALSE, message=FALSE}
-# Some simple addition
+## R as a calculator
+
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**Task**: Run each chunk in this section and check that you understand the result.
+:::
+
+```{r}
+# Some simple addition. Text after a # is a comment: R ignores it.
 2+3
 ```
 
-In this fashion you can use R as a very capable calculator.
-
-```{r, warning=FALSE, message=FALSE}
+```{r}
 6*8
 4^3
 exp(1)   # exp() is the exponential function
 ```
 
-R has most constants and common mathematical functions you could ever want. For example, the absolute value of a number is given by `abs()`, and `round()` will round a value to the nearest integer.
+R has most constants and mathematical functions you could want. For example, `abs()` gives the absolute value of a number, and `round()` rounds it to the nearest whole number.
 
-```{r, warning=FALSE, message=FALSE}
+```{r}
 pi     # the constant 3.14159265...
-abs(1.77) 
+abs(-1.77)
+round(1.77)
 ```
 
-Whenever you call a function, there will be some arguments that are mandatory, and some that are optional and the arguments are separated by a comma. In the above statements the function `abs()` requires at least one argument, and that is the number you want the absolute value of.
+### Functions and arguments
 
-When functions require more than one argument, arguments can be specified via the order in which they are passed or by naming the arguments. So for the `log()` function, for example, which calculates the logarithm of a number, one can specify the arguments using the named values; the order woudn't matter:
+`abs()` and `round()` are **functions**. The values you give a function inside the brackets are its **arguments**, separated by commas. Some arguments are required and some are optional.
 
-```{r, warning=FALSE, message=FALSE}
-# Demonstrating order does not matter if you specify
-# which argument is which
-log(x=5, base=10)   
+The `log()` function calculates a logarithm. It takes the number `x` and the `base`. If you name the arguments, the order doesn't matter:
+
+```{r}
+log(x=5, base=10)
 log(base=10, x=5)
 ```
 
-When we don't specify which argument is which, R will decide that `x` is the first argument, and `base` is the second.
+If you don't name them, R assumes that the first value is `x` and the second is `base`:
 
-```{r, warning=FALSE, message=FALSE}
-# If not specified, R will assume the second value is the base...
+```{r}
 log(5, 10)
 log(10, 5)
 ```
 
-When we want to specify the arguments, we can do so using the `name=value` notation.
+### Getting help
 
-### Variables Assignment
+To see what a function does and which arguments it takes, type `?` followed by its name in the console, for example `?log`. The help page opens in the **Help** tab, bottom right.
 
-We need to be able to assign a value to a variable to be able to use it later. R does this by using an arrow `<-` or an equal sign `=`. While R supports either, for readability, I suggest people pick one assignment operator and stick with it.
+## Variables
 
-**Variable names cannot start with a number, include spaces, and they are case sensitive.**
+To use a result later, save it in a **variable**. R uses the arrow `<-` for this (`=` also works, but pick one and stick with it).
 
-```{r, warning=FALSE, message=FALSE}
+```{r}
 var <- 2*7.5       # create two variables
-another_var = 5   # notice they show up in 'Environment' tab in RStudio!
-var 
-var * another_var 
+another_var <- 5   # notice they appear in the Environment panel
+var
+var * another_var
 ```
 
-As your analysis gets more complicated, you'll want to save the results to a variable so that you can access the results later. if you don't assign the result to a variable, you have no way of accessing the result.
+**Variable names cannot start with a number or contain spaces, and they are case sensitive:** `var` and `Var` are two different variables.
 
-### Working with Scripts
+## Packages
 
-Normally you would use the Console for quick calculations or executions. **In this module, though, we are going to work with Quarto Markdown Scripts (`.qmd` files).**
-
-The R Markdown is an implementation of the Markdown syntax that makes it extremely easy to write webpages or scientific documents that include code. This syntax was extended to allow users to embed R code directly into more complex documents. Perhaps the easiest way to understand the syntax is to look at an at the [RMarkdown website](http://rmarkdown.rstudio.com). The R code in a R Markdown document (`.rmd` file extension) can be nicely separated from regular text using the three backticks (3 times \`, see below) and an instruction that it is R code that needs to be evaluated. A code chunk will look like:
+Packages add extra functions to R. For example, `dplyr` has functions for working with data and `ggplot2` makes charts. **All the packages you need in this module are already installed in your codespace.** You just need to load a package with `library()` before you use it, once per session:
 
 ```{r, warning=FALSE, message=FALSE}
-    for (i in 1:5) {print(i)}
+library(dplyr)   # load the dplyr package; we will use it in the next lab
 ```
 
-::: {style="red"}
-\*\* `.qmd - the type of scripts we use -` are just a more flexible development of `.rmd` files.\*\*
+::: callout-note
+If you use RStudio on a university PC or your own laptop instead of the codespace, a package may be missing. You will see an error like `there is no package called 'dplyr'`. Install the package once with `Tools -> Install Packages...`, then run `library()` again.
 :::
 
-Markdown files present several advantages compared to writing your code in the console or just using scripts. You'll save yourself a huge amount of work by embracing Markdown files from the beginning; you will keep track of your code and your steps, be able to document and present how you did your analysis (helpful when writing the methods section of a paper), and it will make it easier to re-run an analysis after a change in the data (such as additional data values, transformed data, or removal of outliers) or once you spot an error. Finally, it makes the script more readable.
+## Next
 
-### R Packages
-
-One of the greatest strengths about R is that so many people have developed add-on packages to do some additional function. To download and install the package from the Comprehensive R Archive Network (CRAN), you just need to ask RStudio it to install it via the menu `Tools` -\> `Install Packages...`. Once there, you just need to give the name of the package and RStudio will download and install the package on your computer.
-
-Once a package is downloaded and installed on your computer, it is available, but it is not loaded into your current R session by default. To improve overall performance only a few packages are loaded by default and the you must explicitly load packages whenever you want to use them. You only need to load them once per session/script.
-
-```{r, warning=FALSE, message=FALSE}
-library(dplyr)   # load the dplyr library, will be useful later
-```
-
-This is just a quick intro to R, now move to the actual practical of week 1.
+That's all you need to start. Save this file (Ctrl+S), then open `01.DataExploration.qmd` in the `labs` folder: [Lab: Exploring a Dataset](01.DataExploration.qmd).

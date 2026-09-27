@@ -67,11 +67,10 @@ Everything is already in the right place. **You don't need to download, move or 
 
 ## 4. Your first lab (Week 1)
 
-1.  In the **Files** panel, click `labs`, then click `01.DataExploration.qmd`. The lab opens in the top-left panel.
-2.  Find the first grey box with code in it. This is called a *code chunk*. Click the small green arrow in its top-right corner. The result appears under the chunk.
-3.  Go through the lab from top to bottom and run each chunk.
-4.  Write your notes and answers in the white space between the chunks. To add a new chunk of your own, click `Code -> Insert Chunk`.
-5.  Save often: press Ctrl+S (Cmd+S on a Mac).
+1.  In the **Files** panel, click `labs`, then click `00.introR.qmd`. The lab opens in the top-left panel. It shows you around RStudio and how to run code.
+2.  Then open `01.DataExploration.qmd` in the same way. This is the main practical for Week 1.
+3.  Go through each lab from top to bottom and run each code chunk. Write your notes and answers in the white space between the chunks.
+4.  Save often: press Ctrl+S (Cmd+S on a Mac).
 
 Each week, open that week's lab file in the same way.
 
