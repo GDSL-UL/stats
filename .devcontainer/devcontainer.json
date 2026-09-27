@@ -1,9 +1,9 @@
 {
   "name": "ENVS225 RStudio",
 
-  // Rocker's Codespaces image: R, RStudio Server, tidyverse, sf, terra, tmap, quarto
-  // (prebuilt binaries, so no compiling on first start).
-  "image": "ghcr.io/rocker-org/devcontainer/geospatial:4",
+  // Rocker's Codespaces image: R, RStudio Server and the tidyverse preinstalled.
+  // Extra packages used in the labs are added by setup.sh.
+  "image": "ghcr.io/rocker-org/devcontainer/tidyverse:4",
 
   "features": {
     // Configures RStudio in single-user mode (no login page) and sets its

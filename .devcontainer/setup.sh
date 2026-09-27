@@ -2,21 +2,33 @@
 
 set -e
 
+# RStudio runs as this (non-root) user in single-user mode, but the base image
+# leaves its state dir owned by root -> "Permission denied ... session-rpc-key".
+if [ -d /var/lib/rstudio-server ]; then
+  sudo chown -R "$(id -u):$(id -g)" /var/lib/rstudio-server
+fi
+
 echo "Checking R packages..."
 
-# Most packages ship with the image; this only fills gaps. Uses the image's
+# tidyverse ships with the image; this adds the rest. Uses the image's
 # default repo (Posit Package Manager binaries) so nothing compiles from source.
 Rscript - <<EOF
 
+# Every package loaded in labs/*.qmd
 packages <- c(
   "tidyverse",
-  "sf",
-  "terra",
-  "tmap",
-  "leaflet",
+  "broom",
   "knitr",
   "rmarkdown",
-  "quarto"
+  "scales",
+  "readxl",
+  "RColorBrewer",
+  "kableExtra",
+  "vtable",
+  "vcd",
+  "pscl",
+  "ggridges",
+  "corrplot"
 )
 
 missing <- setdiff(packages, rownames(installed.packages()))
