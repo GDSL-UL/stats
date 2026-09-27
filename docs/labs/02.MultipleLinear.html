@@ -324,7 +324,7 @@ window.Quarto = {
 <p>In this week’s practical, we will review how to calculate and visualise correlation coefficients between variables. This practical is split into four parts. The first focuses on measuring and visualising the relationship between <strong>continuous variables</strong>. The second goes through the implementation of a Linear Regression Model, again between continuous variables. The third checks whether the fitted model can be trusted, and the fourth is for practice.</p>
 <p>Before getting into it, have a look at this <a href="https://mlu-explain.github.io/linear-regression/">resource</a>, it really helps understand how regression models work.</p>
 <p>The lecture’s slides can be found <a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture02.pdf">here</a>.</p>
-<p>Before completing the practical, please take this <a href="https://canvas.liverpool.ac.uk/courses/84668/quizzes/169285?module_item_id=2435564">quiz</a>.</p>
+<p>Before completing the practical, please take this <a href="https://canvas.liverpool.ac.uk/courses/93312/quizzes/176546">quiz</a>.</p>
 <p><strong>Learning Objectives:</strong></p>
 <ul>
 <li>Visualise the association between two continuous variables using a scatterplot.</li>
@@ -333,11 +333,7 @@ window.Quarto = {
 <li>Understand how to estimate and interpret a multiple linear regression model.</li>
 <li>Check whether a fitted model is trustworthy, using diagnostic plots.</li>
 </ul>
-<p><em>Note on file paths</em>: When calling the <code>read.csv</code> function, the path will vary depending on the location of the script it is being executed or your working directory (WD):</p>
-<ol type="1">
-<li><strong>If the script or your WD is in a sub-folder</strong> (e.g., <code>labs</code>), use <code>"../data/Census2021/EW_DistrictPercentages.csv"</code>. The <code>..</code> tells R to go one level up to the main directory (<code>stats/</code>) and then access the <code>data/</code> folder. <strong>Example</strong>: <code>read.csv("../data/Census2021/EW_DistrictPercentages.csv")</code>.</li>
-<li><strong>If the script is in the main directory</strong> (e.g.&nbsp;inside <code>stats/</code>), you can access the data directly using <code>"data/Census2021/EW_DistrictPercentages.csv"</code>. Here, no <code>..</code> is necessary as the <code>data/</code> folder is directly accessible from the working directory. <strong>Example</strong>: <code>read.csv("data/Census2021/EW_DistrictPercentages.csv")</code></li>
-</ol>
+<p><em>Note on file paths</em>: the Census data is already in your <code>data/Census2021</code> folder. As in the previous lab, the code reads it with <code>"../data/..."</code>: <code>..</code> tells R to go up from <code>labs</code> to the main folder (<code>stats/</code>) and then into <code>data/</code>.</p>
 <section id="part-i.-correlation" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="part-i.-correlation"><span class="header-section-number">3.1</span> Part I. Correlation</h2>
 <section id="data-overview-descriptive-statistics" class="level3" data-number="3.1.1">
@@ -367,7 +363,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>, <span class="at">digits =</span> <span class="dv">4</span>)  <span class="co"># Avoid scientific notation and round to 4 decimals globally</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load data - you may need to remove "../"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>census <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/Census2021/EW_DistrictPercentages.csv"</span>) <span class="co"># District level</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We’re using a (district/ward/etc.) level census dataset that includes:</p>
@@ -919,18 +915,18 @@ lm(formula = y ~ x, data = made_up)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--1574.5  -749.5     6.3   682.1  1966.7 
+-1543.1  -620.5   -44.2   543.1  2032.2 
 
 Coefficients:
-            Estimate Std. Error t value             Pr(&gt;|t|)    
-(Intercept) -1762.57     181.30   -9.72  0.00000000000000049 ***
-x             102.66       3.12   32.94 &lt; 0.0000000000000002 ***
+            Estimate Std. Error t value            Pr(&gt;|t|)    
+(Intercept) -1837.00     172.07   -10.7 &lt;0.0000000000000002 ***
+x             102.60       2.96    34.7 &lt;0.0000000000000002 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 900 on 98 degrees of freedom
-Multiple R-squared:  0.917, Adjusted R-squared:  0.916 
-F-statistic: 1.08e+03 on 1 and 98 DF,  p-value: &lt;0.0000000000000002</code></pre>
+Residual standard error: 854 on 98 degrees of freedom
+Multiple R-squared:  0.925, Adjusted R-squared:  0.924 
+F-statistic: 1.2e+03 on 1 and 98 DF,  p-value: &lt;0.0000000000000002</code></pre>
 </div>
 </div>
 <p>Look at the output: an R-squared of around 0.9, and a p-value on <code>x</code> too small for R to print. (Your figure will differ a little from the one on this page, and will change again each time you run the chunk, because the data is invented fresh each time.) On the numbers alone this is a triumph. But we built the data ourselves, so we know for a fact that the straight line is the wrong shape. Plot it and you can see the problem immediately:</p>

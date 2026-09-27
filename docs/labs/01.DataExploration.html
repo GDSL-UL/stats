@@ -295,32 +295,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>https://raw.githubusercontent.com/dereksonderegger/570L/master/07_DataImport.Rmd</li>
 </ul>
 <p>The lecture’s slides can be found <a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture01.pdf">here</a>.</p>
-<p>Before completing the practical, please take this <a href="https://canvas.liverpool.ac.uk/courses/84668/quizzes/168721">quiz</a>.</p>
-<p><strong>IMPORTANT: Before starting, follow the <a href="../general/setup.html">Setup</a> guide to open RStudio in your browser.</strong></p>
-<p><strong>Then open this lab in RStudio: in the Files pane, click <code>labs</code> and then <code>01.DataExploration.qmd</code>. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.</strong></p>
+<p>Before completing the practical, please take this <a href="https://canvas.liverpool.ac.uk/courses/93312/quizzes/176545">quiz</a>.</p>
+<p><strong>Open this lab in RStudio: in the Files pane, click <code>labs</code> and then <code>01.DataExploration.qmd</code>. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.</strong> (First time? See the <a href="../general/setup.html">Setup</a> guide, then do <a href="../labs/00.introR.html">Lab: Introduction to R</a>, which shows how to run code chunks.)</p>
 <p>Follow the practical below. You can describe what you are doing in normal text. See <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a> for how to format normal text in Markdown documents.</p>
-<p>Remember, when you want to write code in a markdown document you have to enclose it like this:</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="../img/codeChunk.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>or you can insert it manually:</p>
-</blockquote>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="../img/codeChunk_visual.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
 <section id="practice-dataset-and-dataframes" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="practice-dataset-and-dataframes"><span class="header-section-number">2.1</span> Practice: Dataset and Dataframes</h2>
 <p>Within this module we will be working with data stored in so-called datasets. A dataset is a structured collection of data points that represent various measurements or observations, often organized in a tabular format with rows and columns. A dataset might contain information about different locations, such as neighborhoods or cities, with each row representing a place and each column detailing characteristics like population density, average income, or number of green parks. For example, a dataset could be compiled to study patterns in urban mobility, where the data includes the number of daily commuters, the distance they travel, and the mode of transport they use. Datasets provide the essential building blocks for statistical analysis; they enable exploring relationships, identifying patterns, and drawing conclusions about certain phenomena.</p>
@@ -340,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="datasets-in-r"><span class="header-section-number">2.1.1</span> Datasets in R</h3>
 <p>In R, we want a way of storing data where it feels just as if we had an Excel Spreadsheet where each row represents an observation and each column represents some information about that observation. We will call this object a <code>data.frame</code>, an R representation of a data set. The easiest way to understand data frames is to create one.</p>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Task</strong>: Copy the code below in your markdown. Create a <code>data.frame</code> that represents an instructor’s grade book, where each row is a student, and each column represents some sort of assessment.</p>
+<p><strong>Task</strong>: Run the chunk below. It creates a <code>data.frame</code> that represents an instructor’s grade book, where each row is a student, and each column represents some sort of assessment.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
@@ -359,16 +336,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 2    Jeff     75     71
 3    Mary     92     95
 4 Valerie     85     81</code></pre>
-</div>
-</div>
-<p><strong>To execute just one chunk of code press the green arrow top-right of the chunk:</strong></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="../img/runChunk.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
 </div>
 </div>
 <p>R allows two different ways to access elements of the <code>data.frame</code>. First is a matrix-like notation for accessing particular values.</p>
@@ -396,7 +363,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>Because the columns have meaning and we have given them column names, it is desirable to want to access an element by the name of the column as opposed to the column number.</p>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Task</strong>: Copy and Run:</p>
+<p><strong>Task</strong>: Run:</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Grades[, <span class="dv">2</span>]       <span class="co"># print out all of column 2 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -549,7 +516,7 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 </div>
 </div>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Task:</strong> Write the code above in your markdown file and run it. Do not copy it this time.</p>
+<p><strong>Task:</strong> Insert a new chunk below and calculate the mean and standard deviation of <code>Exam.2</code>. Type the code yourself instead of copying it: it is the best way to learn it.</p>
 </div>
 <p>The <code>%&gt;%</code> operator works by translating the command <code>a %&gt;% f(b)</code> to the expression <code>f(a,b)</code>. This operator works on any function <code>f</code>. This is useful when we want to start with <code>x</code>, and first apply a function <code>f()</code>, then <code>g()</code>, and then <code>h()</code>; the usual R command would be <code>h(g(f(x)))</code> which is hard to read. Using the pipe command <code>%&gt;%</code>, this sequence of operations becomes <code>x %&gt;% f() %&gt;% g() %&gt;% h()</code>.</p>
 <p>Below, the code takes the Grades dataframe and calculates a column for the average exam score, and then sorts the data according to that average score</p>
@@ -627,7 +594,7 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 </div>
 </div>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Task:</strong> Write the code above in your markdown file and run it. Try out another categorical variable instead of <code>group</code> (e.g.&nbsp;<code>year</code>) and <code>nrKilled</code> instead of <code>nrWound</code>.</p>
+<p><strong>Task:</strong> Run the chunk above. Then insert a new chunk and try out another categorical variable instead of <code>group</code> (e.g.&nbsp;<code>year</code>) and <code>nrKilled</code> instead of <code>nrWound</code>.</p>
 </div>
 <p>Let’s now move to another dataset to address a research question.</p>
 <p>For illustration purposes, we will use the <strong>Family Resources Survey (FRS)</strong>. The FRS is an annual survey conducted by the UK government that collects detailed information about the income, living conditions, and resources of private households across the United Kingdom. Managed by the Department for Work and Pensions (DWP), the FRS provides data that is essential for understanding the economic and social conditions of households and informing public policy.</p>
@@ -639,7 +606,7 @@ Carr, Jasmine, 81, 96, 97</code></pre>
 <li>What is the most detailed geography available in the FRS?</li>
 </ul>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Task</strong>: To answer these questions, <a href="https://canvas.liverpool.ac.uk/courses/84668/files/12887864?wrap=1">download</a> from Canvas, save in the data folder, load and inspect the dataset.</p>
+<p><strong>Task</strong>: To answer these questions, download <code>FRS16-17_labels.csv</code> from the <a href="https://canvas.liverpool.ac.uk/courses/93312/pages/family-resource-survey-2016-17?module_item_id=2727712">FRS page on Canvas</a> and upload it to a new folder <code>data/FRS</code> in RStudio (see <a href="../general/setup.html">Setup</a>, section 5). Then load and inspect the dataset.</p>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the FRS dataset should be already loaded, otherwise</span></span>
@@ -1023,7 +990,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01.DataExploration_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="01.DataExploration_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1047,7 +1014,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01.DataExploration_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="01.DataExploration_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1102,7 +1069,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01.DataExploration_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="01.DataExploration_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1214,7 +1181,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="at">size =</span> <span class="dv">500</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 23359.23</code></pre>
+<pre><code>[1] 21675.47</code></pre>
 </div>
 </div>
 <p>Read that from the inside out: <code>sample(...)</code> picks 500 incomes at random, and <code>mean(...)</code> averages them.</p>
@@ -1241,7 +1208,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="01.DataExploration_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="01.DataExploration_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -1254,7 +1221,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1176.153</code></pre>
+<pre><code>[1] 1205.215</code></pre>
 </div>
 </div>
 <p>About £1,200. In other words, a sample of 500 people typically misses the true mean income by around £1,200.</p>

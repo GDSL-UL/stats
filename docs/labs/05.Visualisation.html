@@ -300,6 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<p><strong>Open this lab in RStudio: in the Files pane, click <code>labs</code> and then <code>05.Visualisation.qmd</code>. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.</strong> (First time? See the <a href="../general/setup.html">Setup</a> guide.)</p>
 <p>The lecture’s slides can be found <a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture05.pdf">here</a>.</p>
 <section id="part-1-towards-the-assignment-30-min-or-till-when-you-feel-you-are-good-to-go" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="part-1-towards-the-assignment-30-min-or-till-when-you-feel-you-are-good-to-go"><span class="header-section-number">6.1</span> Part 1: Towards the Assignment (30 min, or till when you feel you are good to go)</h2>
@@ -320,9 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="part-2---visualisation-ggplot2-functions-and-arguments" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="part-2---visualisation-ggplot2-functions-and-arguments"><span class="header-section-number">6.2</span> Part 2 - Visualisation: <code>ggplot2</code> Functions and Arguments</h2>
-<p>For this session you need the following libraries:</p>
-<p><code>install.packages(c("ggplot2", "dplyr", "tidyr", "kableExtra", "ggridges", "RColorBrewer", "broom", "scales", "corrplot", "vtable"))</code></p>
-<p>If necessary install them by moving the line into a code chunk.</p>
+<p>For this session you need the following libraries: <code>ggplot2</code>, <code>dplyr</code>, <code>tidyr</code>, <code>kableExtra</code>, <code>ggridges</code>, <code>RColorBrewer</code>, <code>broom</code>, <code>scales</code>, <code>corrplot</code>, <code>vtable</code>. They are all already installed in your codespace; the code below loads each one when it is needed.</p>
 <p>The <strong><code>ggplot2</code></strong> package in R is one of the most powerful tools for creating publication-quality visualisations. It uses a layered approach to building plots, starting with data, then adding mappings, geometries, and other components.</p>
 <p>A <code>ggplot2</code> plot is built step by step:</p>
 <pre><code>ggplot(data, aes(x = &lt;X-axis variable&gt;, y = &lt;Y-axis variable&gt;, &lt;other aesthetics&gt;)) +

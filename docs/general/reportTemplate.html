@@ -276,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Suggested Report Structure</strong> — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from <a href="https://canvas.liverpool.ac.uk/courses/84668/files/13173146?module_item_id=2459687">here</a>, then upload it to the <code>labs</code> folder in RStudio (see <a href="../general/setup.html">Setup</a>, section 5) and work on it there.</p>
+<p><strong>Suggested Report Structure</strong> — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from <a href="https://canvas.liverpool.ac.uk/courses/93312/files/14479738?module_item_id=2727711">here</a>, then upload it to the <code>labs</code> folder in RStudio (see <a href="../general/setup.html">Setup</a>, section 5) and work on it there.</p>
 <p>Start your <code>.qmd</code> file with this YAML header:</p>
 <pre><code>---
 title: "ENVS225 Assignment"
@@ -335,6 +335,19 @@ The following object is masked from 'package:dplyr':
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read.csv("../data/your_file.csv")   # uncomment and change to your file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Where figures and tables go.</strong> Put each figure or table in the section that uses it, straight after the paragraph where you first discuss it. <strong>Do not collect them at the end of the report or in an appendix.</strong> Each section below says which figures and tables it needs, if any. Most reports need about <strong>3 tables and 2–3 charts in total</strong>. More charts do not earn more marks: choose each one because it shows something your text discusses (see <a href="../labs/05.Visualisation.html">Lab: Data Visualisation</a>, Parts 3 and 4). Remember that tables count towards the word count.</p>
+</div>
+</div>
 <div style="color: red;">
 <p><strong>Once all the chunks execute correctly (no errors when running all the code, <code>Ctrl + Alt + R</code> ) you can render the <code>qmd</code> file. Follow the instructions <a href="https://gdsl-ul.github.io/stats/general/howSubmit.html">here</a> to render the document to an HTML file. Remove this message and any irrelevant text from the final submission.</strong></p>
 </div>
@@ -346,6 +359,7 @@ The following object is masked from 'package:dplyr':
 <strong>Aim.</strong> State clearly what you want to investigate (e.g., association between X and Y).<br>
 <strong>Gap &amp; Research Question (RQ).</strong> Identify what is missing in the current knowledge and pose 1 RQ (avoid yes/no questions; ask <em>how</em>, <em>to what extent</em>, <em>which factors</em>).<br>
 <strong>Structure.</strong> Briefly preview how the rest of the report is organised.</p>
+<p><strong>Figures and tables:</strong> none. This section is text only.</p>
 <hr>
 </section>
 <section id="literature-review" class="level2">
@@ -354,21 +368,33 @@ The following object is masked from 'package:dplyr':
 <strong>Predictor rationale.</strong> Justify the inclusion of variables (theory-driven, prior empirical evidence).<br>
 <strong>Remaining gap.</strong> Specify precisely the gap this report addresses (e.g., population, geography, time period, variable, method).<br>
 <em>Note:</em> The goal is a clean, sensible analysis grounded in existing ideas—not necessarily novel theory.</p>
+<p><strong>Figures and tables:</strong> none. This section is text only.</p>
 <hr>
 </section>
 <section id="methods-and-data" class="level2">
 <h2 class="anchored" data-anchor-id="methods-and-data">Methods and Data</h2>
+<p><strong>Figures and tables in this section:</strong> <strong>one table</strong> (the variables table below). No charts.</p>
 <section id="data" class="level3">
 <h3 class="anchored" data-anchor-id="data">Data</h3>
 <p>Describe the dataset: who collected it, when, whether records are individuals (e.g.&nbsp;FRS, SAR) or geographical units (e.g.&nbsp;Census districts), how many records you use, and any filtering or sampling you applied.</p>
 </section>
 <section id="variables" class="level3">
 <h3 class="anchored" data-anchor-id="variables">Variables</h3>
-<p>Name your dependent variable and your independent variables, with their type (numerical or categorical) and units. For categorical variables, state the reference category. A short table works well here (Variable, Description, Type, Units or categories): it describes the variables, it does not report results.</p>
+<p>Name your dependent variable and your independent variables, with their type (numerical or categorical) and units. For categorical variables, state the reference category. Present them in <strong>one short table</strong> (Variable, Description, Type, Units or categories): it describes the variables, it does not report results.</p>
+<div id="tbl-variables" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Variables used in the analysis. Source: …
+</figcaption>
+<div aria-describedby="tbl-variables-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code anchored" id="tbl-variables"><pre class="sourceCode r cell code-with-copy"><code class="sourceCode r"><span id="tbl-variables-1"><a href="#tbl-variables-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a small table describing your variables (e.g. build a data.frame and show it with kbl()); refer to it as @tbl-variables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
 </section>
 <section id="transformations" class="level3">
 <h3 class="anchored" data-anchor-id="transformations">Transformations</h3>
-<p>Describe any recoding or aggregation (e.g., bin income into bands; reduce age groups from 11 to 3) and justify it.</p>
+<p>Describe any recoding or aggregation (e.g., bin income into bands; reduce age groups from 11 to 3) and justify it. No table or chart needed: if you recode a variable, show its new categories in the variables table above.</p>
 </section>
 <section id="analysis" class="level3">
 <h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
@@ -379,18 +405,29 @@ The following object is masked from 'package:dplyr':
 </section>
 <section id="results-and-discussion" class="level2">
 <h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<p><strong>Figures and tables in this section:</strong> <strong>one summary table and 2–3 charts</strong> (descriptive statistics), then <strong>one model table</strong> (regression model). This is where almost all of your figures and tables belong.</p>
 <section id="descriptive-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="descriptive-statistics">Descriptive statistics</h3>
-<p>Summarise all the variables in your model in <strong>one table</strong>: mean, standard deviation, median and range for numerical variables; counts and percentages for categorical variables (e.g.&nbsp;<code>vtable::st()</code> or <code>kbl()</code>, see Lab 5).</p>
-<p>Then add a small number of charts, each chosen for the variables it shows:</p>
+<p>Summarise all the variables in your model in <strong>one table</strong>: mean, standard deviation, median and range for numerical variables; counts and percentages for categorical variables (e.g.&nbsp;<code>vtable::st()</code> or <code>kbl()</code>, see the Week 5 lab, <a href="../labs/05.Visualisation.html">Data Visualisation</a>).</p>
+<div id="tbl-descriptives" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Descriptive statistics of the variables in the model. Source: …
+</figcaption>
+<div aria-describedby="tbl-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="sourceCode cell-code anchored" id="tbl-descriptives"><pre class="sourceCode r cell code-with-copy"><code class="sourceCode r"><span id="tbl-descriptives-1"><a href="#tbl-descriptives-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one summary table of all model variables; refer to it as @tbl-descriptives</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</figure>
+</div>
+<p>Then add <strong>2–3 charts</strong>, each chosen for the variables it shows. Pick from:</p>
 <ul>
 <li><strong>Distribution of the dependent variable:</strong> histogram (numerical) or bar chart (categorical or binary).</li>
 <li><strong>Dependent vs a key independent variable:</strong> scatterplot (both numerical), boxplot (categorical vs numerical), or stacked percentage bar chart (both categorical).</li>
 <li><strong>Associations between independent variables:</strong> correlation matrix or correlogram for numerical variables; Chi-squared test and Cramér’s V for categorical variables. This also flags variables that are too closely related to include together.</li>
 </ul>
-<p>Comment on what each table and chart shows. Do not overload the report with graphs, and do not show the same result in both a table and a chart.</p>
+<p>Comment on what each table and chart shows. Do not overload the report with graphs, and do not show the same result in both a table and a chart. Put each chart in its own code chunk, straight after the paragraph that discusses it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary table and charts; refer to this chart in your text as @fig-dependent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># one chart per chunk; refer to this chart in your text as @fig-dependent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="regression-model" class="level3">
@@ -400,11 +437,11 @@ The following object is masked from 'package:dplyr':
 <li><strong>Multiple linear regression:</strong> coefficients, standard errors (or 95% confidence intervals), p-values, adjusted R², number of observations.</li>
 <li><strong>Logistic regression:</strong> odds ratios with 95% confidence intervals, p-values, number of observations.</li>
 </ul>
-<p>For each independent variable, report the direction and size of the association in the units of the dependent variable (e.g.&nbsp;percentage points, or odds for logistic regression), whether it is statistically significant, and that it holds with the other variables held constant. Interpret categorical variables against their reference category. Then report the model fit and, in a sentence or two, what the diagnostic checks showed (see Lab 2). The regression model should be the core of this section!</p>
+<p>For each independent variable, report the direction and size of the association in the units of the dependent variable (e.g.&nbsp;percentage points, or odds for logistic regression), whether it is statistically significant, and that it holds with the other variables held constant. Interpret categorical variables against their reference category. Then report the model fit and, in a sentence or two, what the diagnostic checks showed (see the Week 2 lab, <a href="../labs/02.MultipleLinear.html">Multiple Linear Regression</a>): describe them in words, you do not need to include the diagnostic plots. The regression model should be the core of this section!</p>
 <div id="tbl-model" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Regression model of … Source: …
+Table&nbsp;3: Regression model of … Source: …
 </figcaption>
 <div aria-describedby="tbl-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="sourceCode cell-code anchored" id="tbl-model"><pre class="sourceCode r cell code-with-copy"><code class="sourceCode r"><span id="tbl-model-1"><a href="#tbl-model-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run the model and show a table summarising it (e.g. tidy() + kbl()); refer to it as @tbl-model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -414,8 +451,8 @@ Table&nbsp;1: Regression model of … Source: …
 </section>
 <section id="discussion" class="level3">
 <h3 class="anchored" data-anchor-id="discussion">Discussion</h3>
-<p>Answer your research question. Compare and contrast your findings with the literature: where do they agree, where do they differ, and why might that be? Remember that regression shows associations, not causes.</p>
-<p><strong>Figures and tables:</strong> give each one a number and a descriptive title (the <code>fig-cap</code> / <code>tbl-cap</code> options above do this), label axes with units, state the data source, and refer to each one in the text.</p>
+<p>Answer your research question. Compare and contrast your findings with the literature: where do they agree, where do they differ, and why might that be? Remember that regression shows associations, not causes. No new figures or tables here: refer back to the ones above (e.g.&nbsp;“as <code>@tbl-model</code> shows…”).</p>
+<p><strong>Captions and labels (all figures and tables):</strong> give each one a number and a descriptive title (the <code>fig-cap</code> / <code>tbl-cap</code> options above do this), label axes with units, state the data source, and refer to each one in the text.</p>
 <hr>
 </section>
 </section>
@@ -424,6 +461,7 @@ Table&nbsp;1: Regression model of … Source: …
 <p><strong>Summary.</strong> Recap the main findings vis‑à‑vis the RQ (do not introduce new results).<br>
 <strong>Limitations.</strong> Offer a brief, honest self‑critique (data, measurement, design, external validity).<br>
 <strong>Implications.</strong> Indicate what the findings suggest for practice, policy, or future research.</p>
+<p><strong>Figures and tables:</strong> none. This section is text only.</p>
 <hr>
 </section>
 <section id="references" class="level2">
