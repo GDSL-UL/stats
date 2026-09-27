@@ -1,10 +1,7 @@
 {
   "name": "GDSL Statistics RStudio",
-  "image": "ghcr.io/rocker-org/devcontainer/r-ver:4",
 
-  "features": {
-    "ghcr.io/rocker-org/devcontainer-features/rstudio-server:1": {}
-  },
+  "image": "rocker/rstudio:4.4.1",
 
   "forwardPorts": [
     8787
