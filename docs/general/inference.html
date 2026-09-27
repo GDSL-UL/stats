@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assessment Template – Exploring the Social World - Quantitative Block: Statistics</title>
+<title>Samples, Uncertainty and P-values – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../general/inference.html" rel="next">
-<link href="../general/howSubmit.html" rel="prev">
+<link href="../labs/00.introR.html" rel="next">
+<link href="../general/reportTemplate.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../general/reportTemplate.html">Assessment Template</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../general/inference.html">Samples, Uncertainty and P-values</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -177,13 +177,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../general/reportTemplate.html" class="sidebar-item-text sidebar-link active">
+  <a href="../general/reportTemplate.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assessment Template</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../general/inference.html" class="sidebar-item-text sidebar-link">
+  <a href="../general/inference.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Samples, Uncertainty and P-values</span></a>
   </div>
 </li>
@@ -233,33 +233,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#literature-review" id="toc-literature-review" class="nav-link" data-scroll-target="#literature-review">Literature Review</a></li>
-  <li><a href="#methods-and-data" id="toc-methods-and-data" class="nav-link" data-scroll-target="#methods-and-data">Methods and Data</a>
-  <ul class="collapse">
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
-  <li><a href="#transformations" id="toc-transformations" class="nav-link" data-scroll-target="#transformations">Transformations</a></li>
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
-  </ul></li>
-  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a>
-  <ul class="collapse">
-  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics">Descriptive statistics</a></li>
-  <li><a href="#regression-model" id="toc-regression-model" class="nav-link" data-scroll-target="#regression-model">Regression model</a></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
-  </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  <li><a href="#setting-up" id="toc-setting-up" class="nav-link active" data-scroll-target="#setting-up">Setting Up</a></li>
+  <li><a href="#why-sample-size-matters" id="toc-why-sample-size-matters" class="nav-link" data-scroll-target="#why-sample-size-matters">Why Sample Size Matters</a></li>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a></li>
+  <li><a href="#seeing-what-95-means" id="toc-seeing-what-95-means" class="nav-link" data-scroll-target="#seeing-what-95-means">Seeing What “95%” Means</a></li>
+  <li><a href="#significance-and-sample-size" id="toc-significance-and-sample-size" class="nav-link" data-scroll-target="#significance-and-sample-size">Significance and Sample Size</a></li>
+  <li><a href="#what-a-p-value-is-not" id="toc-what-a-p-value-is-not" class="nav-link" data-scroll-target="#what-a-p-value-is-not">What a P-value Is Not</a></li>
+  <li><a href="#a-note-on-census-data" id="toc-a-note-on-census-data" class="nav-link" data-scroll-target="#a-note-on-census-data">A Note on Census Data</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/reportTemplate.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/inference.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assessment Template</h1>
+<h1 class="title">Samples, Uncertainty and P-values</h1>
 </div>
 
 
@@ -276,159 +265,191 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p><strong>Suggested Report Structure</strong> — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from <a href="https://canvas.liverpool.ac.uk/courses/84668/files/13173146?module_item_id=2459687">here</a>, then upload it to the <code>labs</code> folder in RStudio (see <a href="../general/setup.html">Setup</a>, section 5) and work on it there.</p>
-<p>Start your <code>.qmd</code> file with this YAML header:</p>
-<pre><code>---
-title: "ENVS225 Assignment"
-author: "Anonymous"
-date: "2026-09-27"
-format:
-  html:
-    self-contained: true
-    toc: true
-    toc-depth: 2
-    code-fold: show
-execute:
-  warning: false
-  message: false
----</code></pre>
-<section id="setup" class="level2">
-<h2 class="anchored" data-anchor-id="setup">Setup</h2>
-<p>Load commonly used libraries for statistical analysis and data manipulation.</p>
+<p>This page picks up where the Week 1 practical left off. You do not need it to complete any lab, and nothing here is examined on its own. It is here because the ideas below decide whether the numbers in your report actually mean what you say they mean, and because three of them are very commonly got wrong in assignments.</p>
+<p>Read it at some point before you write up your results. It should take about twenty minutes.</p>
+<p><strong>What you need to have done first</strong>: the section <em>From Sample to Population</em> in the <a href="https://gdsl-ul.github.io/stats/labs/01.DataExploration.html">Week 1 practical</a>, where we established that a sample mean wobbles, and that the size of the wobble is called the standard error.</p>
+<section id="setting-up" class="level2">
+<h2 class="anchored" data-anchor-id="setting-up">Setting Up</h2>
+<p>Everything below uses the same FRS data as the Week 1 practical, so we load it the same way. Check the path — you may need to remove the <code>..</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Core tidyverse</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)    <span class="co"># includes ggplot2, dplyr, tidyr, readr, purrr, tibble, stringr, forcats</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>frs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/FRS/FRS16-17_labels.csv"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>frs_independent <span class="ot">&lt;-</span> frs_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dependent <span class="sc">!=</span> <span class="st">"Dependent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   4.0.0     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<p>A note before we start: none of the code below will give you exactly the numbers printed on this page, because every chunk draws a fresh random sample. That is the entire point of the page. Your figures should be <em>close</em> to these, not identical, and if you run a chunk twice you will get two different answers.</p>
+</section>
+<section id="why-sample-size-matters" class="level2">
+<h2 class="anchored" data-anchor-id="why-sample-size-matters">Why Sample Size Matters</h2>
+<p>In the practical we found that samples of 500 people missed the true mean income by about £1,200 on average, and that this figure — the standard error — can be calculated as the standard deviation divided by the square root of the sample size.</p>
+<p>That square root has a practical consequence. Let’s repeat the exercise with smaller and larger samples:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>means_100  <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="at">size =</span> <span class="dv">100</span>)))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>means_2000 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="at">size =</span> <span class="dv">2000</span>)))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(means_100)   <span class="co"># standard error with n = 100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2627.417</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tables &amp; reporting</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'kableExtra' was built under R version 4.4.2</code></pre>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(means_2000)  <span class="co"># standard error with n = 2000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 585.7021</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
+</div>
+<p>Roughly £2,800 for samples of 100, against £600 for samples of 2000. Bigger samples give more precise answers — but look at the <em>rate</em>. To halve your uncertainty you must <strong>quadruple</strong> your sample.</p>
+<p>This is why national surveys are expensive. It is also why you should be sceptical of confident claims made about small subgroups: a survey of 40,000 people may contain only 90 people in the particular category you want to talk about, and the uncertainty for that group is set by the 90, not the 40,000.</p>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Worth doing</strong>: find a subgroup in the FRS that interests you — one region, say, or one age group. How many people are in it? Using the formula above, how precisely can you estimate its mean income? If the answer is “not very”, that is a limitation worth stating in your report.</p>
+</div>
+</section>
+<section id="confidence-intervals" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h2>
+<p>Reporting “£22,544” on its own pretends to a precision we do not have. A <strong>confidence interval</strong> reports the estimate together with its uncertainty, and R will build one for us:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>one_sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="at">size =</span> <span class="dv">500</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(one_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
 <pre><code>
-Attaching package: 'kableExtra'
+    One Sample t-test
 
-The following object is masked from 'package:dplyr':
-
-    group_rows</code></pre>
+data:  one_sample
+t = 19.068, df = 499, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 21306.85 26202.01
+sample estimates:
+mean of x 
+ 23754.43 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stats helpers</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Already installed in your codespace. On your own PC, install them first.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Load your data. If R cannot find the file, see <a href="../general/setup.html">Setup</a>.</p>
+<p>Ignore most of that output and look at the part labelled <strong>95 percent confidence interval</strong>.</p>
+<p>The interval is, roughly, “our estimate, give or take about two standard errors”. Its meaning is best stated as a statement about the <em>method</em>: if we repeated this whole exercise many times, about 95 out of every 100 intervals built this way would contain the true population mean.</p>
+<p>A confidence interval is almost always more informative than a single number, and reporting one in your assignment is a mark of careful work.</p>
+</section>
+<section id="seeing-what-95-means" class="level2">
+<h2 class="anchored" data-anchor-id="seeing-what-95-means">Seeing What “95%” Means</h2>
+<p>That definition is a mouthful, and it is far easier to believe once you have watched it happen. So let’s build not one confidence interval, but a hundred.</p>
+<p>The idea is the same as before: take a sample of 500 people, build a confidence interval from it, write it down, and repeat another 99 times. Because we are pretending the FRS is the whole population, we know the true answer, so afterwards we can simply count how many of our intervals caught it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df &lt;- read.csv("../data/your_file.csv")   # uncomment and change to your file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Take 100 samples of 500 people, and keep the confidence interval from each one</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>intervals <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">t.test</span>(<span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="dv">500</span>))<span class="sc">$</span>conf.int)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div style="color: red;">
-<p><strong>Once all the chunks execute correctly (no errors when running all the code, <code>Ctrl + Alt + R</code> ) you can render the <code>qmd</code> file. Follow the instructions <a href="https://gdsl-ul.github.io/stats/general/howSubmit.html">here</a> to render the document to an HTML file. Remove this message and any irrelevant text from the final submission.</strong></p>
-</div>
-<hr>
-</section>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p><strong>Context.</strong> Explain why the topic matters (theory, policy, practice), briefly drawing on existing literature.<br>
-<strong>Aim.</strong> State clearly what you want to investigate (e.g., association between X and Y).<br>
-<strong>Gap &amp; Research Question (RQ).</strong> Identify what is missing in the current knowledge and pose 1 RQ (avoid yes/no questions; ask <em>how</em>, <em>to what extent</em>, <em>which factors</em>).<br>
-<strong>Structure.</strong> Briefly preview how the rest of the report is organised.</p>
-<hr>
-</section>
-<section id="literature-review" class="level2">
-<h2 class="anchored" data-anchor-id="literature-review">Literature Review</h2>
-<p><strong>What we know.</strong> Summarise key findings from prior studies relevant to your RQ.<br>
-<strong>Predictor rationale.</strong> Justify the inclusion of variables (theory-driven, prior empirical evidence).<br>
-<strong>Remaining gap.</strong> Specify precisely the gap this report addresses (e.g., population, geography, time period, variable, method).<br>
-<em>Note:</em> The goal is a clean, sensible analysis grounded in existing ideas—not necessarily novel theory.</p>
-<hr>
-</section>
-<section id="methods-and-data" class="level2">
-<h2 class="anchored" data-anchor-id="methods-and-data">Methods and Data</h2>
-<section id="data" class="level3">
-<h3 class="anchored" data-anchor-id="data">Data</h3>
-<p>Describe the dataset: who collected it, when, whether records are individuals (e.g.&nbsp;FRS, SAR) or geographical units (e.g.&nbsp;Census districts), how many records you use, and any filtering or sampling you applied.</p>
-</section>
-<section id="variables" class="level3">
-<h3 class="anchored" data-anchor-id="variables">Variables</h3>
-<p>Name your dependent variable and your independent variables, with their type (numerical or categorical) and units. For categorical variables, state the reference category. A short table works well here (Variable, Description, Type, Units or categories): it describes the variables, it does not report results.</p>
-</section>
-<section id="transformations" class="level3">
-<h3 class="anchored" data-anchor-id="transformations">Transformations</h3>
-<p>Describe any recoding or aggregation (e.g., bin income into bands; reduce age groups from 11 to 3) and justify it.</p>
-</section>
-<section id="analysis" class="level3">
-<h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
-<p>State which model you use and why, based on your dependent variable: <strong>multiple linear regression</strong> for a numerical dependent variable, <strong>logistic regression</strong> for a binary one.</p>
-<p><em>Important:</em> do not report results here. Descriptive statistics, model output and charts of your data go in Results and Discussion.</p>
-<hr>
-</section>
-</section>
-<section id="results-and-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
-<section id="descriptive-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="descriptive-statistics">Descriptive statistics</h3>
-<p>Summarise all the variables in your model in <strong>one table</strong>: mean, standard deviation, median and range for numerical variables; counts and percentages for categorical variables (e.g.&nbsp;<code>vtable::st()</code> or <code>kbl()</code>, see Lab 5).</p>
-<p>Then add a small number of charts, each chosen for the variables it shows:</p>
-<ul>
-<li><strong>Distribution of the dependent variable:</strong> histogram (numerical) or bar chart (categorical or binary).</li>
-<li><strong>Dependent vs a key independent variable:</strong> scatterplot (both numerical), boxplot (categorical vs numerical), or stacked percentage bar chart (both categorical).</li>
-<li><strong>Associations between independent variables:</strong> correlation matrix or correlogram for numerical variables; Chi-squared test and Cramér’s V for categorical variables. This also flags variables that are too closely related to include together.</li>
-</ul>
-<p>Comment on what each table and chart shows. Do not overload the report with graphs, and do not show the same result in both a table and a chart.</p>
+<p><code>t.test(...)$conf.int</code> runs the test but keeps <em>only</em> the confidence interval, throwing the rest of the output away. The <code>$</code> picks one piece out of a result, just as <code>Grades$Name</code> picked one column out of a table in the practical.</p>
+<p>The result, <code>intervals</code>, has two rows and 100 columns: one column per sample, with its lower limit on the first row and its upper limit on the second. We can pull those two rows out to build an ordinary table:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary table and charts; refer to this chart in your text as @fig-dependent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>many_intervals <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_number =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower =</span> intervals[<span class="dv">1</span>, ],   <span class="co"># all of row 1: the lower limits</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">upper =</span> intervals[<span class="dv">2</span>, ]    <span class="co"># all of row 2: the upper limits</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(many_intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  sample_number    lower    upper
+1             1 19067.73 22252.93
+2             2 20664.02 25870.57
+3             3 20139.65 24723.87
+4             4 19176.73 22836.35
+5             5 18347.25 21758.27
+6             6 20332.07 25148.17</code></pre>
 </div>
-</section>
-<section id="regression-model" class="level3">
-<h3 class="anchored" data-anchor-id="regression-model">Regression model</h3>
-<p>Present the model in <strong>one table</strong>:</p>
-<ul>
-<li><strong>Multiple linear regression:</strong> coefficients, standard errors (or 95% confidence intervals), p-values, adjusted R², number of observations.</li>
-<li><strong>Logistic regression:</strong> odds ratios with 95% confidence intervals, p-values, number of observations.</li>
-</ul>
-<p>For each independent variable, report the direction and size of the association in the units of the dependent variable (e.g.&nbsp;percentage points, or odds for logistic regression), whether it is statistically significant, and that it holds with the other variables held constant. Interpret categorical variables against their reference category. Then report the model fit and, in a sentence or two, what the diagnostic checks showed (see Lab 2). The regression model should be the core of this section!</p>
-<div id="tbl-model" class="cell quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-tbl figure">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: Regression model of … Source: …
-</figcaption>
-<div aria-describedby="tbl-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="sourceCode cell-code anchored" id="tbl-model"><pre class="sourceCode r cell code-with-copy"><code class="sourceCode r"><span id="tbl-model-1"><a href="#tbl-model-1" aria-hidden="true" tabindex="-1"></a><span class="co"># run the model and show a table summarising it (e.g. tidy() + kbl()); refer to it as @tbl-model</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Now work out the true answer, and check each interval against it:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>true_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(frs_independent<span class="sc">$</span>income_gross)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE if the interval caught the true mean, FALSE if it missed</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>many_intervals<span class="sc">$</span>caught_it <span class="ot">&lt;-</span> many_intervals<span class="sc">$</span>lower <span class="sc">&lt;</span> true_mean <span class="sc">&amp;</span> many_intervals<span class="sc">$</span>upper <span class="sc">&gt;</span> true_mean</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(many_intervals<span class="sc">$</span>caught_it)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+FALSE  TRUE 
+   12    88 </code></pre>
+</div>
+</div>
+<p>A handful missed — usually somewhere between about three and ten of the hundred. Let’s draw them. Each horizontal line is one sample’s confidence interval, and the vertical line is the true mean income of the population:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(many_intervals, <span class="fu">aes</span>(<span class="at">y =</span> sample_number, <span class="at">colour =</span> caught_it)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lower, <span class="at">xmax =</span> upper)) <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> true_mean) <span class="sc">+</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"grey65"</span>)) <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"100 samples, 100 confidence intervals"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gross income (£)"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Sample number"</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="inference_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
+</div>
+</div>
+<p>This picture <em>is</em> the definition of a confidence interval:</p>
+<ul>
+<li>Every interval is a different width and sits in a different place, because every sample was different.</li>
+<li>Most straddle the true mean. A few — the red ones — do not.</li>
+<li>Nothing is wrong with the red intervals. They were built in exactly the same way as the others. They were simply unlucky samples.</li>
+</ul>
+<p>And here is the part that matters for your report. <strong>In real research you only ever get one of these lines.</strong> You never find out whether yours is grey or red, because you never learn the true answer. What “95% confident” buys you is not certainty about your own interval; it is the knowledge that the <em>procedure</em> you used lands on the truth about 19 times out of 20.</p>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Worth doing</strong>: change <code>500</code> to <code>2000</code> in the code above and run the whole thing again.</p>
+</div>
+<p>You should find the intervals roughly halve in width, because we quadrupled the sample. But the number of red ones does <strong>not</strong> shrink in the same way — it stays somewhere around five, bouncing about from run to run because that count is itself a random quantity.</p>
+<p>This is the point. Bigger samples buy you <em>precision</em>: a narrower interval, a sharper answer. They do not buy you <em>reliability</em>: the 95% was fixed by us when we asked for a 95% interval, and it stays at 95% whatever the sample size.</p>
+<p>One honest footnote. If you count carefully you will often find rather more than five red intervals. That is not a mistake either. Incomes are so badly skewed — remember the handful of people earning over a million — that confidence intervals built this way come out slightly too narrow, and catch the truth about 93% of the time rather than 95%. This is a small example of a large lesson: statistical tools come with assumptions attached, and skewed data strains them.</p>
 </section>
-<section id="discussion" class="level3">
-<h3 class="anchored" data-anchor-id="discussion">Discussion</h3>
-<p>Answer your research question. Compare and contrast your findings with the literature: where do they agree, where do they differ, and why might that be? Remember that regression shows associations, not causes.</p>
-<p><strong>Figures and tables:</strong> give each one a number and a descriptive title (the <code>fig-cap</code> / <code>tbl-cap</code> options above do this), label axes with units, state the data source, and refer to each one in the text.</p>
-<hr>
+<section id="significance-and-sample-size" class="level2">
+<h2 class="anchored" data-anchor-id="significance-and-sample-size">Significance and Sample Size</h2>
+<p>In the practical we found a gender income gap of about £9,300 across 33,836 people, with a p-value too small for R to print. Now watch what happens when we ask the identical question of only 60 people:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>small_sample <span class="ot">&lt;-</span> frs_independent <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">60</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(income_gross <span class="sc">~</span> sex, <span class="at">data =</span> small_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  income_gross by sex
+t = -1.393, df = 36.354, p-value = 0.1721
+alternative hypothesis: true difference in means between group Female and group Male is not equal to 0
+95 percent confidence interval:
+ -25076.935   4651.335
+sample estimates:
+mean in group Female   mean in group Male 
+            18026.67             28239.47 </code></pre>
+</div>
+</div>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>Worth doing</strong>: run those two lines four or five times over, and watch the p-value each time.</p>
+</div>
+<p>You will see it jump around wildly. Sometimes the gap comes out statistically significant; most of the time it does not — in fact, with 60 people this test only reaches p &lt; 0.05 about a third of the time. The confidence interval for the difference will usually include zero, which is the same message in a different form.</p>
+<p>Nothing about the UK changed between the big test and the small one. There really is a gender income gap. Only our ability to <em>detect</em> it changed.</p>
+<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
+<p><strong>This is the lesson to take away</strong>: “not statistically significant” means <em>“this sample cannot settle the question”</em>. It does <strong>not</strong> mean “there is no difference”.</p>
+</div>
+<p>In your report, this is a matter of wording, and markers notice. “No significant association was found” is defensible. “There is no association” is not, and it is a much stronger claim than your data can support.</p>
 </section>
+<section id="what-a-p-value-is-not" class="level2">
+<h2 class="anchored" data-anchor-id="what-a-p-value-is-not">What a P-value Is Not</h2>
+<p>Three misreadings are extremely common in student reports, and each one costs marks:</p>
+<ul>
+<li>A p-value is <strong>not</strong> the probability that the null hypothesis is true, and it is <strong>not</strong> the probability that your finding is correct. It is calculated <em>assuming</em> the null hypothesis is true, so it cannot tell you how likely that assumption is. Three asterisks do not mean “99.9% certain there is a relationship”.</li>
+<li>A small p-value does <strong>not</strong> mean the effect is large or important. With a big enough sample, a trivially small effect will come out “highly significant”. Significance tells you an effect is <em>detectable</em>; only the coefficient itself tells you whether it <em>matters</em>. Always report and interpret both.</li>
+<li>A p-value says nothing at all about <strong>causation</strong>. It cannot distinguish a real causal relationship from a confounded one. That judgement comes from your literature review and your research design, never from the output.</li>
+</ul>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p><strong>Summary.</strong> Recap the main findings vis‑à‑vis the RQ (do not introduce new results).<br>
-<strong>Limitations.</strong> Offer a brief, honest self‑critique (data, measurement, design, external validity).<br>
-<strong>Implications.</strong> Indicate what the findings suggest for practice, policy, or future research.</p>
-<hr>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>List every source you cite, in one consistent referencing style (e.g.&nbsp;Harvard). References are not included in the word count.</p>
+<section id="a-note-on-census-data" class="level2">
+<h2 class="anchored" data-anchor-id="a-note-on-census-data">A Note on Census Data</h2>
+<p>Everything on this page assumes your data are a <em>random sample</em> of some larger population. That is true of the FRS, the APS and the SAR.</p>
+<p>It is not true of the Census. When you run a regression on the 2021 Census district data in Week 2, you are working with every district in England and Wales, not a sample of them. Strictly speaking there is no sampling uncertainty to quantify, because there was no sampling.</p>
+<p>Statisticians handle this by treating the observed pattern as one realisation of a social process that could have turned out differently — the districts we see are one roll of the dice, and the p-value asks how easily that roll could have come up by chance. That is a reasonable way to reason, but it rests on a weaker footing than a genuine random sample, and it is a judgement rather than a fact about the data.</p>
+<p>You do not need to resolve this. But if you use Census data in your assignment, a sentence acknowledging it in your limitations section is exactly the kind of critical awareness the higher marking bands reward.</p>
 
 
 </section>
@@ -856,13 +877,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../general/howSubmit.html" class="pagination-link" aria-label="Assessment: How to submit">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Assessment: How to submit</span>
+      <a href="../general/reportTemplate.html" class="pagination-link" aria-label="Assessment Template">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Assessment Template</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../general/inference.html" class="pagination-link" aria-label="Samples, Uncertainty and P-values">
-        <span class="nav-page-text">Samples, Uncertainty and P-values</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../labs/00.introR.html" class="pagination-link" aria-label="Lab: Introduction to R">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab: Introduction to R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -874,7 +895,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/reportTemplate.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/inference.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

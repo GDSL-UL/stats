@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Gabriele Filomena and Zi Ye">
-<meta name="dcterms.date" content="2026-09-27">
 
-<title>Exploring the Social World - Quantitative Block: Statistics</title>
+<title>Setup: RStudio in your Browser – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,26 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./general/overview.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-48fdb17b64b03c2d439d40eb95f1e9dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../general/assessment.html" rel="next">
+<link href="../general/overview.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-48fdb17b64b03c2d439d40eb95f1e9dc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -71,7 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -83,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../general/setup.html">Setup: RStudio in your Browser</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -98,10 +131,10 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Exploring the Social World - Quantitative Block: Statistics</a> 
+      <a href="../">Exploring the Social World - Quantitative Block: Statistics</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/GDSL-UL/stats" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="./Exploring-the-Social-World---Quantitative-Block--Statistics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="../Exploring-the-Social-World---Quantitative-Block--Statistics.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
     </div>
       </div>
@@ -114,79 +147,79 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./general/overview.html" class="sidebar-item-text sidebar-link">
+  <a href="../general/overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./general/setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../general/setup.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Setup: RStudio in your Browser</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./general/assessment.html" class="sidebar-item-text sidebar-link">
+  <a href="../general/assessment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assessment</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./general/howSubmit.html" class="sidebar-item-text sidebar-link">
+  <a href="../general/howSubmit.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assessment: How to submit</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./general/reportTemplate.html" class="sidebar-item-text sidebar-link">
+  <a href="../general/reportTemplate.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assessment Template</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./general/inference.html" class="sidebar-item-text sidebar-link">
+  <a href="../general/inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Samples, Uncertainty and P-values</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/00.introR.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/00.introR.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab: Introduction to R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/01.DataExploration.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/01.DataExploration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Exploring a Dataset</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/02.MultipleLinear.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/02.MultipleLinear.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation, Simple, and Multiple Linear Regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/03.QualitativeVariable.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/03.QualitativeVariable.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: Correlation and Multiple Linear Regression with Qualitative Variables</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/04.LogisticRegression.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/04.LogisticRegression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lab: Logistic Regression</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./labs/05.Visualisation.html" class="sidebar-item-text sidebar-link">
+  <a href="../labs/05.Visualisation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lab: Data Visualisation with ggplot</span></span></a>
   </div>
 </li>
@@ -200,38 +233,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
-  <ul class="collapse">
-  <li><a href="#contact" id="toc-contact" class="nav-link" data-scroll-target="#contact">Contact</a></li>
-  </ul></li>
+  <li><a href="#first-time-only" id="toc-first-time-only" class="nav-link active" data-scroll-target="#first-time-only">1. First time only</a></li>
+  <li><a href="#every-time-you-work" id="toc-every-time-you-work" class="nav-link" data-scroll-target="#every-time-you-work">2. Every time you work</a></li>
+  <li><a href="#your-files" id="toc-your-files" class="nav-link" data-scroll-target="#your-files">3. Your files</a></li>
+  <li><a href="#your-first-lab-week-1" id="toc-your-first-lab-week-1" class="nav-link" data-scroll-target="#your-first-lab-week-1">4. Your first lab (Week 1)</a></li>
+  <li><a href="#adding-data-from-canvas" id="toc-adding-data-from-canvas" class="nav-link" data-scroll-target="#adding-data-from-canvas">5. Adding data from Canvas</a></li>
+  <li><a href="#saving-a-copy-on-your-computer" id="toc-saving-a-copy-on-your-computer" class="nav-link" data-scroll-target="#saving-a-copy-on-your-computer">6. Saving a copy on your computer</a></li>
+  <li><a href="#if-something-goes-wrong" id="toc-if-something-goes-wrong" class="nav-link" data-scroll-target="#if-something-goes-wrong">7. If something goes wrong</a></li>
+  <li><a href="#another-option-rstudio-on-a-university-pc-or-your-own-laptop" id="toc-another-option-rstudio-on-a-university-pc-or-your-own-laptop" class="nav-link" data-scroll-target="#another-option-rstudio-on-a-university-pc-or-your-own-laptop">Another option: RStudio on a university PC or your own laptop</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/setup.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exploring the Social World - Quantitative Block: Statistics</h1>
+<h1 class="title">Setup: RStudio in your Browser</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Gabriele Filomena and Zi Ye </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">September 27, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -241,25 +266,146 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1>
-<p>This is the website for “Exploring the Social World - Quantitative Block: Statistics” (module <strong>ENVS225</strong>) at the University of Liverpool. This block of the module is designed and delivered by Dr.&nbsp;Gabriele Filomena and Dr.&nbsp;Zi Ye from the Geographic Data Science Lab at the University of Liverpool. The module seeks to provide hands-on experience and training in introductory statistics for human geographers.</p>
-<p>The website is <strong>free to use</strong> and is licensed under the <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">Attribution-NonCommercial-NoDerivatives 4.0 International</a>. A compilation of this web course is hosted as a GitHub repository that you can access:</p>
+<p>In this module you use <strong>RStudio in your web browser</strong>. You don’t need to install anything. R, RStudio and all the course files are ready for you.</p>
+<p>This works on any computer: university PCs, Windows laptops, Macs and Chromebooks.</p>
+<p>It runs on <strong>GitHub Codespaces</strong>. A <em>codespace</em> is your own computer on the internet. Only you can use it, and it keeps your files between sessions.</p>
+<section id="first-time-only" class="level2">
+<h2 class="anchored" data-anchor-id="first-time-only">1. First time only</h2>
+<p><strong>Step 1. Make a GitHub account.</strong></p>
+<p>Go to <a href="https://github.com/signup">github.com/signup</a> and create a free account. You can use your university email. Then sign in.</p>
+<p><strong>Step 2. Create your codespace.</strong></p>
+<p>Click this button, then click the green <strong>Create codespace</strong> button:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://codespaces.new/GDSL-UL/stats?quickstart=1"><img src="https://github.com/codespaces/badge.svg" class="img-fluid figure-img" alt="Open in GitHub Codespaces"></a></p>
+<figcaption>Open in GitHub Codespaces</figcaption>
+</figure>
+</div>
+<p>Wait a minute or two. A blue and grey window opens in your browser. This is called VS Code. <strong>You don’t need to use it</strong>, but keep it open in the background.</p>
+<p><strong>Step 3. Open RStudio.</strong></p>
+<p>When everything is ready, you have two ways to open RStudio:</p>
 <ul>
-<li>As an <a href="https://gdsl-ul.github.io/stats">html website</a>.</li>
-<li>As a <a href="https://github.com/GDSL-UL/stats">GitHub repository</a>.</li>
+<li>A small message appears in the bottom-right corner. Click <strong>Open in Browser</strong>.</li>
+<li>Or look at the panel at the bottom of the window. Find the box that says <strong>RStudio is ready</strong>. Hold Ctrl (Cmd on a Mac) and click the link in the box.</li>
 </ul>
-<section id="contact" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="contact">Contact</h2>
-<blockquote class="blockquote">
-<p>Gabriele Filomena - gfilo [at] liverpool.ac.uk Lecturer in Geographic Data Science Office 1xx, Roxby Building, University of Liverpool - 74 Bedford St S, Liverpool, L69 7ZT, United Kingdom.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>Zi Ye - zi.ye [at] liverpool.ac.uk Lecturer in Geographic Information Science Office 107, Roxby Building, University of Liverpool - 74 Bedford St S, Liverpool, L69 7ZT, United Kingdom.</p>
-</blockquote>
-
-
+<p>RStudio opens in a new tab.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>The new tab is stuck on a GitHub page that says “authenticating”?</strong> Press F5 to refresh the page. RStudio will then open. This is normal.</p>
+</div>
+</div>
+<p><strong>Step 4. Bookmark the RStudio tab.</strong></p>
+<p>This is your personal RStudio address. Use it to come back quickly next time.</p>
 </section>
+<section id="every-time-you-work" class="level2">
+<h2 class="anchored" data-anchor-id="every-time-you-work">2. Every time you work</h2>
+<ol type="1">
+<li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a> and click your codespace. You can also click the button in Step 2 again: it takes you back to the codespace you already have.</li>
+<li>Open RStudio with your bookmark, or as in Step 3.</li>
+<li>Work in the RStudio tab.</li>
+<li>When you finish, go back to <a href="https://github.com/codespaces">github.com/codespaces</a>. Click the <strong>…</strong> next to your codespace and choose <strong>Stop codespace</strong>. This saves your free hours. Your files are not deleted.</li>
+</ol>
+</section>
+<section id="your-files" class="level2">
+<h2 class="anchored" data-anchor-id="your-files">3. Your files</h2>
+<p>In RStudio, the <strong>Files</strong> panel (bottom right) shows the course folder:</p>
+<pre><code>stats/
+├── data/    the datasets
+├── img/     pictures used in the labs
+└── labs/    one lab file for each week</code></pre>
+<p>Everything is already in the right place. <strong>You don’t need to download, move or set up anything.</strong></p>
+</section>
+<section id="your-first-lab-week-1" class="level2">
+<h2 class="anchored" data-anchor-id="your-first-lab-week-1">4. Your first lab (Week 1)</h2>
+<ol type="1">
+<li>In the <strong>Files</strong> panel, click <code>labs</code>, then click <code>01.DataExploration.qmd</code>. The lab opens in the top-left panel.</li>
+<li>Find the first grey box with code in it. This is called a <em>code chunk</em>. Click the small green arrow in its top-right corner. The result appears under the chunk.</li>
+<li>Go through the lab from top to bottom and run each chunk.</li>
+<li>Write your notes and answers in the white space between the chunks. To add a new chunk of your own, click <code>Code -&gt; Insert Chunk</code>.</li>
+<li>Save often: press Ctrl+S (Cmd+S on a Mac).</li>
+</ol>
+<p>Each week, open that week’s lab file in the same way.</p>
+<p>Your changes are only saved in your own codespace. They don’t change the website, and other students can’t see them.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>How the labs find the data</strong></p>
+<p>The lab code loads data like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>attacks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/attacksUK.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>../</code> means “go up one folder”. The lab file is in <code>labs</code>, so R goes up to <code>stats</code> and then into <code>data</code>. You don’t need to change these lines.</p>
+</div>
+</div>
+</section>
+<section id="adding-data-from-canvas" class="level2">
+<h2 class="anchored" data-anchor-id="adding-data-from-canvas">5. Adding data from Canvas</h2>
+<p>Some datasets are only on Canvas, for example the Family Resource Survey (FRS). To add one:</p>
+<ol type="1">
+<li>Download the file from Canvas to your computer.</li>
+<li>In RStudio’s <strong>Files</strong> panel, click <code>data</code>.</li>
+<li>If the lab asks for a new folder (for example <code>FRS</code>), click <strong>New Folder</strong>, type the name, and click <strong>OK</strong>. Then click the new folder to open it.</li>
+<li>Click <strong>Upload</strong>, then <strong>Choose File</strong>. Pick the file you downloaded and click <strong>OK</strong>.</li>
+</ol>
+<p>Now the lab code will find the file.</p>
+</section>
+<section id="saving-a-copy-on-your-computer" class="level2">
+<h2 class="anchored" data-anchor-id="saving-a-copy-on-your-computer">6. Saving a copy on your computer</h2>
+<p>To download a file from RStudio (for example to keep a copy, or to submit your work):</p>
+<ol type="1">
+<li>In the <strong>Files</strong> panel, tick the box next to the file.</li>
+<li>Click <strong>More</strong>, then <strong>Export…</strong>, then <strong>Download</strong>.</li>
+</ol>
+<p>For the assessment, download the report template from Canvas and upload it to your <code>labs</code> folder (the same way as in section 5). Write your report there. You submit an <code>.html</code> file, which you make with the <strong>Render</strong> button at the top of your file. See <a href="../general/howSubmit.html">How to submit</a>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Keep copies of your work.</strong> If you don’t open your codespace for 30 days, GitHub deletes it, and your files are deleted too. Download the lab files you have worked on from time to time, and always before holidays and before the assessment deadline.</p>
+</div>
+</div>
+</section>
+<section id="if-something-goes-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="if-something-goes-wrong">7. If something goes wrong</h2>
+<ul>
+<li><strong>RStudio is stuck on “authenticating”.</strong> Press F5 to refresh the page.</li>
+<li><strong>RStudio says it lost the connection.</strong> Your codespace has probably stopped. Open it again from <a href="https://github.com/codespaces">github.com/codespaces</a>, then refresh the RStudio tab.</li>
+<li><strong>R says it can’t find a file.</strong> Check that the file is really in the folder named in the code. You can see this in the <strong>Files</strong> panel.</li>
+<li><strong>GitHub says you have no free hours left.</strong> The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see below).</li>
+</ul>
+</section>
+<section id="another-option-rstudio-on-a-university-pc-or-your-own-laptop" class="level2">
+<h2 class="anchored" data-anchor-id="another-option-rstudio-on-a-university-pc-or-your-own-laptop">Another option: RStudio on a university PC or your own laptop</h2>
+<p>RStudio is already installed on university PCs. To use it:</p>
+<ol type="1">
+<li>Go to the <a href="https://github.com/GDSL-UL/stats">course page on GitHub</a>. Click the green <strong>Code</strong> button, then <strong>Download ZIP</strong>.</li>
+<li>Unzip the file. On a university PC, put the folder in your <code>M:</code> drive, so you can open it from any PC on campus.</li>
+<li>In RStudio, click <code>File -&gt; Open File...</code> and open the lab file from the <code>labs</code> folder. Then work as described above.</li>
+</ol>
+<p>To use your own laptop, first install <a href="https://cran.r-project.org/">R</a> and then <a href="https://posit.co/download/rstudio-desktop/">RStudio Desktop</a>.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -685,10 +831,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../general/overview.html" class="pagination-link" aria-label="Overview">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./general/overview.html" class="pagination-link" aria-label="Overview">
-        <span class="nav-page-text">Overview</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../general/assessment.html" class="pagination-link" aria-label="Assessment">
+        <span class="nav-page-text">Assessment</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -700,7 +849,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/setup.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
