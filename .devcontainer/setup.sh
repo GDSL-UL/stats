@@ -2,14 +2,14 @@
 
 set -e
 
-echo "Installing packages..."
+echo "Checking R packages..."
 
+# Most packages ship with the image; this only fills gaps. Uses the image's
+# default repo (Posit Package Manager binaries) so nothing compiles from source.
 Rscript - <<EOF
 
 packages <- c(
   "tidyverse",
-  "ggplot2",
-  "dplyr",
   "sf",
   "terra",
   "tmap",
@@ -19,17 +19,15 @@ packages <- c(
   "quarto"
 )
 
-installed <- rownames(installed.packages())
+missing <- setdiff(packages, rownames(installed.packages()))
 
-for (p in packages) {
-  if (!(p %in% installed)) {
-    install.packages(
-      p,
-      repos="https://cloud.r-project.org"
-    )
-  }
+if (length(missing) > 0) {
+  install.packages(missing)
+}
+
+still_missing <- setdiff(packages, rownames(installed.packages()))
+if (length(still_missing) > 0) {
+  stop("Failed to install: ", paste(still_missing, collapse = ", "))
 }
 
 EOF
-
-rstudio-server start || true

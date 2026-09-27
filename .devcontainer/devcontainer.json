@@ -1,29 +1,46 @@
 {
   "name": "ENVS225 RStudio",
 
-  "image": "rocker/rstudio:4.4.1",
+  // Rocker's Codespaces image: R, RStudio Server, tidyverse, sf, terra, tmap, quarto
+  // (prebuilt binaries, so no compiling on first start).
+  "image": "ghcr.io/rocker-org/devcontainer/geospatial:4",
 
-  "workspaceFolder": "/workspaces/stats",
+  "features": {
+    // Configures RStudio in single-user mode (no login page) and sets its
+    // initial working directory to the repo folder.
+    "ghcr.io/rocker-org/devcontainer-features/rstudio-server:0": {}
+  },
 
-  "forwardPorts": [
-    8787
-  ],
+  "remoteUser": "rstudio",
+
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+
+  // Runs every time the codespace is opened/resumed, so RStudio is always up.
+  "postAttachCommand": {
+    "rstudio-start": "rserver"
+  },
+
+  "forwardPorts": [8787],
 
   "portsAttributes": {
     "8787": {
-      "label": "RStudio Server",
+      "label": "RStudio",
       "onAutoForward": "openBrowser"
     }
   },
-
-  "postCreateCommand": "bash .devcontainer/setup.sh",
 
   "customizations": {
     "vscode": {
       "extensions": [
         "REditorSupport.r",
         "quarto.quarto"
-      ]
+      ],
+      // Students work in RStudio; keep the VS Code tab as quiet as possible.
+      "settings": {
+        "workbench.startupEditor": "none",
+        "workbench.welcomePage.walkthroughs.openOnInstall": false,
+        "workbench.tips.enabled": false
+      }
     }
   }
 }
