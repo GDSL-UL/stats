@@ -25,13 +25,13 @@ By blending continuous and categorical predictors, MLR with categorical variable
 
 For most categorical (especially the *nominal*) variables, they cannot be included in the regression model directly as a continuous independent variable. Instead, these qualitative independent variables should be included in regression models by using the **dummy variable** approach, transforming categorical information into a numerical format suitable for regression analysis.
 
-However, R provides a powerful way, by automatively handling this process when the categorical variable is designated as a factor and to be included in the regression model. This makes it much easier for you to use categorical variables in the regression model to assess the effects of categorical groupings on the dependent variable alongside continuous predictors.
+However, R provides a powerful shortcut, by automatically handling this process when the categorical variable is designated as a factor and included in the regression model. This makes it much easier for you to use categorical variables in the regression model to assess the effects of categorical groupings on the dependent variable alongside continuous predictors.
 
 Learning Objectives:
 
 In this week's practical we are going to
 
-- Analysis of categorical/qualitative variables
+- Analyse categorical/qualitative variables
 
 - Estimate and interpret a multiple linear regression model with categorical variables
 
@@ -39,11 +39,11 @@ In this week's practical we are going to
 
 ## Analysing categorical variables
 
-Recall in Week 2, you got familiar with R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your local drive folder under the path of '/data/Census2021/'; for the FRS datasets, please click the links to download the datasets from [Canvas](https://canvas.liverpool.ac.uk/courses/84668/pages/family-resource-survey-2016-17?module_item_id=2396198). Please download both the datasets of 'FRS16-17_labels.csv' and 'FRS_dictionary.xlxs'<!--and 'FRS16-17_codes.csv'--> for today's practical. You may create a new folder named 'FRS' under the '/data/' along with the Census2021 folder, and put the newly downloaded .csv files at the '/data/FRS/' folder for later use.
+Recall that in Week 2 you became familiar with R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your local drive folder under the path of '/data/Census2021/'; for the FRS datasets, please click the links to download the datasets from [Canvas](https://canvas.liverpool.ac.uk/courses/84668/pages/family-resource-survey-2016-17?module_item_id=2396198). Please download both the datasets of 'FRS16-17_labels.csv' and 'FRS_dictionary.xlsx'<!--and 'FRS16-17_codes.csv'--> for today's practical. You may create a new folder named 'FRS' under the '/data/' along with the Census2021 folder, and put the newly downloaded .csv files at the '/data/FRS/' folder for later use.
 
 <!--Now, there should be two .csv file: 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv' in your '/data/FRS' folder. Double click to open both .csv files you may find they have exactly same column names - yes, they are in fact the same spreadsheet but 'FRS16-17_labels.csv' is more readable for the cell contents as they are in text format but cells 'FRS16-17_codes.csv' is in coding format. This is quite normal as when we doing surveys, we use text as the options of multiple choice questions for respondents to choose from, and therefore the collected survey results are in the 'FRS16-17_labels.csv' format. For example, for the multiple choice question - which region you are from? The options include 'London', 'North West', 'Wales', etc. However, while analysing the survey results, these text content (the options of multiple choice questions) are in fact different categories of the categorical/qualitative variable. So for some survey results, you may find they are formatted in coding way as 'FRS16-17_codes.csv', and along with a coding dictionary for you to learn the meaning of each coding. -->
 
-To start today's practical session, we first will use 'FRS16-17_labels.csv'. <!--In the Region example, there are 12 categories for the categorical/qualitative variable Region--> You can open the .csv file in Excel and find its different from the Census dataset, the FRS dataset contains many qualitative/categorical variables, such as hh_tenure (Housing Tenure), happy (How happy did you feel yesterday?), health (How is your health in general) and etc. To know the meaning of all the column names and the values in cell, you may need to reference to the 'FRS_dictionary.xlsx' to help your understanding. Recall our lecture, these categorical variable will need to be treated as Dummy variable in the regression model. In R, the variable type of qualitative/categorical variables is called '**factor**'.
+To start today's practical session, we first will use 'FRS16-17_labels.csv'. <!--In the Region example, there are 12 categories for the categorical/qualitative variable Region--> You can open the .csv file in Excel and see that, unlike the Census dataset, the FRS dataset contains many qualitative/categorical variables, such as hh_tenure (Housing Tenure), happy (How happy did you feel yesterday?), health (How is your health in general), etc. To know the meaning of all the column names and the values in cell, you may need to refer to the 'FRS_dictionary.xlsx' to help your understanding. Recall from our lecture that these categorical variables will need to be treated as dummy variables in the regression model. In R, the variable type of qualitative/categorical variables is called '**factor**'.
 
 As usual we first load the necessary libraries.
 
@@ -57,7 +57,7 @@ getwd()
 
 Check the relative path of your data folder on your PC/laptop, make sure you know the relative path of your data from your working directory, returned by `getwd()`.
 
-**Library knowledge used today:**
+**Libraries used today:**
 
 - **`dplyr`**: a basic library provides a suite of functions for data manipulation
 
@@ -71,7 +71,7 @@ Check the relative path of your data folder on your PC/laptop, make sure you kno
 
 - **`vcd`**: visualise and analyse categorical data.
 
-**A useful shortcut to format your code: select all your code lines, use Ctrl+Shift+A for automatically format them in a tidy way.**
+**A useful shortcut to format your code: select all your code lines, use Ctrl+Shift+A to automatically format them in a tidy way.**
 
 ### Data overview
 
@@ -91,7 +91,7 @@ library(broom)
 
 ```
 
-Or we can use library `tidyverse` which includes `ggplot2`, `dplyr,broom` and other fundamental libraries together already, remember you need first install the package if you haven't by using `install.packages("tidyverse")`.
+Or we can use library `tidyverse` which includes `ggplot2`, `dplyr,broom` and other fundamental libraries together already. Remember that you first need to install the package, if you haven't, by using `install.packages("tidyverse")`.
 
 ```{r,warning=FALSE}
 if(!require("tidyverse"))
@@ -100,7 +100,7 @@ if(!require("tidyverse"))
 library(tidyverse)
 ```
 
-We will also use 'forcats' library, so
+We will also use the `forcats` library, so
 
 ```{r,warning=FALSE}
 if(!require("forcats"))
@@ -115,7 +115,7 @@ Exactly as you did in previous weeks, we first load in the dataset:
 frs_data <- read.csv("../data/FRS/FRS16-17_labels.csv")
 ```
 
-Recall in previous weeks, we used the following code to overview the dataset. Familiarise yourself again by using them:
+Recall that in previous weeks we used the following code to get an overview of the dataset. Familiarise yourself with it again:
 
 ```{r,results='hide'}
 View(frs_data)
@@ -127,9 +127,9 @@ and also `summary()` to produce summaries of each variable
 summary(frs_data)
 ```
 
-You may notice that for the numeric variables such as *hh_income_gross* (household gross income) and *work_hours*(worked hours per week), the `summary()` offers useful descriptive statistics. While for the qualitative information, such as *age_group* (age group), *highest_qual* (Highest educational qualification), *marital_status* (Marital status) and *nssec* (Socio-economic status), the `summary()` function is not that useful by providing mean or median values.
+You may notice that for the numeric variables such as *hh_income_gross* (household gross income) and *work_hours* (worked hours per week), the `summary()` offers useful descriptive statistics. While for the qualitative information, such as *age_group* (age group), *highest_qual* (Highest educational qualification), *marital_status* (Marital status) and *nssec* (Socio-economic status), the `summary()` function is not as useful, since reporting a mean or median makes little sense for categories.
 
-Performing descriptive analysis for categorical variables or qualitative variables, we focus on summarising the frequency and distribution of categories within the variable. This analysis helps understand the composition and diversity of categories in the data, which is especially useful for identifying patterns, common categories, or potential data imbalances.
+When performing descriptive analysis for categorical or qualitative variables, we focus on summarising the frequency and distribution of categories within the variable. This analysis helps understand the composition and diversity of categories in the data, which is especially useful for identifying patterns, common categories, or potential data imbalances.
 
 ```{r}
 # Frequency count
@@ -139,7 +139,7 @@ table(frs_data$marital_status)
 table(frs_data$nssec)
 ```
 
-By using ggplot2, it is easy to create some nice descriptive charts for the categorical variables, just like what you did for the continuous variables last week.
+By using ggplot2, it is easy to create some nice descriptive charts for the categorical variables, just like you did for the continuous variables last week.
 
 ```{r, warning=FALSE}
 ggplot(frs_data, aes(x = highest_qual)) +
@@ -184,7 +184,7 @@ You can change the variables in ggplot() to make your own histogram chart for th
 
 As before, rather than relying upon an impressionistic view of the strength of the association between two variables, we can measure that association by calculating the relevant correlation coefficients.
 
-To calculate the correlation between categorical data, we first use Chi-squared test to assess the independence between pairs of categorical variables, then we use Cramer’s V to measures the strength of association - the correlation coefficents in R.
+To calculate the correlation between categorical data, we first use Chi-squared test to assess the independence between pairs of categorical variables, then we use Cramér’s V to measure the strength of association - the correlation coefficient in R.
 
 **Pearson’s chi-squared test** (χ2) is a statistical test applied to sets of categorical data to evaluate how likely it is that any observed difference between the sets arose by chance. If the p-value is low (typically \< 0.05), it suggests a significant association between the two variables.
 
@@ -192,7 +192,7 @@ To calculate the correlation between categorical data, we first use Chi-squared 
 chisq.test(frs_data$health,frs_data$happy) 
 ```
 
-If you see a warning message of Chi-squared approximation may be incorrect. This is because some expected frequencies in one or more cells of the cross-tabulation (health \* happy) are too low. The df means degrees of freedom and it relates to the size of the table and the number of categories in each variable. The most important message from the output is the estimated p-value, which shows as p-value \< 2.2e-16 (2.2 with 16 decimals move to the left, it is a very small number so written in scientific notation). P-value of the chi-squared test is far smaller than 0.05, so we can say the correlation is statistically significant.
+If you see a warning message of Chi-squared approximation may be incorrect. This is because some expected frequencies in one or more cells of the cross-tabulation (health \* happy) are too low. The df means degrees of freedom and it is related to the size of the table and the number of categories in each variable. The most important message from the output is the estimated p-value, which shows as p-value \< 2.2e-16 (2.2 with the decimal point moved 16 places to the left; it is a very small number, so it is written in scientific notation). P-value of the chi-squared test is far smaller than 0.05, so we can say the correlation is statistically significant.
 
 **Cramér’s V** is a measure of association for categorical (nominal or ordinal) data. It ranges from 0 (no association) to 1 (strong association). The main downside of using Cramer’s V is that no information is provided on whether the correlation is positive or negative. This is not a problem if the variable pair includes a nominal variable but represents an information loss if both variables being correlated are ordinal.
 
@@ -235,7 +235,7 @@ In this section, we will work with individual-level data (“FRS16-17_label.csv�
 
 To explore income inequality, we need to work with a data set excluding dependent children. In addition, we look at individuals who are the representative persons of households. Therefore, we will select cases (or samples) that meet both conditions.
 
-We want R to select persons only if they are the representative persons of households and they are not dependent children. The involved variables are `hrp` and `Dependent` for the categories “Household Reference Person” and “independent”, you can select the appropriate cases. We also want to exclude the health variable reported as "Not known".
+We want R to select persons only if they are the representative persons of households and they are not dependent children. The variables involved are `hrp` and `dependent`; using the categories “HRP” and “Independent”, you can select the appropriate cases. We also want to exclude the health variable reported as "Not known".
 
 ```{r}
 frs_df <- frs_data %>% filter(hrp == "HRP" &
@@ -243,7 +243,7 @@ frs_df <- frs_data %>% filter(hrp == "HRP" &
                                 health != "Not known") 
 ```
 
-Then, we create a new numeric variable `Net_inc_perc` indicate net income per capita as our dependent variable:
+Then, we create a new numeric variable `Net_inc_pp` indicating net income per capita, which is our dependent variable:
 
 ```{r}
 frs_df$Net_inc_pp = frs_df$hh_income_net / frs_df$hh_size  
@@ -343,7 +343,7 @@ We then read R-squared and Adjusted R-squared to evaluate the model fit. Both ar
 
 To gain further practice on using linear regression models with qualitative variables as independent variables, we extend the model you created last week by adding the qualitative/categorical variable Region from the Census 2021 dataset. This allows us to answer **Research Question 2: How does health vary across regions in England and Wales?** You should already have the dataset **EW_DistrictPercentages.csv**; if not, you can download it from [Canvas](https://canvas.liverpool.ac.uk/courses/93312/pages/census-data?module_item_id=2727713). Please put the .csv file in your '/data/Census2021' folder.
 
-The practical is split into two main parts. The first focuses on implementing a linear regression model with a qualitative independent variable. **Note that** you need first to set the reference category (baseline) as the outcomes of the model reflects the **differences** between categories with the baseline. The second part focuses on prediction based the estimated linear regression model.
+The practical is split into two main parts. The first focuses on implementing a linear regression model with a qualitative independent variable. **Note that** you first need to set the reference category (baseline), as the outcomes of the model reflect the **differences** between each category and the baseline. The second part focuses on prediction based on the estimated linear regression model.
 
 First we load the UK district-level census dataset.
 
@@ -352,9 +352,9 @@ First we load the UK district-level census dataset.
 LAcensus <- read.csv("../data/Census2021/EW_DistrictPercentages.csv") # Local authority level
 ```
 
-Using the district-level census dataset "**EW\_\_DistrictPercentages.csv**". the variable "Region" (labelled as Government Office Region) is used to explore regional inequality in health.
+Using the district-level census dataset "**EW_DistrictPercentages.csv**", the variable "Region" (labelled as Government Office Region) is used to explore regional inequality in health.
 
-Familiarise yourself with the dataset by using the same codes as last week:
+Familiarise yourself with the dataset by using the same code as last week:
 
 ```{r,results='hide'}
 #view the data 
@@ -384,13 +384,13 @@ df <- LAcensus %>% select(c("pct_Longterm_sick_or_disabled",
                             "Region"))
 ```
 
-Simply descriptive of this new data
+Simple descriptives of this new data
 
 ```{r}
 summary(df)
 ```
 
-Now we can retrieve the "Region" column from the data frame by simply use **df\$Region**. But what if we want to understand the data better, like the following questions?
+Now we can retrieve the "Region" column from the data frame by simply using **df\$Region**. But what if we want to understand the data better, like the following questions?
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
 ### Q3. Categories of Region {.unnumbered}
@@ -398,15 +398,15 @@ Now we can retrieve the "Region" column from the data frame by simply use **df\$
 **How many categories does the variable "Region" entail? How many local authority districts does each region include?**
 :::
 
-Simply use the function table() would return you the answer.
+Simply using the function `table()` will return the answer.
 
 ```{r}
 table(df$Region) 
 ```
 
-The `table()` function tells us that this data frame contains 10 regions, and the number of LAs belongs to each region.
+The `table()` function tells us that this data frame contains 10 regions, and the number of LAs belonging to each region.
 
-R can only include the categorical variables in the **factor** type, so we set the column *Region* in `factor()`
+R can only include categorical variables as the **factor** type, so we set the column *Region* to `factor()`
 
 ```{r}
 df$Region<- factor(df$Region) 
@@ -414,11 +414,11 @@ df$Region<- factor(df$Region)
 
 ### **Include the categorical variables into a regression model**
 
-We will continue with a very similar regression model fitted in last week that relates Percentages long-term illness (*pct_Long_term_sick_or_disabled*) to Percentages no-qualification (*pct_No_qualifications*), Percentage Males (*pct_Males*) and Percentages Higher Managerial or Professional occupation (*pct_Higher_manager_prof*).
+We will continue with a very similar regression model fitted in last week that relates percentage long-term illness (*pct_Longterm_sick_or_disabled*) to percentage no-qualification (*pct_No_qualifications*), Percentage Males (*pct_Males*) and Percentages Higher Managerial or Professional occupation (*pct_Higher_manager_prof*).
 
 Decide which region to be set as the baseline category. The principle is that if you want to compare the (average) long term illness outcome of Region A to those of other regions, Region A should be chosen as the baseline category. For example, if you want to compare the (average) long term illness outcome of London to rest of regions in the England and Wales, London should be selected as the baseline category.
 
-Implement the regression model with the categorical variables - *Region* in our case. R will automatically handle the qualitative variable as dummy variables so you don't need to concern any of that. But you need to let R knows which category of your qualitative variable is your reference category or the baseline. Here we will use London as our first go. **Note:** We choose London as the baseline category so the London region will be [**excluded**]{.underline} in the independent variable list.
+Implement the regression model with the categorical variables - *Region* in our case. R will automatically handle the qualitative variable as dummy variables, so you don't need to worry about any of that. But you need to let R know which category of your qualitative variable is your reference category or the baseline. Here we will use London as our first go. **Note:** We choose London as the baseline category so the London region will be [**excluded**]{.underline} in the independent variable list.
 
 Therefore, first, we set London as the reference:
 
@@ -470,7 +470,7 @@ Last but not least, the **Model Fit**. R-squared (**0.759**) and Adjusted R-squa
 
 ### **Change the baseline category**
 
-If you would like to learn about differences in long-term illness between North East and other regions in the EW, you need to change the baseline category (from London) to the North East region (with variable name “Region_2”).
+If you would like to learn about differences in long-term illness between the North West and other regions in England and Wales, you need to change the baseline category from London to the North West region.
 
 ```{r}
 df$Region <- fct_relevel(df$Region, "North West")
@@ -566,13 +566,13 @@ df <- df %>%
   )
 ```
 
-This code may look a bit complex. You can simply type ?mutate in your console. Now in your right hand Help window, the R studio offers you the explanation of the mutate function. This is a common way you can use R studio to help you learn what the function ca`ate()` creates new columns that are functions of existing variables. Therefore, the `df %>% mutate()` means add a new column into the current dataframe `df`; the `New_region_label` in the `mutate()` function indicates the name of this new column is `New_region_label`. The right side of the `New_region_label =` indicates the value we want to assign to the `New_region_label` in each row.
+This code may look a bit complex. You can simply type ?mutate in your console. In the Help window on the right, RStudio gives you the explanation of the mutate function. This is a common way to use RStudio to help you learn what a function does. `mutate()` creates new columns that are functions of existing variables. Therefore, the `df %>% mutate()` means add a new column into the current dataframe `df`; the `New_region_label` in the `mutate()` function indicates the name of this new column is `New_region_label`. The right side of the `New_region_label =` indicates the value we want to assign to the `New_region_label` in each row.
 
 The right side of `New_region_label` is
 
 `fct_collapse(Region, North = c("North East", "North West", "Yorkshire and The Humber"), Midlands = c("East Midlands", "West Midlands"), South = c("East", "South East", "South West"), London = "London", Wales = "Wales")`
 
-By using the code, the `fct_collapse()` function recodes or group each value in the `Region` column into one of the broader categories: "London", "South", "North","Midlands" or "Wales". Specifically, it takes the existing factor levels in `Region` and collapses multiple detailed regions into fewer, aggregated groups. For example, regions such as *"North East"*, *"North West"*, and *"Yorkshire and The Humber"* are all grouped under **"North"**, while *"East Midlands"* and *"West Midlands"* are combined into **"Midlands"**, and so on.
+By using the code, the `fct_collapse()` function recodes or groups each value in the `Region` column into one of the broader categories: "London", "South", "North","Midlands" or "Wales". Specifically, it takes the existing factor levels in `Region` and collapses multiple detailed regions into fewer, aggregated groups. For example, regions such as *"North East"*, *"North West"*, and *"Yorkshire and The Humber"* are all grouped under **"North"**, while *"East Midlands"* and *"West Midlands"* are combined into **"Midlands"**, and so on.
 
 Now we use the same way to examine our new column `New_region_label`:
 
@@ -580,17 +580,17 @@ Now we use the same way to examine our new column `New_region_label`:
 table(df$New_region_label)
 ```
 
-Comparing with the `Region_label`, we now can see the mutate worked:
+Comparing with `Region`, we can now see that the mutate worked:
 
 ```{r,results='hide'}
 df[,c("Region","New_region_label")]
 ```
 
-Now you will have a new qualitative variable named `New_region_label` in which the UK is divided into five regions: London, South, North, Midlands and Wales.
+Now you will have a new qualitative variable named `New_region_label` in which England and Wales are divided into five groups: London, South, North, Midlands and Wales.
 
 *Based on the newly generated qualitative variable* `New_region_label`, we can now build our new linear regression model. Don't forget:
 
-\(1\) R need to deal with the categorical variables in regression model in the factor type;
+\(1\) R needs the categorical variables in a regression model to be of the factor type;
 
 ```{r}
 class(df$New_region_label)
@@ -608,7 +608,7 @@ df$New_region_label = as.factor(df$New_region_label)
 df$New_region_label <- fct_relevel(df$New_region_label, "London")
 ```
 
-The linear regression window is set up below. This time we include `New_region_label` rather than `Region_label` as the region variable:
+The linear regression model is set up below. This time we include `New_region_label` rather than `Region` as the region variable:
 
 ```{r}
 model2 <- lm(

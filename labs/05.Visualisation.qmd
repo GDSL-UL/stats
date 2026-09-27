@@ -5,13 +5,13 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture5.pdf).
+The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture05.pdf).
 
 ## Part 1: Towards the Assignment (30 min, or till when you feel you are good to go)
 
 1.  Identify a possible topic:
 
-- Load your dataset(s) in Rstudio.
+- Load your dataset(s) in RStudio.
 - Define your Research Question.
 - Identify the related variables to analyse.
 
@@ -103,7 +103,7 @@ ggplot(census_data, aes(x = Residents, y = mean_age, color = factor(Region), siz
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-What's missing in the plot above?How can this be improved?
+What's missing in the plot above? How can this be improved?
 :::
 
 ### Faceting: `facet_*`
@@ -115,7 +115,7 @@ Faceting splits data into subsets and creates multiple small plots.
 | `facet_wrap(~var)`      | Wraps plots across rows/columns. |
 | `facet_grid(row ~ col)` | Creates a grid layout for plots. |
 
-Faceting in is a technique to create multiple plots based on subsets of your data. It is particularly useful for comparing relationships or distributions across categories. By breaking down a dataset into smaller pieces according to a categorical variable, faceting helps visualise data trends or differences within subgroups. For instance, `facet_wrap(~ Region)` creates individual plots for each category in the Region variable, aligning them into rows and columns. Alternatively, `facet_grid(row ~ col)` creates a more structured layout, where two categorical variables determine the rows and columns of the grid.
+Faceting is a technique to create multiple plots based on subsets of your data. It is particularly useful for comparing relationships or distributions across categories. By breaking down a dataset into smaller pieces according to a categorical variable, faceting helps visualise data trends or differences within subgroups. For instance, `facet_wrap(~ Region)` creates individual plots for each category in the Region variable, aligning them into rows and columns. Alternatively, `facet_grid(row ~ col)` creates a more structured layout, where two categorical variables determine the rows and columns of the grid.
 
 Faceting is essential when dealing with data that needs to be compared across multiple dimensions. For example, a scatterplot faceted by sex can show how a relationship differs for males and females. Similarly, faceted histograms can reveal differences in the distribution of a variable across categories.
 
@@ -287,7 +287,7 @@ This section demonstrates how to create **publication-quality visualisations** i
 
 **Learning goals** Developing an understanding of, and ability to create academic standard data visualisations.
 
-**Let's load the datasets first** Check the paths, you may need to remove the ".."
+**Let's load the datasets first.** Check the paths, you may need to remove the ".."
 
 ```{r}
 frs_data <- read.csv("../data/FRS/FRS16-17_labels.csv")
@@ -529,7 +529,7 @@ ggplot(census_data, aes(x = pct_Single, y = pct_Muslim, color = factor(Country))
  theme_minimal()
 ```
 
-**2 Numerical Variables + 1 Catecorical: Scatterplot**
+**2 Numerical Variables + 1 Categorical: Scatterplot**
 
 ```{r}
 ggplot(census_data, aes(x = pct_Single, y = pct_Muslim, color = factor(Region))) +
@@ -551,7 +551,7 @@ The library `corrplot` would do it for us. Check: https://cran.r-project.org/web
 
 In the corrplot package, a correlogram can use colors, shapes, or numbers to represent the correlation. For example, colors ranging from blue to red often signify negative to positive correlations, while white may indicate no correlation. Similarly, circles or other shapes can vary in size to depict the strength of the relationship. The corrplot function simplifies creating correlograms with customizable options. For example, using method = "number" places correlation coefficients in each cell, while method = "circle" represents correlations graphically.
 
-Correlograms are valuable for quickly identifying patterns or strong relationships between variables, such as spotting which features might influence one another in a dataset
+Correlograms are valuable for quickly identifying patterns or strong relationships between variables, such as spotting which features might influence one another in a dataset.
 
 ```{r}
 library(corrplot)
@@ -717,7 +717,7 @@ ggplot(frs_data, aes(x = marital_status, y = hh_income_gross, fill = marital_sta
 
 ## Part 4: Publication-Ready Tables
 
-We will be using `KableExtra` to create nicely formatted tables for a series of ouputs in Rstudio:
+We will be using `kableExtra` to create nicely formatted tables for a series of outputs in RStudio:
 
 ```{r}
 library(kableExtra)
@@ -761,9 +761,9 @@ cross_tab_df %>%
 - **Rename Columns**: `colnames(cross_tab_df) <- c("Health", "Qualification", "Percentage")`. This assigns new column names to the data frame `cross_tab_df`.
 - **Generate a Table with `kable`**: `cross_tab_df %>% kbl(caption = "Health and Educational Qualification")`. This uses the `kbl` function from the `kableExtra` package to create a basic, well-formatted table. The `caption` argument adds a title to the table: "Health and Educational Qualification.
 - **Style the Table**: `%>% kable_styling(full_width = FALSE, position = "left")`. This enhances the appearance of the table with the `kable_styling` function. `full_width = FALSE` ensures the table is not stretched to the full width of the document or webpage; `position = "left"`: Aligns the table to the left side of the page.
-- **Add a Header Row**: `%>% add_header_above(c(" " = 1, "Highest Educational Qualification" = 2))` Adds an additional header row above the table; `" " = 1` the first column ("Health") has a blank header in this new row; `"Highest Educational Qualification" = 2`: The next two columns ("Qualification" and "Percentage") are grouped under the label "Highest Educational Qualification.
+- **Add a Header Row**: `%>% add_header_above(c(" " = 1, "Highest Educational Qualification" = 2))` Adds an additional header row above the table; `" " = 1` the first column ("Health") has a blank header in this new row; `"Highest Educational Qualification" = 2`: The next two columns ("Qualification" and "Percentage") are grouped under the label "Highest Educational Qualification".
 
-### Creating a Well-Formatted Table from a Cross Tabulation
+### Creating a Well-Formatted Table from a Regression Model
 
 Finally, we can derive a table to show the Multiple Linear Regression results.
 

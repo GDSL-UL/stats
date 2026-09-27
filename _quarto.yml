@@ -27,6 +27,7 @@ book:
     - general/howSubmit.qmd
     - general/reportTemplate.qmd
     - general/wdPaths.qmd
+    - general/inference.qmd
     - labs/00.introR.qmd
     - labs/01.DataExploration.qmd
     - labs/02.MultipleLinear.qmd

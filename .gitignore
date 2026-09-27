@@ -59,3 +59,10 @@ rsconnect/
 /.quarto/
 
 **/*.quarto_ipynb
+
+# Local-only teaching materials (not for the public site)
+ENVS225_QuantiativeBlock_Handbook.docx
+General Guidance for Assignment Marking 1.docx
+SUBMISSION Checklist.docx
+Resource0701_FiveWaysVisualizationsCanMislead.pdf
+examples/

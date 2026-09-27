@@ -23,7 +23,7 @@ For the lab sessions and your assignment, you will need the following software:
 
 **Now create a .qmd project. We use the `File -> New File -> Quarto Document..` dropdown option; a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it "*week1*" and save it in your main folder.**
 
-Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents
+Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents.
 
 Remember, when you want to write code in a markdown document you have to enclose it like this:
 
@@ -52,11 +52,11 @@ Usually, data is organized in
 -   **Columns** of data representing some trait or variable that we might be interested in. In general, we might wish to investigate the relationship between variables.
 -   **Rows** represent a single object on which the column traits are measured.
 
-For example, in a grade book for recording students scores throughout the semester, their is one row for every student and columns for each assignment. A greenhouse experiment dataset will have a row for every plant and columns for treatment type and biomass.
+For example, in a grade book for recording students scores throughout the semester, there is one row for every student and columns for each assignment. A greenhouse experiment dataset will have a row for every plant and columns for treatment type and biomass.
 
 ### Datasets in R
 
-In R, we want a way of storing data where it feels just as if we had an Excel Spreadsheet where each row represents an observation and each column represents some information about that observation. We will call this object a `data.frame`, an R represention of a data set. The easiest way to understand data frames is to create one.
+In R, we want a way of storing data where it feels just as if we had an Excel Spreadsheet where each row represents an observation and each column represents some information about that observation. We will call this object a `data.frame`, an R representation of a data set. The easiest way to understand data frames is to create one.
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
 **Task**: Copy the code below in your markdown. Create a `data.frame` that represents an instructor's grade book, where each row is a student, and each column represents some sort of assessment.
@@ -82,7 +82,7 @@ Grades          # show the output in the console. This works when knitting
 knitr::include_graphics("../img/runChunk.png")
 ```
 
-R allows two differnt was to access elements of the `data.frame`. First is a matrix-like notation for accessing particular values.
+R allows two different ways to access elements of the `data.frame`. First is a matrix-like notation for accessing particular values.
 
 | Format  | Result                            |
 |---------|-----------------------------------|
@@ -151,10 +151,10 @@ The primary function that we'll use to read data from a file and into R is the f
 | `colClasses` | `NULL` | Specifies the data type for each column to speed up reading for large files, e.g., `c("character", "numeric")`. |
 | `encoding` | `"unknown"` | Sets the text encoding of the file, which can be useful for files with special or international characters. |
 
-Most of the time you just need to specify the file. \|
+Most of the time you just need to specify the file.
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-Task: Let's read in a dataset of terrorist attacks that have taken place in the UK:
+**Task**: Let's read in a dataset of terrorist attacks that have taken place in the UK:
 :::
 
 ```{r, warning=FALSE, message=FALSE}
@@ -192,7 +192,7 @@ Each of these operations is a function in the package `dplyr`. These functions a
 
 All of these functions will return a data set.
 
-Let's consider the `summarize` function to calculate the mean score for `Exam.1`. Notice that this takes a data frame of four rows, and summarizes it down to just one row that represents the summarized data for all four students.
+Let's consider the `summarise` function to calculate the mean score for `Exam.1`. Notice that this takes a data frame of four rows, and summarizes it down to just one row that represents the summarized data for all four students.
 
 ```{r, warning=FALSE, message=FALSE}
 library(dplyr) # load the library
@@ -209,12 +209,12 @@ Grades %>%
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Task:** Write the code above in your markdown file and run it. Do not to copy it this time.
+**Task:** Write the code above in your markdown file and run it. Do not copy it this time.
 :::
 
 The `%>%` operator works by translating the command `a %>% f(b)` to the expression `f(a,b)`. This operator works on any function `f`. This is useful when we want to start with `x`, and first apply a function `f()`, then `g()`, and then `h()`; the usual R command would be `h(g(f(x)))` which is hard to read. Using the pipe command `%>%`, this sequence of operations becomes `x %>% f() %>% g() %>% h()`.
 
-Below, the code takes the Grades dataframe and calculates a column for the average exam score, and then sorts the data according to the that average score
+Below, the code takes the Grades dataframe and calculates a column for the average exam score, and then sorts the data according to that average score
 
 ```{r, warning=FALSE, message=FALSE}
 Grades %>%   mutate( Avg.Score = (Exam.1 + Exam.2) / 2 ) %>%   arrange( Avg.Score )
@@ -228,13 +228,13 @@ Let's go back to the terrorist attacks dataframe. There are attacks perpetrated 
 head(attacks, n = 10)
 ```
 
-We might want to compare different actors and see the mean and standard deviation of the number of people wound, by each group's attack, across time. To do this, we are still going to use the `summarize`, but we will precede that with `group_by(group)` to tell the subsequent `dplyr` functions to perform the actions separately for each breed.
+We might want to compare different actors and see the mean and standard deviation of the number of people wounded, by each group's attack, across time. To do this, we are still going to use `summarise()`, but we will precede it with `group_by(group)` to tell the subsequent `dplyr` functions to perform the actions separately for each group.
 
 ```{r, warning=FALSE, message=FALSE}
 attacks %>%
   group_by( group) %>%
-  summarise( Mean = mean(attacks$nrWound), 
-             Std.Dev = sd(attacks$nrWound))
+  summarise( Mean = mean(nrWound), 
+             Std.Dev = sd(nrWound))
 ```
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
@@ -299,7 +299,7 @@ The first five people in the FRS all belong to the same household (household 1);
 
 The second household (household 2) comprises only one person – a single middle-aged male.The third household comprises another married couple, this time with two children.
 
-Superficially the fourth household looks similar to households 1 and 2: a married couple plus their daughter. The difference is that this particular married couple is nearing retirement age, and their daughter is middle-aged. Consequently, despite being a child of the married couple, the middle-aged daughter is treated as a separate ‘family’ (family 2 in the household). This is because the FRS (and Census) define a ‘family’ as a couple plus any ‘dependent’ children. A dependent child is defined as a child who is either\` aged 0-15 or aged 16-19, unmarried and in full-time education. All children aged 16-19 who are married or no longer in full-time education are regarded as ‘independent’ adults who form their own family unit, as are all children aged 20+.
+Superficially the fourth household looks similar to households 1 and 2: a married couple plus their daughter. The difference is that this particular married couple is nearing retirement age, and their daughter is middle-aged. Consequently, despite being a child of the married couple, the middle-aged daughter is treated as a separate ‘family’ (family 2 in the household). This is because the FRS (and Census) define a ‘family’ as a couple plus any ‘dependent’ children. A dependent child is defined as a child who is either aged 0-15 or aged 16-19, unmarried and in full-time education. All children aged 16-19 who are married or no longer in full-time education are regarded as ‘independent’ adults who form their own family unit, as are all children aged 20+.
 
 The inclusion of all persons in a household allows us more flexibility in the types of research question we can answer. For example, we could explore how the likelihood of a woman being in paid employment `WorkStatus` is influenced by the age of the youngest child still living in her family (if any) `fam_youngest`.
 
@@ -378,6 +378,36 @@ library(ggplot2)
 
 You should see the histogram below. It reveals that the income distribution is very skewed with few people earning high salaries and the majority earning just over or less 35,000 annually.
 
+**Why this matters: the mean and the median disagree.**
+
+Look back at the `summary()` output. The mean gross income is about £22,544, but the median is about £17,108 — a difference of more than £5,000. Both are "the average". Both are correct. So which one should you report?
+
+The histogram answers it. Let's draw the two numbers onto it:
+
+```{r, warning=FALSE, message=FALSE}
+ggplot(frs_independent, aes(x = income_gross)) +
+  geom_histogram(binwidth = 5000, fill = "skyblue", color = "white") +
+  geom_vline(xintercept = median(frs_independent$income_gross), colour = "darkgreen", linewidth = 1) +
+  geom_vline(xintercept = mean(frs_independent$income_gross), colour = "red", linewidth = 1) +
+  labs(
+    title = "Green line = median. Red line = mean.",
+    x = "Gross Income (£)",
+    y = "Frequency"
+  ) +
+  xlim(0, 90000) +
+  theme_minimal()
+```
+
+**`geom_vline()`** simply draws a vertical line at the position you give it. Here we give it the median and the mean.
+
+The green median line sits in the middle of the tall bars, where most people actually are. The red mean line sits noticeably to the right, in a region where comparatively few people are. Nobody moved it there deliberately: the mean is dragged upwards by the long tail of very high earners off to the right of the chart (remember, the highest income in this dataset is over £1,000,000). The median cannot be dragged like this, because it only cares about who is in the middle of the queue, not how rich the richest person is.
+
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**Task**: Which of the two lines better describes "a typical person's income" in this dataset? This is not a trick question — look at where the bars are.
+:::
+
+This is why income, house prices and similar skewed variables are almost always reported as medians, and it is a point worth making in your assignment if you use one of them. It is also a warning: **whenever you report a mean, look at the histogram first**. If the distribution has a long tail, the mean is describing the tail as much as it is describing your typical case.
+
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
 **Task**: Adopt a regrouping strategy.
 :::
@@ -411,6 +441,29 @@ frs_independent <- frs_independent %>%
 		income_gross >= HIGH_THRESHOLD ~ "High", 
 		TRUE ~ "Middle" ))
 ```
+
+Before looking at the results, it is worth seeing what you have just done to the data. The two thresholds are simply two lines drawn across the distribution:
+
+```{r, warning=FALSE, message=FALSE}
+ggplot(frs_independent, aes(x = income_gross)) +
+  geom_histogram(binwidth = 5000, fill = "grey80", color = "white") +
+  geom_vline(xintercept = LOW_THRESHOLD, colour = "red", linewidth = 1) +
+  geom_vline(xintercept = HIGH_THRESHOLD, colour = "red", linewidth = 1) +
+  labs(
+    title = "Your two thresholds, drawn on the distribution",
+    subtitle = "Everything left of the first line is 'Low'. Everything right of the second is 'High'.",
+    x = "Gross Income (£)",
+    y = "Frequency"
+  ) +
+  xlim(0, 90000) +
+  theme_minimal()
+```
+
+Notice how much of the population falls between the lines, and how little falls beyond the right-hand one. Now change `LOW_THRESHOLD` to 15000, re-run both chunks, and watch the red line move and the "Low" group grow.
+
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**Task**: There is no correct answer here, and that is the point. You chose those two numbers, and your choice decides who counts as poor and who counts as rich. If you recode a variable like this in your assignment, you must say what thresholds you used and why — the marking criteria ask for exactly that.
+:::
 
 The `mutate()` function in R, from the **dplyr** package, is used to add or modify columns in a data frame. It allows you to create new variables or transform existing ones by applying calculations or conditional statements directly within the function.
 
@@ -472,3 +525,109 @@ table(frs_independent$income_category, frs_independent$region)
 
 -   Place the income variable in the columns.
 -   Add multiple variables in the rows to create simultaneous cross-tabulations.
+
+## Practice: From Sample to Population
+
+Everything we have done so far describes **the people in our dataset**. But nobody actually cares about the 33,836 adults in the FRS file. We care about adults in the UK. The FRS is a *sample*: the Department for Work and Pensions knocked on a set of randomly chosen doors, and these are the people who answered.
+
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**The key question**: our sample says the mean gross income is about £22,544. If the DWP had knocked on a *different* set of doors, would they have got the same number?
+:::
+
+### Sampling Variability
+
+Let's find out. For the next few minutes, pretend the 33,836 people in the FRS **are** the whole population. That lets us do something the DWP cannot: draw a small sample out of it, look at the answer, then put everybody back and draw another one.
+
+```{r, warning=FALSE, message=FALSE}
+mean(sample(frs_independent$income_gross, size = 500))
+```
+
+Read that from the inside out: `sample(...)` picks 500 incomes at random, and `mean(...)` averages them.
+
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**Task**: Run that line three or four more times. Write down the answer each time.
+:::
+
+You will get a different number every time — usually somewhere between about £21,000 and £25,000, but essentially never exactly £22,544. Nobody made a mistake. This is **sampling variability**: the unavoidable wobble that comes from a sample being only a part of the whole.
+
+Now let R do it a thousand times and collect all the answers:
+
+```{r, warning=FALSE, message=FALSE}
+many_means <- replicate(1000, mean(sample(frs_independent$income_gross, size = 500)))
+```
+
+**`replicate(1000, ...)`** does what its name suggests: it runs whatever is in the brackets 1000 times over and keeps every result. `many_means` now holds 1000 numbers, each the average income of a different imaginary survey.
+
+```{r, warning=FALSE, message=FALSE}
+means_table <- data.frame(sample_mean = many_means)
+
+ggplot(means_table, aes(x = sample_mean)) +
+  geom_histogram(bins = 40, fill = "steelblue", color = "white") +
+  labs(
+    title = "1000 samples of 500 people: what mean income did each one report?",
+    x = "Sample mean income (£)",
+    y = "Number of samples"
+  ) +
+  theme_minimal()
+```
+
+Two things are worth noticing. The histogram is centred on the true value of about £22,500 — samples are not systematically wrong, they are wrong in *both* directions roughly equally. And it is far narrower than the income distribution you plotted earlier: individual incomes ran from large losses to over a million, but *sample means* nearly all land within a few thousand pounds of each other.
+
+### The Standard Error
+
+The width of that histogram is the thing we want, because it says how far a typical sample lands from the truth. It has a name: the **standard error**.
+
+```{r, warning=FALSE, message=FALSE}
+sd(many_means)
+```
+
+About £1,200. In other words, a sample of 500 people typically misses the true mean income by around £1,200.
+
+Be careful not to confuse this with the standard deviation of income, which was about £27,000. That one describes how much **people** differ from each other. The standard error describes how much **samples** differ from each other. Mixing up the two is one of the most common errors in student reports.
+
+In real life you only ever have one sample, so you cannot build the histogram above. Happily you do not need to — the standard error can be worked out from your single sample, as the standard deviation divided by the square root of the sample size:
+
+```{r, warning=FALSE, message=FALSE}
+sd(frs_independent$income_gross) / sqrt(500)
+```
+
+Compare that with the `sd(many_means)` value. They agree closely: the formula predicts the width of a histogram we never had to build.
+
+### What a P-value Means
+
+From next week onwards, almost every result you produce will come with a **p-value** attached, so it is worth knowing now what one is.
+
+Suppose we ask whether men and women have different incomes. In our data they clearly do:
+
+```{r, warning=FALSE, message=FALSE}
+frs_independent %>%
+  group_by(sex) %>%
+  summarise(mean_income = mean(income_gross, na.rm = TRUE), n = n())
+```
+
+A gap of roughly £9,300. But we have just spent half an hour establishing that samples wobble, so before concluding anything about the UK we have to rule out the boring explanation: **could a gap this large have turned up purely through the luck of who got sampled, even if men and women earned the same across the country?**
+
+That is the question a p-value answers, and it is the only question a p-value answers:
+
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**A p-value is**: if there were genuinely no difference in the population, how often would sampling alone hand us a gap at least as large as the one we observed?
+:::
+
+A small p-value means "hardly ever, so sampling luck is a poor explanation for what I am seeing". A large p-value means "quite often, so I cannot rule out that this is just noise". The statement being tested — that there is genuinely no difference in the population — is called the **null hypothesis**.
+
+```{r, warning=FALSE, message=FALSE}
+t.test(income_gross ~ sex, data = frs_independent)
+```
+
+The squiggle `~` is read as "by" or "depends on", so `income_gross ~ sex` means "income, broken down by sex". You will meet this notation constantly from next week, because it is how R writes down a model.
+
+The p-value is reported as `< 2.2e-16`, R's way of writing "smaller than 0.00000000000000022". Sampling variation is essentially impossible as an explanation for a gap this large in a sample this size, so we conclude that a gender income gap exists in the population — not just in our spreadsheet. By convention, a p-value below 0.05 is called **statistically significant**.
+
+Two warnings to carry into your assignment:
+
+-   A p-value is **not** the probability that your finding is correct. It is calculated *assuming* there is no real difference, so it cannot tell you how likely that assumption is.
+-   A small p-value does **not** mean the effect is large or important. With 33,836 people, even a trivial £50 gap would come out "highly significant". Always report the size of an effect alongside its p-value.
+
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**Going further (optional, in your own time)**: there is more to say about all of this — what a confidence interval really means, why "not significant" does not mean "no difference", and why Census data needs handling differently. It is written up in [Samples, Uncertainty and P-values](https://gdsl-ul.github.io/stats/general/inference.html). You do not need it today, but it will help when you write your report.
+:::
