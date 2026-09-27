@@ -1,1 +1,1 @@
-This is the webpage of the module *Exploring the Social World (ENVS225) - Quantitative Block* offered in the [BA in Geography](https://www.liverpool.ac.uk/courses/2025/geography-ba-hons) at the University of Liverpool, Department of Geography and Planning.
+This is the webpage of the module *Exploring the Social World (ENVS225) - Quantitative Block* offered in the [BA in Geography](https://www.liverpool.ac.uk/courses/geography-ba-hons) at the University of Liverpool, Department of Geography and Planning.
