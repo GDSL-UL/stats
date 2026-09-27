@@ -1,14 +1,31 @@
 {
-  "name": "RStudio Server for Students",
+  "name": "GDSL Statistics RStudio",
   "image": "ghcr.io/rocker-org/devcontainer/r-ver:4",
+
   "features": {
     "ghcr.io/rocker-org/devcontainer-features/rstudio-server:1": {}
   },
-  "forwardPorts": [8787],
+
+  "forwardPorts": [
+    8787
+  ],
+
   "portsAttributes": {
     "8787": {
       "label": "RStudio Server",
       "onAutoForward": "openBrowser"
+    }
+  },
+
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "REditorSupport.r",
+        "quarto.quarto",
+        "ms-toolsai.jupyter"
+      ]
     }
   }
 }
