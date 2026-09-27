@@ -18,6 +18,9 @@ cat <<EOF
 
     $url
 
+    Stuck on "authenticating" / "getting your codespace ready"?
+    Refresh the page (F5).
+
     Tip: bookmark it. It stays the same for this codespace.
   ============================================================
 

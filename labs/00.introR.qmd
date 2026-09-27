@@ -9,18 +9,7 @@ output: html_document
 
 -   https://dereksonderegger.github.io/570L/1-introduction.html by Derek L. Sonderegger;
 
--   For the lab sessions and your assignment, you will need the following software:
-
--   R-4.2.2 (or higher)
-
--   RStudio 2022.12.0-353 (or higher)
-
--   The list of libraries in the next section
-
-To install and update:
-
--   R, download the appropriate version from [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/)
--   RStudio, download the appropriate version from [Posit](https://posit.co/download/rstudio-desktop/)
+**Before starting, follow the [Setup](../general/setup.qmd) guide to open RStudio in your browser. Nothing needs to be installed.**
 
 ## R?
 

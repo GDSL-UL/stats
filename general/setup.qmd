@@ -1,0 +1,124 @@
+# Setup: RStudio in your Browser {.unnumbered}
+
+In this module you use **RStudio in your web browser**. You don't need to install anything. R, RStudio and all the course files are ready for you.
+
+This works on any computer: university PCs, Windows laptops, Macs and Chromebooks.
+
+It runs on **GitHub Codespaces**. A *codespace* is your own computer on the internet. Only you can use it, and it keeps your files between sessions.
+
+## 1. First time only
+
+**Step 1. Make a GitHub account.**
+
+Go to [github.com/signup](https://github.com/signup) and create a free account. You can use your university email. Then sign in.
+
+**Step 2. Create your codespace.**
+
+Click this button, then click the green **Create codespace** button:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/GDSL-UL/stats?quickstart=1)
+
+Wait a minute or two. A blue and grey window opens in your browser. This is called VS Code. **You don't need to use it**, but keep it open in the background.
+
+**Step 3. Open RStudio.**
+
+When everything is ready, you have two ways to open RStudio:
+
+-   A small message appears in the bottom-right corner. Click **Open in Browser**.
+-   Or look at the panel at the bottom of the window. Find the box that says **RStudio is ready**. Hold Ctrl (Cmd on a Mac) and click the link in the box.
+
+RStudio opens in a new tab.
+
+::: callout-tip
+**The new tab is stuck on a GitHub page that says "authenticating"?** Press F5 to refresh the page. RStudio will then open. This is normal.
+:::
+
+**Step 4. Bookmark the RStudio tab.**
+
+This is your personal RStudio address. Use it to come back quickly next time.
+
+## 2. Every time you work
+
+1.  Go to [github.com/codespaces](https://github.com/codespaces) and click your codespace. You can also click the button in Step 2 again: it takes you back to the codespace you already have.
+2.  Open RStudio with your bookmark, or as in Step 3.
+3.  Work in the RStudio tab.
+4.  When you finish, go back to [github.com/codespaces](https://github.com/codespaces). Click the **...** next to your codespace and choose **Stop codespace**. This saves your free hours. Your files are not deleted.
+
+## 3. Your files
+
+In RStudio, the **Files** panel (bottom right) shows the course folder:
+
+```
+stats/
+├── data/    the datasets
+├── img/     pictures used in the labs
+└── labs/    one lab file for each week
+```
+
+Everything is already in the right place. **You don't need to download, move or set up anything.**
+
+## 4. Your first lab (Week 1)
+
+1.  In the **Files** panel, click `labs`, then click `01.DataExploration.qmd`. The lab opens in the top-left panel.
+2.  Find the first grey box with code in it. This is called a *code chunk*. Click the small green arrow in its top-right corner. The result appears under the chunk.
+3.  Go through the lab from top to bottom and run each chunk.
+4.  Write your notes and answers in the white space between the chunks. To add a new chunk of your own, click `Code -> Insert Chunk`.
+5.  Save often: press Ctrl+S (Cmd+S on a Mac).
+
+Each week, open that week's lab file in the same way.
+
+Your changes are only saved in your own codespace. They don't change the website, and other students can't see them.
+
+::: callout-note
+**How the labs find the data**
+
+The lab code loads data like this:
+
+```{r}
+#| eval: false
+attacks <- read.csv("../data/attacksUK.csv")
+```
+
+`../` means "go up one folder". The lab file is in `labs`, so R goes up to `stats` and then into `data`. You don't need to change these lines.
+:::
+
+## 5. Adding data from Canvas
+
+Some datasets are only on Canvas, for example the Family Resource Survey (FRS). To add one:
+
+1.  Download the file from Canvas to your computer.
+2.  In RStudio's **Files** panel, click `data`.
+3.  If the lab asks for a new folder (for example `FRS`), click **New Folder**, type the name, and click **OK**. Then click the new folder to open it.
+4.  Click **Upload**, then **Choose File**. Pick the file you downloaded and click **OK**.
+
+Now the lab code will find the file.
+
+## 6. Saving a copy on your computer
+
+To download a file from RStudio (for example to keep a copy, or to submit your work):
+
+1.  In the **Files** panel, tick the box next to the file.
+2.  Click **More**, then **Export...**, then **Download**.
+
+For the assessment, download the report template from Canvas and upload it to your `labs` folder (the same way as in section 5). Write your report there. You submit an `.html` file, which you make with the **Render** button at the top of your file. See [How to submit](howSubmit.qmd).
+
+::: callout-warning
+**Keep copies of your work.** If you don't open your codespace for 30 days, GitHub deletes it, and your files are deleted too. Download the lab files you have worked on from time to time, and always before holidays and before the assessment deadline.
+:::
+
+## 7. If something goes wrong
+
+-   **RStudio is stuck on "authenticating".** Press F5 to refresh the page.
+-   **RStudio says it lost the connection.** Your codespace has probably stopped. Open it again from [github.com/codespaces](https://github.com/codespaces), then refresh the RStudio tab.
+-   **R says it can't find a file.** Check that the file is really in the folder named in the code. You can see this in the **Files** panel.
+-   **GitHub says you have no free hours left.** The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see below).
+
+## Another option: RStudio on a university PC or your own laptop
+
+RStudio is already installed on university PCs. To use it:
+
+1.  Go to the [course page on GitHub](https://github.com/GDSL-UL/stats). Click the green **Code** button, then **Download ZIP**.
+2.  Unzip the file. On a university PC, put the folder in your `M:` drive, so you can open it from any PC on campus.
+3.  In RStudio, click `File -> Open File...` and open the lab file from the `labs` folder. Then work as described above.
+
+To use your own laptop, first install [R](https://cran.r-project.org/) and then [RStudio Desktop](https://posit.co/download/rstudio-desktop/).

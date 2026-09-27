@@ -1,6 +1,6 @@
 # Assessment Template {.unnumbered}
 
-**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://canvas.liverpool.ac.uk/courses/84668/files/13173146?module_item_id=2459687) and work on it with your own RStudio.
+**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://canvas.liverpool.ac.uk/courses/84668/files/13173146?module_item_id=2459687), then upload it to the `labs` folder in RStudio (see [Setup](setup.qmd), section 5) and work on it there.
 
 Start your `.qmd` file with this YAML header:
 
@@ -35,13 +35,13 @@ library(kableExtra)
 # Stats helpers
 library(broom)
 
-## These need to be installed on your PC.
+## Already installed in your codespace. On your own PC, install them first.
 ```
 
-Load your data. If R cannot find the file, see [Working Directory and Paths](wdPaths.qmd).
+Load your data. If R cannot find the file, see [Setup](setup.qmd).
 
 ```{r}
-# df <- read.csv("data/your_file.csv")   # uncomment and change to your file
+# df <- read.csv("../data/your_file.csv")   # uncomment and change to your file
 ```
 
 ::: {style="color: red;"}

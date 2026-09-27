@@ -5,9 +5,7 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-**IMPORTANT: Before starting: verify that you have set the directory correctly and familiarise yourself with working with directories and loading files. These are the [instructions](https://gdsl-ul.github.io/stats/general/wdPaths.html)**.
-
-**Now create a .qmd project. We use the `File -> New File -> Quarto Document..` dropdown option; a menu will appear asking you for the document title, author, and preferred output type. You can select HTML. Call it "*week2*" and save it in your main folder.**
+**Open this lab in RStudio: in the Files pane, click `labs` and then `02.MultipleLinear.qmd`. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.** (First time? See the [Setup](../general/setup.qmd) guide.)
 
 Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents.
 

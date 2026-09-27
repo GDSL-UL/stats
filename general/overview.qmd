@@ -42,15 +42,9 @@ The computer practical sessions, will give you the chance to use and apply quant
 
 ## Software and Data
 
-For quantitative training sessions, ensure you have installed and/or have access to **RStudio**. To run the analysis and reproduce the code in R, you need the following software installed on your machine:
+We work in **RStudio in your web browser** (GitHub Codespaces): R, RStudio, the packages and the course data are ready to use, with nothing to install. **Follow the [Setup](setup.qmd) guide before the first practical.**
 
-- R-4.2.2 (or later)
-- RStudio 2022.12.0-353 (or later)
-
-To install and update:
-
-- R, download the appropriate version from [The Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/).
-- RStudio, download the appropriate version from [here](https://posit.co/download/rstudio-desktop/).
+RStudio is also installed on University Machines, and you can install [R](https://cran.r-project.org/) and [RStudio Desktop](https://posit.co/download/rstudio-desktop/) on your own laptop if you prefer (see the end of the [Setup](setup.qmd) guide).
 
 **This software is already installed on University Machines. But you will need it to run the analysis on your personal devices.**
 
