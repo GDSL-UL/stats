@@ -15,9 +15,10 @@
 
   "postCreateCommand": "bash .devcontainer/setup.sh",
 
-  // Runs every time the codespace is opened/resumed, so RStudio is always up.
+  // Runs every time the codespace is opened/resumed: prints this codespace's
+  // RStudio link in the terminal and starts RStudio if it isn't running.
   "postAttachCommand": {
-    "rstudio-start": "rserver"
+    "rstudio-start": "bash .devcontainer/start-rstudio.sh"
   },
 
   "forwardPorts": [8787],
@@ -25,7 +26,9 @@
   "portsAttributes": {
     "8787": {
       "label": "RStudio",
-      "onAutoForward": "openBrowser"
+      // A notification with an "Open in Browser" button: the student's own click
+      // opens RStudio, so pop-up blockers can't stop it (openBrowser can be blocked).
+      "onAutoForward": "notify"
     }
   },
 
@@ -39,7 +42,12 @@
       "settings": {
         "workbench.startupEditor": "none",
         "workbench.welcomePage.walkthroughs.openOnInstall": false,
-        "workbench.tips.enabled": false
+        "workbench.tips.enabled": false,
+        "workbench.secondarySideBar.defaultVisibility": "hidden",
+        "chat.disableAIFeatures": true,
+        // Skip the "Do you trust the authors?" prompt, which blocks the terminal
+        // that starts RStudio.
+        "security.workspace.trust.enabled": false
       }
     }
   }
