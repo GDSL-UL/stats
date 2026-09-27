@@ -14,9 +14,17 @@ Go to [github.com/signup](https://github.com/signup) and create a free account. 
 
 **Step 2. Create your codespace.**
 
+::: {.content-visible when-format="html"}
 Click this button, then click the green **Create codespace** button:
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/GDSL-UL/stats?quickstart=1)
+:::
+
+::: {.content-visible unless-format="html"}
+Open this link, then click the green **Create codespace** button:
+
+<https://codespaces.new/GDSL-UL/stats?quickstart=1>
+:::
 
 Wait a minute or two. A blue and grey window opens in your browser. This is called VS Code. **You don't need to use it**, but keep it open in the background.
 
