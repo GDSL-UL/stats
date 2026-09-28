@@ -26,7 +26,7 @@ Open this link, then click the green **Create codespace** button:
 <https://codespaces.new/GDSL-UL/stats?quickstart=1>
 :::
 
-Wait a minute or two. A blue and grey window opens in your browser. This is called VS Code. **You don't need to use it**, but keep it open in the background.
+Wait while your codespace is built. **The first time this takes several minutes**, because R, RStudio and the course packages are installed for you. Don't close the tab. Next time it opens much faster. A blue and grey window opens in your browser. This is called VS Code. **You don't need to use it**, but keep it open in the background.
 
 **Step 3. Open RStudio.**
 
@@ -38,7 +38,12 @@ When everything is ready, you have two ways to open RStudio:
 RStudio opens in a new tab.
 
 ::: callout-tip
-**The new tab is stuck on a GitHub page that says "authenticating"?** Press F5 to refresh the page. RStudio will then open. This is normal.
+**The new tab is stuck on a GitHub page that says "authenticating"?** This is normal. Try these in order:
+
+1.  Press F5 to refresh the page.
+2.  Wait a minute: RStudio may still be starting. Then refresh again.
+3.  Use a normal browser window, not a private or incognito one. Chrome or Edge work best. Some browsers (Safari, Brave, or Firefox/Edge with strict tracking protection) block the cookie GitHub needs to sign you in: allow cookies for `github.dev` or switch browser.
+4.  In the VS Code window, click the **Ports** tab in the bottom panel, right-click the **RStudio** row (port 8787) and choose **Open in Browser**.
 :::
 
 **Step 4. Bookmark the RStudio tab.**
@@ -119,7 +124,7 @@ For the assessment, download the report template from Canvas and upload it to yo
 
 ## 7. If something goes wrong
 
--   **RStudio is stuck on "authenticating".** Press F5 to refresh the page.
+-   **RStudio is stuck on "authenticating".** Press F5 to refresh the page. If that doesn't help, see the tips in Step 3 of section 1.
 -   **RStudio says it lost the connection.** Your codespace has probably stopped. Open it again from [github.com/codespaces](https://github.com/codespaces), then refresh the RStudio tab.
 -   **R says it can't find a file.** Check that the file is really in the folder named in the code. You can see this in the **Files** panel.
 -   **GitHub says you have no free hours left.** The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see below).
