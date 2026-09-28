@@ -57,7 +57,7 @@ This is your personal RStudio address. Use it to come back quickly next time.
 1.  Go to [github.com/codespaces](https://github.com/codespaces) and click your codespace. You can also click the button in Step 2 again: it takes you back to the codespace you already have.
 2.  Open RStudio with your bookmark, or as in Step 3.
 3.  Work in the RStudio tab.
-4.  When you finish, go back to [github.com/codespaces](https://github.com/codespaces). Click the **...** next to your codespace and choose **Stop codespace**. This saves your free hours. Your files are not deleted.
+4.  When you finish, go back to [github.com/codespaces](https://github.com/codespaces). Click the **...** next to your codespace and choose **Stop codespace**. This saves your free hours. Your files are not deleted. If you forget, it stops by itself after about an hour without using RStudio.
 
 ## 3. Your files
 
@@ -127,7 +127,7 @@ For the assessment, download the report template from Canvas and upload it to yo
 ## 7. If something goes wrong
 
 -   **RStudio is stuck on "authenticating".** Press F5 to refresh the page. If that doesn't help, see the tips in Step 3 of section 1.
--   **RStudio says it lost the connection.** Your codespace has probably stopped. Open it again from [github.com/codespaces](https://github.com/codespaces), then refresh the RStudio tab.
+-   **RStudio says it lost the connection.** First press F5 to refresh the RStudio tab: often the connection just dropped for a moment, and your work is still there. If that doesn't help, your codespace has stopped. Open it again from [github.com/codespaces](https://github.com/codespaces), then refresh the RStudio tab.
 -   **You don't see the `myLabs` folder.** Your codespace was created before we added it. In the VS Code window, click in the panel at the bottom, type `git pull` and press Enter. Then stop your codespace and open it again (see section 2).
 -   **R says it can't find a file.** Check that the file is really in the folder named in the code. You can see this in the **Files** panel.
 -   **GitHub says you have no free hours left.** The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see [Setup: RStudio on a PC or Laptop](localSetup.qmd)).

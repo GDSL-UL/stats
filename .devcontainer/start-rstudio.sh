@@ -38,9 +38,34 @@ cat <<EOF
 
 EOF
 
-# Re-attaching (e.g. reopening the VS Code tab) must not start a second server.
-if pgrep -x rserver >/dev/null; then
-  exit 0
+# Idle R sessions pause after 30 minutes instead of RStudio's default 2 hours.
+# This also ends the keep-alive below.
+conf=/etc/rstudio/rsession.conf
+if ! grep -qs '^session-timeout-minutes=' "$conf"; then
+  echo 'session-timeout-minutes=30' | sudo tee -a "$conf" >/dev/null
 fi
 
-exec rserver
+# Re-attaching (e.g. reopening the VS Code tab) must not start a second server.
+if ! pgrep -x rserver >/dev/null; then
+  rserver --server-daemonize=1
+fi
+
+# A codespace stops after 30 idle minutes, and working in RStudio doesn't count
+# as activity: only using VS Code or output in its terminal does. So while an R
+# session is open, print to this terminal every few minutes. A forgotten
+# RStudio tab still lets the codespace stop: its R session pauses (above).
+# Capped at 4 hours per opening in case a session never pauses.
+pidfile=/tmp/rstudio-keepalive.pid
+old=$(cat "$pidfile" 2>/dev/null)
+if [ -n "$old" ] && ps -p "$old" -o args= | grep -q start-rstudio; then
+  kill "$old"
+fi
+echo $$ >"$pidfile"
+
+end=$((SECONDS + 4 * 3600))
+while [ "$SECONDS" -lt "$end" ]; do
+  sleep 300
+  if pgrep -u "$(id -u)" -x rsession >/dev/null; then
+    printf '\r  %s  RStudio in use: keeping your codespace awake.' "$(date +%H:%M)"
+  fi
+done
