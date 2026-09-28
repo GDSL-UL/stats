@@ -1,6 +1,5 @@
-# Every package loaded in labs/*.qmd. tidyverse ships with the base image.
-# Used when building the course image (image/Dockerfile) and again by setup.sh
-# as a quick check, so edit this list only.
+# Every package loaded in labs/*.qmd. tidyverse ships with the image; setup.sh
+# runs this when a codespace is created to install the rest.
 packages <- c(
   "tidyverse",
   "broom",

@@ -21,6 +21,5 @@ git sparse-checkout set --no-cone \
 
 echo "Checking R packages..."
 
-# Already in the course image; this only installs any added to packages.R
-# since the image was last built.
+# tidyverse ships with the image; this adds the rest.
 Rscript .devcontainer/packages.R
