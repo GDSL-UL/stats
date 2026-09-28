@@ -26,7 +26,9 @@ Open this link, then click the green **Create codespace** button:
 <https://codespaces.new/GDSL-UL/stats?quickstart=1>
 :::
 
-Wait while your codespace is built. **The first time this takes several minutes**, because R, RStudio and the course packages are installed for you. Don't close the tab. Next time it opens much faster. A blue and grey window opens in your browser. This is called VS Code. **You don't need to use it**, but keep it open in the background.
+Wait while your codespace is built. **The first time this takes several minutes**, because R, RStudio and the course packages are installed for you. Don't close the tab. (Next time it opens much faster.)
+
+When it's ready, a blue and grey window opens in your browser. This is called VS Code. **You don't need to use it**, but keep it open in the background.
 
 **Step 3. Open RStudio.**
 
@@ -126,6 +128,7 @@ For the assessment, download the report template from Canvas and upload it to yo
 
 -   **RStudio is stuck on "authenticating".** Press F5 to refresh the page. If that doesn't help, see the tips in Step 3 of section 1.
 -   **RStudio says it lost the connection.** Your codespace has probably stopped. Open it again from [github.com/codespaces](https://github.com/codespaces), then refresh the RStudio tab.
+-   **You don't see the `myLabs` folder.** Your codespace was created before we added it. In the VS Code window, click in the panel at the bottom, type `git pull` and press Enter. Then stop your codespace and open it again (see section 2).
 -   **R says it can't find a file.** Check that the file is really in the folder named in the code. You can see this in the **Files** panel.
 -   **GitHub says you have no free hours left.** The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see below).
 
