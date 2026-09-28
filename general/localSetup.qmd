@@ -1,0 +1,87 @@
+# Setup: RStudio on a PC or Laptop {.unnumbered}
+
+The easiest way to work in this module is [RStudio in your browser](setup.qmd). You can also use RStudio installed on a computer:
+
+-   on a **university PC**, where RStudio is already installed;
+-   on **your own laptop**, after installing R and RStudio.
+
+This is useful if you run out of free codespace hours, if you want to work offline, or if a data file is too big to upload to your codespace.
+
+The labs are the same. The differences are that you set things up once yourself, and the labs don't update automatically.
+
+## 1. Get RStudio
+
+**University PC.** R and RStudio are already installed. Go to step 2.
+
+**Your own laptop.** Install these two programs, in this order:
+
+1.  [R](https://cran.r-project.org/): pick the version for your system (Windows, macOS or Linux) and install it with the default options.
+2.  [RStudio Desktop](https://posit.co/download/rstudio-desktop/): download the free version and install it.
+
+## 2. Get the course files
+
+1.  Go to the [course page on GitHub](https://github.com/GDSL-UL/stats). Click the green **Code** button, then **Download ZIP**.
+2.  **Unzip the file** (on Windows: right-click it, then **Extract All...**). Don't work inside the ZIP file: R can't find the data there.
+3.  Put the unzipped `stats` folder somewhere you can find it. On a university PC, put it in your `M:` drive, so you can open it from any PC on campus.
+
+The folder also contains the website and the lecture slides. You only need these parts:
+
+```
+stats/
+├── data/          the datasets
+├── img/           pictures used in the labs
+├── labs/          one lab file for each week
+├── myLabs/        your own copies of the labs: you work here
+└── envs225.Rproj  opens the course in RStudio
+```
+
+## 3. Open the course in RStudio
+
+Double-click `envs225.Rproj` in the `stats` folder. RStudio opens, and the **Files** panel (bottom right) shows the course folder.
+
+Next time, open the course the same way, or in RStudio click `File -> Recent Projects` and choose `envs225`.
+
+## 4. Install the packages (once)
+
+In the codespace all the packages are already installed. On a PC or laptop you install them once. Copy this line into the **Console** (bottom left), press Enter, and wait until it finishes. This can take a few minutes.
+
+```{r}
+#| eval: false
+install.packages(c("tidyverse", "broom", "knitr", "rmarkdown", "scales", "readxl", "RColorBrewer", "kableExtra", "vtable", "vcd", "pscl", "ggridges", "corrplot"))
+```
+
+If RStudio asks whether to install from sources, or to use a personal library, answer **No** to sources and **Yes** to the personal library.
+
+On a university PC you may need to do this again if you log in to a different PC. If a lab stops with `there is no package called ...`, install that package with `install.packages("name")`, or use `Tools -> Install Packages...`.
+
+## 5. Work on the labs
+
+Work as in the codespace (see [Setup](setup.qmd), section 4):
+
+1.  In the **Files** panel, click `labs` and open that week's lab.
+2.  Click `File -> Save As...`, go to the `myLabs` folder, and click **Save**. Work on this copy.
+3.  Go through the lab from top to bottom and run each code chunk.
+4.  Save often: press Ctrl+S (Cmd+S on a Mac).
+
+The lab code loads data with paths like `"../data/attacksUK.csv"`. These work because your copy is in `myLabs`, next to `data`. You don't need to change them.
+
+## 6. Adding data from Canvas
+
+Download the file from Canvas and move it into the `data` folder with File Explorer (Windows) or Finder (Mac). If the lab asks for a new folder (for example `FRS`), create it inside `data` first.
+
+There is no upload step and no size limit, so this also works for large files.
+
+## 7. Getting updated labs
+
+In the codespace the `labs` folder updates by itself. On a PC or laptop it doesn't. If we tell you a lab has changed:
+
+1.  Download the ZIP again and unzip it (step 2).
+2.  Copy its `labs` folder into your `stats` folder and replace the old one.
+
+**Never replace your `myLabs` folder**: your work is there.
+
+## 8. If something goes wrong
+
+-   **R says it can't find a file.** Check that you unzipped the course files (step 2), that you opened the lab from `myLabs`, and that the data file is really in the folder named in the code.
+-   **`there is no package called ...`** Install the package (step 4).
+-   **The Render button asks to install packages or tools.** Click **Yes** and let RStudio install them.

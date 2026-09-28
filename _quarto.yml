@@ -24,6 +24,7 @@ book:
     - index.qmd
     - general/overview.qmd
     - general/setup.qmd
+    - general/localSetup.qmd
     - general/assessment.qmd
     - general/howSubmit.qmd
     - general/reportTemplate.qmd

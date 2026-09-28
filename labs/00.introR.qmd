@@ -144,7 +144,7 @@ library(dplyr)   # load the dplyr package; we will use it in the next lab
 ```
 
 ::: callout-note
-If you use RStudio on a university PC or your own laptop instead of the codespace, a package may be missing. You will see an error like `there is no package called 'dplyr'`. Install the package once with `Tools -> Install Packages...`, then run `library()` again.
+If you use RStudio on a university PC or your own laptop instead of the codespace, a package may be missing. You will see an error like `there is no package called 'dplyr'`. Install the package once with `Tools -> Install Packages...`, then run `library()` again. See [Setup: RStudio on a PC or Laptop](../general/localSetup.qmd) to install all the course packages at once.
 :::
 
 ## Next

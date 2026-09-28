@@ -130,14 +130,8 @@ For the assessment, download the report template from Canvas and upload it to yo
 -   **RStudio says it lost the connection.** Your codespace has probably stopped. Open it again from [github.com/codespaces](https://github.com/codespaces), then refresh the RStudio tab.
 -   **You don't see the `myLabs` folder.** Your codespace was created before we added it. In the VS Code window, click in the panel at the bottom, type `git pull` and press Enter. Then stop your codespace and open it again (see section 2).
 -   **R says it can't find a file.** Check that the file is really in the folder named in the code. You can see this in the **Files** panel.
--   **GitHub says you have no free hours left.** The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see below).
+-   **GitHub says you have no free hours left.** The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see [Setup: RStudio on a PC or Laptop](localSetup.qmd)).
 
 ## Another option: RStudio on a university PC or your own laptop
 
-RStudio is already installed on university PCs. To use it:
-
-1.  Go to the [course page on GitHub](https://github.com/GDSL-UL/stats). Click the green **Code** button, then **Download ZIP**.
-2.  Unzip the file. On a university PC, put the folder in your `M:` drive, so you can open it from any PC on campus.
-3.  In RStudio, click `File -> Open File...` and open the lab file from the `labs` folder. Then work as described above.
-
-To use your own laptop, first install [R](https://cran.r-project.org/) and then [RStudio Desktop](https://posit.co/download/rstudio-desktop/).
+You can also work in RStudio installed on a university PC or on your own laptop. See [Setup: RStudio on a PC or Laptop](localSetup.qmd).
