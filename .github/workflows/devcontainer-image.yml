@@ -40,4 +40,7 @@ jobs:
             Rscript -e 'source(".devcontainer/packages.R"); invisible(lapply(packages, library, character.only = TRUE))'
           push: filter
           refFilterForPush: refs/heads/main
-          eventFilterForPush: push,workflow_dispatch
+          # One event per line (a comma-separated list matches nothing).
+          eventFilterForPush: |
+            push
+            workflow_dispatch
