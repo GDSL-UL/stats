@@ -1,0 +1,19 @@
+{
+  // Used only to BUILD the course image (see .github/workflows/devcontainer-image.yml).
+  // Students' codespaces use ../devcontainer.json, which just pulls the result.
+  "name": "ENVS225 RStudio image",
+
+  "build": {
+    "dockerfile": "Dockerfile",
+    // The .devcontainer folder, so the Dockerfile can copy packages.R.
+    "context": ".."
+  },
+
+  "features": {
+    // Configures RStudio in single-user mode (no login page). Its settings are
+    // stored in the image, so codespaces made from it get them too.
+    "ghcr.io/rocker-org/devcontainer-features/rstudio-server:0": {}
+  },
+
+  "remoteUser": "rstudio"
+}
