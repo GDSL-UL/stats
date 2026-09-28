@@ -165,6 +165,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../general/localSetup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup: RStudio on a PC or Laptop</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../general/assessment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assessment</span></a>
   </div>
@@ -197,30 +203,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../labs/01.DataExploration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Exploring a Dataset</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/02.MultipleLinear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation, Simple, and Multiple Linear Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/03.QualitativeVariable.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: Correlation and Multiple Linear Regression with Qualitative Variables</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/04.LogisticRegression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lab: Logistic Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/05.Visualisation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lab: Data Visualisation with ggplot</span></span></a>
   </div>
 </li>
     </ul>
@@ -345,7 +327,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Where figures and tables go.</strong> Put each figure or table in the section that uses it, straight after the paragraph where you first discuss it. <strong>Do not collect them at the end of the report or in an appendix.</strong> Each section below says which figures and tables it needs, if any. Most reports need about <strong>3 tables and 2–3 charts in total</strong>. More charts do not earn more marks: choose each one because it shows something your text discusses (see <a href="../labs/05.Visualisation.html">Lab: Data Visualisation</a>, Parts 3 and 4). Remember that tables count towards the word count.</p>
+<p><strong>Where figures and tables go.</strong> Put each figure or table in the section that uses it, straight after the paragraph where you first discuss it. <strong>Do not collect them at the end of the report or in an appendix.</strong> Each section below says which figures and tables it needs, if any. Most reports need about <strong>3 tables and 2–3 charts in total</strong>. More charts do not earn more marks: choose each one because it shows something your text discusses (see <a href="../labs/05.Visualisation.qmd">Lab: Data Visualisation</a>, Parts 3 and 4). Remember that tables count towards the word count.</p>
 </div>
 </div>
 <div style="color: red;">
@@ -408,7 +390,7 @@ Table&nbsp;1: Variables used in the analysis. Source: …
 <p><strong>Figures and tables in this section:</strong> <strong>one summary table and 2–3 charts</strong> (descriptive statistics), then <strong>one model table</strong> (regression model). This is where almost all of your figures and tables belong.</p>
 <section id="descriptive-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="descriptive-statistics">Descriptive statistics</h3>
-<p>Summarise all the variables in your model in <strong>one table</strong>: mean, standard deviation, median and range for numerical variables; counts and percentages for categorical variables (e.g.&nbsp;<code>vtable::st()</code> or <code>kbl()</code>, see the Week 5 lab, <a href="../labs/05.Visualisation.html">Data Visualisation</a>).</p>
+<p>Summarise all the variables in your model in <strong>one table</strong>: mean, standard deviation, median and range for numerical variables; counts and percentages for categorical variables (e.g.&nbsp;<code>vtable::st()</code> or <code>kbl()</code>, see the Week 5 lab, <a href="../labs/05.Visualisation.qmd">Data Visualisation</a>).</p>
 <div id="tbl-descriptives" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-descriptives-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -437,7 +419,7 @@ Table&nbsp;2: Descriptive statistics of the variables in the model. Source: …
 <li><strong>Multiple linear regression:</strong> coefficients, standard errors (or 95% confidence intervals), p-values, adjusted R², number of observations.</li>
 <li><strong>Logistic regression:</strong> odds ratios with 95% confidence intervals, p-values, number of observations.</li>
 </ul>
-<p>For each independent variable, report the direction and size of the association in the units of the dependent variable (e.g.&nbsp;percentage points, or odds for logistic regression), whether it is statistically significant, and that it holds with the other variables held constant. Interpret categorical variables against their reference category. Then report the model fit and, in a sentence or two, what the diagnostic checks showed (see the Week 2 lab, <a href="../labs/02.MultipleLinear.html">Multiple Linear Regression</a>): describe them in words, you do not need to include the diagnostic plots. The regression model should be the core of this section!</p>
+<p>For each independent variable, report the direction and size of the association in the units of the dependent variable (e.g.&nbsp;percentage points, or odds for logistic regression), whether it is statistically significant, and that it holds with the other variables held constant. Interpret categorical variables against their reference category. Then report the model fit and, in a sentence or two, what the diagnostic checks showed (see the Week 2 lab, <a href="../labs/02.MultipleLinear.qmd">Multiple Linear Regression</a>): describe them in words, you do not need to include the diagnostic plots. The regression model should be the core of this section!</p>
 <div id="tbl-model" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-model-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">

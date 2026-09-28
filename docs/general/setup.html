@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../general/assessment.html" rel="next">
+<link href="../general/localSetup.html" rel="next">
 <link href="../general/overview.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -165,6 +165,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../general/localSetup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Setup: RStudio on a PC or Laptop</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../general/assessment.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Assessment</span></a>
   </div>
@@ -197,30 +203,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../labs/01.DataExploration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Exploring a Dataset</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/02.MultipleLinear.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation, Simple, and Multiple Linear Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/03.QualitativeVariable.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Lab: Correlation and Multiple Linear Regression with Qualitative Variables</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/04.LogisticRegression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Lab: Logistic Regression</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../labs/05.Visualisation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Lab: Data Visualisation with ggplot</span></span></a>
   </div>
 </li>
     </ul>
@@ -281,7 +263,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Open in GitHub Codespaces</figcaption>
 </figure>
 </div>
-<p>Wait while your codespace is built. <strong>The first time this takes several minutes</strong>, because R, RStudio and the course packages are installed for you. Don’t close the tab. Next time it opens much faster. A blue and grey window opens in your browser. This is called VS Code. <strong>You don’t need to use it</strong>, but keep it open in the background.</p>
+<p>Wait while your codespace is built. <strong>The first time this takes several minutes</strong>, because R, RStudio and the course packages are installed for you. Don’t close the tab. (Next time it opens much faster.)</p>
+<p>When it’s ready, a blue and grey window opens in your browser. This is called VS Code. <strong>You don’t need to use it</strong>, but keep it open in the background.</p>
 <p><strong>Step 3. Open RStudio.</strong></p>
 <p>When everything is ready, you have two ways to open RStudio:</p>
 <ul>
@@ -399,19 +382,14 @@ Warning
 <ul>
 <li><strong>RStudio is stuck on “authenticating”.</strong> Press F5 to refresh the page. If that doesn’t help, see the tips in Step 3 of section 1.</li>
 <li><strong>RStudio says it lost the connection.</strong> Your codespace has probably stopped. Open it again from <a href="https://github.com/codespaces">github.com/codespaces</a>, then refresh the RStudio tab.</li>
+<li><strong>You don’t see the <code>myLabs</code> folder.</strong> Your codespace was created before we added it. In the VS Code window, click in the panel at the bottom, type <code>git pull</code> and press Enter. Then stop your codespace and open it again (see section 2).</li>
 <li><strong>R says it can’t find a file.</strong> Check that the file is really in the folder named in the code. You can see this in the <strong>Files</strong> panel.</li>
-<li><strong>GitHub says you have no free hours left.</strong> The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see below).</li>
+<li><strong>GitHub says you have no free hours left.</strong> The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see <a href="../general/localSetup.html">Setup: RStudio on a PC or Laptop</a>).</li>
 </ul>
 </section>
 <section id="another-option-rstudio-on-a-university-pc-or-your-own-laptop" class="level2">
 <h2 class="anchored" data-anchor-id="another-option-rstudio-on-a-university-pc-or-your-own-laptop">Another option: RStudio on a university PC or your own laptop</h2>
-<p>RStudio is already installed on university PCs. To use it:</p>
-<ol type="1">
-<li>Go to the <a href="https://github.com/GDSL-UL/stats">course page on GitHub</a>. Click the green <strong>Code</strong> button, then <strong>Download ZIP</strong>.</li>
-<li>Unzip the file. On a university PC, put the folder in your <code>M:</code> drive, so you can open it from any PC on campus.</li>
-<li>In RStudio, click <code>File -&gt; Open File...</code> and open the lab file from the <code>labs</code> folder. Then work as described above.</li>
-</ol>
-<p>To use your own laptop, first install <a href="https://cran.r-project.org/">R</a> and then <a href="https://posit.co/download/rstudio-desktop/">RStudio Desktop</a>.</p>
+<p>You can also work in RStudio installed on a university PC or on your own laptop. See <a href="../general/localSetup.html">Setup: RStudio on a PC or Laptop</a>.</p>
 
 
 </section>
@@ -844,8 +822,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../general/assessment.html" class="pagination-link" aria-label="Assessment">
-        <span class="nav-page-text">Assessment</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../general/localSetup.html" class="pagination-link" aria-label="Setup: RStudio on a PC or Laptop">
+        <span class="nav-page-text">Setup: RStudio on a PC or Laptop</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

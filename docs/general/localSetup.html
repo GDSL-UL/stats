@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Samples, Uncertainty and P-values – Exploring the Social World - Quantitative Block: Statistics</title>
+<title>Setup: RStudio on a PC or Laptop – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../labs/00.introR.html" rel="next">
-<link href="../general/reportTemplate.html" rel="prev">
+<link href="../general/assessment.html" rel="next">
+<link href="../general/setup.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../general/inference.html">Samples, Uncertainty and P-values</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../general/localSetup.html">Setup: RStudio on a PC or Laptop</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../general/localSetup.html" class="sidebar-item-text sidebar-link">
+  <a href="../general/localSetup.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Setup: RStudio on a PC or Laptop</span></a>
   </div>
 </li>
@@ -189,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../general/inference.html" class="sidebar-item-text sidebar-link active">
+  <a href="../general/inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Samples, Uncertainty and P-values</span></a>
   </div>
 </li>
@@ -215,22 +215,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#setting-up" id="toc-setting-up" class="nav-link active" data-scroll-target="#setting-up">Setting Up</a></li>
-  <li><a href="#why-sample-size-matters" id="toc-why-sample-size-matters" class="nav-link" data-scroll-target="#why-sample-size-matters">Why Sample Size Matters</a></li>
-  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link" data-scroll-target="#confidence-intervals">Confidence Intervals</a></li>
-  <li><a href="#seeing-what-95-means" id="toc-seeing-what-95-means" class="nav-link" data-scroll-target="#seeing-what-95-means">Seeing What “95%” Means</a></li>
-  <li><a href="#significance-and-sample-size" id="toc-significance-and-sample-size" class="nav-link" data-scroll-target="#significance-and-sample-size">Significance and Sample Size</a></li>
-  <li><a href="#what-a-p-value-is-not" id="toc-what-a-p-value-is-not" class="nav-link" data-scroll-target="#what-a-p-value-is-not">What a P-value Is Not</a></li>
-  <li><a href="#a-note-on-census-data" id="toc-a-note-on-census-data" class="nav-link" data-scroll-target="#a-note-on-census-data">A Note on Census Data</a></li>
+  <li><a href="#get-rstudio" id="toc-get-rstudio" class="nav-link active" data-scroll-target="#get-rstudio">1. Get RStudio</a></li>
+  <li><a href="#get-the-course-files" id="toc-get-the-course-files" class="nav-link" data-scroll-target="#get-the-course-files">2. Get the course files</a></li>
+  <li><a href="#open-the-course-in-rstudio" id="toc-open-the-course-in-rstudio" class="nav-link" data-scroll-target="#open-the-course-in-rstudio">3. Open the course in RStudio</a></li>
+  <li><a href="#install-the-packages-once" id="toc-install-the-packages-once" class="nav-link" data-scroll-target="#install-the-packages-once">4. Install the packages (once)</a></li>
+  <li><a href="#work-on-the-labs" id="toc-work-on-the-labs" class="nav-link" data-scroll-target="#work-on-the-labs">5. Work on the labs</a></li>
+  <li><a href="#adding-data-from-canvas" id="toc-adding-data-from-canvas" class="nav-link" data-scroll-target="#adding-data-from-canvas">6. Adding data from Canvas</a></li>
+  <li><a href="#getting-updated-labs" id="toc-getting-updated-labs" class="nav-link" data-scroll-target="#getting-updated-labs">7. Getting updated labs</a></li>
+  <li><a href="#if-something-goes-wrong" id="toc-if-something-goes-wrong" class="nav-link" data-scroll-target="#if-something-goes-wrong">8. If something goes wrong</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/inference.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/localSetup.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Samples, Uncertainty and P-values</h1>
+<h1 class="title">Setup: RStudio on a PC or Laptop</h1>
 </div>
 
 
@@ -247,191 +248,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>This page picks up where the Week 1 practical left off. You do not need it to complete any lab, and nothing here is examined on its own. It is here because the ideas below decide whether the numbers in your report actually mean what you say they mean, and because three of them are very commonly got wrong in assignments.</p>
-<p>Read it at some point before you write up your results. It should take about twenty minutes.</p>
-<p><strong>What you need to have done first</strong>: the section <em>From Sample to Population</em> in the <a href="https://gdsl-ul.github.io/stats/labs/01.DataExploration.html">Week 1 practical</a>, where we established that a sample mean wobbles, and that the size of the wobble is called the standard error.</p>
-<section id="setting-up" class="level2">
-<h2 class="anchored" data-anchor-id="setting-up">Setting Up</h2>
-<p>Everything below uses the same FRS data as the Week 1 practical, so we load it the same way. Check the path — you may need to remove the <code>..</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>frs_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/FRS/FRS16-17_labels.csv"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>frs_independent <span class="ot">&lt;-</span> frs_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(dependent <span class="sc">!=</span> <span class="st">"Dependent"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>A note before we start: none of the code below will give you exactly the numbers printed on this page, because every chunk draws a fresh random sample. That is the entire point of the page. Your figures should be <em>close</em> to these, not identical, and if you run a chunk twice you will get two different answers.</p>
-</section>
-<section id="why-sample-size-matters" class="level2">
-<h2 class="anchored" data-anchor-id="why-sample-size-matters">Why Sample Size Matters</h2>
-<p>In the practical we found that samples of 500 people missed the true mean income by about £1,200 on average, and that this figure — the standard error — can be calculated as the standard deviation divided by the square root of the sample size.</p>
-<p>That square root has a practical consequence. Let’s repeat the exercise with smaller and larger samples:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>means_100  <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="at">size =</span> <span class="dv">100</span>)))</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>means_2000 <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">1000</span>, <span class="fu">mean</span>(<span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="at">size =</span> <span class="dv">2000</span>)))</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(means_100)   <span class="co"># standard error with n = 100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2706.037</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(means_2000)  <span class="co"># standard error with n = 2000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 589.3576</code></pre>
-</div>
-</div>
-<p>Roughly £2,800 for samples of 100, against £600 for samples of 2000. Bigger samples give more precise answers — but look at the <em>rate</em>. To halve your uncertainty you must <strong>quadruple</strong> your sample.</p>
-<p>This is why national surveys are expensive. It is also why you should be sceptical of confident claims made about small subgroups: a survey of 40,000 people may contain only 90 people in the particular category you want to talk about, and the uncertainty for that group is set by the 90, not the 40,000.</p>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Worth doing</strong>: find a subgroup in the FRS that interests you — one region, say, or one age group. How many people are in it? Using the formula above, how precisely can you estimate its mean income? If the answer is “not very”, that is a limitation worth stating in your report.</p>
-</div>
-</section>
-<section id="confidence-intervals" class="level2">
-<h2 class="anchored" data-anchor-id="confidence-intervals">Confidence Intervals</h2>
-<p>Reporting “£22,544” on its own pretends to a precision we do not have. A <strong>confidence interval</strong> reports the estimate together with its uncertainty, and R will build one for us:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>one_sample <span class="ot">&lt;-</span> <span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="at">size =</span> <span class="dv">500</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(one_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    One Sample t-test
-
-data:  one_sample
-t = 18.792, df = 499, p-value &lt; 2.2e-16
-alternative hypothesis: true mean is not equal to 0
-95 percent confidence interval:
- 18760.54 23141.48
-sample estimates:
-mean of x 
- 20951.01 </code></pre>
-</div>
-</div>
-<p>Ignore most of that output and look at the part labelled <strong>95 percent confidence interval</strong>.</p>
-<p>The interval is, roughly, “our estimate, give or take about two standard errors”. Its meaning is best stated as a statement about the <em>method</em>: if we repeated this whole exercise many times, about 95 out of every 100 intervals built this way would contain the true population mean.</p>
-<p>A confidence interval is almost always more informative than a single number, and reporting one in your assignment is a mark of careful work.</p>
-</section>
-<section id="seeing-what-95-means" class="level2">
-<h2 class="anchored" data-anchor-id="seeing-what-95-means">Seeing What “95%” Means</h2>
-<p>That definition is a mouthful, and it is far easier to believe once you have watched it happen. So let’s build not one confidence interval, but a hundred.</p>
-<p>The idea is the same as before: take a sample of 500 people, build a confidence interval from it, write it down, and repeat another 99 times. Because we are pretending the FRS is the whole population, we know the true answer, so afterwards we can simply count how many of our intervals caught it.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Take 100 samples of 500 people, and keep the confidence interval from each one</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>intervals <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">100</span>, <span class="fu">t.test</span>(<span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="dv">500</span>))<span class="sc">$</span>conf.int)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><code>t.test(...)$conf.int</code> runs the test but keeps <em>only</em> the confidence interval, throwing the rest of the output away. The <code>$</code> picks one piece out of a result, just as <code>Grades$Name</code> picked one column out of a table in the practical.</p>
-<p>The result, <code>intervals</code>, has two rows and 100 columns: one column per sample, with its lower limit on the first row and its upper limit on the second. We can pull those two rows out to build an ordinary table:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>many_intervals <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">sample_number =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">lower =</span> intervals[<span class="dv">1</span>, ],   <span class="co"># all of row 1: the lower limits</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">upper =</span> intervals[<span class="dv">2</span>, ]    <span class="co"># all of row 2: the upper limits</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(many_intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  sample_number    lower    upper
-1             1 20009.06 25372.80
-2             2 20126.46 28017.84
-3             3 21237.03 25952.97
-4             4 20712.00 24996.00
-5             5 21542.53 27445.42
-6             6 19893.04 23197.07</code></pre>
-</div>
-</div>
-<p>Now work out the true answer, and check each interval against it:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>true_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(frs_independent<span class="sc">$</span>income_gross)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># TRUE if the interval caught the true mean, FALSE if it missed</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>many_intervals<span class="sc">$</span>caught_it <span class="ot">&lt;-</span> many_intervals<span class="sc">$</span>lower <span class="sc">&lt;</span> true_mean <span class="sc">&amp;</span> many_intervals<span class="sc">$</span>upper <span class="sc">&gt;</span> true_mean</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(many_intervals<span class="sc">$</span>caught_it)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-FALSE  TRUE 
-    8    92 </code></pre>
-</div>
-</div>
-<p>A handful missed — usually somewhere between about three and ten of the hundred. Let’s draw them. Each horizontal line is one sample’s confidence interval, and the vertical line is the true mean income of the population:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(many_intervals, <span class="fu">aes</span>(<span class="at">y =</span> sample_number, <span class="at">colour =</span> caught_it)) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(<span class="fu">aes</span>(<span class="at">xmin =</span> lower, <span class="at">xmax =</span> upper)) <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> true_mean) <span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"grey65"</span>)) <span class="sc">+</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"100 samples, 100 confidence intervals"</span>,</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gross income (£)"</span>,</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Sample number"</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="inference_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This picture <em>is</em> the definition of a confidence interval:</p>
+<p>The easiest way to work in this module is <a href="../general/setup.html">RStudio in your browser</a>. You can also use RStudio installed on a computer:</p>
 <ul>
-<li>Every interval is a different width and sits in a different place, because every sample was different.</li>
-<li>Most straddle the true mean. A few — the red ones — do not.</li>
-<li>Nothing is wrong with the red intervals. They were built in exactly the same way as the others. They were simply unlucky samples.</li>
+<li>on a <strong>university PC</strong>, where RStudio is already installed;</li>
+<li>on <strong>your own laptop</strong>, after installing R and RStudio.</li>
 </ul>
-<p>And here is the part that matters for your report. <strong>In real research you only ever get one of these lines.</strong> You never find out whether yours is grey or red, because you never learn the true answer. What “95% confident” buys you is not certainty about your own interval; it is the knowledge that the <em>procedure</em> you used lands on the truth about 19 times out of 20.</p>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Worth doing</strong>: change <code>500</code> to <code>2000</code> in the code above and run the whole thing again.</p>
-</div>
-<p>You should find the intervals roughly halve in width, because we quadrupled the sample. But the number of red ones does <strong>not</strong> shrink in the same way — it stays somewhere around five, bouncing about from run to run because that count is itself a random quantity.</p>
-<p>This is the point. Bigger samples buy you <em>precision</em>: a narrower interval, a sharper answer. They do not buy you <em>reliability</em>: the 95% was fixed by us when we asked for a 95% interval, and it stays at 95% whatever the sample size.</p>
-<p>One honest footnote. If you count carefully you will often find rather more than five red intervals. That is not a mistake either. Incomes are so badly skewed — remember the handful of people earning over a million — that confidence intervals built this way come out slightly too narrow, and catch the truth about 93% of the time rather than 95%. This is a small example of a large lesson: statistical tools come with assumptions attached, and skewed data strains them.</p>
+<p>This is useful if you run out of free codespace hours, if you want to work offline, or if a data file is too big to upload to your codespace.</p>
+<p>The labs are the same. The differences are that you set things up once yourself, and the labs don’t update automatically.</p>
+<section id="get-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="get-rstudio">1. Get RStudio</h2>
+<p><strong>University PC.</strong> R and RStudio are already installed. Go to step 2.</p>
+<p><strong>Your own laptop.</strong> Install these two programs, in this order:</p>
+<ol type="1">
+<li><a href="https://cran.r-project.org/">R</a>: pick the version for your system (Windows, macOS or Linux) and install it with the default options.</li>
+<li><a href="https://posit.co/download/rstudio-desktop/">RStudio Desktop</a>: download the free version and install it.</li>
+</ol>
 </section>
-<section id="significance-and-sample-size" class="level2">
-<h2 class="anchored" data-anchor-id="significance-and-sample-size">Significance and Sample Size</h2>
-<p>In the practical we found a gender income gap of about £9,300 across 33,836 people, with a p-value too small for R to print. Now watch what happens when we ask the identical question of only 60 people:</p>
+<section id="get-the-course-files" class="level2">
+<h2 class="anchored" data-anchor-id="get-the-course-files">2. Get the course files</h2>
+<ol type="1">
+<li>Go to the <a href="https://github.com/GDSL-UL/stats">course page on GitHub</a>. Click the green <strong>Code</strong> button, then <strong>Download ZIP</strong>.</li>
+<li><strong>Unzip the file</strong> (on Windows: right-click it, then <strong>Extract All…</strong>). Don’t work inside the ZIP file: R can’t find the data there.</li>
+<li>Put the unzipped <code>stats</code> folder somewhere you can find it. On a university PC, put it in your <code>M:</code> drive, so you can open it from any PC on campus.</li>
+</ol>
+<p>The folder also contains the website and the lecture slides. You only need these parts:</p>
+<pre><code>stats/
+├── data/          the datasets
+├── img/           pictures used in the labs
+├── labs/          one lab file for each week
+├── myLabs/        your own copies of the labs: you work here
+└── envs225.Rproj  opens the course in RStudio</code></pre>
+</section>
+<section id="open-the-course-in-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="open-the-course-in-rstudio">3. Open the course in RStudio</h2>
+<p>Double-click <code>envs225.Rproj</code> in the <code>stats</code> folder. RStudio opens, and the <strong>Files</strong> panel (bottom right) shows the course folder.</p>
+<p>Next time, open the course the same way, or in RStudio click <code>File -&gt; Recent Projects</code> and choose <code>envs225</code>.</p>
+</section>
+<section id="install-the-packages-once" class="level2">
+<h2 class="anchored" data-anchor-id="install-the-packages-once">4. Install the packages (once)</h2>
+<p>In the codespace all the packages are already installed. On a PC or laptop you install them once. Copy this line into the <strong>Console</strong> (bottom left), press Enter, and wait until it finishes. This can take a few minutes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>small_sample <span class="ot">&lt;-</span> frs_independent <span class="sc">%&gt;%</span> <span class="fu">slice_sample</span>(<span class="at">n =</span> <span class="dv">60</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(income_gross <span class="sc">~</span> sex, <span class="at">data =</span> small_sample)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  income_gross by sex
-t = -2.4796, df = 40.483, p-value = 0.01741
-alternative hypothesis: true difference in means between group Female and group Male is not equal to 0
-95 percent confidence interval:
- -19826.002  -2023.452
-sample estimates:
-mean in group Female   mean in group Male 
-            15404.61             26329.33 </code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"tidyverse"</span>, <span class="st">"broom"</span>, <span class="st">"knitr"</span>, <span class="st">"rmarkdown"</span>, <span class="st">"scales"</span>, <span class="st">"readxl"</span>, <span class="st">"RColorBrewer"</span>, <span class="st">"kableExtra"</span>, <span class="st">"vtable"</span>, <span class="st">"vcd"</span>, <span class="st">"pscl"</span>, <span class="st">"ggridges"</span>, <span class="st">"corrplot"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>Worth doing</strong>: run those two lines four or five times over, and watch the p-value each time.</p>
-</div>
-<p>You will see it jump around wildly. Sometimes the gap comes out statistically significant; most of the time it does not — in fact, with 60 people this test only reaches p &lt; 0.05 about a third of the time. The confidence interval for the difference will usually include zero, which is the same message in a different form.</p>
-<p>Nothing about the UK changed between the big test and the small one. There really is a gender income gap. Only our ability to <em>detect</em> it changed.</p>
-<div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
-<p><strong>This is the lesson to take away</strong>: “not statistically significant” means <em>“this sample cannot settle the question”</em>. It does <strong>not</strong> mean “there is no difference”.</p>
-</div>
-<p>In your report, this is a matter of wording, and markers notice. “No significant association was found” is defensible. “There is no association” is not, and it is a much stronger claim than your data can support.</p>
+<p>If RStudio asks whether to install from sources, or to use a personal library, answer <strong>No</strong> to sources and <strong>Yes</strong> to the personal library.</p>
+<p>On a university PC you may need to do this again if you log in to a different PC. If a lab stops with <code>there is no package called ...</code>, install that package with <code>install.packages("name")</code>, or use <code>Tools -&gt; Install Packages...</code>.</p>
 </section>
-<section id="what-a-p-value-is-not" class="level2">
-<h2 class="anchored" data-anchor-id="what-a-p-value-is-not">What a P-value Is Not</h2>
-<p>Three misreadings are extremely common in student reports, and each one costs marks:</p>
+<section id="work-on-the-labs" class="level2">
+<h2 class="anchored" data-anchor-id="work-on-the-labs">5. Work on the labs</h2>
+<p>Work as in the codespace (see <a href="../general/setup.html">Setup</a>, section 4):</p>
+<ol type="1">
+<li>In the <strong>Files</strong> panel, click <code>labs</code> and open that week’s lab.</li>
+<li>Click <code>File -&gt; Save As...</code>, go to the <code>myLabs</code> folder, and click <strong>Save</strong>. Work on this copy.</li>
+<li>Go through the lab from top to bottom and run each code chunk.</li>
+<li>Save often: press Ctrl+S (Cmd+S on a Mac).</li>
+</ol>
+<p>The lab code loads data with paths like <code>"../data/attacksUK.csv"</code>. These work because your copy is in <code>myLabs</code>, next to <code>data</code>. You don’t need to change them.</p>
+</section>
+<section id="adding-data-from-canvas" class="level2">
+<h2 class="anchored" data-anchor-id="adding-data-from-canvas">6. Adding data from Canvas</h2>
+<p>Download the file from Canvas and move it into the <code>data</code> folder with File Explorer (Windows) or Finder (Mac). If the lab asks for a new folder (for example <code>FRS</code>), create it inside <code>data</code> first.</p>
+<p>There is no upload step and no size limit, so this also works for large files.</p>
+</section>
+<section id="getting-updated-labs" class="level2">
+<h2 class="anchored" data-anchor-id="getting-updated-labs">7. Getting updated labs</h2>
+<p>In the codespace the <code>labs</code> folder updates by itself. On a PC or laptop it doesn’t. If we tell you a lab has changed:</p>
+<ol type="1">
+<li>Download the ZIP again and unzip it (step 2).</li>
+<li>Copy its <code>labs</code> folder into your <code>stats</code> folder and replace the old one.</li>
+</ol>
+<p><strong>Never replace your <code>myLabs</code> folder</strong>: your work is there.</p>
+</section>
+<section id="if-something-goes-wrong" class="level2">
+<h2 class="anchored" data-anchor-id="if-something-goes-wrong">8. If something goes wrong</h2>
 <ul>
-<li>A p-value is <strong>not</strong> the probability that the null hypothesis is true, and it is <strong>not</strong> the probability that your finding is correct. It is calculated <em>assuming</em> the null hypothesis is true, so it cannot tell you how likely that assumption is. Three asterisks do not mean “99.9% certain there is a relationship”.</li>
-<li>A small p-value does <strong>not</strong> mean the effect is large or important. With a big enough sample, a trivially small effect will come out “highly significant”. Significance tells you an effect is <em>detectable</em>; only the coefficient itself tells you whether it <em>matters</em>. Always report and interpret both.</li>
-<li>A p-value says nothing at all about <strong>causation</strong>. It cannot distinguish a real causal relationship from a confounded one. That judgement comes from your literature review and your research design, never from the output.</li>
+<li><strong>R says it can’t find a file.</strong> Check that you unzipped the course files (step 2), that you opened the lab from <code>myLabs</code>, and that the data file is really in the folder named in the code.</li>
+<li><strong><code>there is no package called ...</code></strong> Install the package (step 4).</li>
+<li><strong>The Render button asks to install packages or tools.</strong> Click <strong>Yes</strong> and let RStudio install them.</li>
 </ul>
-</section>
-<section id="a-note-on-census-data" class="level2">
-<h2 class="anchored" data-anchor-id="a-note-on-census-data">A Note on Census Data</h2>
-<p>Everything on this page assumes your data are a <em>random sample</em> of some larger population. That is true of the FRS, the APS and the SAR.</p>
-<p>It is not true of the Census. When you run a regression on the 2021 Census district data in Week 2, you are working with every district in England and Wales, not a sample of them. Strictly speaking there is no sampling uncertainty to quantify, because there was no sampling.</p>
-<p>Statisticians handle this by treating the observed pattern as one realisation of a social process that could have turned out differently — the districts we see are one roll of the dice, and the p-value asks how easily that roll could have come up by chance. That is a reasonable way to reason, but it rests on a weaker footing than a genuine random sample, and it is a judgement rather than a fact about the data.</p>
-<p>You do not need to resolve this. But if you use Census data in your assignment, a sentence acknowledging it in your limitations section is exactly the kind of critical awareness the higher marking bands reward.</p>
 
 
 </section>
@@ -859,13 +752,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../general/reportTemplate.html" class="pagination-link" aria-label="Assessment Template">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Assessment Template</span>
+      <a href="../general/setup.html" class="pagination-link" aria-label="Setup: RStudio in your Browser">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Setup: RStudio in your Browser</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../labs/00.introR.html" class="pagination-link" aria-label="Lab: Introduction to R">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Lab: Introduction to R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../general/assessment.html" class="pagination-link" aria-label="Assessment">
+        <span class="nav-page-text">Assessment</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -877,7 +770,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/inference.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/GDSL-UL/stats/edit/main/general/localSetup.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
