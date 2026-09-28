@@ -1,6 +1,6 @@
 # Assessment Template {.unnumbered}
 
-**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://canvas.liverpool.ac.uk/courses/93312/files/14479738?module_item_id=2727711), then upload it to the `labs` folder in RStudio (see [Setup](setup.qmd), section 5) and work on it there.
+**Suggested Report Structure** — This template follows the requested sections. Each section contains guidance text and an empty R code cell for your analysis. Download it from [here](https://canvas.liverpool.ac.uk/courses/93312/files/14479738?module_item_id=2727711), then upload it to the `myLabs` folder in RStudio (see [Setup](setup.qmd), section 5) and work on it there.
 
 Start your `.qmd` file with this YAML header:
 

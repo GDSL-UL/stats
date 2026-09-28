@@ -7,6 +7,8 @@ format:
     toc-depth: 4
 ---
 
+**Open this lab in RStudio: in the Files pane, click `labs` and then `03.QualitativeVariable.qmd`. Save your own copy in `myLabs` (`File -> Save As...`) and work on the copy. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.** (First time? See the [Setup](../general/setup.qmd) guide.)
+
 The lecture’s slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf).
 
 Last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R code, we create and interpret the model:
@@ -39,7 +41,7 @@ In this week's practical we are going to
 
 ## Analysing categorical variables
 
-Recall that in Week 2 you became familiar with R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. You should already have your Census data in your 'data/Census2021/' folder; for the FRS datasets, please click the links to download the datasets from [Canvas](https://canvas.liverpool.ac.uk/courses/93312/pages/family-resource-survey-2016-17). Please download both the datasets of 'FRS16-17_labels.csv' and 'FRS_dictionary.xlsx'<!--and 'FRS16-17_codes.csv'--> for today's practical. You may create a new folder named 'FRS' under the '/data/' along with the Census2021 folder, and put the newly downloaded .csv files at the '/data/FRS/' folder for later use (in RStudio in the browser, use the **Upload** button in the Files pane: see [Setup](../general/setup.qmd), section 5).
+Recall that in Week 2 you became familiar with R by using the Census data. Today we will explore both the Family Resource Survey (FRS) and the Census data by using their categorical variables. The Census data is already in your 'data/Census2021/' folder, and you uploaded 'FRS16-17_labels.csv' to 'data/FRS/' in Week 1. If it is not there, download it from [Canvas](https://canvas.liverpool.ac.uk/courses/93312/pages/family-resource-survey-2016-17?module_item_id=2727712) and upload it to 'data/FRS/' (use the **Upload** button in the Files pane: see [Setup](../general/setup.qmd), section 5). From the same Canvas page, also download 'FRS_dictionary.xlsx'<!--and 'FRS16-17_codes.csv'--> to your computer: it explains what each variable means.
 
 <!--Now, there should be two .csv file: 'FRS16-17_labels.csv' and 'FRS16-17_codes.csv' in your '/data/FRS' folder. Double click to open both .csv files you may find they have exactly same column names - yes, they are in fact the same spreadsheet but 'FRS16-17_labels.csv' is more readable for the cell contents as they are in text format but cells 'FRS16-17_codes.csv' is in coding format. This is quite normal as when we doing surveys, we use text as the options of multiple choice questions for respondents to choose from, and therefore the collected survey results are in the 'FRS16-17_labels.csv' format. For example, for the multiple choice question - which region you are from? The options include 'London', 'North West', 'Wales', etc. However, while analysing the survey results, these text content (the options of multiple choice questions) are in fact different categories of the categorical/qualitative variable. So for some survey results, you may find they are formatted in coding way as 'FRS16-17_codes.csv', and along with a coding dictionary for you to learn the meaning of each coding. -->
 
@@ -47,15 +49,7 @@ To start today's practical session, we first will use 'FRS16-17_labels.csv'. <!-
 
 As usual we first load the necessary libraries.
 
-**Some tips to avoid R returning can't find data errors:**
-
-Check your working directory by
-
-```{r,results='hide',message=FALSE}
-getwd()
-```
-
-Check the relative path of your data folder on your PC/laptop, make sure you know the relative path of your data from your working directory, returned by `getwd()`.
+**If R returns a "cannot open file" error**, check in the **Files** pane that the file is really in the folder named in the code (e.g. `data/FRS/`).
 
 **Libraries used today:**
 
@@ -75,37 +69,24 @@ Check the relative path of your data folder on your PC/laptop, make sure you kno
 
 ### Data overview
 
+All these packages are already installed in your codespace, so we just load them:
+
 ```{r,warning=FALSE}
-if(!require("dplyr"))
-  install.packages("dplyr",dependencies = T)
-# Load necessary libraries 
-if(!require("ggplot2"))
-  install.packages("ggplot2",dependencies = T)
-if(!require("broom"))
-  install.packages("broom",dependencies = T)
-
-
-library(dplyr) 
+# Load necessary libraries
+library(dplyr)
 library(ggplot2)
 library(broom)
-
 ```
 
-Or we can use library `tidyverse` which includes `ggplot2`, `dplyr,broom` and other fundamental libraries together already. Remember that you first need to install the package, if you haven't, by using `install.packages("tidyverse")`.
+Or we can use library `tidyverse` which includes `ggplot2`, `dplyr` and other fundamental libraries together already.
 
 ```{r,warning=FALSE}
-if(!require("tidyverse"))
-  install.packages("tidyverse",dependencies = T)
-
 library(tidyverse)
 ```
 
 We will also use the `forcats` library, so
 
 ```{r,warning=FALSE}
-if(!require("forcats"))
-  install.packages("forcats")
-
 library(forcats)
 ```
 
@@ -197,10 +178,8 @@ If you see a warning message of Chi-squared approximation may be incorrect. This
 **Cramér’s V** is a measure of association for categorical (nominal or ordinal) data. It ranges from 0 (no association) to 1 (strong association). The main downside of using Cramer’s V is that no information is provided on whether the correlation is positive or negative. This is not a problem if the variable pair includes a nominal variable but represents an information loss if both variables being correlated are ordinal.
 
 ```{r}
-# Install the 'vcd' package if not installed 
-if(!require("vcd"))   
-install.packages("vcd", repos = "https://cran.r-project.org", dependencies = T)
-library(vcd)  
+# Load the 'vcd' package
+library(vcd)
 
 # create the crosstable 
 crosstab <- table(frs_data$health, frs_data$happy)
@@ -341,7 +320,7 @@ We then read R-squared and Adjusted R-squared to evaluate the model fit. Both ar
 
 ## **Implementing a linear regression model with a qualitative independent variable**
 
-To gain further practice on using linear regression models with qualitative variables as independent variables, we extend the model you created last week by adding the qualitative/categorical variable Region from the Census 2021 dataset. This allows us to answer **Research Question 2: How does health vary across regions in England and Wales?** You should already have the dataset **EW_DistrictPercentages.csv**; if not, you can download it from [Canvas](https://canvas.liverpool.ac.uk/courses/93312/pages/census-data?module_item_id=2727713). Please put the .csv file in your '/data/Census2021' folder.
+To gain further practice on using linear regression models with qualitative variables as independent variables, we extend the model you created last week by adding the qualitative/categorical variable Region from the Census 2021 dataset. This allows us to answer **Research Question 2: How does health vary across regions in England and Wales?** We use the dataset **EW_DistrictPercentages.csv**, which is already in your 'data/Census2021' folder.
 
 The practical is split into two main parts. The first focuses on implementing a linear regression model with a qualitative independent variable. **Note that** you first need to set the reference category (baseline), as the outcomes of the model reflect the **differences** between each category and the baseline. The second part focuses on prediction based on the estimated linear regression model.
 

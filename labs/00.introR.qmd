@@ -9,7 +9,7 @@ output: html_document
 
 -   https://dereksonderegger.github.io/570L/1-introduction.html by Derek L. Sonderegger;
 
-**Open this lab in RStudio: in the Files pane, click `labs` and then `00.introR.qmd`. Work through it from top to bottom, running each code chunk.** (First time? Follow the [Setup](../general/setup.qmd) guide first.)
+**Open this lab in RStudio: in the Files pane, click `labs` and then `00.introR.qmd`. Save your own copy in `myLabs` (`File -> Save As...`) and work on the copy. Work through it from top to bottom, running each code chunk.** (First time? Follow the [Setup](../general/setup.qmd) guide first.)
 
 This short lab shows you how to find your way around RStudio and how to run R code. It takes about 20 minutes. Then move on to [Lab: Exploring a Dataset](01.DataExploration.qmd), the main practical for Week 1.
 
@@ -149,4 +149,4 @@ If you use RStudio on a university PC or your own laptop instead of the codespac
 
 ## Next
 
-That's all you need to start. Save this file (Ctrl+S), then open `01.DataExploration.qmd` in the `labs` folder: [Lab: Exploring a Dataset](01.DataExploration.qmd).
+That's all you need to start. Save this file (Ctrl+S), then open `01.DataExploration.qmd` in the `labs` folder and save your copy in `myLabs`: [Lab: Exploring a Dataset](01.DataExploration.qmd).

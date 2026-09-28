@@ -5,6 +5,8 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+**Open this lab in RStudio: in the Files pane, click `labs` and then `04.LogisticRegression.qmd`. Save your own copy in `myLabs` (`File -> Save As...`) and work on the copy. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.** (First time? See the [Setup](../general/setup.qmd) guide.)
+
 Last week, we learnt how to use qualitative variables in a multiple linear regression model to understand the relationship between independent variables X1 ... Xn and the dependent variable Y. Today we will learn to use logistic regression for a binary dependent variable. A **logistic regression model** is a type of regression analysis used when the dependent variable is binary (e.g., "success/failure" or "0/1"). It estimates the probability of one outcome relative to the other using a logistic function. This model is commonly used in situations like predicting disease presence (yes/no) or customer churn (stay/leave). The independent variables can be continuous, categorical, or a mix of both. The model's output is in the form of odds ratios, showing how predictors affect the likelihood of the outcome.
 
 The lecture’s slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture04.pdf).
@@ -31,18 +33,12 @@ The practical is split into two main parts. The first focuses on implementing a 
 
 Prepare the data for implementing a logistic regression model. The data set used in this practical is the “sar_sample_label.csv” and "sar_sample_code.csv". The SAR is a snapshot of census microdata, which are individual level data. The data sample has been drawn and anonymised from census and known as the Samples of Anonymised Records (SARs).
 
-You may need to download the two datasets and also the data dictionary from [Canvas](https://canvas.liverpool.ac.uk/courses/93312/pages/sample-of-anonymised-records-sar-dataset) if you haven't. Double click to open both .csv files you may find they have exactly same column names - yes, they are in fact the same spreadsheet but 'sar_sample_label.csv' is more readable for the cell contents as they are in text format but cells in the 'sar_sample_code.csv' is in coding format. The 'SAR_dictionary' is created to help you understand what the columns mean, just like the FRS dictionary for the FRS datasets last week. Yes, the two SAR csv files are actually the same dataframe, only one uses the label as the value but the other uses the code. This is quite normal: when we do surveys, we use text as the options of multiple choice questions for respondents to choose from, and therefore the collected survey results are in the 'sar_sample_label' format. The label format is usually more readable and is good to do descriptive analysis as we will show in today's content. However, we may find the coding format is more concise for writing the code and thus will be used during regression analysis. **Please notice that coding the labels into numbers, doesn't mean the categorical/qualitative variable has been converted into numeric/continuous numbers.**
+Both datasets are already in your 'data/SAR/' folder. Download the data dictionary ('SAR_dictionary') from [Canvas](https://canvas.liverpool.ac.uk/courses/93312/pages/sample-of-anonymised-records-sar-dataset?module_item_id=2727714) to your computer. If you look at both .csv files you may find they have exactly same column names - yes, they are in fact the same spreadsheet but 'sar_sample_label.csv' is more readable for the cell contents as they are in text format but cells in the 'sar_sample_code.csv' is in coding format. The 'SAR_dictionary' is created to help you understand what the columns mean, just like the FRS dictionary for the FRS datasets last week. Yes, the two SAR csv files are actually the same dataframe, only one uses the label as the value but the other uses the code. This is quite normal: when we do surveys, we use text as the options of multiple choice questions for respondents to choose from, and therefore the collected survey results are in the 'sar_sample_label' format. The label format is usually more readable and is good to do descriptive analysis as we will show in today's content. However, we may find the coding format is more concise for writing the code and thus will be used during regression analysis. **Please notice that coding the labels into numbers, doesn't mean the categorical/qualitative variable has been converted into numeric/continuous numbers.**
 
 Let's first read in both for the data overview.
 
 ```{r, message=FALSE}
-if(!require("tidyverse"))
-  install.packages("tidyverse",dependencies = T, repos = "https://cloud.r-project.org/")
-if(!require("broom"))
-  install.packages("broom",dependencies = T, repos = "https://cloud.r-project.org/")
-if(!require("forcats"))
-  install.packages("forcats")
-
+# already installed in your codespace
 library(tidyverse)
 library(broom)
 library(forcats)
@@ -257,8 +253,6 @@ o   For the variable **`nssec`**, the coefficients and odds ratios indicate th
 We include the R library `pscl` to calculate the measures of fit.
 
 ```{r}
-if(!require("pscl"))
-  install.packages("pscl", repos = "https://cloud.r-project.org/")
 library(pscl)
 ```
 

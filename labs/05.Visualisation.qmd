@@ -5,7 +5,7 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-**Open this lab in RStudio: in the Files pane, click `labs` and then `05.Visualisation.qmd`. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.** (First time? See the [Setup](../general/setup.qmd) guide.)
+**Open this lab in RStudio: in the Files pane, click `labs` and then `05.Visualisation.qmd`. Save your own copy in `myLabs` (`File -> Save As...`) and work on the copy. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.** (First time? See the [Setup](../general/setup.qmd) guide.)
 
 The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture05.pdf).
 

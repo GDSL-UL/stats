@@ -14,7 +14,7 @@ The lecture's slides can be found [here](https://github.com/GDSL-UL/stats/blob/m
 
 Before completing the practical, please take this [quiz](https://canvas.liverpool.ac.uk/courses/93312/quizzes/176545).
 
-**Open this lab in RStudio: in the Files pane, click `labs` and then `01.DataExploration.qmd`. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.** (First time? See the [Setup](../general/setup.qmd) guide, then do [Lab: Introduction to R](00.introR.qmd), which shows how to run code chunks.)
+**Open this lab in RStudio: in the Files pane, click `labs` and then `01.DataExploration.qmd`. Save your own copy in `myLabs` (`File -> Save As...`) and work on the copy. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.** (First time? See the [Setup](../general/setup.qmd) guide, then do [Lab: Introduction to R](00.introR.qmd), which shows how to run code chunks.)
 
 Follow the practical below. You can describe what you are doing in normal text. See [here](https://quarto.org/docs/authoring/markdown-basics.html) for how to format normal text in Markdown documents.
 

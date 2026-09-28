@@ -14,42 +14,13 @@ fi
 git sparse-checkout set --no-cone \
   '/.devcontainer/' \
   '/labs/' \
+  '/myLabs/' \
   '/data/' \
   '/img/' \
   '/envs225.Rproj'
 
 echo "Checking R packages..."
 
-# tidyverse ships with the image; this adds the rest. Uses the image's
-# default repo (Posit Package Manager binaries) so nothing compiles from source.
-Rscript - <<EOF
-
-# Every package loaded in labs/*.qmd
-packages <- c(
-  "tidyverse",
-  "broom",
-  "knitr",
-  "rmarkdown",
-  "scales",
-  "readxl",
-  "RColorBrewer",
-  "kableExtra",
-  "vtable",
-  "vcd",
-  "pscl",
-  "ggridges",
-  "corrplot"
-)
-
-missing <- setdiff(packages, rownames(installed.packages()))
-
-if (length(missing) > 0) {
-  install.packages(missing)
-}
-
-still_missing <- setdiff(packages, rownames(installed.packages()))
-if (length(still_missing) > 0) {
-  stop("Failed to install: ", paste(still_missing, collapse = ", "))
-}
-
-EOF
+# Already in the course image; this only installs any added to packages.R
+# since the image was last built.
+Rscript .devcontainer/packages.R
