@@ -281,7 +281,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Open in GitHub Codespaces</figcaption>
 </figure>
 </div>
-<p>Wait a minute or two. A blue and grey window opens in your browser. This is called VS Code. <strong>You don’t need to use it</strong>, but keep it open in the background.</p>
+<p>Wait while your codespace is built. <strong>The first time this takes several minutes</strong>, because R, RStudio and the course packages are installed for you. Don’t close the tab. Next time it opens much faster. A blue and grey window opens in your browser. This is called VS Code. <strong>You don’t need to use it</strong>, but keep it open in the background.</p>
 <p><strong>Step 3. Open RStudio.</strong></p>
 <p>When everything is ready, you have two ways to open RStudio:</p>
 <ul>
@@ -299,7 +299,13 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>The new tab is stuck on a GitHub page that says “authenticating”?</strong> Press F5 to refresh the page. RStudio will then open. This is normal.</p>
+<p><strong>The new tab is stuck on a GitHub page that says “authenticating”?</strong> This is normal. Try these in order:</p>
+<ol type="1">
+<li>Press F5 to refresh the page.</li>
+<li>Wait a minute: RStudio may still be starting. Then refresh again.</li>
+<li>Use a normal browser window, not a private or incognito one. Chrome or Edge work best. Some browsers (Safari, Brave, or Firefox/Edge with strict tracking protection) block the cookie GitHub needs to sign you in: allow cookies for <code>github.dev</code> or switch browser.</li>
+<li>In the VS Code window, click the <strong>Ports</strong> tab in the bottom panel, right-click the <strong>RStudio</strong> row (port 8787) and choose <strong>Open in Browser</strong>.</li>
+</ol>
 </div>
 </div>
 <p><strong>Step 4. Bookmark the RStudio tab.</strong></p>
@@ -320,18 +326,21 @@ Tip
 <pre><code>stats/
 ├── data/    the datasets
 ├── img/     pictures used in the labs
-└── labs/    one lab file for each week</code></pre>
+├── labs/    one lab file for each week
+└── myLabs/  your own copies of the labs: you work here</code></pre>
 <p>Everything is already in the right place. <strong>You don’t need to download, move or set up anything.</strong></p>
+<p>The <code>labs</code> folder updates automatically each time you open your codespace, so you always have the latest version of the labs. <strong>Don’t work in the files in <code>labs</code>:</strong> if you change one, the whole <code>labs</code> folder can stop updating. Work on your own copy in <code>myLabs</code> instead (see below). Nothing in <code>myLabs</code> is ever changed or replaced.</p>
 </section>
 <section id="your-first-lab-week-1" class="level2">
 <h2 class="anchored" data-anchor-id="your-first-lab-week-1">4. Your first lab (Week 1)</h2>
 <ol type="1">
 <li>In the <strong>Files</strong> panel, click <code>labs</code>, then click <code>00.introR.qmd</code>. The lab opens in the top-left panel. It shows you around RStudio and how to run code.</li>
-<li>Then open <code>01.DataExploration.qmd</code> in the same way. This is the main practical for Week 1.</li>
+<li><strong>Make your own copy.</strong> Click <code>File -&gt; Save As...</code>, go to the <code>myLabs</code> folder, and click <strong>Save</strong>. The copy is now open in RStudio: work in this one.</li>
+<li>Then open <code>01.DataExploration.qmd</code> from <code>labs</code> and copy it to <code>myLabs</code> in the same way. This is the main practical for Week 1.</li>
 <li>Go through each lab from top to bottom and run each code chunk. Write your notes and answers in the white space between the chunks.</li>
 <li>Save often: press Ctrl+S (Cmd+S on a Mac).</li>
 </ol>
-<p>Each week, open that week’s lab file in the same way.</p>
+<p>Each week, open that week’s lab from <code>labs</code>, save a copy in <code>myLabs</code>, and work on the copy. Next time, open your copy straight from <code>myLabs</code>.</p>
 <p>Your changes are only saved in your own codespace. They don’t change the website, and other students can’t see them.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -348,7 +357,7 @@ Note
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>attacks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../data/attacksUK.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><code>../</code> means “go up one folder”. The lab file is in <code>labs</code>, so R goes up to <code>stats</code> and then into <code>data</code>. You don’t need to change these lines.</p>
+<p><code>../</code> means “go up one folder”. Your copy of the lab is in <code>myLabs</code>, so R goes up to <code>stats</code> and then into <code>data</code>. You don’t need to change these lines.</p>
 </div>
 </div>
 </section>
@@ -370,7 +379,7 @@ Note
 <li>In the <strong>Files</strong> panel, tick the box next to the file.</li>
 <li>Click <strong>More</strong>, then <strong>Export…</strong>, then <strong>Download</strong>.</li>
 </ol>
-<p>For the assessment, download the report template from Canvas and upload it to your <code>labs</code> folder (the same way as in section 5). Write your report there. You submit an <code>.html</code> file, which you make with the <strong>Render</strong> button at the top of your file. See <a href="../general/howSubmit.html">How to submit</a>.</p>
+<p>For the assessment, download the report template from Canvas and upload it to your <code>myLabs</code> folder (the same way as in section 5). Write your report there. You submit an <code>.html</code> file, which you make with the <strong>Render</strong> button at the top of your file. See <a href="../general/howSubmit.html">How to submit</a>.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -381,14 +390,14 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Keep copies of your work.</strong> If you don’t open your codespace for 30 days, GitHub deletes it, and your files are deleted too. Download the lab files you have worked on from time to time, and always before holidays and before the assessment deadline.</p>
+<p><strong>Keep copies of your work.</strong> If you don’t open your codespace for 30 days, GitHub deletes it, and your files are deleted too. Download your files from <code>myLabs</code> from time to time, and always before holidays and before the assessment deadline.</p>
 </div>
 </div>
 </section>
 <section id="if-something-goes-wrong" class="level2">
 <h2 class="anchored" data-anchor-id="if-something-goes-wrong">7. If something goes wrong</h2>
 <ul>
-<li><strong>RStudio is stuck on “authenticating”.</strong> Press F5 to refresh the page.</li>
+<li><strong>RStudio is stuck on “authenticating”.</strong> Press F5 to refresh the page. If that doesn’t help, see the tips in Step 3 of section 1.</li>
 <li><strong>RStudio says it lost the connection.</strong> Your codespace has probably stopped. Open it again from <a href="https://github.com/codespaces">github.com/codespaces</a>, then refresh the RStudio tab.</li>
 <li><strong>R says it can’t find a file.</strong> Check that the file is really in the folder named in the code. You can see this in the <strong>Files</strong> panel.</li>
 <li><strong>GitHub says you have no free hours left.</strong> The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see below).</li>

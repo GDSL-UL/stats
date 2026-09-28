@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gabriele Filomena">
-<meta name="dcterms.date" content="2026-09-27">
+<meta name="dcterms.date" content="2026-09-28">
 
 <title>3&nbsp; Lab: Correlation, Simple, and Multiple Linear Regression – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
@@ -307,7 +307,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 27, 2026</p>
+      <p class="date">September 28, 2026</p>
     </div>
   </div>
   
@@ -319,7 +319,7 @@ window.Quarto = {
 </header>
 
 
-<p><strong>Open this lab in RStudio: in the Files pane, click <code>labs</code> and then <code>02.MultipleLinear.qmd</code>. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.</strong> (First time? See the <a href="../general/setup.html">Setup</a> guide.)</p>
+<p><strong>Open this lab in RStudio: in the Files pane, click <code>labs</code> and then <code>02.MultipleLinear.qmd</code>. Save your own copy in <code>myLabs</code> (<code>File -&gt; Save As...</code>) and work on the copy. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.</strong> (First time? See the <a href="../general/setup.html">Setup</a> guide.)</p>
 <p>Follow the practical below. You can describe what you are doing in normal text. See <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a> for how to format normal text in Markdown documents.</p>
 <p>In this week’s practical, we will review how to calculate and visualise correlation coefficients between variables. This practical is split into four parts. The first focuses on measuring and visualising the relationship between <strong>continuous variables</strong>. The second goes through the implementation of a Linear Regression Model, again between continuous variables. The third checks whether the fitted model can be trusted, and the fourth is for practice.</p>
 <p>Before getting into it, have a look at this <a href="https://mlu-explain.github.io/linear-regression/">resource</a>, it really helps understand how regression models work.</p>
@@ -914,19 +914,19 @@ Call:
 lm(formula = y ~ x, data = made_up)
 
 Residuals:
-    Min      1Q  Median      3Q     Max 
--1807.4  -586.3   -96.1   554.6  2360.2 
+   Min     1Q Median     3Q    Max 
+ -1777   -611   -109    402   2555 
 
 Coefficients:
-            Estimate Std. Error t value            Pr(&gt;|t|)    
-(Intercept) -1742.08     173.12   -10.1 &lt;0.0000000000000002 ***
-x             101.77       2.98    34.2 &lt;0.0000000000000002 ***
+            Estimate Std. Error t value             Pr(&gt;|t|)    
+(Intercept) -1668.56     182.09   -9.16   0.0000000000000079 ***
+x             101.09       3.13   32.29 &lt; 0.0000000000000002 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 859 on 98 degrees of freedom
-Multiple R-squared:  0.923, Adjusted R-squared:  0.922 
-F-statistic: 1.17e+03 on 1 and 98 DF,  p-value: &lt;0.0000000000000002</code></pre>
+Residual standard error: 904 on 98 degrees of freedom
+Multiple R-squared:  0.914, Adjusted R-squared:  0.913 
+F-statistic: 1.04e+03 on 1 and 98 DF,  p-value: &lt;0.0000000000000002</code></pre>
 </div>
 </div>
 <p>Look at the output: an R-squared of around 0.9, and a p-value on <code>x</code> too small for R to print. (Your figure will differ a little from the one on this page, and will change again each time you run the chunk, because the data is invented fresh each time.) On the numbers alone this is a triumph. But we built the data ourselves, so we know for a fact that the straight line is the wrong shape. Plot it and you can see the problem immediately:</p>

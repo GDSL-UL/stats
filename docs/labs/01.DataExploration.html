@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gabriele Filomena">
-<meta name="dcterms.date" content="2026-09-27">
+<meta name="dcterms.date" content="2026-09-28">
 
 <title>2&nbsp; Lab: Exploring a Dataset – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
@@ -277,7 +277,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 27, 2026</p>
+      <p class="date">September 28, 2026</p>
     </div>
   </div>
   
@@ -296,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>The lecture’s slides can be found <a href="https://github.com/GDSL-UL/stats/blob/main/lectures/lecture01.pdf">here</a>.</p>
 <p>Before completing the practical, please take this <a href="https://canvas.liverpool.ac.uk/courses/93312/quizzes/176545">quiz</a>.</p>
-<p><strong>Open this lab in RStudio: in the Files pane, click <code>labs</code> and then <code>01.DataExploration.qmd</code>. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.</strong> (First time? See the <a href="../general/setup.html">Setup</a> guide, then do <a href="../labs/00.introR.html">Lab: Introduction to R</a>, which shows how to run code chunks.)</p>
+<p><strong>Open this lab in RStudio: in the Files pane, click <code>labs</code> and then <code>01.DataExploration.qmd</code>. Save your own copy in <code>myLabs</code> (<code>File -&gt; Save As...</code>) and work on the copy. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.</strong> (First time? See the <a href="../general/setup.html">Setup</a> guide, then do <a href="../labs/00.introR.html">Lab: Introduction to R</a>, which shows how to run code chunks.)</p>
 <p>Follow the practical below. You can describe what you are doing in normal text. See <a href="https://quarto.org/docs/authoring/markdown-basics.html">here</a> for how to format normal text in Markdown documents.</p>
 <section id="practice-dataset-and-dataframes" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="practice-dataset-and-dataframes"><span class="header-section-number">2.1</span> Practice: Dataset and Dataframes</h2>
@@ -1181,7 +1181,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="at">size =</span> <span class="dv">500</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 20242.46</code></pre>
+<pre><code>[1] 23366.72</code></pre>
 </div>
 </div>
 <p>Read that from the inside out: <code>sample(...)</code> picks 500 incomes at random, and <code>mean(...)</code> averages them.</p>
@@ -1221,7 +1221,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1237.573</code></pre>
+<pre><code>[1] 1202.75</code></pre>
 </div>
 </div>
 <p>About £1,200. In other words, a sample of 500 people typically misses the true mean income by around £1,200.</p>
