@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Gabriele Filomena">
-<meta name="dcterms.date" content="2026-09-28">
+<meta name="dcterms.date" content="2026-10-02">
 
 <title>2&nbsp; Lab: Exploring a Dataset – Exploring the Social World - Quantitative Block: Statistics</title>
 <style>
@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../labs/02.MultipleLinear.html" rel="next">
 <link href="../labs/00.introR.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -206,6 +207,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Exploring a Dataset</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/02.MultipleLinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation, Simple, and Multiple Linear Regression</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -258,7 +265,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 28, 2026</p>
+      <p class="date">October 2, 2026</p>
     </div>
   </div>
   
@@ -1162,7 +1169,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">sample</span>(frs_independent<span class="sc">$</span>income_gross, <span class="at">size =</span> <span class="dv">500</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 22460.67</code></pre>
+<pre><code>[1] 20494.97</code></pre>
 </div>
 </div>
 <p>Read that from the inside out: <code>sample(...)</code> picks 500 incomes at random, and <code>mean(...)</code> averages them.</p>
@@ -1202,7 +1209,7 @@ $ survey_weight    &lt;int&gt; 2315, 1317, 2449, 427, 1017, 1753, 1363, 1344, 82
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(many_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1199.278</code></pre>
+<pre><code>[1] 1274.488</code></pre>
 </div>
 </div>
 <p>About £1,200. In other words, a sample of 500 people typically misses the true mean income by around £1,200.</p>
@@ -1697,6 +1704,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../labs/02.MultipleLinear.html" class="pagination-link" aria-label="Lab: Correlation, Simple, and Multiple Linear Regression">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation, Simple, and Multiple Linear Regression</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

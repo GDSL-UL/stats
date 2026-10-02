@@ -205,6 +205,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Exploring a Dataset</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/02.MultipleLinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation, Simple, and Multiple Linear Regression</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -219,7 +225,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#every-time-you-work" id="toc-every-time-you-work" class="nav-link" data-scroll-target="#every-time-you-work">2. Every time you work</a></li>
   <li><a href="#your-files" id="toc-your-files" class="nav-link" data-scroll-target="#your-files">3. Your files</a></li>
   <li><a href="#your-first-lab-week-1" id="toc-your-first-lab-week-1" class="nav-link" data-scroll-target="#your-first-lab-week-1">4. Your first lab (Week 1)</a></li>
-  <li><a href="#adding-data-from-canvas" id="toc-adding-data-from-canvas" class="nav-link" data-scroll-target="#adding-data-from-canvas">5. Adding data from Canvas</a></li>
+  <li><a href="#adding-data-from-canvas" id="toc-adding-data-from-canvas" class="nav-link" data-scroll-target="#adding-data-from-canvas">5. Adding data from Canvas</a>
+  <ul class="collapse">
+  <li><a href="#big-files-drag-and-drop-in-vs-code" id="toc-big-files-drag-and-drop-in-vs-code" class="nav-link" data-scroll-target="#big-files-drag-and-drop-in-vs-code">Big files: drag and drop in VS Code</a></li>
+  </ul></li>
   <li><a href="#saving-a-copy-on-your-computer" id="toc-saving-a-copy-on-your-computer" class="nav-link" data-scroll-target="#saving-a-copy-on-your-computer">6. Saving a copy on your computer</a></li>
   <li><a href="#if-something-goes-wrong" id="toc-if-something-goes-wrong" class="nav-link" data-scroll-target="#if-something-goes-wrong">7. If something goes wrong</a></li>
   <li><a href="#another-option-rstudio-on-a-university-pc-or-your-own-laptop" id="toc-another-option-rstudio-on-a-university-pc-or-your-own-laptop" class="nav-link" data-scroll-target="#another-option-rstudio-on-a-university-pc-or-your-own-laptop">Another option: RStudio on a university PC or your own laptop</a></li>
@@ -300,7 +309,7 @@ Tip
 <li>Go to <a href="https://github.com/codespaces">github.com/codespaces</a> and click your codespace. You can also click the button in Step 2 again: it takes you back to the codespace you already have.</li>
 <li>Open RStudio with your bookmark, or as in Step 3.</li>
 <li>Work in the RStudio tab.</li>
-<li>When you finish, go back to <a href="https://github.com/codespaces">github.com/codespaces</a>. Click the <strong>…</strong> next to your codespace and choose <strong>Stop codespace</strong>. This saves your free hours. Your files are not deleted.</li>
+<li>When you finish, go back to <a href="https://github.com/codespaces">github.com/codespaces</a>. Click the <strong>…</strong> next to your codespace and choose <strong>Stop codespace</strong>. This saves your free hours. Your files are not deleted. If you forget, it stops by itself after about an hour without using RStudio.</li>
 </ol>
 </section>
 <section id="your-files" class="level2">
@@ -354,6 +363,50 @@ Note
 <li>Click <strong>Upload</strong>, then <strong>Choose File</strong>. Pick the file you downloaded and click <strong>OK</strong>.</li>
 </ol>
 <p>Now the lab code will find the file.</p>
+<section id="big-files-drag-and-drop-in-vs-code" class="level3">
+<h3 class="anchored" data-anchor-id="big-files-drag-and-drop-in-vs-code">Big files: drag and drop in VS Code</h3>
+<p>RStudio’s <strong>Upload</strong> button can fail with big files. If it does, use the VS Code window instead. This is the blue and grey window from Step 2 of section 1. If you closed it, open your codespace again from <a href="https://github.com/codespaces">github.com/codespaces</a>.</p>
+<ol type="1">
+<li>Download the file from Canvas to your computer.</li>
+<li>In the VS Code window, find the <strong>Explorer</strong> panel on the left. Open the <code>data</code> folder (the red box below).</li>
+<li>Drag the file from your computer (for example from your Downloads folder) and drop it on the <code>data</code> folder. If the lab needs a subfolder (for example <code>FRS</code>), right-click <code>data</code>, choose <strong>New Folder</strong>, type the name, and drop the file on that folder.</li>
+<li>Wait until the file appears in the list.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../img/vs.png" class="img-fluid figure-img" alt="VS Code Explorer panel with the data folder highlighted."></p>
+<figcaption>The VS Code window. Drop your files in the <code>data</code> folder.</figcaption>
+</figure>
+</div>
+<p>Go back to the RStudio tab. The file is now in the <strong>Files</strong> panel under <code>data</code>. If you don’t see it, click the refresh button in that panel.</p>
+<p>You can use the same method for any other file from Canvas, such as the report template: drop it on <code>myLabs</code> instead of <code>data</code>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Some datasets are licensed.</strong> Data such as the FRS is only for students on this module. Use it for your coursework only. Don’t share it or put it on GitHub or any other public website.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>A codespace is not a safe place to store your only copy of a file.</strong> It can stop, lose its connection, or be deleted (see the warning in section 6). Keep the original files from Canvas on your computer, so you can add them again if you need to start a new codespace. Files you add yourself are not part of the course folder, so a new codespace will not have them.</p>
+</div>
+</div>
+</section>
 </section>
 <section id="saving-a-copy-on-your-computer" class="level2">
 <h2 class="anchored" data-anchor-id="saving-a-copy-on-your-computer">6. Saving a copy on your computer</h2>
@@ -381,7 +434,7 @@ Warning
 <h2 class="anchored" data-anchor-id="if-something-goes-wrong">7. If something goes wrong</h2>
 <ul>
 <li><strong>RStudio is stuck on “authenticating”.</strong> Press F5 to refresh the page. If that doesn’t help, see the tips in Step 3 of section 1.</li>
-<li><strong>RStudio says it lost the connection.</strong> Your codespace has probably stopped. Open it again from <a href="https://github.com/codespaces">github.com/codespaces</a>, then refresh the RStudio tab.</li>
+<li><strong>RStudio says it lost the connection.</strong> First press F5 to refresh the RStudio tab: often the connection just dropped for a moment, and your work is still there. If that doesn’t help, your codespace has stopped. Open it again from <a href="https://github.com/codespaces">github.com/codespaces</a>, then refresh the RStudio tab.</li>
 <li><strong>You don’t see the <code>myLabs</code> folder.</strong> Your codespace was created before we added it. In the VS Code window, click in the panel at the bottom, type <code>git pull</code> and press Enter. Then stop your codespace and open it again (see section 2).</li>
 <li><strong>R says it can’t find a file.</strong> Check that the file is really in the folder named in the code. You can see this in the <strong>Files</strong> panel.</li>
 <li><strong>GitHub says you have no free hours left.</strong> The free plan gives you about 60 hours a month. Always stop your codespace when you finish (see section 2). If you run out, use RStudio on a university PC (see <a href="../general/localSetup.html">Setup: RStudio on a PC or Laptop</a>).</li>

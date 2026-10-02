@@ -205,6 +205,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Lab: Exploring a Dataset</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/02.MultipleLinear.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lab: Correlation, Simple, and Multiple Linear Regression</span></span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -250,14 +256,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>The easiest way to work in this module is <a href="../general/setup.html">RStudio in your browser</a>. You can also use RStudio installed on a computer:</p>
 <ul>
-<li>on a <strong>university PC</strong>, where RStudio is already installed;</li>
+<li>on a <strong>university PC</strong>, where R is already installed;</li>
 <li>on <strong>your own laptop</strong>, after installing R and RStudio.</li>
 </ul>
 <p>This is useful if you run out of free codespace hours, if you want to work offline, or if a data file is too big to upload to your codespace.</p>
 <p>The labs are the same. The differences are that you set things up once yourself, and the labs don’t update automatically.</p>
 <section id="get-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="get-rstudio">1. Get RStudio</h2>
-<p><strong>University PC.</strong> R and RStudio are already installed. Go to step 2.</p>
+<p><strong>University PC.</strong> R is already installed. RStudio may not be: if you can’t find it in the Start menu, double-click <strong>Install University Applications</strong> on the desktop, search for <strong>RStudio</strong> and install it. Then go to step 2.</p>
 <p><strong>Your own laptop.</strong> Install these two programs, in this order:</p>
 <ol type="1">
 <li><a href="https://cran.r-project.org/">R</a>: pick the version for your system (Windows, macOS or Linux) and install it with the default options.</li>
@@ -268,11 +274,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="get-the-course-files">2. Get the course files</h2>
 <ol type="1">
 <li>Go to the <a href="https://github.com/GDSL-UL/stats">course page on GitHub</a>. Click the green <strong>Code</strong> button, then <strong>Download ZIP</strong>.</li>
-<li><strong>Unzip the file</strong> (on Windows: right-click it, then <strong>Extract All…</strong>). Don’t work inside the ZIP file: R can’t find the data there.</li>
-<li>Put the unzipped <code>stats</code> folder somewhere you can find it. On a university PC, put it in your <code>M:</code> drive, so you can open it from any PC on campus.</li>
+<li><strong>Unzip the file</strong>. On Windows: right-click it, then <strong>Extract All…</strong>. On a Mac: double-click it. Don’t work inside the ZIP file: R can’t find the data there.</li>
+<li>You get a folder called <code>stats-main</code>. On Windows it may be inside another folder with the same name: use the one that contains <code>data</code>, <code>labs</code> and <code>envs225.Rproj</code>.</li>
+<li>Put this <code>stats-main</code> folder somewhere you can find it. On a university PC, put it in your <code>M:</code> drive, so you can open it from any PC on campus.</li>
 </ol>
 <p>The folder also contains the website and the lecture slides. You only need these parts:</p>
-<pre><code>stats/
+<pre><code>stats-main/
 ├── data/          the datasets
 ├── img/           pictures used in the labs
 ├── labs/          one lab file for each week
@@ -281,7 +288,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="open-the-course-in-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="open-the-course-in-rstudio">3. Open the course in RStudio</h2>
-<p>Double-click <code>envs225.Rproj</code> in the <code>stats</code> folder. RStudio opens, and the <strong>Files</strong> panel (bottom right) shows the course folder.</p>
+<p>Double-click <code>envs225.Rproj</code> in the <code>stats-main</code> folder. RStudio opens, and the <strong>Files</strong> panel (bottom right) shows the course folder.</p>
+<p>If double-clicking doesn’t open RStudio, open RStudio first, click <code>File -&gt; Open Project...</code> and choose <code>envs225.Rproj</code>.</p>
 <p>Next time, open the course the same way, or in RStudio click <code>File -&gt; Recent Projects</code> and choose <code>envs225</code>.</p>
 </section>
 <section id="install-the-packages-once" class="level2">
@@ -314,14 +322,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In the codespace the <code>labs</code> folder updates by itself. On a PC or laptop it doesn’t. If we tell you a lab has changed:</p>
 <ol type="1">
 <li>Download the ZIP again and unzip it (step 2).</li>
-<li>Copy its <code>labs</code> folder into your <code>stats</code> folder and replace the old one.</li>
+<li>Copy its <code>labs</code> folder into your <code>stats-main</code> folder and replace the old one.</li>
 </ol>
 <p><strong>Never replace your <code>myLabs</code> folder</strong>: your work is there.</p>
 </section>
 <section id="if-something-goes-wrong" class="level2">
 <h2 class="anchored" data-anchor-id="if-something-goes-wrong">8. If something goes wrong</h2>
 <ul>
-<li><strong>R says it can’t find a file.</strong> Check that you unzipped the course files (step 2), that you opened the lab from <code>myLabs</code>, and that the data file is really in the folder named in the code.</li>
+<li><strong>R says it can’t find a file.</strong> Check that you unzipped the course files (step 2), that you opened the lab from <code>myLabs</code>, and that the data file is really in the folder named in the code. Run the code from the lab file (the green arrow on each chunk), not by typing it in the Console: the Console looks for files from a different folder.</li>
 <li><strong><code>there is no package called ...</code></strong> Install the package (step 4).</li>
 <li><strong>The Render button asks to install packages or tools.</strong> Click <strong>Yes</strong> and let RStudio install them.</li>
 </ul>
