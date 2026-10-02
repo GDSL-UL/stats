@@ -111,6 +111,29 @@ Some datasets are only on Canvas, for example the Family Resource Survey (FRS). 
 
 Now the lab code will find the file.
 
+### Big files: drag and drop in VS Code
+
+RStudio's **Upload** button can fail with big files. If it does, use the VS Code window instead. This is the blue and grey window from Step 2 of section 1. If you closed it, open your codespace again from [github.com/codespaces](https://github.com/codespaces).
+
+1.  Download the file from Canvas to your computer.
+2.  In the VS Code window, find the **Explorer** panel on the left. Open the `data` folder (the red box below).
+3.  Drag the file from your computer (for example from your Downloads folder) and drop it on the `data` folder. If the lab needs a subfolder (for example `FRS`), right-click `data`, choose **New Folder**, type the name, and drop the file on that folder.
+4.  Wait until the file appears in the list.
+
+![The VS Code window. Drop your files in the `data` folder.](../img/vs.png){fig-alt="VS Code Explorer panel with the data folder highlighted."}
+
+Go back to the RStudio tab. The file is now in the **Files** panel under `data`. If you don't see it, click the refresh button in that panel.
+
+You can use the same method for any other file from Canvas, such as the report template: drop it on `myLabs` instead of `data`.
+
+::: callout-warning
+**Some datasets are licensed.** Data such as the FRS is only for students on this module. Use it for your coursework only. Don't share it or put it on GitHub or any other public website.
+:::
+
+::: callout-important
+**A codespace is not a safe place to store your only copy of a file.** It can stop, lose its connection, or be deleted (see the warning in section 6). Keep the original files from Canvas on your computer, so you can add them again if you need to start a new codespace. Files you add yourself are not part of the course folder, so a new codespace will not have them.
+:::
+
 ## 6. Saving a copy on your computer
 
 To download a file from RStudio (for example to keep a copy, or to submit your work):
