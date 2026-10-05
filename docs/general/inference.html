@@ -278,11 +278,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(means_100)   <span class="co"># standard error with n = 100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2707.13</code></pre>
+<pre><code>[1] 2820.211</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(means_2000)  <span class="co"># standard error with n = 2000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 589.3792</code></pre>
+<pre><code>[1] 600.5307</code></pre>
 </div>
 </div>
 <p>Roughly £2,800 for samples of 100, against £600 for samples of 2000. Bigger samples give more precise answers — but look at the <em>rate</em>. To halve your uncertainty you must <strong>quadruple</strong> your sample.</p>
@@ -303,13 +303,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     One Sample t-test
 
 data:  one_sample
-t = 19.755, df = 499, p-value &lt; 2.2e-16
+t = 21.023, df = 499, p-value &lt; 2.2e-16
 alternative hypothesis: true mean is not equal to 0
 95 percent confidence interval:
- 20151.58 24602.53
+ 19210.10 23170.94
 sample estimates:
 mean of x 
- 22377.06 </code></pre>
+ 21190.52 </code></pre>
 </div>
 </div>
 <p>Ignore most of that output and look at the part labelled <strong>95 percent confidence interval</strong>.</p>
@@ -336,12 +336,12 @@ mean of x
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(many_intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  sample_number    lower    upper
-1             1 17833.49 21278.20
-2             2 19945.11 25408.66
-3             3 20416.31 24318.25
-4             4 20128.63 25020.68
-5             5 21544.48 26575.69
-6             6 19540.98 24011.72</code></pre>
+1             1 19976.59 24096.95
+2             2 21695.70 27119.61
+3             3 19535.27 22947.90
+4             4 20517.59 25116.36
+5             5 20680.43 24730.13
+6             6 21000.19 24491.49</code></pre>
 </div>
 </div>
 <p>Now work out the true answer, and check each interval against it:</p>
@@ -355,7 +355,7 @@ mean of x
 <div class="cell-output cell-output-stdout">
 <pre><code>
 FALSE  TRUE 
-   13    87 </code></pre>
+    8    92 </code></pre>
 </div>
 </div>
 <p>A handful missed — usually somewhere between about three and ten of the hundred. Let’s draw them. Each horizontal line is one sample’s confidence interval, and the vertical line is the true mean income of the population:</p>
@@ -404,13 +404,13 @@ FALSE  TRUE
     Welch Two Sample t-test
 
 data:  income_gross by sex
-t = -2.3709, df = 33.649, p-value = 0.02362
+t = -0.33478, df = 57.086, p-value = 0.739
 alternative hypothesis: true difference in means between group Female and group Male is not equal to 0
 95 percent confidence interval:
- -24433.759  -1874.774
+ -10467.874   7469.032
 sample estimates:
 mean in group Female   mean in group Male 
-            15400.67             28554.93 </code></pre>
+            19556.73             21056.15 </code></pre>
 </div>
 </div>
 <div style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;">
