@@ -2,50 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gdsl-ul.github.io/stats/index.html</loc>
-    <lastmod>2024-12-05T18:00:51.000Z</lastmod>
+    <lastmod>2025-10-09T12:58:11.971Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/overview.html</loc>
-    <lastmod>2026-09-27T15:56:47.780Z</lastmod>
+    <lastmod>2026-10-09T10:05:11.138Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/setup.html</loc>
-    <lastmod>2026-10-02T10:02:05.509Z</lastmod>
+    <lastmod>2026-10-09T10:05:11.140Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/localSetup.html</loc>
-    <lastmod>2026-09-28T11:47:26.093Z</lastmod>
+    <lastmod>2026-10-09T10:05:11.136Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/assessment.html</loc>
-    <lastmod>2026-09-27T17:32:56.518Z</lastmod>
+    <lastmod>2026-10-09T10:05:11.132Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/howSubmit.html</loc>
-    <lastmod>2026-09-27T11:15:21.708Z</lastmod>
+    <lastmod>2026-10-09T10:05:11.134Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/reportTemplate.html</loc>
-    <lastmod>2026-09-28T07:39:10.071Z</lastmod>
+    <lastmod>2026-10-09T10:05:11.139Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/inference.html</loc>
-    <lastmod>2026-09-27T10:58:29.079Z</lastmod>
+    <lastmod>2026-10-09T10:05:11.135Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/00.introR.html</loc>
-    <lastmod>2026-09-28T10:25:34.599Z</lastmod>
+    <lastmod>2026-10-09T10:05:11.144Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/01.DataExploration.html</loc>
-    <lastmod>2026-09-28T07:39:10.056Z</lastmod>
+    <lastmod>2026-10-09T10:05:11.145Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/02.MultipleLinear.html</loc>
-    <lastmod>2026-10-05T07:11:31.000Z</lastmod>
+    <lastmod>2026-10-09T10:05:11.147Z</lastmod>
   </url>
   <url>
-    <loc>https://gdsl-ul.github.io/stats/Exploring-the-Social-World---Quantitative-Block--Statistics.pdf</loc>
-    <lastmod>2026-10-05T07:45:20.747Z</lastmod>
+    <loc>https://gdsl-ul.github.io/stats/labs/03.QualitativeVariable.html</loc>
+    <lastmod>2026-10-09T11:07:37.142Z</lastmod>
   </url>
 </urlset>

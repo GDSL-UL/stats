@@ -9,7 +9,7 @@ format:
 
 **Open this lab in RStudio: in the Files pane, click `labs` and then `03.QualitativeVariable.qmd`. Save your own copy in `myLabs` (`File -> Save As...`) and work on the copy. Work through it from top to bottom, running each code chunk and adding your notes and answers in the file.** (First time? See the [Setup](../general/setup.qmd) guide.)
 
-The lecture’s slides can be found [here](https://github.com/GDSL-UL/stats/blob/main/lectures/lecture03.pdf).
+The lecture’s slides can be found on Canvas Week 3 [here](#0).
 
 Last week, we introduced Multiple Linear Regression (MLR) - a statistical method that models the relationship between a dependent variable and two or more independent variables, allowing researchers to examine how various predictors jointly influence an outcome. By using the following R code, we create and interpret the model:
 
@@ -255,8 +255,8 @@ table(frs_df$health)
 
 Remember from the lecture what we did with Region in the long-term illness example before adding it to the regression model? Two steps are needed before including a categorical variable in a regression model:
 
-1. **Convert it to a factor**, so that R treats it as categorical rather than as text or numbers.
-2. **Choose the reference category** (baseline), as the model's coefficients will show how each of the other categories differs from it.
+1.  **Convert it to a factor**, so that R treats it as categorical rather than as text or numbers.
+2.  **Choose the reference category** (baseline), as the model's coefficients will show how each of the other categories differs from it.
 
 Here, we use **Female** and **Very Bad** health as the reference categories, but you can choose others if you wish. The code below combines both steps in one line: `as.factor()` converts the variable to a factor, and `fct_relevel()` sets the reference category.
 
