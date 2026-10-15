@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git log *)",
+      "Bash(git ls-tree *)",
+      "Bash(git check-ignore *)",
+      "PowerShell(quarto render --to html 2>&1)",
+      "Bash(awk '{print $1, $2}')",
+      "Bash(python -c ' *)",
+      "Bash(cp labs/03.QualitativeVariable.qmd \"C:/Users/ziye/AppData/Local/Temp/claude/c--Users-ziye-Documents-GitHub-stats/d36a7a27-01e6-4a36-942d-babd30d2e254/scratchpad/03_backup.qmd\")",
+      "Bash(python -)",
+      "PowerShell($r = Get-ChildItem \"C:\\\\Program Files\\\\R\" -Directory | Sort-Object Name | Select-Object -Last 1; Set-Location \"C:\\\\Users\\\\ziye\\\\Documents\\\\GitHub\\\\stats\\\\labs\"; & \"$\\($r.FullName\\)\\\\bin\\\\Rscript.exe\" \"C:\\\\Users\\\\ziye\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-ziye-Documents-GitHub-stats\\\\d36a7a27-01e6-4a36-942d-babd30d2e254\\\\scratchpad\\\\ans.R\")",
+      "PowerShell(quarto render labs/03.QualitativeVariable.qmd --to html 2>&1)"
+    ]
+  }
+}

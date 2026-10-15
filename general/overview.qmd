@@ -32,7 +32,7 @@ Lectures will introduce and explain the fundamentals of quantitative methods, wi
 The computer practical sessions, will give you the chance to use and apply quantitative methods to real-world data. These are primarily self-directed sessions, but with support on hand if you get stuck. Support and training in R will be provided through these sessions. Weekly sessions will be driven by empirical research questions.
 
 | Week | Topic | Format | Staff |
-|---------------|-------------------------|-----------------|---------------|
+|-----------------|-----------------------|-----------------|-----------------|
 | 1 | Introduction & Review | Lecture and Computer Lab Practical | GF |
 | 2 | Simple & Multiple Linear Regression | Lecture and Computer Lab Practical | GF |
 | 3 | Multiple Linear Regression with Categorical Variables | Lecture and Computer Lab Practical | ZY |

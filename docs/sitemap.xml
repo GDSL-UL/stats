@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/overview.html</loc>
-    <lastmod>2026-10-09T10:05:11.138Z</lastmod>
+    <lastmod>2026-10-15T12:28:51.143Z</lastmod>
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/general/setup.html</loc>
@@ -46,6 +46,10 @@
   </url>
   <url>
     <loc>https://gdsl-ul.github.io/stats/labs/03.QualitativeVariable.html</loc>
-    <lastmod>2026-10-09T11:16:19.972Z</lastmod>
+    <lastmod>2026-10-15T12:28:27.315Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gdsl-ul.github.io/stats/labs/04.LogisticRegression.html</loc>
+    <lastmod>2026-10-15T15:12:56.564Z</lastmod>
   </url>
 </urlset>
