@@ -299,10 +299,14 @@ Or by using `if_else` and `%in%` in R, we can achieve the same result. `%in%` is
 sar_df <- sar_df %>% mutate(New_nssec = if_else(!nssec %in% c(6,7,8), "0" ,nssec))
 ```
 
-Use "Other occupations" (code: 0) as the reference category by `relevel(as.factor())` and then create the regression model: `glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")`. Can you now run the model by yourself? Find the answer at the end of the practical.
+Use "Other occupations" (code: 0) as the reference category by `relevel(as.factor())` and then create the regression model: `glm(New_work_distance~sex + New_nssec, data = sar_df, family= "binomial")`.
 
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q4**. **If we want to explore whether independent employers have a lower probability of commuting 60km or more compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?**
+**Q4**. **Can you now run the model by yourself? Find the answer at the end of the practical.**
+:::
+
+::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
+**Q5**. **If we want to explore whether independent employers have a lower probability of commuting 60km or more compared with other occupations, how will we prepare the input independent variables and what will be the specified regression model?**
 :::
 
 ### Prediction using fitted regression model
@@ -314,7 +318,6 @@ Relating to this week's lecture, we can write down the fitted model. **Note** th
 Equivalently, we can write the same model on the **log-odds** scale, using the coefficients (B) from `summary(m.glm)`. On this scale the terms **add up**, just like in linear regression: log-odds of long-distance commuting = −2.653 − 0.802 × Female + 0.275 × nssec1 − 0.238 × nssec3 − 0.507 × nssec4 − 1.265 × nssec5 − 0.637 × nssec6 − 0.645 × nssec7 − 0.819 × nssec8, where each dummy variable equals 1 if the person belongs to that category and 0 otherwise. For example, for a female in a Lower managerial and professional occupation (nssec=3), the log-odds = −2.653 − 0.802 − 0.238 = −3.693. To turn log-odds into odds, we take the exponential: odds = e^−3.693^ = 0.0249, which is exactly the same as 0.070 × 0.448 × 0.788 from the odds equation above. Finally, the probability = odds / (1 + odds) = 0.0249 / 1.0249 = 2.43%. Both ways give the same answer; the odds-ratio form is often easier to interpret, while the log-odds form shows how the model is actually estimated.
 
 By using R, you can create the object you would like to predict. Here we create three people; see whether you can interpret their gender and socio-economic classification.
-
 
 ```{r}
 objs <- data.frame(sex=c("1","2","1"),nssec=c("7","3","5"))
@@ -328,176 +331,8 @@ predict(m.glm, objs,type = "response")
 
 So let us look at these three people. For the first, a male classified as Semi-routine occupation in NSSEC, the probability that he travels 60km or more to work is only 3.56%. For the second, a female in a Lower managerial and professional occupation, the probability of long-distance commuting is 2.43%. Now work out the prediction for our last person. Remember: the model fit results show that the model is not very robust, so the predictions may not be very solid either.
 
-
 ::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q5.** **Now what conclusions can you draw when comparing the female Lower supervisory and technical occupations to the male in the same NSSEC groups (nssec) by first predicting their probabilities of long-distance commuting?**
-:::
-
-## **Extension activities**
-
-The extension activities are designed to help you prepare for the assignment. For this week, try whether you can:
-
-- Select a regression strategy and explain why a linear or logistic model is appropriate
-
-- Perform one or a series of regression models, including different combinations of your chosen independent variables to explain and/or predict your dependent variable
-
-## **Answers for Qs**
-
-### Answer for Q1
-
-Q1 asks for descriptive analysis of `work_distance`, `nssec` and `sex` in the **new data**, `sar_df`. We summarise the frequencies with `table()` and, to report them as percentages, `prop.table()`:
-
-```{r}
-table(sar_df$work_distance)
-round(100 * prop.table(table(sar_df$work_distance)), 1)
-
-table(sar_df$nssec)
-round(100 * prop.table(table(sar_df$nssec)), 1)
-
-table(sar_df$sex)
-round(100 * prop.table(table(sar_df$sex)), 1)
-```
-
-Then we create a bar chart for each variable. As `sar_df` is in code format, we use `as.factor()` so that the codes are treated as categories (use the code tables above to read the labels):
-
-```{r}
-ggplot(sar_df, aes(x = as.factor(work_distance))) +
-  geom_bar(fill = "rosybrown", width = 0.5) +
-  labs(title = "Bar chart of work distance in sar_df", x = "Work distance (code)", y = "Count") +
-  theme_classic()
-
-ggplot(sar_df, aes(x = as.factor(nssec))) +
-  geom_bar(fill = "tan", width = 0.5) +
-  labs(title = "Bar chart of NSSEC in sar_df", x = "NSSEC (code)", y = "Count") +
-  theme_classic()
-
-ggplot(sar_df, aes(x = as.factor(sex))) +
-  geom_bar(fill = "gold", width = 0.5) +
-  labs(title = "Bar chart of gender in sar_df", x = "Gender (1 = Male, 2 = Female)", y = "Count") +
-  theme_classic()
-```
-
-The analysis sample contains 21,113 people:
-
-- **work_distance:** most people commute short to medium distances: less than 2 km (17.9%), 2 to \<5 km (19.8%), 5 to \<10 km (19.1%) and 10 to \<20 km (16.7%). 11.3% work at home, and only 3.2% (683 people) commute 60km or more.
-- **nssec:** the largest group is lower managerial and professional occupations (nssec = 3, 27.7%), followed by intermediate (15.5%) and semi-routine occupations (15.1%). Large employers and higher managers (nssec = 1) are the smallest group (3.1%).
-- **sex:** the sample is almost evenly split between males (50.7%) and females (49.3%).
-
-### Answer for Q2
-
-Similarly, the descriptive analysis for the newly created variable `New_work_distance` in `sar_df` should include:
-
-```{r}
-table(sar_df$New_work_distance)
-```
-
-Here we see the categories of `New_work_distance` are in numeric type 0 or 1 (as we used code `sar_df <- sar_df %>% mutate(New_work_distance = if_else(work_distance == 7, 1, 0))` to do so), therefore in the bar chart code, we use `as.factor()` to convert it to a factor.
-
-```{r}
-ggplot(sar_df, aes(x = as.factor(New_work_distance))) +
-  geom_bar(fill="forestgreen",width=0.5) +
-  labs(title = "Bar chart of New_work_distance in SAR sample", x = "New_work_distance", y = "Count")+#set text info
-  theme_classic()#choose theme type, try theme_bw(), theme_minimal() see differences
-```
-
-Now we can use the frequency and the bar chart to report that according to our definition of long-distance travelling to work (60km or more), there are 683 long-distance commuters in `sar_df`, which makes up 3.23% (683/21,113) of the people in our analysis sample (those who reported a commuting distance or working at home, and an occupation in NSSEC groups 1 to 8). Long-distance commuting is therefore a rare outcome, which is one reason why the predicted probabilities from our model are low.
-
-### Answer for Q3
-
-Using the odds ratios and confidence intervals from `m.glm` (reference category: nssec = 2, higher professional occupations), holding gender constant:
-
-- **Intermediate occupations (nssec = 4)** have 0.602 times the odds of long-distance commuting compared with higher professionals (CI: 0.45 to 0.80, p \< 0.001), i.e. 39.8% (1 - 0.602) lower odds.
-- **Lower supervisory and technical occupations (nssec = 6)** have 0.529 times the odds (CI: 0.38 to 0.73, p \< 0.001), i.e. 47.1% (1 - 0.529) lower odds.
-- **Semi-routine occupations (nssec = 7)** have 0.524 times the odds (CI: 0.39 to 0.70, p \< 0.001), i.e. 47.6% (1 - 0.524) lower odds.
-
-All three groups are statistically significantly less likely to commute 60km or more than higher professionals. None of the confidence intervals include 1, which confirms that the differences are statistically significant.
-
-### Answer for the recoded NSSEC model (`New_nssec`)
-
-We set "Other occupations" (code 0) as the reference category and fit the model:
-
-```{r}
-sar_df$New_nssec <- relevel(as.factor(sar_df$New_nssec), ref = "0")
-
-model_nssec = glm(New_work_distance ~ sex + New_nssec, data = sar_df, family = "binomial")
-summary(model_nssec)
-
-# odds ratios and confidence intervals
-exp(coef(model_nssec))
-exp(confint(model_nssec, level = 0.95))
-
-# model fit
-pR2(model_nssec) %>% round(4) %>% tidy()
-```
-
-Compared with people in other occupations, and holding gender constant:
-
-- **Lower supervisory and technical occupations (6):** odds ratio 0.711 (CI: 0.53 to 0.94, p = 0.022), i.e. 28.9% lower odds.
-- **Semi-routine occupations (7):** odds ratio 0.710 (CI: 0.55 to 0.90, p = 0.006), i.e. 29.0% lower odds.
-- **Routine occupations (8):** odds ratio 0.594 (CI: 0.44 to 0.78, p \< 0.001), i.e. 40.6% lower odds.
-
-So all three groups have a significantly **lower**, not higher, probability of commuting 60km or more than people in other occupations. The McFadden pseudo R-squared is 0.020, lower than the full `m.glm` model (0.030), because grouping five occupations into "Other occupations" loses some information.
-
-### Answer for the prediction of the third person
-
-The third person is a male (sex = 1) in a small employer and own account worker occupation (nssec = 5). His odds = 0.070 × 0.282 = 0.0199, so the probability = 0.0199 / (1 + 0.0199) = **1.95%**, which matches the third value returned by `predict()`.
-
-### Answer for Q4
-
-In Q4, we want to explore whether independent employers are associated with a lower probability of commuting over long distances compared to people in other occupations. So we set nssec = 5 (Small employers and own account workers) as the baseline category.
-
-Then we set the reference categories: `sex` as `1` (male) and `nssec` as `5`, which is 'Small employers and own account workers':
-
-```{r}
-sar_df$sex <- relevel(as.factor(sar_df$sex),ref="1")
-sar_df$nssec <- relevel(as.factor(sar_df$nssec),ref="5")
-```
-
-Now, we build the logistic regression model and check out the outcomes:
-
-```{r}
-model_new = glm(New_work_distance~sex + nssec, data = sar_df, family= "binomial")
-
-summary(model_new)
-```
-
-For the model interpretation, we need:
-
-```{r}
-# odds ratios
-exp(coef(model_new)) 
-```
-
-```{r}
-# confidence intervals
-exp(confint(model_new, level = 0.95)) 
-```
-
-And don't forget to measure the model fit:
-
-```{r}
-# model fit
-pR2(model_new) %>% round(4) %>% tidy()
-```
-
-With small employers and own account workers (nssec = 5) as the reference category, every other occupation group has an odds ratio **above 1**, holding gender constant:
-
-| NSSEC group | Odds ratio vs nssec = 5 | 95% CI | Significant? |
-|:---|:---:|:---:|:---:|
-| 1 Large employers and higher managers | 4.66 | 2.91 to 7.58 | Yes |
-| 2 Higher professional occupations | 3.54 | 2.39 to 5.43 | Yes |
-| 3 Lower managerial and professional | 2.79 | 1.92 to 4.22 | Yes |
-| 4 Intermediate occupations | 2.13 | 1.40 to 3.34 | Yes |
-| 6 Lower supervisory and technical | 1.87 | 1.19 to 3.00 | Yes |
-| 7 Semi-routine occupations | 1.86 | 1.22 to 2.91 | Yes |
-| 8 Routine occupations | 1.56 | 1.00 to 2.49 | No (p = 0.055) |
-
-So independent employers have significantly **lower** odds of commuting 60km or more than every other occupation group except routine occupations, where the difference is not statistically significant. The McFadden pseudo R-squared is 0.030, exactly the same as `m.glm`: changing the reference category does not change the model fit, only which comparisons the odds ratios show.
-
-An alternative approach is to compare independent employers with **all other occupations combined**, as we did with `New_nssec`: create a new variable with `fct_other(nssec, keep = "5", other_level = "0")`, set "0" as the reference category, and fit `glm(New_work_distance ~ sex + New_variable, data = sar_df, family = "binomial")`.
-
-::: {style="background-color: #FFFBCC; padding: 10px; border-radius: 5px; border: 1px solid #E1C948;"}
-**Q5.** **Now what conclusions can you draw when comparing the female Lower supervisory and technical occupations to the male in the same NSSEC groups (nssec) by first predicting their probabilities of long-distance commuting?**
+**Q6.** **Now what conclusions can you draw when comparing the female Lower supervisory and technical occupations to the male in the same NSSEC groups (nssec) by first predicting their probabilities of long-distance commuting?**
 :::
 
 ## **Extension activities**
@@ -550,7 +385,41 @@ Now we can use the frequency and the bar chart to report that according to our d
 
 ### Answer for Q3
 
-### Answer for the model in Q4
+Using the odds ratios and confidence intervals from `m.glm` (reference category: nssec = 2, higher professional occupations), holding gender constant:
+
+- **Intermediate occupations (nssec = 4)** have 0.602 times the odds of long-distance commuting compared with higher professionals (CI: 0.45 to 0.80, p \< 0.001), i.e. 39.8% (1 - 0.602) lower odds.
+- **Lower supervisory and technical occupations (nssec = 6)** have 0.529 times the odds (CI: 0.38 to 0.73, p \< 0.001), i.e. 47.1% (1 - 0.529) lower odds.
+- **Semi-routine occupations (nssec = 7)** have 0.524 times the odds (CI: 0.39 to 0.70, p \< 0.001), i.e. 47.6% (1 - 0.524) lower odds.
+
+All three groups are statistically significantly less likely to commute 60km or more than higher professionals. None of the confidence intervals include 1, which confirms that the differences are statistically significant.
+
+### Answer for Q4: the recoded NSSEC model (`New_nssec`)
+
+We set "Other occupations" (code 0) as the reference category and fit the model:
+
+```{r}
+sar_df$New_nssec <- relevel(as.factor(sar_df$New_nssec), ref = "0")
+
+model_nssec = glm(New_work_distance ~ sex + New_nssec, data = sar_df, family = "binomial")
+summary(model_nssec)
+
+# odds ratios and confidence intervals
+exp(coef(model_nssec))
+exp(confint(model_nssec, level = 0.95))
+
+# model fit
+pR2(model_nssec) %>% round(4) %>% tidy()
+```
+
+Compared with people in other occupations, and holding gender constant:
+
+- **Lower supervisory and technical occupations (6):** odds ratio 0.711 (CI: 0.53 to 0.94, p = 0.022), i.e. 28.9% lower odds.
+- **Semi-routine occupations (7):** odds ratio 0.710 (CI: 0.55 to 0.90, p = 0.006), i.e. 29.0% lower odds.
+- **Routine occupations (8):** odds ratio 0.594 (CI: 0.44 to 0.78, p \< 0.001), i.e. 40.6% lower odds.
+
+So all three groups have a significantly **lower**, not higher, probability of commuting 60km or more than people in other occupations. The McFadden pseudo R-squared is 0.020, lower than the full `m.glm` model (0.030), because grouping five occupations into "Other occupations" loses some information.
+
+### Answer for the model in Q5
 
 In Q4, we want to explore whether independent employers are associated with a lower probability of commuting over long distances compared to people in other occupations. So we set nssec = 5 (Small employers and own account workers) as the baseline category.
 
@@ -596,14 +465,13 @@ And don't forget to measure the model fit:
 pR2(model_new) %>% round(4) %>% tidy()
 ```
 
-### Answer for Q5
+### Answer for Q6
 
-From `m.glm` (reference: higher professional occupations, nssec = 2), the middle NSSEC groups all have significantly **lower** odds of long-distance commuting than higher professionals, holding gender constant:
+We first predict the probabilities for a male and a female in Lower supervisory and technical occupations (nssec=6):
 
-- Lower managerial and professional occupations (nssec = 3): odds ratio 0.788, 21.2% lower odds (p = 0.039)
-- Intermediate occupations (nssec = 4): odds ratio 0.602, 39.8% lower odds (p \< 0.001)
-- Small employers and own account workers (nssec = 5): odds ratio 0.282, 71.8% lower odds (p \< 0.001)
+```{r}
+objs_q5 <- data.frame(sex = c("1", "2"), nssec = c("6", "6"))
+predict(m.glm, objs_q5, type = "response")
+```
 
-Large employers and higher managers (nssec = 1) are not significantly different from higher professionals (p = 0.127). From `model_new` (reference: nssec = 5), they have 4.66 times the odds of small employers, so they are also more likely to commute long distances than this middle group.
-
-Overall, people in the higher NSSEC groups are more likely to commute 60km or more than those in the middle groups, which suggests that long-distance commuting is more common in higher-status occupations. Remember that the model fit is low (McFadden = 0.030), so other factors not included in the model, such as age, region or car ownership, are also likely to matter.
+The probability of commuting 60km or more is 3.59% for the male and 1.64% for the female. Within the same NSSEC group, the female's odds are 0.448 times the male's, i.e. 55.2% (1-0.448) lower. As the model has no interaction between `sex` and `nssec`, this gender difference in odds is the same in every NSSEC group.
